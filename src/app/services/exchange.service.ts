@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ExchangeService {
-  private getExchangeInfoUrl = 'http://127.0.0.1:8000/exchange/'
+  private getExchangeInfoUrl = 'https://finefoliobe.onrender.com/exchange/'
 
   constructor(private http: HttpClient) { }
 
