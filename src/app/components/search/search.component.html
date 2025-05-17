@@ -1,0 +1,18 @@
+<div class="search-container">
+  <input
+    type="text"
+    [(ngModel)]="searchValue"
+    (input)="onInputChange()"
+    (keydown.enter)="onEnter()"
+    (focus)="onFocus()"
+    (keydown)="onKeyDown($event)"
+    placeholder="Search currency pair..."
+    class="search-input"
+  />
+
+  <ul class="dropdown" *ngIf="showDropdown">
+    <li *ngFor="let pair of filteredPairs; let i = index" (click)="onSelect(pair) " [class.selected]="i === selectedIndex">
+      {{ pair }}
+    </li>
+  </ul>
+</div>

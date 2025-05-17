@@ -1,0 +1,64 @@
+<div class="comparison-container" *ngIf="exchangeInfo && !loading; else loadingSkeleton">
+  <h2>Currency Comparison</h2>
+
+  <div class="currency-row header">
+    <div class="label"></div>
+    <div class="currency">{{ exchangeInfo.first_currency_short_code.toUpperCase() }}</div>
+    <div class="currency">{{ exchangeInfo.second_currency_short_code.toUpperCase() }}</div>
+  </div>
+
+  <div class="currency-row">
+    <div class="label">Interest Rate (%)</div>
+    <div class="currency">{{ exchangeInfo.first_currency_interest_rate }}</div>
+    <div class="currency">{{ exchangeInfo.second_currency_interest_rate }}</div>
+  </div>
+
+  <div class="currency-row">
+    <div class="label">Inflation Rate (%)</div>
+    <div class="currency">{{ exchangeInfo.first_currency_inflation_rate }}</div>
+    <div class="currency">{{ exchangeInfo.second_currency_inflation_rate }}</div>
+  </div>
+
+  <div class="currency-row">
+    <div class="label">Unemployment Rate (%)</div>
+    <div class="currency">{{ exchangeInfo.first_currency_unemployment_rate }}</div>
+    <div class="currency">{{ exchangeInfo.second_currency_unemployment_rate }}</div>
+  </div>
+
+  <div class="currency-row">
+    <div class="label">GDP Growth Rate (%)</div>
+    <div class="currency">{{ exchangeInfo.first_currency_gdp_growth_rate }}</div>
+    <div class="currency">{{ exchangeInfo.second_currency_gdp_growth_rate }}</div>
+  </div>
+
+  <div class="extras">
+    <div><strong>Exchange Rate:</strong> {{ exchangeInfo.rate }}</div>
+    <div><strong>Forecast (Regression):</strong> {{ exchangeInfo.forecast_regression }}</div>
+    <div><strong>Forecast (PPP):</strong> {{ exchangeInfo.forecast_ppp }}</div>
+    <div *ngIf="exchangeInfo.recommendation == 'sell'"><strong>Regression Based Recommendation: </strong> <label style="color: red;">Sell</label> 📉</div>
+    <div *ngIf="exchangeInfo.recommendation == 'buy'"><strong>Regression Based Recommendation: </strong> <label style="color: green;">Buy 📈</label> </div>
+  </div>
+  <p><strong>Note:</strong> data provided here is update once a week!</p>
+</div>
+
+<ng-template #loadingSkeleton>
+  <div class="comparison-container">
+    <h2>Loading...</h2>
+
+    <div class="currency-row header">
+      <div class="label"></div>
+    </div>
+
+    <div class="currency-row" *ngFor="let i of [1,2,3,4]">
+      <div class="label skeleton-box long"></div>
+      <div class="currency skeleton-box"></div>
+      <div class="currency skeleton-box"></div>
+    </div>
+
+    <div class="extras">
+      <div class="skeleton-box medium"></div>
+      <div class="skeleton-box medium"></div>
+      <div class="skeleton-box medium"></div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,15 @@
+<div class="container">
+    <h2>Articles</h2>
+    <hr />
+    <div *ngFor="let article of pagedArticles">
+        <h4>{{ article.title }}</h4>
+        <button id = "{{article.id}}" (click)="readArticle($event)">Read</button>
+        <p [innerHTML]="article.content.length > 100 ? (article.content | slice:0:100) + '...' : article.content"></p>
+        <hr />
+    </div>
+</div>
+<div class="pagination">
+    <button (click)="prevPage()" [disabled]="page === 1">Previous</button>
+    <span>Page {{ page }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
+</div>
