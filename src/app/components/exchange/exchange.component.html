@@ -33,7 +33,7 @@
 
   <div class="extras">
     <div><strong>Exchange Rate:</strong> {{ exchangeInfo.rate }}</div>
-    <div><strong>Forecast (Regression):</strong> {{ exchangeInfo.forecast_regression }}</div>
+    <!--div><strong>Forecast (Regression):</strong> {{ exchangeInfo.forecast_regression }}</div-->
     <div><strong>Forecast (PPP):</strong> {{ exchangeInfo.forecast_ppp }}</div>
     <div *ngIf="exchangeInfo.recommendation == 'sell'"><strong>Regression Based Recommendation: </strong> <label style="color: red;">Sell</label> 📉</div>
     <div *ngIf="exchangeInfo.recommendation == 'buy'"><strong>Regression Based Recommendation: </strong> <label style="color: green;">Buy 📈</label> </div>
