@@ -18,9 +18,9 @@ export class ExchangeComponent implements OnInit {
   loading = true;
   fields = [
   { label: 'Interest Rate (%)', first: 'first_currency_interest_rate', second: 'second_currency_interest_rate' },
-  { label: 'Inflation Rate (%)', first: 'first_currency_inflation_rate', second: 'second_currency_inflation_rate' },
+  { label: 'Inflation Rate y/y (%)', first: 'first_currency_inflation_rate', second: 'second_currency_inflation_rate' },
   { label: 'Unemployment Rate (%)', first: 'first_currency_unemployment_rate', second: 'second_currency_unemployment_rate' },
-  { label: 'GDP Growth Rate m/m (%)', first: 'first_currency_gdp_growth_rate', second: 'second_currency_gdp_growth_rate' },
+  { label: 'GDP Growth Rate q/q (%)', first: 'first_currency_gdp_growth_rate', second: 'second_currency_gdp_growth_rate' },
 ];
   constructor(
     private ExchangeServiceApi: ExchangeService,
