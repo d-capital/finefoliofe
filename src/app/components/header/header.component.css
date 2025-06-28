@@ -9,11 +9,11 @@
     justify-content: center;
   }
   a {
-    color: #42a5f5;
+    color: #6f116e;
     text-decoration: none;
     font-weight: bold;
   }
   a.active {
-    border-bottom: 2px solid #42a5f5;
+    border-bottom: 2px solid #6f116e;
   }
   

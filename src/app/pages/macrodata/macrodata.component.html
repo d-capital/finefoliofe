@@ -1,0 +1,20 @@
+<div class="container">
+    <h2 >{{ eventToShow }} - {{ countryToShow }}</h2>
+    <button (click)="exportTableToCSV()">Export to CSV</button>
+</div>
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Actual</th>
+            <th>Forecasted</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let event of macroEvents">
+            <td>{{ event.date }}</td>
+            <td>{{ event.actual_formatted }}</td>
+            <td>{{ event.forecast_formatted }}</td>
+        </tr>
+    </tbody>
+</table>

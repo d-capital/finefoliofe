@@ -1,0 +1,18 @@
+<div class="search-container">
+  <input
+    type="text"
+    [(ngModel)]="searchValue"
+    (input)="onInputChange()"
+    (keydown.enter)="onEnter()"
+    (focus)="onFocus()"
+    (keydown)="onKeyDown($event)"
+    placeholder="Search macro data..."
+    class="search-input"
+  />
+
+  <ul class="dropdown" *ngIf="showDropdown">
+    <li *ngFor="let event of filteredEvents; let i = index" (click)="onSelect(event) " [class.selected]="i === selectedIndex">
+      {{ event }}
+    </li>
+  </ul>
+</div>

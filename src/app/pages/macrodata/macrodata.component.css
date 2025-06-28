@@ -1,0 +1,97 @@
+/* Общие стили для таблицы */
+table {
+    width: 80%;
+    /* Ширина таблицы (можно настроить под свои нужды) */
+    margin: 20px auto;
+    /* Автоматическое выравнивание по центру */
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background: #222;
+    color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Стили для заголовков */
+th {
+    background: #333;
+    color: #ddd;
+    font-weight: bold;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+/* Стили для ячеек */
+td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #444;
+    transition: background 0.3s;
+}
+
+/* Стили для строк */
+tr:nth-child(even) {
+    background: #282828;
+}
+
+tr:hover {
+    background: #333;
+}
+
+/* Стили для значений */
+.positive {
+    color: #2ecc71;
+}
+
+.negative {
+    color: #e74c3c;
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 600px) {
+    table {
+        width: 100%;
+        font-size: 0.9em;
+    }
+
+    th,
+    td {
+        padding: 8px 10px;
+    }
+}
+
+
+th,
+td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+th:hover::after {
+    content: ' ↕';
+    color: #999;
+}
+
+table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+button {
+    margin-top: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #5b205d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.container {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
