@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
     currencyPairs: string[] = [
       'NZD/JPY',
       'EUR/NZD',
@@ -45,8 +45,22 @@ export class SearchComponent {
   showDropdown = false;
   selectedIndex: number = -1;
 
+  //localization
+    placeholder:string = "Search currency pair...";
+    placeholderEn:string = "Search currency pair...";
+    placeholderRu:string = "Искать валютную пару ...";
+
   constructor(private router: Router) { }
 
+  ngOnInit(): void {
+    var language = localStorage.getItem('language');
+    if(language == 'ru'){
+      this.placeholder = this.placeholderRu;
+    }
+    else{
+      this.placeholder = this.placeholderEn;
+    }
+  }
   onInputChange(): void {
     this.filteredPairs = this.currencyPairs.filter(pair =>
       pair.toLowerCase().includes(this.searchValue.toLowerCase())
