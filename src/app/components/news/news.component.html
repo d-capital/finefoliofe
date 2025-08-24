@@ -1,0 +1,10 @@
+<div>
+    <h6>NEWS</h6>
+    <div *ngIf="news">
+        <div *ngFor="let n of news">
+            <p>{{ n.published }}</p>
+            <p> {{ n.title }}  <a href="{{ n.link }}" target="_blank">Source Link</a></p>
+            <hr>
+        </div>
+    </div>
+</div>

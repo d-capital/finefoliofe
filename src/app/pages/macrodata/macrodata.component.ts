@@ -17,8 +17,10 @@ export class MacrodataComponent {
   macroEvents: any[] = [];
   eventMap = new Map<string, string>();
   countryMap = new Map<string,string>();
+  eventCodeMap = new Map<string,string>();
   countryToShow?: string = "US";
   eventToShow?: string = "Inflation Rate";
+  eventCode: string = 'inf';
 
   dateLabel:string = "Date";
   actualLabel:string = "Actual";
@@ -48,6 +50,11 @@ export class MacrodataComponent {
       this.eventMap.set("interestrate","Ставка");
       this.eventMap.set("inflation","Инфляция");
 
+      this.eventCodeMap.set("gdp","gdp");
+      this.eventCodeMap.set("unemployment", "une");
+      this.eventCodeMap.set("interestrate","ir");
+      this.eventCodeMap.set("inflation", "inf");
+
       this.countryMap.set("usd","США");
       this.countryMap.set("gbp","Великобритания");
       this.countryMap.set("eur","ЕС");
@@ -67,6 +74,11 @@ export class MacrodataComponent {
       this.eventMap.set("unemployment","Unemployment Rate");
       this.eventMap.set("interestrate","Interest Rate");
       this.eventMap.set("inflation","Inflation Rate");
+
+      this.eventCodeMap.set("gdp","gdp");
+      this.eventCodeMap.set("unemployment", "une");
+      this.eventCodeMap.set("interestrate","ir");
+      this.eventCodeMap.set("inflation", "inf");
 
       this.countryMap.set("usd","US");
       this.countryMap.set("gbp","UK");
@@ -92,8 +104,15 @@ export class MacrodataComponent {
     this.country = country ? country : 'usd';
     this.countryToShow = this.countryMap.get(this.country) ? this.countryMap.get(this.country) : "US";
     this.eventToShow = this.eventMap.get(this.event) ? this.eventMap.get(this.event) : "Inflation";
-    this.MacroDataServiceApi.getMacroData(this.event, this.country).pipe().subscribe(data => {
+    this.eventCode = this.eventCodeMap.get(this.event)! ? this.eventCodeMap.get(this.event)! : "inf"!;
+    this.MacroDataServiceApi.getMacroData(this.eventCode, this.country).pipe().subscribe(data => {
       this.macroEvents = data.sort((a: any, b: any) => b.id - a.id);
+      this.macroEvents.forEach(element => {
+        const unixTimestamp = element.dateline;
+        const date = new Date(unixTimestamp * 1000);
+        element.date = date.toLocaleDateString();
+        
+      });
     },
       err => {
         if (err instanceof HttpErrorResponse) {

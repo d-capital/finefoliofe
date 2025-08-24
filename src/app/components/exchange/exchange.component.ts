@@ -57,9 +57,9 @@ export class ExchangeComponent implements OnInit {
   forecastRegressionLabelRu:string = "Прогноз (Регрессия): ";
   forecastRegressionLabelEn:string = "Regression Based Recommendation: ";
 
-  noteLabel:string = "Note: data provided here is update once a week!";
-  noteLabelRu:string = "Примечание: представленные здесь данные обновляются раз в неделю!"
-  noteLabelEn:string = "Note: data provided here is update once a week!";
+  noteLabel:string = "Note: data provided here is update once a day!";
+  noteLabelRu:string = "Примечание: представленные здесь данные обновляются раз в день!"
+  noteLabelEn:string = "Note: data provided here is update once a day!";
 
   constructor(
     private ExchangeServiceApi: ExchangeService,

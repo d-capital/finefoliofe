@@ -1,0 +1,105 @@
+/* Основные цвета для темной темы */
+:root {
+ --bg-primary: #121212;
+ --bg-secondary: #222;
+ --text-primary: #fff;
+ --text-secondary: #888;
+ --accent: #6c5ce7;
+ --border-color: #333;
+}
+
+/* Общие стили для таблицы */
+.table-heatmap {
+ width: 100%;
+ border-collapse: collapse;
+ margin-bottom: 20px;
+ font-family: 'Arial', sans-serif;
+ color: var(--text-primary);
+ background-color: var(--bg-primary);
+}
+
+/* Стили для заголовков */
+.table-heatmap thead th {
+ background-color: var(--bg-secondary);
+ color: var(--text-primary);
+ padding: 15px;
+ text-align: left;
+ border-bottom: 2px solid var(--border-color);
+ font-weight: 600;
+}
+
+/* Стили для строк таблицы */
+.table-heatmap tbody tr {
+ transition: background-color 0.3s;
+}
+
+.table-heatmap tbody tr:hover {
+ background-color: #282828;
+}
+
+/* Стили для ячеек */
+.table-heatmap td {
+ padding: 12px;
+ vertical-align: middle;
+ border-bottom: 1px solid var(--border-color);
+ color: var(--text-primary);
+}
+
+/* Стили тепловой карты */
+.heatmap-low {
+ color: #ff6b6b !important; /* Красный для низких значений */
+}
+
+.heatmap-medium {
+ color: #ffeb3b !important; /* Желтый для средних значений */
+}
+
+.heatmap-high {
+ color: #28a745 !important; /* Зеленый для высоких значений */
+}
+
+/* Стили для ссылок */
+.table-heatmap a {
+ text-decoration: none;
+ color: var(--accent);
+ transition: color 0.2s;
+}
+
+.table-heatmap a:hover {
+ color: #4c37ff;
+ text-decoration: underline;
+}
+
+/* Стили для страны */
+.matrix-country {
+ font-weight: 700;
+ color: var(--text-primary);
+}
+
+/* Дополнительные эффекты */
+@media (hover: hover) and (pointer: fine) {
+ .table-heatmap tbody tr:hover td {
+ background-color: #282828 !important;
+ }
+}
+
+/* Стили для мобильных устройств */
+@media screen and (max-width: 768px) {
+ .table-heatmap thead th,
+ .table-heatmap td {
+ padding: 10px;
+ font-size: 0.9rem;
+ }
+}
+
+/* Контрастные границы */
+.table-heatmap thead th:not(:last-child),
+.table-heatmap td:not(:last-child) {
+ border-right: 1px solid var(--border-color);
+}
+
+/* Эффект наведения на ячейки */
+.table-heatmap td:hover {
+ background-color: #333;
+ cursor: pointer;
+}
