@@ -1,8 +1,20 @@
 <header class="header">
-    <nav>
-        <a routerLink="/" routerLinkActive="active">
-            <img src="logo.png" alt="" style="width: 190px;height: 35px;">
-        </a>
-        
-    </nav>
+  <nav class="nav">
+    <!-- Logo -->
+    <a routerLink="/" class="logo">
+      <img src="logo.png" alt="Logo" />
+    </a>
+
+    <!-- Hamburger Toggle -->
+    <button class="menu-toggle" (click)="toggleMenu()">
+      ☰
+    </button>
+
+    <!-- Navigation Links -->
+    <ul [class.open]="menuOpen">
+      <li><a routerLink="/valuation" routerLinkActive="active">{{navLinkValuateStockLabel}}</a></li>
+      <li><a routerLink="/blog" routerLinkActive="active">{{navLinkBlogLabel}}</a></li>
+      <li><a routerLink="/about" routerLinkActive="active">{{navLinkAboutLabel}}</a></li>
+    </ul>
+  </nav>
 </header>

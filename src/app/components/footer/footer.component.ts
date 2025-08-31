@@ -16,12 +16,28 @@ export class FooterComponent implements OnInit {
   //localization
   disclaimer: string = "Disclaimer: Calculations provided by this site are informative.Trading on financial markets is connected with risk, which is taken by every participant on his own. Using this site you agree that you were informed.";
   navLinkHomeLabel: string = "Home";
+  navLinkValuateStockLabel: string = "Valuate Stock";
+  navLinkBlogLabel: string = "Blog";
+  navLinkAboutLabel: string = "About Us";
+  quickLinksLabel: string = "Quick Links";
   
   disclaimerRu: string = "Отказ от ответственности: Расчеты, представленные на этом сайте, носят информативный характер. Торговля на финансовых рынках связана с риском, который принимает на себя каждый участник самостоятельно. Пользуясь этим сайтом, вы подтверждаете, что были проинформированы.";
   disclaimerEn: string = "Disclaimer: Calculations provided by this site are informative.Trading on financial markets is connected with risk, which is taken by every participant on his own. Using this site you agree that you were informed.";
 
   navLinkHomeLabelRu: string = "Главная";
   navLinkHomeLabelEn: string = "Home";
+
+  navLinkValuateStockLabelRu: string = "Оценить Акцию";
+  navLinkValuateStockLabelEn: string = "Valuate Stock";
+
+  navLinkBlogLabelRu: string = "Блог";
+  navLinkBlogLabelEn: string = "Blog";
+
+  navLinkAboutLabelRu: string = "О нас";
+  navLinkAboutLabelEn: string = "About Us";
+
+  quickLinksLabelRu: string = "Страницы";
+  quickLinksLabelEn: string = "Quick Links";
 
   constructor(){
      this.langMap.set("en", "English");
@@ -35,10 +51,18 @@ export class FooterComponent implements OnInit {
     if(language == 'ru'){
       this.disclaimer = this.disclaimerRu;
       this.navLinkHomeLabel = this.navLinkHomeLabelRu;
+      this.navLinkValuateStockLabel = this.navLinkValuateStockLabelRu;
+      this.navLinkBlogLabel = this.navLinkBlogLabelRu;
+      this.navLinkAboutLabel = this.navLinkAboutLabelRu;
+      this.quickLinksLabel = this.quickLinksLabelRu;
     }
     else{
       this.disclaimer = this.disclaimerEn;
       this.navLinkHomeLabel = this.navLinkHomeLabelEn;
+      this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEn;
+      this.navLinkBlogLabel = this.navLinkBlogLabelEn;
+      this.navLinkAboutLabel = this.navLinkAboutLabelEn;
+      this.quickLinksLabel = this.quickLinksLabelEn;
     }
   }
 

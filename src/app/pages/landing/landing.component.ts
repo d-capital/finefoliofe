@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchComponent } from '../../components/search/search.component';
-import { MacrosearchComponent } from '../../components/macrosearch/macrosearch.component';
-import { EconomiescomparisonComponent } from '../../components/economiescomparison/economiescomparison.component';
-import { NewsComponent } from '../../components/news/news.component';
+import { HeroComponent } from '../../components/hero/hero.component';
 
 
 @Component({
   selector: 'app-landing',
-  imports: [SearchComponent, MacrosearchComponent, EconomiescomparisonComponent, NewsComponent],
+  imports: [HeroComponent],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
 })

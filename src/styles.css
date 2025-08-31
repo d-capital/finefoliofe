@@ -1,11 +1,11 @@
 body {
     margin: 0;
-    background-color: #101010;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     font-family: Arial, sans-serif;
   }
   a {
-    color: #6d066f;
+    color: #000000;
     text-decoration: none;
   }
   
