@@ -1,0 +1,95 @@
+.valuate-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #111827;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+  color: #0b1ba4;
+}
+
+.exchange {
+  margin-bottom: 2rem;
+  color: #6b7280;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #0b1ba4;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+ul li {
+  margin-bottom: 0.4rem;
+}
+
+.explanation {
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.undervalued {
+  color: #059669; /* green */
+  font-weight: bold;
+}
+
+.overvalued {
+  color: #dc2626; /* red */
+  font-weight: bold;
+}
+
+
+.skeleton-box {
+  display: block;
+  height: 1.2rem;
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  margin: 0.4rem 0;
+  line-height: 1.2rem; /* match text height */
+}
+
+.skeleton-box.short {
+  width: 30%; /* shorter label */
+}
+
+.skeleton-box.medium {
+  width: 50%;
+}
+
+.skeleton-box.long {
+  width: 80%;
+  height: 1.5rem;
+}
+
+/* shimmer animation */
+@keyframes shimmer {
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* make skeletons fill container spacing like real text */
+.card .skeleton-box {
+  margin: 0.6rem 0;
+}

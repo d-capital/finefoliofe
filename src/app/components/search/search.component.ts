@@ -6786,8 +6786,11 @@ export class SearchComponent implements OnInit {
   }
 
   private navigateToPair(pair: string): void {
-    const ticker = pair.replace('/', '.');
-    this.router.navigate(['/exchange', ticker]);
+    var splitted = pair.split(":");
+    var ticker = splitted[1];
+    var exchange = splitted[0];
+    var name = splitted[2];
+    this.router.navigate(['/valuate', exchange, ticker]);
   }
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent): void {

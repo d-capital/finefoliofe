@@ -1,0 +1,86 @@
+<ng-container *ngIf="!loading; else loadingSkeleton">
+  <div class="valuate-container">
+    <h1>{{ stockInfo.name }} ({{ stockInfo.ticker }})</h1>
+    <p class="exchange">Exchange: {{ stockInfo.exchange }} | Country: {{ stockInfo.country }}</p>
+
+    <!-- Public stock data -->
+    <section class="card">
+      <h2>Stock Information</h2>
+      <ul>
+        <li><strong>Price:</strong> ${{ stockInfo.price }}</li>
+        <li><strong>Market Cap:</strong> {{ stockInfo.capitalization }}</li>
+        <li><strong>Sector:</strong> {{ stockInfo.sector }}</li>
+        <li><strong>Industry:</strong> {{ stockInfo.industry }}</li>
+        <li><strong>EPS (TTM):</strong> {{ stockInfo.epsTtm }}</li>
+        <li><strong>P/E (TTM):</strong> {{ stockInfo.peTtm }}</li>
+        <li><strong>Dividend Yield:</strong> {{ stockInfo.dividendYield }}%</li>
+      </ul>
+    </section>
+
+    <!-- Valuation -->
+    <section class="card">
+      <h2>Valuation Result</h2>
+      <p>
+        <strong>Fair Price (Lynch Model):</strong> ${{ valuation.fairPrice }}
+      </p>
+      <p>
+        <strong>Result:</strong>
+        <span [class.undervalued]="valuation.resultLabel==='Undervalued'"
+              [class.overvalued]="valuation.resultLabel==='Overvalued'">
+          {{ valuation.resultLabel }} ({{ valuation.resultPercent }}%)
+        </span>
+      </p>
+      <p><strong>Formula:</strong> {{ valuation.formula }}</p>
+      <p class="explanation">{{ valuation.explanation }}</p>
+    </section>
+
+    <!-- Historical profit -->
+    <section class="card">
+      <h2>Net Profit Growth</h2>
+      <ul>
+        <li *ngFor="let item of valuation.netProfitHistory">
+          {{ item.year }}: {{ item.value }}
+        </li>
+      </ul>
+      <p><strong>Average Growth:</strong></p>
+      <ul>
+        <li>TTM: {{ valuation.avgGrowth.ttm }}%</li>
+        <li>3 Years: {{ valuation.avgGrowth.threeYears }}%</li>
+        <li>5 Years: {{ valuation.avgGrowth.fiveYears }}%</li>
+      </ul>
+    </section>
+
+    <!-- Lynch explanation -->
+    <section class="card">
+      <h2>About Lynch Formula</h2>
+      <p>
+        The Lynch model helps estimate a stock's fair price based on earnings and
+        growth expectations. It is often used by value investors to determine
+        whether a stock is undervalued or overvalued.
+      </p>
+    </section>
+  </div>
+</ng-container>
+
+<!-- Skeleton Template -->
+<ng-template #loadingSkeleton>
+  <div class="valuate-container">
+    <h1 class="skeleton-box long"></h1>
+    <p class="exchange skeleton-box medium"></p>
+
+    <div class="card">
+      <h2 class="skeleton-box medium"></h2>
+      <div *ngFor="let i of [1,2,3,4,5,6]" class="skeleton-box short"></div>
+    </div>
+
+    <div class="card">
+      <h2 class="skeleton-box medium"></h2>
+      <div *ngFor="let i of [1,2,3]" class="skeleton-box medium"></div>
+    </div>
+
+    <div class="card">
+      <h2 class="skeleton-box medium"></h2>
+      <div *ngFor="let i of [1,2,3,4,5]" class="skeleton-box long"></div>
+    </div>
+  </div>
+</ng-template>
