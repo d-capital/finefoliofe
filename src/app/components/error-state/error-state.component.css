@@ -1,0 +1,54 @@
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.error-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 400px;
+}
+
+.error-card h2 {
+  color: #dc2626;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.error-card p {
+  color: #374151;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+button {
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button.retry {
+  background: #0b1ba4;
+  color: #fff;
+}
+
+button.home {
+  background: #e5e7eb;
+  color: #111827;
+}

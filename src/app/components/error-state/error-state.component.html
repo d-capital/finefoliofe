@@ -1,0 +1,11 @@
+<div class="error-container">
+  <div class="error-card">
+    <h2>⚠️ {{ oopsLabel }}</h2>
+    <p>{{ message }}</p>
+
+    <div class="actions">
+      <button class="retry" (click)="reload()">{{retryLabel}}</button>
+      <button *ngIf="showHomeButton" class="home" (click)="goHome()">{{ goHomeLabel }}</button>
+    </div>
+  </div>
+</div>
