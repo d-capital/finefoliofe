@@ -1,0 +1,9 @@
+<section class="section">
+  <h2>{{ title }}</h2>
+  <div class="faq-list">
+    <div *ngFor="let faq of faqs" class="faq-item" (click)="toggle(faq)">
+      <h3>{{ faq.q }}</h3>
+      <p *ngIf="faq.open">{{ faq.a }}</p>
+    </div>
+  </div>
+</section>

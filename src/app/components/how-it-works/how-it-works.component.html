@@ -1,0 +1,9 @@
+<section class="section">
+  <h2>{{ title }}</h2>
+  <ol class="steps">
+    <li *ngFor="let step of steps">{{ step }}</li>
+  </ol>
+  <div class="screenshot">
+    <img [src]="screenshot" alt="Service Screenshot" />
+  </div>
+</section>

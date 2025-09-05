@@ -1,0 +1,41 @@
+/* Hero section */
+.hero-bg {
+  position: relative;
+  background: url('/undraw-valuation.png') center/cover no-repeat; /* replace with your image */
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+.hero-subtitle {
+  font-size: 1.5rem;
+}
+
+/* Vision & Mission sections */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+.about-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #444;
+  line-height: 1.8;
+}

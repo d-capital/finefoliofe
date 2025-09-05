@@ -1,0 +1,4 @@
+.section { padding: 60px 20px; text-align: center; }
+.steps { list-style: none; padding: 0; margin: 20px auto; max-width: 600px; }
+.steps li { background: #f9f9f9; border-radius: 12px; margin: 10px 0; padding: 15px; font-size: 18px; }
+.screenshot img { margin-top: 30px; max-width: 80%; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }

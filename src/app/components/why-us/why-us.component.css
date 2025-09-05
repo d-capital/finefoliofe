@@ -1,0 +1,20 @@
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.benefits {
+  list-style: none;
+  padding: 0 20px; /* ✅ add side padding */
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left; /* ✅ left-align items for readability */
+}
+
+.benefits li {
+  margin: 15px 0;
+  font-size: 18px;
+  background: #f5f7fa;
+  padding: 15px 20px;
+  border-radius: 12px;
+}

@@ -1,0 +1,31 @@
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px; /* ✅ adds breathing room left/right */
+  text-align: left; /* keep text readable */
+}
+
+.faq-item {
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.faq-item:hover {
+  background: #f1f1f1;
+}
+.faq-item h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.faq-item p {
+  margin: 10px 0 0;
+  color: #444;
+}

@@ -1,0 +1,6 @@
+.section { padding: 60px 20px; text-align: center; }
+.blog-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0; }
+article { padding: 20px; border: 1px solid #eee; border-radius: 12px; background: #fff; }
+article h3 { margin-bottom: 10px; font-size: 20px; }
+article a { color: #0b1ba4; font-weight: bold; text-decoration: none; }
+.see-all { display: block; margin-top: 20px; font-weight: bold; }
