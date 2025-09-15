@@ -1,0 +1,68 @@
+<section>
+    <h2>{{ title }}</h2>
+
+    <!-- Filters -->
+    <div class="filters-container">
+        <h3>{{ filterLabel }}</h3>
+        <div class="filters-grid">
+            <label>
+                P/E min
+                <input type="number" [(ngModel)]="filters.minPe" />
+            </label>
+            <label>
+                P/E max
+                <input type="number" [(ngModel)]="filters.maxPe" />
+            </label>
+            <label>
+                Мин. див. доходность (%)
+                <input type="number" [(ngModel)]="filters.minDividend" />
+            </label>
+            <label>
+                Сектор
+                <input type="text" [(ngModel)]="filters.sector" />
+            </label>
+        </div>
+        <button (click)="applyFilters()">{{ applyLabel }}</button>
+    </div>
+    
+    <!-- Screener Results -->
+    <div class="table-container">
+        <table id="resultsTable">
+            <thead>
+                <tr>
+                    <th *ngFor="let col of columns" [title]="col.full">
+                        {{ col.short }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of results">
+                    <td>{{r.id}}</td>
+                    <td>{{r.company}}</td>
+                    <td>{{r.ticker}}</td>
+                    <td>{{r.result}}</td>
+                    <td>{{r.fairPrice}}</td>
+                    <td>{{r.pegTtm}}</td>
+                    <td>{{r.netIncomeGrowthTtm}}%</td>
+                    <td>{{r.netIncomeGrowth3y}}%</td>
+                    <td>{{r.netIncomeGrowth5y}}%</td>
+                    <td>{{r.netIncomeGrowthNext1y}}%</td>
+                    <td>{{r.netIncomeGrowthNext3y}}%</td>
+                    <td>{{r.freeCashFlow}}</td>
+                    <td>{{r.deFy}}</td>
+                    <td>{{r.dividendYield}}%</td>
+                    <td>{{r.peTtm}}</td>
+                    <td>{{r.forwardPe}}</td>
+                    <td>{{r.price}}</td>
+                    <td>{{r.type}}</td>
+                    <td>{{r.marketCap}}</td>
+                    <td>{{r.sector}}</td>
+                    <td>{{r.industry}}</td>
+                    <td>{{r.country}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button (click)="exportTableToCSV()">{{ downloadLabel }}</button>
+</section>

@@ -1,0 +1,55 @@
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* still allows scroll if absolutely needed */
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Base table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+/* Keep headers readable */
+th {
+  white-space: nowrap;
+  text-align: left;
+  font-weight: 600;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  cursor: help; /* shows tooltip intent */
+}
+
+td {
+  white-space: normal; /* data can wrap */
+  word-break: break-word;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+  table {
+    font-size: 12px;
+  }
+  th, td {
+    padding: 4px 6px;
+  }
+}
+
+@media (max-width: 992px) {
+  th {
+    font-size: 11px;
+  }
+  td {
+    font-size: 11px;
+  }
+}
