@@ -3,9 +3,9 @@
   <div class="hero-content">
     <h1>{{title}}</h1>
     <p>{{subtitle}}</p>
-    <a routerLink="/screener/results" class="hero-btn">{{button}}</a>
+    <a (click)="scrollToSection('result')" class="hero-btn">{{button}}</a>
     <div class="quote">
-      <img src="assets/lynch.png" alt="Peter Lynch">
+      <!--img src="assets/lynch.png" alt="Peter Lynch"-->
       <blockquote>“Know what you own, and know why you own it.” – Peter Lynch</blockquote>
     </div>
   </div>

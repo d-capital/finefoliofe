@@ -20,6 +20,7 @@ export class FooterComponent implements OnInit {
   navLinkBlogLabel: string = "Blog";
   navLinkAboutLabel: string = "About Us";
   quickLinksLabel: string = "Quick Links";
+  navLinkScreenerLabel: string = "Screener";
   
   disclaimerRu: string = "Отказ от ответственности: Расчеты, представленные на этом сайте, носят информативный характер. Торговля на финансовых рынках связана с риском, который принимает на себя каждый участник самостоятельно. Пользуясь этим сайтом, вы подтверждаете, что были проинформированы.";
   disclaimerEn: string = "Disclaimer: Calculations provided by this site are informative.Trading on financial markets is connected with risk, which is taken by every participant on his own. Using this site you agree that you were informed.";
@@ -39,6 +40,9 @@ export class FooterComponent implements OnInit {
   quickLinksLabelRu: string = "Страницы";
   quickLinksLabelEn: string = "Quick Links";
 
+  navLinkScreenerLabelRu: string = "Скриннер";
+  navLinkScreenerLabelEn: string = "Screener";
+
   constructor(){
      this.langMap.set("en", "English");
      this.langMap.set("ru", "Русский");
@@ -55,6 +59,7 @@ export class FooterComponent implements OnInit {
       this.navLinkBlogLabel = this.navLinkBlogLabelRu;
       this.navLinkAboutLabel = this.navLinkAboutLabelRu;
       this.quickLinksLabel = this.quickLinksLabelRu;
+      this.navLinkScreenerLabel = this.navLinkScreenerLabelRu;
     }
     else{
       this.disclaimer = this.disclaimerEn;
@@ -63,6 +68,7 @@ export class FooterComponent implements OnInit {
       this.navLinkBlogLabel = this.navLinkBlogLabelEn;
       this.navLinkAboutLabel = this.navLinkAboutLabelEn;
       this.quickLinksLabel = this.quickLinksLabelEn;
+      this.navLinkScreenerLabel = this.navLinkScreenerLabelEn;
     }
   }
 
