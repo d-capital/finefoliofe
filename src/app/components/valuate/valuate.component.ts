@@ -6,10 +6,11 @@ import { StockInfo } from '../../dto/valuation/stock-info.model';
 import { ValuationResult } from '../../dto/valuation/valuation.model';
 import { ValuationService } from '../../services/valuation.service';
 import { ErrorStateComponent } from '../error-state/error-state.component';
+import { AbbreviateNumberPipe } from '../../custom-pipe/abbreviate-number.pipe';
 
 @Component({
   selector: 'app-valuate',
-  imports: [NgFor,CommonModule, ErrorStateComponent],
+  imports: [NgFor,CommonModule, ErrorStateComponent, AbbreviateNumberPipe],
   templateUrl: './valuate.component.html',
   styleUrl: './valuate.component.css'
 })
@@ -222,6 +223,8 @@ export class ValuateComponent implements OnInit{
         }
       }
     )
-
+  }
+  round(value: number): string {
+    return (value).toFixed(2);
   }
 }

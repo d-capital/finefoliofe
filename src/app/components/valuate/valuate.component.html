@@ -8,13 +8,13 @@
       <section class="card">
         <h2>{{stockInformationLabel}}</h2>
         <ul>
-          <li><strong>{{priceLabel}}</strong> ${{ stockInfo.price }}</li>
-          <li><strong>{{marketCapLabel}}</strong> {{ stockInfo.capitalization }}</li>
+          <li><strong>{{priceLabel}}</strong> ${{ round(stockInfo.price) }}</li>
+          <li><strong>{{marketCapLabel}}</strong> {{ stockInfo.capitalization | abbreviateNumber }}</li>
           <li><strong>{{sectorLabel}}</strong> {{ stockInfo.sector }}</li>
           <li><strong>{{industryLabel}}</strong> {{ stockInfo.industry }}</li>
-          <li><strong>{{epsTtmLabel}}</strong> {{ stockInfo.epsTtm }}</li>
-          <li><strong>{{peTtmLabel}}</strong> {{ stockInfo.peTtm }}</li>
-          <li><strong>{{dividendsYieldLabel}}</strong> {{ stockInfo.dividendYield }}%</li>
+          <li><strong>{{epsTtmLabel}}</strong> {{ round(stockInfo.epsTtm) }}</li>
+          <li><strong>{{peTtmLabel}}</strong> {{ round(stockInfo.peTtm) }}</li>
+          <li><strong>{{dividendsYieldLabel}}</strong> {{ round(stockInfo.dividendYield) }}%</li>
         </ul>
       </section>
 
@@ -22,15 +22,15 @@
       <section class="card">
         <h2>{{valuationResultsLabel}}</h2>
         <p>
-          <strong>{{fairPriceLabel}}</strong> ${{ valuation.fairPrice }}
+          <strong>{{fairPriceLabel}}</strong> ${{ round(valuation.fairPrice) }}
         </p>
         <p>
           <strong>{{resultLabel}}</strong>
           <span *ngIf="valuation.resultLabel==='Undervalued'" class="undervalued">
-            {{undervaluedLabel}}({{ valuation.resultPercent }}%)
+            {{undervaluedLabel}}({{ round(valuation.resultPercent) }}%)
           </span>
           <span *ngIf="valuation.resultLabel==='Overvalued'" class="overvalued">
-            {{overvaluedLabel}}({{ valuation.resultPercent }}%)
+            {{overvaluedLabel}}({{ round(valuation.resultPercent) }}%)
           </span>
         </p>
         <p><strong>{{formulaLabel}}</strong> {{ valuation.formula }}</p>
@@ -42,7 +42,7 @@
         <h2>{{netProfitGrowthLabel}}</h2>
         <ul>
           <li *ngFor="let item of valuation.netProfitHistory">
-            {{ item.year }}: {{ item.value }}
+            {{ item.year }}: {{ item.value  | abbreviateNumber }}
           </li>
         </ul>
         <p><strong>{{averageIncomeGrowthLabel}}</strong></p>

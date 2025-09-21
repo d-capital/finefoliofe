@@ -1,6 +1,8 @@
 .table-container {
   width: 100%;
-  overflow-x: auto; /* still allows scroll if absolutely needed */
+  max-height: 600px; /* limit table height so scroll applies */
+  overflow-y: auto; /* vertical scroll */
+  overflow-x: auto; /* horizontal scroll if needed */
   margin-top: 1rem;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -13,19 +15,21 @@ table {
   font-size: 13px;
 }
 
-/* Keep headers readable */
+/* Sticky header */
 th {
+  position: sticky;
+  top: 0;
+  z-index: 2; /* make sure header stays above cells */
+  background-color: #f5f5f5; /* keep background so text doesn’t overlap */
   white-space: nowrap;
   text-align: left;
   font-weight: 600;
-  padding:10px 10px;
+  padding: 8px 10px;
   border: 1px solid #ddd;
-  background-color: #f5f5f5;
-  cursor: help; /* shows tooltip intent */
 }
 
 td {
-  white-space: normal; /* data can wrap */
+  white-space: normal;
   word-break: break-word;
   padding: 6px 8px;
   border: 1px solid #ddd;
@@ -34,7 +38,6 @@ td {
 tbody tr:nth-child(even) {
   background-color: #fafafa;
 }
-
 /* Responsive adjustments */
 @media (max-width: 1400px) {
   table {

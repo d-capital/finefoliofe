@@ -42,8 +42,8 @@
                     <!--td>{{r.id}}</td-->
                     <td><a href="/valuate/{{r.exchange}}/{{r.ticker}}">{{r.company}}</a></td>
                     <td>{{r.ticker}}</td>
-                    <td *ngIf="r.fairPrice && r.price && r.result=='Overvalued'"style="width: 100px;">📉 ({{ round(r.fairPrice/r.price) }}%)</td>
-                    <td *ngIf="r.fairPrice && r.price && r.result=='Undervalued'"style="width: 100px;">📈 ({{ round(r.fairPrice/r.price) }}%)</td>
+                    <td *ngIf="r.fairPrice && r.price && r.result=='Overvalued'"style="width: 100px;">📉 ({{ roundAndConvertToPercent(r.fairPrice/r.price) }}%)</td>
+                    <td *ngIf="r.fairPrice && r.price && r.result=='Undervalued'"style="width: 100px;">📈 ({{ roundAndConvertToPercent(r.fairPrice/r.price) }}%)</td>
                     <td *ngIf="!r.result || !r.price || !r.fairPrice"style="width: 100px;"> - </td>
                     <td>{{r.fairPrice}}</td>
                     <td>{{r.pegTtm}}</td>
@@ -54,7 +54,7 @@
                     <td>{{r.netIncomeGrowthNext3y}}%</td-->
                     <td>{{r.freeCashFlow | abbreviateNumber}}</td>
                     <td>{{r.deFy}}</td>
-                    <td>{{r.dividendYield}}%</td>
+                    <td>{{round(r.dividendYield)}}%</td>
                     <td>{{r.peTtm}}</td>
                     <!--td>{{r.forwardPe}}</td-->
                     <td>{{r.price}}</td>

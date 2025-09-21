@@ -208,7 +208,11 @@ export class ScreenerResultsComponent implements OnInit{
     document.body.removeChild(link);
   }
 
-  round(value: number): string {
+  roundAndConvertToPercent(value: number): string {
     return (value*100).toFixed(2);
+  }
+
+  round(value: number): string {
+    return (value).toFixed(2);
   }
 }
