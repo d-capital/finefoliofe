@@ -16,7 +16,7 @@ export class ScreenerService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    const body = { params: params};
+    const body = { maxPe: params.maxPe, minDividend: params.minDividend};
     return this.http.post(this.getScreenerUrl,
         JSON.stringify(body),
         {headers: headers}).pipe(catchError(this.erroHandler));

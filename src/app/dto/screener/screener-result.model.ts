@@ -21,4 +21,5 @@ export interface ScreenerResult {
   sector: string;
   industry: string;
   country: string;
+  exchange: string;
 }
