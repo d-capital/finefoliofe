@@ -1,9 +1,20 @@
+<section class="quote-section">
+  <div class="quote-image">
+    <img [src]="screenshot" alt="Quote author photo" />
+  </div>
+  <div class="quote-text">
+    <span class="quote-icon">“</span>
+    <p>{{ quote.text }}</p>
+    <h4>{{ quote.author }}</h4>
+  </div>
+</section>
 <section class="section">
   <h2>{{ title }}</h2>
-  <ol class="steps">
-    <li *ngFor="let step of steps">{{ step }}</li>
-  </ol>
-  <div class="screenshot">
-    <img [src]="screenshot" alt="Service Screenshot" />
+  <div class="steps">
+    <div class="step" *ngFor="let step of steps">
+      <div class="step-number">{{ step.number }}</div>
+      <h3>{{ step.title }}</h3>
+      <p>{{ step.description }}</p>
+    </div>
   </div>
 </section>

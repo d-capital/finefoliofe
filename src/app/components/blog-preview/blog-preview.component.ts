@@ -26,7 +26,9 @@ export class BlogPreviewComponent implements OnInit{
       this.seeAll = "Смотреть все статьи";
       this.posts = [
         { title: "Что такое модель Питера Линча?", excerpt: "Погружаемся в основы стоимостного инвестирования.", link: "/blog/lynch-model" },
+        { title: "Как выбрать недооценённые акции?", excerpt: "Простые шаги для начинающего инвестора.", link: "/blog/undervalued-stocks" },
         { title: "Как выбрать недооценённые акции?", excerpt: "Простые шаги для начинающего инвестора.", link: "/blog/undervalued-stocks" }
+
       ];
     } else {
       this.title = "Blog";

@@ -23,8 +23,9 @@ section {
 section h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  text-align: center;
-  color: #0b1ba4;
+  text-align: left;
+  color: #000000;
+  margin-left: 15%;
 }
 
 /* === Cards (used in blog, valuation, etc.) === */
@@ -40,7 +41,6 @@ section h2 {
 button, .btn, .hero-btn {
   display: inline-block;
   background: #0b1ba4;
-  color: #fff !important;
   padding: 12px 28px;
   border-radius: 30px;
   font-weight: bold;

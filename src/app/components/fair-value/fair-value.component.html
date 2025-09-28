@@ -1,8 +1,15 @@
-<section class="section">
+<section class="fair-value">
   <h2>{{ title }}</h2>
-  <p class="formula">{{ formula }}</p>
-  <p class="explanation">{{ explanation }}</p>
-  <div class="screenshot">
-    <img [src]="screenshot" alt="Fair Value Calculation" />
+  <div class="cards">
+    <div class="card" *ngFor="let card of cards">
+      <div class="card-image">
+        <img [src]="card.image" [alt]="card.title" />
+      </div>
+      <div class="card-content">
+        <h3>{{ card.title }}</h3>
+        <small *ngIf="card.subtitle !== '—'">{{ card.subtitle }}</small>
+        <p>{{ card.description }}</p>
+      </div>
+    </div>
   </div>
 </section>

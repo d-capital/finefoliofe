@@ -31,7 +31,18 @@ export class HeaderComponent implements OnInit {
   quickLinksLabelRu: string = "Страницы";
   quickLinksLabelEn: string = "Quick Links";
 
+  selectedValue!: string|null;
+  selectedLanguage!: string|undefined;
+  langMap = new Map<string, string>();
+  constructor(){
+    this.langMap.set("en", "EN");
+    this.langMap.set("ru", "RU");
+  }
+
   ngOnInit(): void {
+    this.selectedValue  = localStorage.getItem("language") ? localStorage.getItem("language"):"en";
+    var langCode = this.selectedValue ? this.selectedValue.toString() : "en";
+    this.selectedLanguage = this.langMap.get(langCode);
     var language = localStorage.getItem('language');
     if(language == 'ru'){
       this.navLinkValuateStockLabel = this.navLinkValuateStockLabelRu;
@@ -49,6 +60,13 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
+  }
+  onSelectionChange(newValue: string) {
+    this.selectedValue = newValue;
+    console.log('Selected value:', this.selectedValue);
+    localStorage.setItem("language",this.selectedValue);
+    localStorage.setItem("isUserLangSet","yes");
+    window.location.reload();
   }
 
 }

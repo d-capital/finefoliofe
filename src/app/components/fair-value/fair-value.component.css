@@ -1,4 +1,64 @@
-.section { padding: 60px 20px; text-align: center; }
-.formula { font-weight: bold; font-size: 20px; margin: 20px 0; }
-.explanation { max-width: 700px; margin: 0 auto; font-size: 16px; color: #444; }
-.screenshot img { margin-top: 30px; max-width: 80%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.fair-value {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.fair-value h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr; /* stack on small screens */
+  }
+}
+
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.card-image img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.card-content small {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.card-content p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
