@@ -24,11 +24,11 @@
       </li>
       <li class="dropdown" [class.open]="dropdownOpen">
         <a (click)="toggleDropdown($event)">
-          Services
+          {{ servicesLabel }}
         </a>
         <ul class="dropdown-menu">
-          <li class="dd_value" (click)="openScreener()">{{navLinkValuateStockLabel}}</li>
-          <li class="dd_value" (click)="openValuation()">{{navLinkScreenerLabel}}</li>
+          <li class="dd_value" (click)="openValuation()">{{navLinkValuateStockLabel}}</li>
+          <li class="dd_value" (click)="openScreener()">{{navLinkScreenerLabel}}</li>
         </ul>
       </li>
 

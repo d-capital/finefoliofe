@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   navLinkScreenerLabel: string = "Screener";
   navLinkBlogLabel: string = "Blog";
   navLinkAboutLabel: string = "About Us";
+  servicesLabel: string = "Services";
 
   navLinkValuateStockLabelRu: string = "Оценить Акцию";
   navLinkValuateStockLabelEn: string = "Valuate Stock";
@@ -30,6 +31,9 @@ export class HeaderComponent implements OnInit {
 
   quickLinksLabelRu: string = "Страницы";
   quickLinksLabelEn: string = "Quick Links";
+
+  servicesLabelEn: string = "Services";
+  servicesLabelRu: string = "Сервисы";
 
   dropdownOpen = false;
 
@@ -51,12 +55,14 @@ export class HeaderComponent implements OnInit {
       this.navLinkBlogLabel = this.navLinkBlogLabelRu;
       this.navLinkAboutLabel = this.navLinkAboutLabelRu;
       this.navLinkScreenerLabel = this.navLinkScreenerLabelRu;
+      this.servicesLabel = this.servicesLabelRu;
     }
     else{
       this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEn;
       this.navLinkBlogLabel = this.navLinkBlogLabelEn;
       this.navLinkAboutLabel = this.navLinkAboutLabelEn;
       this.navLinkScreenerLabel = this.navLinkScreenerLabelEn;
+      this.servicesLabel = this.servicesLabelEn;
     }
   }
 
