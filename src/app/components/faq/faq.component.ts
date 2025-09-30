@@ -9,11 +9,12 @@ interface FAQ {
 
 @Component({
   selector: 'app-faq',
-  imports: [NgFor,NgIf],
+  standalone: true,
+  imports: [NgFor, NgIf],
   templateUrl: './faq.component.html',
-  styleUrl: './faq.component.css'
+  styleUrls: ['./faq.component.css']
 })
-export class FaqComponent implements OnInit{
+export class FaqComponent implements OnInit {
   title = "";
   faqs: FAQ[] = [];
 
@@ -22,14 +23,35 @@ export class FaqComponent implements OnInit{
     if (lang === "ru") {
       this.title = "Часто задаваемые вопросы";
       this.faqs = [
-        { q: "Что такое модель Питера Линча?", a: "Это метод оценки акций, учитывающий прибыль и темпы роста." },
-        { q: "Откуда берутся данные?", a: "Мы используем публичные финансовые данные из надёжных источников." }
+        {
+          q: "Что такое Value Investing?",
+          a: "Value Investing — это стратегия инвестирования, основанная на поиске недооцененных акций. ..."
+        },
+        {
+          q: "Как использовать платформу?",
+          a: "Вы можете начать, введя тикер компании, которую хотите проанализировать. ..."
+        },
+        {
+          q: "Какие инструменты доступны?",
+          a: "Мы предлагаем различные инструменты для анализа акций, включая калькулятор и скринер. ..."
+        },
+        {
+          q: "Какова стоимость использования?",
+          a: "Использование нашей платформы может быть бесплатным или с подпиской на дополнительные функции. ..."
+        },
+        {
+          q: "Где найти поддержку?",
+          a: "Если у вас есть вопросы, вы можете обратиться в нашу службу поддержки. ..."
+        }
       ];
     } else {
       this.title = "Frequently Asked Questions";
       this.faqs = [
-        { q: "What is the Peter Lynch Model?", a: "It’s a stock valuation method that considers earnings and growth." },
-        { q: "Where do you get the data?", a: "We use public financial data from trusted sources." }
+        { q: "What is Value Investing?", a: "Value investing is a strategy based on finding undervalued stocks. ..." },
+        { q: "How to use the platform?", a: "Start by entering a company ticker you want to analyze. ..." },
+        { q: "What tools are available?", a: "We provide calculators and screeners to help find undervalued companies. ..." },
+        { q: "What’s the cost?", a: "Our platform can be used for free or with a subscription for extra features. ..." },
+        { q: "Where can I get support?", a: "You can contact our support team anytime via the contact form." }
       ];
     }
   }

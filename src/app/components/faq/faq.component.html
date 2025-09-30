@@ -1,9 +1,15 @@
-<section class="section">
+<section class="faq-section">
   <h2>{{ title }}</h2>
   <div class="faq-list">
-    <div *ngFor="let faq of faqs" class="faq-item" (click)="toggle(faq)">
-      <h3>{{ faq.q }}</h3>
-      <p *ngIf="faq.open">{{ faq.a }}</p>
+    <div *ngFor="let faq of faqs" class="faq-item">
+      <div class="faq-question" (click)="toggle(faq)">
+        <h3>{{ faq.q }}</h3>
+        <span class="icon">{{ faq.open ? "▴" : "▾" }}</span>
+      </div>
+      <div class="faq-answer" *ngIf="faq.open">
+        <p>{{ faq.a }}</p>
+      </div>
+      <hr />
     </div>
   </div>
 </section>

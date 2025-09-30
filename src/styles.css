@@ -8,7 +8,7 @@ body {
 }
 
 a {
-  color: #0b1ba4;
+  color: #000000;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -18,14 +18,15 @@ a:hover {
 
 /* === Section layout === */
 section {
-  padding: 80px 20px;
+  padding: 60px 60px;
+  max-width: 900px;
+  margin:auto
 }
 section h2 {
   font-size: 2rem;
   margin-bottom: 20px;
   text-align: left;
   color: #000000;
-  margin-left: 15%;
 }
 
 /* === Cards (used in blog, valuation, etc.) === */
@@ -40,14 +41,16 @@ section h2 {
 /* === Buttons === */
 button, .btn, .hero-btn {
   display: inline-block;
-  background: #0b1ba4;
+  background: #009EC2;
   padding: 12px 28px;
-  border-radius: 30px;
-  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  font-weight: normal;
+  color: white;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 button:hover, .btn:hover, .hero-btn:hover {
-  background: #062080;
+  background: #0385a2;
   transform: translateY(-2px);
 }
 
@@ -57,18 +60,6 @@ ul, ol {
 }
 ul li, ol li {
   margin: 8px 0;
-}
-
-/* === FAQ accordion === */
-.faq-item {
-  background: #c7daff;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  padding: 15px;
-  transition: background 0.2s ease;
-}
-.faq-item:hover {
-  background: #f1f1f1;
 }
 
 /* === Blog cards === */

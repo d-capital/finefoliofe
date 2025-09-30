@@ -40,11 +40,11 @@ button {
   border-radius: 0.5rem;
   font-size: 0.95rem;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: normal;
 }
 
 button.retry {
-  background: #0b1ba4;
+  background: #009EC2;
   color: #fff;
 }
 

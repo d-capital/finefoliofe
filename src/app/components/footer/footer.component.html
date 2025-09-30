@@ -3,32 +3,23 @@
         <!-- Logo -->
         <div class="footer-logo">
             <img src="logo.png" alt="Site Logo" />
-            <p class="tagline">john.doe&#64;fainv.com</p>
+            <p class="tagline">Email: info&#64;fainv.com</p>
         </div>
         <!-- Site Links -->
         <div class="footer-links">
-        <h4>{{quickLinksLabel}}</h4>
-        <ul>
-            <li><a routerLink="/">{{navLinkHomeLabel}}</a></li>
-            <li><a routerLink="/valuation">{{navLinkValuateStockLabel}}</a></li>
-            <li><a routerLink="/screener">{{navLinkScreenerLabel}}</a></li>
-            <li><a routerLink="/blog">{{navLinkBlogLabel}}</a></li>
-            <li><a routerLink="/about">{{navLinkAboutLabel}}</a></li>
-        </ul>
-        </div>
-        <div class="footer-disclaimer">
-            <p>
-                {{disclaimer}}
-            </p>
-        </div>
-        <div class="footer-disclaimer">
-            <select class="custom-select" #mySelect (change)="onSelectionChange(mySelect.value)">
-                <option disabled selected>{{selectedLanguage}}</option>
-                <option value="en">English</option>
-                <option value="ru">Русский</option>
-            </select>
+        <!--h4>{{quickLinksLabel}}</h4-->
+            <ul>
+                <li><a routerLink="/">{{navLinkHomeLabel}}</a></li>
+                <li><a routerLink="/valuation">{{navLinkValuateStockLabel}}</a></li>
+                <li><a routerLink="/screener">{{navLinkScreenerLabel}}</a></li>
+                <li><a routerLink="/blog">{{navLinkBlogLabel}}</a></li>
+                <li><a routerLink="/about">{{navLinkAboutLabel}}</a></li>
+            </ul>
         </div>
     </div>
+    <p>
+        {{disclaimer}}
+    </p>
 
      <!-- Bottom Bar -->
     <div class="footer-bottom">

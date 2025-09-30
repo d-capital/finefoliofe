@@ -5,6 +5,7 @@ import { FairValueComponent } from '../../components/fair-value/fair-value.compo
 import { BlogPreviewComponent } from '../../components/blog-preview/blog-preview.component';
 import { WhyUsComponent } from '../../components/why-us/why-us.component';
 import { FaqComponent } from '../../components/faq/faq.component';
+import { ExamplesComponent } from '../../components/examples/examples.component';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { FaqComponent } from '../../components/faq/faq.component';
     HowItWorksComponent,
     FairValueComponent,
     BlogPreviewComponent,
-    WhyUsComponent,
+    ExamplesComponent,
     FaqComponent
   ],
   templateUrl: './landing.component.html',

@@ -1,19 +1,14 @@
 .fair-value {
-  padding: 60px 20px;
+  padding: 60px 60px;
   text-align: center;
-}
-
-.fair-value h2 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 40px;
+  margin: auto;
+  max-width: 900px;
 }
 
 .cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  max-width: 900px;
   margin: 0 auto;
 }
 

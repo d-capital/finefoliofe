@@ -1,19 +1,19 @@
 .hero-bg {
   position: relative;
   height: 100vh; /* full screen */
-  background: url('/hero-bg.jpg') no-repeat center center/cover;
+  /*background: url('/hero-bg.jpg') no-repeat center center/cover;*/
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  color: #ffffff;
+  color: #000000;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* overlay for readability */
+  background: rgba(255, 255, 255, 0.45); /* overlay for readability */
 }
 
 .hero-content {
@@ -34,13 +34,13 @@
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 400;
   margin-bottom: 2rem;
-  color: #f3f4f6;
+  color: #000000;
 }
 
 .hero-btn {
   display: inline-block;
   padding: 0.9rem 2rem;
-  background: #0b1ba4;
+  background: #009EC2;
   color: #fff;
   border-radius: 0.75rem;
   font-size: 1.1rem;

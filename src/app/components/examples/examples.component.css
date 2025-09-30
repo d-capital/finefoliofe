@@ -1,0 +1,71 @@
+.examples-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.examples-section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.examples-section .subtitle {
+  color: #444;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.example-card {
+  background: linear-gradient(145deg, #0d1f2d, #123);
+  border-radius: 16px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.company-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.company-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.company-info small {
+  font-size: 14px;
+  color: #bbb;
+}
+
+.logo {
+  font-size: 28px;
+}
+
+.upside .badge {
+  background: linear-gradient(180deg, #00ff66, #00cc44);
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.status {
+  color: #00ff66;
+  font-weight: 600;
+}
