@@ -22,8 +22,16 @@
           <option value="ru">RU</option>
         </select>
       </li>
-      <li><a routerLink="/valuation" routerLinkActive="active">{{navLinkValuateStockLabel}}</a></li>
-      <li><a routerLink="/screener" routerLinkActive="active">{{navLinkScreenerLabel}}</a></li>
+      <li class="dropdown" [class.open]="dropdownOpen">
+        <a (click)="toggleDropdown($event)">
+          Services
+        </a>
+        <ul class="dropdown-menu">
+          <li class="dd_value"><a routerLink="/valuation" routerLinkActive="active">{{navLinkValuateStockLabel}}</a></li>
+          <li class="dd_value"><a routerLink="/screener" routerLinkActive="active">{{navLinkScreenerLabel}}</a></li>
+        </ul>
+      </li>
+
       <li><a routerLink="/blog" routerLinkActive="active">{{navLinkBlogLabel}}</a></li>
       <li><a routerLink="/about" routerLinkActive="active">{{navLinkAboutLabel}}</a></li>
     </ul>

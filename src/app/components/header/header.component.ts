@@ -31,6 +31,8 @@ export class HeaderComponent implements OnInit {
   quickLinksLabelRu: string = "Страницы";
   quickLinksLabelEn: string = "Quick Links";
 
+  dropdownOpen = false;
+
   selectedValue!: string|null;
   selectedLanguage!: string|undefined;
   langMap = new Map<string, string>();
@@ -67,6 +69,11 @@ export class HeaderComponent implements OnInit {
     localStorage.setItem("language",this.selectedValue);
     localStorage.setItem("isUserLangSet","yes");
     window.location.reload();
+  }
+
+  toggleDropdown(event: Event) {
+    event.preventDefault();
+    this.dropdownOpen = !this.dropdownOpen;
   }
 
 }

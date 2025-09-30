@@ -115,3 +115,41 @@ ul li svg {
   color: #9ca3af;
   cursor: not-allowed;
 }
+
+/* Dropdown container should cover link + submenu */
+.dropdown {
+  position: relative;
+  display: inline-block; /* ensures li wraps correctly */
+}
+
+/* Dropdown link should fill available width */
+.dropdown > a {
+  display: block;
+  padding: 1rem 1rem;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Submenu (hidden by default) */
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* directly below parent */
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  display: none;
+  flex-direction: column;
+  min-width: 180px;
+  padding: 0.5rem 0;
+  z-index: 2000;
+}
+
+/* Show on hover of li (not just text) */
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+.dd_value {
+    margin-left: 4%;
+}
