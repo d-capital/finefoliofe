@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
   selectedValue!: string|null;
   selectedLanguage!: string|undefined;
   langMap = new Map<string, string>();
-  constructor(){
+  constructor(private router: Router){
     this.langMap.set("en", "EN");
     this.langMap.set("ru", "RU");
   }
@@ -74,6 +74,15 @@ export class HeaderComponent implements OnInit {
   toggleDropdown(event: Event) {
     event.preventDefault();
     this.dropdownOpen = !this.dropdownOpen;
+  }
+  openValuation(){
+    this.toggleMenu();
+    this.router.navigate(["/valuation"]);
+  }
+
+  openScreener(){
+    this.toggleMenu();
+    this.router.navigate(["/screener"]);
   }
 
 }

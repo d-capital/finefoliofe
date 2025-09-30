@@ -27,8 +27,8 @@
           Services
         </a>
         <ul class="dropdown-menu">
-          <li class="dd_value"><a routerLink="/valuation" routerLinkActive="active">{{navLinkValuateStockLabel}}</a></li>
-          <li class="dd_value"><a routerLink="/screener" routerLinkActive="active">{{navLinkScreenerLabel}}</a></li>
+          <li class="dd_value" (click)="openScreener()">{{navLinkValuateStockLabel}}</li>
+          <li class="dd_value" (click)="openValuation()">{{navLinkScreenerLabel}}</li>
         </ul>
       </li>
 

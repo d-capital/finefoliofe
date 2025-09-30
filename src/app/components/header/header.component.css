@@ -125,7 +125,6 @@ ul li svg {
 /* Dropdown link should fill available width */
 .dropdown > a {
   display: block;
-  padding: 1rem 1rem;
   color: #000;
   text-decoration: none;
 }
@@ -152,4 +151,5 @@ ul li svg {
 
 .dd_value {
     margin-left: 4%;
+    cursor: pointer;
 }
