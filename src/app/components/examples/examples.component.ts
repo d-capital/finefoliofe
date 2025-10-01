@@ -32,10 +32,10 @@ export class ExamplesComponent implements OnInit {
 
     // Fake data for now
     this.examples = [
-      { company: "Apple Inc", ticker: "AAPL", upside: 15, status: "Недооценена" },
-      { company: "Apple Inc", ticker: "AAPL", upside: 15, status: "Недооценена" },
-      { company: "Apple Inc", ticker: "AAPL", upside: 15, status: "Недооценена" },
-      { company: "Apple Inc", ticker: "AAPL", upside: 15, status: "Недооценена" }
+      { company: "Apple Inc", ticker: "AAPL", upside: 15, status: "Undervalued" },
+      { company: "Apple Inc", ticker: "AAPL", upside: 15, status: "Undervalued" },
+      { company: "Apple Inc", ticker: "AAPL", upside: 15, status: "Undervalued" },
+      { company: "Apple Inc", ticker: "AAPL", upside: 15, status: "Undervalued" }
     ];
   }
 }
