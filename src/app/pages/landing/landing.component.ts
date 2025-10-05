@@ -6,6 +6,7 @@ import { BlogPreviewComponent } from '../../components/blog-preview/blog-preview
 import { WhyUsComponent } from '../../components/why-us/why-us.component';
 import { FaqComponent } from '../../components/faq/faq.component';
 import { ExamplesComponent } from '../../components/examples/examples.component';
+import { Title, Meta } from '@angular/platform-browser';
 
 
 @Component({
@@ -22,6 +23,8 @@ import { ExamplesComponent } from '../../components/examples/examples.component'
   styleUrl: './landing.component.css'
 })
 export class LandingComponent implements OnInit {
+   constructor(private titleService: Title, private metaService: Meta) {}
+
   erSearchTextEn:string = "Side-by-Side Currency Comparison:";
   erSearchTextRu:string = "Сравнение валют"; 
   erSearchText:string = "Side-by-Side Currency Comparison:"
@@ -35,10 +38,20 @@ export class LandingComponent implements OnInit {
     if(language == 'ru'){
       this.erSearchText = this.erSearchTextRu;
       this.historySearchText = this.historySearchTextRu;
+      this.titleService.setTitle('Метод Питера Линча | Найди недооцененные акции с потенциалом роста для своего инвестиционного портфеля');
+      this.metaService.updateTag({
+        name: 'description',
+        content: 'Перед тем как покупать или продавать акцию узнай справедливую стоимость, оценку недооцененности или переоцененности, потенциал роста или снижения по методу Питера Линча'
+      });
     }
     else{
       this.erSearchText = this.erSearchTextEn;
       this.historySearchText = this.historySearchTextEn;
+      this.titleService.setTitle('The Peter Lynch Method | Find Undervalued Stocks with Growth Potential for Your Portfolio');
+      this.metaService.updateTag({
+        name: 'description',
+        content: 'Before buying or selling a stock, find out its fair value, undervaluation or overvaluation, and potential for growth or decline using Peter Lynch\'s method.'
+      });
     }
   }
 }

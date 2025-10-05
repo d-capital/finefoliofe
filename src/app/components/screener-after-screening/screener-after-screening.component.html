@@ -1,4 +1,10 @@
-<section>
-  <h2>{{title}}</h2>
-  <p>{{subtitle}}</p>
+<section class="section">
+  <h2>{{ title }}</h2>
+  <div class="steps">
+    <div class="step" *ngFor="let step of steps">
+      <div class="step-number">{{ step.number }}</div>
+      <h3>{{ step.title }}</h3>
+      <p>{{ step.description }}</p>
+    </div>
+  </div>
 </section>

@@ -15,8 +15,8 @@ export class HeroComponent implements OnInit {
   button: string = "Start Valuation";
   buttonScreener:string = "Use Screener";
 
-  titleRu: string = "Умная Оценка Акций";
-  subtitleRu: string = "Получите мгновенную информацию о своих инвестициях с помощью наших инструментов оценки, на основе методов Питера Линча.";
+  titleRu: string = "Метод Питера Линча";
+  subtitleRu: string = "Инвестируй как Питер Линч. Узнай справедливую стоимость акции по формуле Питера Линча. Перед тем как покупать или продавать акцию, выясни она недооценена или переоценена, чтобы принимать разумные инвестиционные решения";
   buttonRu: string = "Начать Оценку";
   buttonScreenerRu: string  = "Cкриннер";
   

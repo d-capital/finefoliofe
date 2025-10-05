@@ -7,7 +7,7 @@
         <span class="icon">{{ faq.open ? "▴" : "▾" }}</span>
       </div>
       <div class="faq-answer" *ngIf="faq.open">
-        <p>{{ faq.a }}</p>
+        <p [innerHTML]="faq.a"></p>
       </div>
       <hr />
     </div>

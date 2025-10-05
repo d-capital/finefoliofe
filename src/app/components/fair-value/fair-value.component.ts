@@ -29,25 +29,31 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Формула справедливой стоимости Линча",
           subtitle: "—",
-          description: "Узнайте, как находить лучшие инвестиционные возможности на рынке."
+          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS) * Цена акции / прибыль на акцию (PEG)."
         },
         {
           image: "eps.png",
-          title: "Earnings per share, EPS",
+          title: "Базовая прибыль на акцию (EPS)",
           subtitle: "EPS",
-          description: "Изучите стратегии, которые помогут вам добиться успеха в инвестициях."
+          description: "Мы применяем коэффициент Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) в формуле Питера Линча."
         },
         {
           image: "growth.png",
-          title: "Рост прибыли компании",
+          title: "Темп роста прибыли",
           subtitle: "—",
-          description: "Избегайте распространённых ошибок и улучшайте свои инвестиционные навыки."
+          description: "Темп роста прибыли формуле - это совокупный среднегодовой темп роста (CAGR, Compound Annual Growth Rate) чистой прибыли (Net Income) за последние 5 лет."
+        },
+        {
+          image: "blog-preview/peg.png",
+          title: "Цена акции / прибыль на акцию (PEG)",
+          subtitle: "—",
+          description: "Для простоты расчета значение коэффициента Цена акции / прибыль на акцию (PEG, Price / Earnings to Growth Ratio) равно 1."
         },
         {
           image: "final.png",
-          title: "Apple Inc",
-          subtitle: "AAPL",
-          description: "Финальный расчет справедливой стоимости акции"
+          title: "Финальный результат оценки справедливой стоимости",
+          subtitle: "—",
+          description: "Мы автоматически высчитываем справедливую стоимость акции, потенциал роста или снижения и делаем оценку недооценена или переоценена акция."
         }
       ];
     } else {
@@ -57,25 +63,31 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Lynch Fair Value Formula",
           subtitle: "—",
-          description: "Learn how to discover the best investment opportunities in the market."
+          description: "We calculate fair value using the following version of Peter Lynch's formula. Peter Lynch's fair value per share = Earnings Growth Rate * Basic Earnings per Share (EPS) * Share Price / Earnings per Share (PEG)."
         },
         {
           image: "eps.png",
-          title: "Earnings per share, EPS",
+          title: "Basic earnings per share, EPS",
           subtitle: "EPS",
-          description: "Explore strategies that help you succeed in investing."
+          description: "Мы применяем коэффициент Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) в формуле Питера Линча."
         },
         {
           image: "growth.png",
-          title: "Company Profit Growth",
+          title: "Earnings Growth Rate",
           subtitle: "—",
-          description: "Avoid common mistakes and improve your investment skills."
+          description: "The profit growth rate formula is the compound annual growth rate (CAGR) of net income over the past 5 years."
+        },
+        {
+          image: "blog-preview/peg.png",
+          title: "Stock price / EPS (PEG)",
+          subtitle: "—",
+          description: "For ease of calculation, the Price/Earnings to Growth Ratio (PEG) is equal to 1."
         },
         {
           image: "final.png",
-          title: "Apple Inc",
-          subtitle: "AAPL",
-          description: "Final fair value calculation of the stock."
+          title: "Final result of fair value calculation",
+          subtitle: "—",
+          description: "We automatically calculate the fair value of a share, its potential for growth or decline, and assess whether the share is undervalued or overvalued."
         }
       ];
     }
