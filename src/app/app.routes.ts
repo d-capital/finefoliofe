@@ -7,6 +7,7 @@ import { ValuationComponent } from './pages/valuation/valuation.component';
 import { ValuateComponent } from './components/valuate/valuate.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ScreenerComponent } from './pages/screener/screener.component';
+import { ArticlelistComponent } from './components/articlelist/articlelist.component';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent },
@@ -16,5 +17,6 @@ export const routes: Routes = [
     { path:'about', component: AboutComponent },
     { path:'article/:id', component: ArticleComponent},
     { path:'exchange/:ticker', component: ExchangeComponent },
-    { path:'macrodata/:event/:country', component: MacrodataComponent }
+    { path:'macrodata/:event/:country', component: MacrodataComponent },
+    { path:'articles', component:ArticlelistComponent }
 ];

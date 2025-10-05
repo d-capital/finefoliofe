@@ -2,8 +2,8 @@
   margin: 2rem auto;
   padding: 2rem;
   max-width: 700px;
-  background-color: #1e1e1e;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
@@ -13,8 +13,8 @@ textarea {
   width: 100%;
   padding: 0.5rem;
   margin-top: 1rem;
-  background-color: #333;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 6px;
 }
@@ -23,8 +23,8 @@ button {
   margin-top: 1rem;
   margin-right: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #1404a1;
-  color: white;
+  background-color: #009EC2;
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 6px;
   cursor: pointer;

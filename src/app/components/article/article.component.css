@@ -2,8 +2,8 @@
   margin: 2rem auto;
   padding: 2rem;
   max-width: 700px;
-  background-color: #1e1e1e;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
@@ -13,7 +13,7 @@ textarea {
   width: 100%;
   padding: 0.5rem;
   margin-top: 1rem;
-  background-color: #333;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 6px;
@@ -24,7 +24,7 @@ button {
   margin-right: 1rem;
   padding: 0.5rem 1rem;
   background-color: #4caf50;
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 6px;
   cursor: pointer;
