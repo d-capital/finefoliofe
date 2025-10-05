@@ -18,5 +18,5 @@ export const routes: Routes = [
     { path:'article/:id', component: ArticleComponent},
     { path:'exchange/:ticker', component: ExchangeComponent },
     { path:'macrodata/:event/:country', component: MacrodataComponent },
-    { path:'articles', component:ArticlelistComponent }
+    { path:'blog', component:ArticlelistComponent }
 ];
