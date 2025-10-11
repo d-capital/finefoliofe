@@ -1,11 +1,18 @@
-<section class="quote-section">
-  <div class="quote-image">
-    <img [src]="screenshot" alt="Quote author photo" />
-  </div>
-  <div class="quote-text">
-    <span class="quote-icon">“</span>
-    <p>{{ quote.text }}</p>
-    <h4>{{ quote.author }}</h4>
+<section class="section">
+  <div class="steps">
+    <div class="gridcell">
+      <div class="quote-image">
+        <img [src]="screenshot" alt="Quote author photo" />
+      </div>
+    </div>
+    <div class="gridcell">
+      <!--span class="quote-icon">“</span-->
+      <img style="margin-top: 5%;" src="quote_icon.png">
+      <p style="font-size: 20px; font-weight: bold;">{{ quote.text }}</p>
+      <hr style="width: 10%;margin-left: 0;margin-right: auto;">
+      <h4>{{ quote.author }}</h4>
+      <span style="color:gray; font-weight: 200;">{{quote.authorSubtitle}}</span>
+    </div>
   </div>
 </section>
 <section class="section">

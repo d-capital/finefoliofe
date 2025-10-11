@@ -1,6 +1,5 @@
 .examples-section {
   padding: 60px 20px;
-  text-align: center;
 }
 
 .examples-section h2 {
@@ -19,7 +18,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
-  max-width: 1000px;
   margin: 0 auto;
 }
 

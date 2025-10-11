@@ -5,6 +5,7 @@ import { Step } from '../../dto/step/step.model';
 interface Quote {
   text: string;
   author: string;
+  authorSubtitle: string;
 }
 
 @Component({
@@ -30,7 +31,8 @@ export class HowItWorksComponent implements OnInit{
       ];
       this.quote = {
         text: "Инвестирование без исследований подобно игре в стад-покер, не глядя в карты.",
-        author: "Питер Линч"
+        author: "Питер Линч",
+        authorSubtitle: "Управляющий инвестиционным фондом Fidelity Magellan в 1977-1990"
       };
     } else {
       this.title = "How It Works";
@@ -41,7 +43,8 @@ export class HowItWorksComponent implements OnInit{
       ];
       this.quote = {
         text: "Investing without research is like playing stud poker without looking at the cards.",
-        author: "Peter Lynch"
+        author: "Peter Lynch",
+        authorSubtitle:"Fidelity Magellan Investment Fund Manager in 1977-1990"
       };
     }
   }

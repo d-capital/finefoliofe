@@ -13,12 +13,20 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 40px;
-  max-width: 1000px;
   margin: 0 auto;
 }
 
+.gridcell {
+  text-align: left;
+}
+
+
 .step {
   text-align: left;
+  background-color: #efefef;
+  border-radius: 16px;
+  padding: 5%;
+  min-height: 300px;
 }
 
 .step-number {
@@ -31,6 +39,7 @@
   justify-content: center;
   font-weight: 600;
   margin-bottom: 15px;
+  margin-top: 5%;
   font-size: 18px;
 }
 
@@ -59,7 +68,7 @@
 }
 
 .quote-image img {
-  max-width: 280px;
+  max-width: 480px;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
@@ -70,10 +79,9 @@
 }
 
 .quote-icon {
-  font-size: 48px;
+  font-size: 200px;
   color: #888;
   display: block;
-  margin-bottom: 20px;
 }
 
 .quote-text p {
@@ -97,5 +105,10 @@
 
   .quote-text {
     text-align: center;
+  }
+  .quote-image img {
+    max-width: 280px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   }
 }
