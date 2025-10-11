@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroComponent } from '../../components/hero/hero.component';
 import { HowItWorksComponent } from '../../components/how-it-works/how-it-works.component';
 import { FairValueComponent } from '../../components/fair-value/fair-value.component';
 import { BlogPreviewComponent } from '../../components/blog-preview/blog-preview.component';
-import { WhyUsComponent } from '../../components/why-us/why-us.component';
 import { FaqComponent } from '../../components/faq/faq.component';
 import { ExamplesComponent } from '../../components/examples/examples.component';
+import { ValuationHeroComponent } from '../../components/valuation-hero/valuation-hero.component';
 import { Title, Meta } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-landing',
   imports: [
-    HeroComponent,
+    ValuationHeroComponent,
     HowItWorksComponent,
     FairValueComponent,
     BlogPreviewComponent,

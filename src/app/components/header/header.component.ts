@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener} from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { SearchComponent } from '../search/search.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterModule],
+  imports: [RouterModule, SearchComponent, NgIf],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -16,6 +18,7 @@ export class HeaderComponent implements OnInit {
   navLinkBlogLabel: string = "Blog";
   navLinkAboutLabel: string = "About Us";
   servicesLabel: string = "Services";
+  searchLabel: string = "Search for a stock"
 
   navLinkValuateStockLabelRu: string = "Оценить Акцию";
   navLinkValuateStockLabelEn: string = "Valuate Stock";
@@ -35,8 +38,11 @@ export class HeaderComponent implements OnInit {
   servicesLabelEn: string = "Services";
   servicesLabelRu: string = "Сервисы";
 
-  dropdownOpen = false;
+  searchLabelEn: string = "Search for a stock"
+  searchLabelRu: string = "Искать акцию"
 
+  dropdownOpen = false;
+  searchOpen = false;
   selectedValue!: string|null;
   selectedLanguage!: string|undefined;
   langMap = new Map<string, string>();
@@ -56,6 +62,7 @@ export class HeaderComponent implements OnInit {
       this.navLinkAboutLabel = this.navLinkAboutLabelRu;
       this.navLinkScreenerLabel = this.navLinkScreenerLabelRu;
       this.servicesLabel = this.servicesLabelRu;
+      this.searchLabel = this.searchLabelRu;
     }
     else{
       this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEn;
@@ -63,6 +70,7 @@ export class HeaderComponent implements OnInit {
       this.navLinkAboutLabel = this.navLinkAboutLabelEn;
       this.navLinkScreenerLabel = this.navLinkScreenerLabelEn;
       this.servicesLabel = this.servicesLabelEn;
+      this.searchLabel = this.searchLabelEn;
     }
   }
 
@@ -89,6 +97,19 @@ export class HeaderComponent implements OnInit {
   openScreener(){
     this.toggleMenu();
     this.router.navigate(["/screener"]);
+  }
+
+  toggleSearchPopup() {
+    this.searchOpen = !this.searchOpen;
+  }
+
+  // ✅ ESC key handler
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscKey(event: KeyboardEvent) {
+    if (this.searchOpen) {
+      this.searchOpen = false;
+      event.stopPropagation();
+    }
   }
 
 }

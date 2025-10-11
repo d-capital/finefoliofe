@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit,EventEmitter,Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './search.component.css'
 })
 export class SearchComponent implements OnInit {
+    @Output() close = new EventEmitter<void>();
     assets: string[] = [
     "NASDAQ:AACB:Artius II Acquisition Inc. Class A Ordinary Shares",
     "NASDAQ:AACBR:Artius II Acquisition Inc. Rights",
@@ -6773,6 +6774,7 @@ export class SearchComponent implements OnInit {
   onSelect(pair: string): void {
     this.searchValue = pair;
     this.showDropdown = false;
+    this.close.emit();
     this.navigateToPair(pair);
   }
 
