@@ -7,13 +7,11 @@
 }
 
 h1 {
-  font-size: 2rem;
-  margin-bottom: 0.25rem;
+  font-size: 3rem;
   color: #000000;
 }
 
 .exchange {
-  margin-bottom: 2rem;
   color: #6b7280;
 }
 
@@ -46,12 +44,12 @@ ul li {
 
 .undervalued {
   color: #059669; /* green */
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .overvalued {
   color: #dc2626; /* red */
-  font-weight: bold;
+  font-weight: normal;
 }
 
 
@@ -130,4 +128,24 @@ ul li {
 
 .financial-table tr:hover td {
   background: #a6a6a6;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5rem;
+}
+
+.info-grid, .data-grid {
+  display: grid;
+  gap: 5rem;
+  margin-bottom: 2rem;
+}
+
+.info-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.data-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 10px));
 }

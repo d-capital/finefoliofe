@@ -10,4 +10,5 @@ export interface ValuationResult {
     threeYears: number;
     fiveYears: number;
   };
+  peg: number;
 }
