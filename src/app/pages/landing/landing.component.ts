@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HowItWorksComponent } from '../../components/how-it-works/how-it-works.component';
 import { FairValueComponent } from '../../components/fair-value/fair-value.component';
 import { FaqComponent } from '../../components/faq/faq.component';
-//import { ExamplesComponent } from '../../components/examples/examples.component';
 import { ValuationHeroComponent } from '../../components/valuation-hero/valuation-hero.component';
+import { ScreenerAfterScreeningComponent } from '../../components/screener-after-screening/screener-after-screening.component';
 import { Title, Meta } from '@angular/platform-browser';
 
 
@@ -13,8 +13,8 @@ import { Title, Meta } from '@angular/platform-browser';
     ValuationHeroComponent,
     HowItWorksComponent,
     FairValueComponent,
-    //ExamplesComponent,
-    FaqComponent
+    FaqComponent,
+    ScreenerAfterScreeningComponent
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
