@@ -1,6 +1,6 @@
 .hero-bg {
   position: relative;
-  height: 70vh; /* full screen */
+  height: 100vh; /* full screen */
   /*background: url('/hero-bg.jpg') no-repeat center center/cover;*/
   display: flex;
   align-items: center;

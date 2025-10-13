@@ -38,8 +38,8 @@ export class HeaderComponent implements OnInit {
   servicesLabelEn: string = "Services";
   servicesLabelRu: string = "Сервисы";
 
-  searchLabelEn: string = "Search for a stock"
-  searchLabelRu: string = "Искать акцию"
+  searchLabelEn: string = "Search"
+  searchLabelRu: string = "Поиск"
 
   dropdownOpen = false;
   searchOpen = false;

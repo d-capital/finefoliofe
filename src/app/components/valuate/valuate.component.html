@@ -1,9 +1,11 @@
 <ng-container *ngIf="!loading; else loadingSkeleton">
   <ng-container *ngIf="!error; else errorTemplate">
     <div class="valuate-container">
-      <h1>{{ stockInfo.name }} </h1>
-      <h4>{{ ticker }} * {{exchange}}</h4>
-      <h1>${{ round(stockInfo.price) }}</h1>
+      <section class="card">
+        <h1>{{ stockInfo.name }} </h1>
+        <h4>{{ ticker }} * {{exchange}}</h4>
+        <h1>${{ round(stockInfo.price) }}</h1>
+      </section>
       
       <!-- Valuation -->
       <section class="card">

@@ -138,14 +138,15 @@ ul li {
 
 .info-grid, .data-grid {
   display: grid;
-  gap: 5rem;
+  row-gap: 2rem;
+  column-gap: 7rem;
   margin-bottom: 2rem;
 }
 
 .info-grid {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2%, 2%);
 }
 
 .data-grid {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 10px));
+  grid-template-columns: repeat(auto-fit, minmax(5%, 30%));
 }
