@@ -4,7 +4,7 @@
       <section class="card">
         <h1>{{ stockInfo.name }} </h1>
         <h4>{{ ticker }} * {{exchange}}</h4>
-        <h1>${{ round(stockInfo.price) }}</h1>
+        <h1>${{ uiRounding(stockInfo.price) }}</h1>
       </section>
       
       <!-- Valuation -->
@@ -16,10 +16,10 @@
         </h2>
         <h1>
           <span *ngIf="valuation.resultLabel==='Undervalued'" class="undervalued">
-            {{ round(valuation.resultPercent) }}%
+            {{ uiRounding(valuation.resultPercent) }}%
           </span>
           <span *ngIf="valuation.resultLabel==='Overvalued'" class="overvalued">
-            {{ round(valuation.resultPercent) }}%
+            {{ uiRounding(valuation.resultPercent) }}%
           </span>
         </h1>
         <h3 style="font-weight: 100;">
@@ -49,7 +49,7 @@
       </section>
       <section class="card">
         <h2>{{fairPriceLabel}}</h2>
-        <h1>${{round(valuation.fairPrice)}}</h1>
+        <h1>${{uiRounding(valuation.fairPrice)}}</h1>
         <p>{{fairPriceExplanation}}</p>
       </section>
       <section class="card">
@@ -109,7 +109,7 @@
       </section>
       <section class="card">
         <h2>{{epsTtmLabel}}</h2>
-        <h1>${{round(stockInfo.epsTtm)}}</h1>
+        <h1>${{uiRounding(stockInfo.epsTtm)}}</h1>
         <p>{{epsTtmExplanation}}</p>
       </section>
 
@@ -142,19 +142,19 @@
           </div>
           <div class="grid-cell">
             <h3>{{epsTtmLabelCompanyInfo}}</h3>
-            <p>{{round(stockInfo.epsTtm)}}</p>
+            <p>{{uiRounding(stockInfo.epsTtm)}}</p>
           </div>
           <div class="grid-cell">
             <h3>{{peTtmLabel}}</h3>
-            <p>{{round(stockInfo.peTtm)}}</p>
+            <p>{{uiRounding(stockInfo.peTtm)}}</p>
           </div>
           <div class="grid-cell">
             <h3>{{pegLabel}}</h3>
-            <p>{{round(valuation.peg)}}</p>
+            <p>{{uiRounding(valuation.peg)}}</p>
           </div>
           <div class="grid-cell">
             <h3>{{dividendsYieldLabel}}</h3>
-            <p>{{round(stockInfo.dividendYield)}}%</p>
+            <p>{{uiRounding(stockInfo.dividendYield)}}%</p>
           </div>
         </div>
       </section>
