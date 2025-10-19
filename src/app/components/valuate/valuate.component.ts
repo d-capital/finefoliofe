@@ -176,6 +176,10 @@ export class ValuateComponent implements OnInit{
   mainStockDataRu:string = "Основные данны";
   mainStockDataEn: string = "Main company data";
 
+  noValuation: string  = "Valuation is not possible because of negatvie growth values."
+  noValuationRu: string  = "Оценка невозможна из-за отрицательных знчений роста прибыли."
+  noValuationEn: string  = "Valuation is not possible because of negatvie growth values."
+
   ngOnInit(): void {
     var language = localStorage.getItem('language');
     if(language == 'ru'){
@@ -223,6 +227,8 @@ export class ValuateComponent implements OnInit{
       this.metricLabel = this.metricLabelRu;
 
       this.mainStockData = this.mainStockDataRu;
+
+      this.noValuation = this.noValuationRu;
     }
     else{
       this.loadingLabel = this.loadingLabelEn;
@@ -269,6 +275,8 @@ export class ValuateComponent implements OnInit{
       this.metricLabel = this.metricLabelEn;
 
       this.mainStockData = this.mainStockDataEn;
+
+      this.noValuation = this.noValuationEn;
 
     }
 
