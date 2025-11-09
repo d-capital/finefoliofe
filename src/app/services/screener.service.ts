@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class ScreenerService {
   //private getScreenerUrl = 'https://finefoliobe.onrender.com/screener/'
-  private getScreenerUrl = 'http://localhost:3000/screener/'
+  private getScreenerUrl = 'http://finefolio-be:3000/screener/'
 
   constructor(private http: HttpClient) { }
 
