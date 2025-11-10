@@ -8,7 +8,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class ValuationService {
   //private getValuationUrl = 'https://finefoliobe.onrender.com/valuation/'
-  private getValuationUrl = 'http://finefolio-be:3000/valuation/'
+  //private getValuationUrl = 'https://fine-folio.ru:3000/valuation/'
+  private getValuationUrl = 'http://localhost:3000/valuation/'
 
   constructor(private http: HttpClient) { }
 
