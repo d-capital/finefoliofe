@@ -22,21 +22,21 @@ RUN npm run build -- --configuration=production
 # Этап 2: развёртывание через Nginx
 FROM nginx:1.25-alpine
 
-
-# Удаляем стандартный конфиг Nginx
+# Удаляем стандартный конфиг
 RUN rm /etc/nginx/conf.d/default.conf
 
-# Копируем кастомный конфиг (см. ниже)
+# Копируем кастомный конфиг (должен поддерживать SSL)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Копируем собранное приложение в директорию Nginx
-# Предполагаем, что вывод сборки — dist/ (стандарт для Angular)
+# Копируем собранное приложение
 COPY --from=builder /app/dist/finefolio-fe/browser /usr/share/nginx/html
 
+# Копируем SSL‑сертификаты (положите их в ту же директорию, что Dockerfile)
+COPY ssl/fine-folio.ru.crt /etc/nginx/ssl/cert.crt
+COPY ssl/fine-folio.ru.key /etc/nginx/ssl/key.key
 
-# Открываем порт 80 (HTTP)
+# Открываем порты HTTP и HTTPS
 EXPOSE 80
+EXPOSE 443
 
-
-# Запускаем Nginx в режиме «не как демон» (чтобы контейнер не завершался)
 CMD ["nginx", "-g", "daemon off;"]
