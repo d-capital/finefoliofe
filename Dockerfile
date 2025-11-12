@@ -32,7 +32,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/dist/finefolio-fe/browser /usr/share/nginx/html
 
 # Копируем SSL‑сертификаты (положите их в ту же директорию, что Dockerfile)
-COPY ssl/fine-folio.ru.crt /etc/nginx/ssl/fine-folio.ru.crt
+COPY ssl/fine-folio.ru.pem /etc/nginx/ssl/fine-folio.ru.pem
 COPY ssl/fine-folio.ru.key /etc/nginx/ssl/fine-folio.ru.key
 
 # Открываем порты HTTP и HTTPS
