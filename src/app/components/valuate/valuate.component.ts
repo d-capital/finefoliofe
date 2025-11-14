@@ -180,6 +180,10 @@ export class ValuateComponent implements OnInit{
   noValuationRu: string  = "Оценка невозможна из-за отрицательных знчений роста прибыли."
   noValuationEn: string  = "Valuation is not possible because of negatvie growth values."
 
+  noValuationData: string  = "Valuation is not possible because of missing data."
+  noValuationDataRu: string  = "Оценка невозможна из-за отсутствия данных."
+  noValuationDataEn: string  = "Valuation is not possible because of missing data."
+
   ngOnInit(): void {
     var language = localStorage.getItem('language');
     if(language == 'ru'){
@@ -229,6 +233,7 @@ export class ValuateComponent implements OnInit{
       this.mainStockData = this.mainStockDataRu;
 
       this.noValuation = this.noValuationRu;
+      this.noValuationData = this.noValuationDataRu;
     }
     else{
       this.loadingLabel = this.loadingLabelEn;
@@ -277,6 +282,7 @@ export class ValuateComponent implements OnInit{
       this.mainStockData = this.mainStockDataEn;
 
       this.noValuation = this.noValuationEn;
+      this.noValuationData = this.noValuationDataEn;
 
     }
 
@@ -328,7 +334,12 @@ export class ValuateComponent implements OnInit{
     )
   }
   round(value: number): string {
-    return (value).toFixed(2);
+    if (value !== null){
+      return (value).toFixed(2);
+    }
+    else{
+      return "0.00"
+    }
   }
 
   uiRounding(value:number): string{
