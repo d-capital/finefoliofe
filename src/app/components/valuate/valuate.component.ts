@@ -104,8 +104,8 @@ export class ValuateComponent implements OnInit{
   formulaLabelEn:string = "Formula";
 
   formulaExplanationLabel:string = "EPS x 5 Year Average Net Income Growth Rate";
-  formulaExplanationLabelRu:string = "Темп роста чистой прибыли за 5 лет (Net Income Growth Rate 5 years) * Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) * PEG (PE TTM / Темп роста чистой прибыли за 5 лет) = Справедливая стоимость по формуле Питера Линча";
-  formulaExplanationLabelEn:string = "Net Income Growth Rate (5 years) * Basic Earnings per Share (EPS TTM, Earnings per share Trailing Twelve Months)  * PEG (PE TTM / Net Income Growth Rate (5 years)) = Fair Value (FV)";
+  formulaExplanationLabelRu:string = "Темп роста чистой прибыли за 5 лет (Net Income Growth Rate 5 years) * Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) = Справедливая стоимость по формуле Питера Линча";
+  formulaExplanationLabelEn:string = "Net Income Growth Rate (5 years) * Basic Earnings per Share (EPS TTM, Earnings per share Trailing Twelve Months) = Fair Value (FV)";
 
   //historicalProfit
   netProfitGrowthLabel:string = "Net Income";
@@ -134,8 +134,8 @@ export class ValuateComponent implements OnInit{
   aboutLynchFormulaLabelEn:string = "About Lynch Formula";
 
   aboutLynchFormulaText:string = "The Lynch model helps estimate a stock's fair price based on earnings and growth expectations. It is often used by value investors to determine whether a stock is undervalued or overvalued.";
-  aboutLynchFormulaTextRu:string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча.<br>Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per share) * Цена акции / прибыль на акцию (PEG).<br>Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет.<br>Базовая прибыль на акцию (EPS, Earnings per share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months).<br>Цена акции / прибыль на акцию (PEG, Price / Earnings to Growth Ratio) - равна 1 для упрощения расчета";
-  aboutLynchFormulaTextEn:string = "We calculate the fair value of a share using the following version of Peter Lynch's formula.<br>Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per share) * Share Price / Earnings per Share (PEG).<br>Earnings Growth Rate is the growth of net income over the past 5 years.<br>Basic Earnings per Share (EPS, Earnings per share) in our version of the formula is basic earnings per share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months).<br>Share Price / Earnings per Share (PEG, Price / Earnings to Growth Ratio) - equal to 1 to simplify the calculation";
+  aboutLynchFormulaTextRu:string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча.<br>Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per share).<br>Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет.<br>Базовая прибыль на акцию (EPS, Earnings per share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months).";
+  aboutLynchFormulaTextEn:string = "We calculate the fair value of a share using the following version of Peter Lynch's formula.<br>Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per share).<br>Earnings Growth Rate is the growth of net income over the past 5 years.<br>Basic Earnings per Share (EPS, Earnings per share) in our version of the formula is basic earnings per share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months).";
 
   undervaluedLabel:string = "Undervalued";
   undervaluedLabelRu:string = "Недооценена";
