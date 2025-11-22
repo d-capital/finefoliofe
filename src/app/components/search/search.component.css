@@ -1,6 +1,6 @@
 .search-container {
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 0.9rem 2rem 0.9rem 2rem;
     max-width: 700px;
     background-color: #f4f4f4;
     color: rgb(0, 0, 0);
@@ -11,7 +11,7 @@
 
 .search-input {
   width: 100%;
-  padding: 0.75rem 0.75rem;
+  padding: 0.75rem 0.5rem 0.75rem 0.5rem;
   border: none;
   border-radius: 8px;
   background-color: #f4f4f4;
@@ -26,7 +26,9 @@
   left: 0;
   right: 0;
   background-color: #ffffff;
-  border: 1px solid #374151;
+  -webkit-box-shadow: 0px 7px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 7px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 7px 8px 0px rgba(34, 60, 80, 0.2);
   border-radius: 8px;
   margin-top: 0.25rem;
   list-style: none;
@@ -36,7 +38,7 @@
   z-index: 10;
   max-height: 300px;         /* ✅ limit height */
   scrollbar-width: thin;     /* Firefox scrollbar */
-  scrollbar-color: #444 #1e222d;
+  scrollbar-color: #6f6f6f #ffffff;
   /* ✅ custom scrollbar for Chrome / Edge */
   &::-webkit-scrollbar {
     width: 6px;

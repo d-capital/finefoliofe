@@ -26,8 +26,7 @@ export class HowItWorksComponent implements OnInit{
       this.title = "Как работает сервис";
       this.steps = [
         { number: 1, title: "Введите тикер акции", description: "Достаточно заполнить поле с тикером акции. Какие-либо другие данные вводить не потребуется." },
-        { number: 2, title: "Автоматический расчет", description: "Справедливая стоимость акции будет вычислена автоматически на основании достоверных данных." },
-        { number: 3, title: "Посмотри справедливую стоимость", description: "Ты увидишь конкретный наглядный результат оценки насколько акция переоценена или недооценена." }
+        { number: 2, title: "Автоматический расчет", description: "Справедливая стоимость акции, все необходимые значения коэффициентов, результат оценки насколько акция переоценена или недооценена, какой у нее потнециал роста или снижения будут вычислены автоматически на основании достоверных данных." }
       ];
       this.quote = {
         text: "Инвестирование без исследований подобно игре в стад-покер, не глядя в карты.",
@@ -38,9 +37,7 @@ export class HowItWorksComponent implements OnInit{
       this.title = "How It Works";
       this.steps = [
         { number: 1, title: "Enter stock ticker", description: "Simply fill in the stock ticker field. No other information is required." },
-        { number: 2, title: "Automated calculation", description: "The fair value of the share will be calculated automatically based on reliable data." },
-        { number: 3, title: "Check the fair value", description: "You will see a concrete visual result of the assessment of how much the stock is overvalued or undervalued." }
-      ];
+        { number: 2, title: "Automated calculation", description: "The fair value of a share, all necessary coefficient values, the result of the assessment of how much a share is overvalued or undervalued, what is its potential for growth or decline will be calculated automatically based on reliable data." },      ];
       this.quote = {
         text: "Investing without research is like playing stud poker without looking at the cards.",
         author: "Peter Lynch",

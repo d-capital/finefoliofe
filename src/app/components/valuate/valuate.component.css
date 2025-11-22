@@ -1,6 +1,6 @@
 .valuate-container {
   max-width: 1200px;
-  margin: 2rem auto;
+  margin: 0 auto 0 auto;
   padding: 1rem;
   font-family: 'Montserrat', sans-serif;
   color: #111827;
@@ -21,8 +21,15 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
+.top-card {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
 .card h2 {
-  font-size: 1.3rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   color: #000000;
 }
@@ -131,15 +138,16 @@ ul li {
 }
 
 .section-title {
-  font-size: 1rem;
-  font-weight: 600;
+  font-weight: 10000;
   margin-bottom: 5rem;
+  border-bottom: #000000;
+  border-width: 1px;
 }
 
 .info-grid, .data-grid {
   display: grid;
   row-gap: 2rem;
-  column-gap: 7rem;
+  column-gap: 2rem;
   margin-bottom: 2rem;
 }
 

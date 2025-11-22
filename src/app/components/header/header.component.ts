@@ -2,10 +2,11 @@ import { Component, OnInit, HostListener} from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
 import { NgIf } from '@angular/common';
+import { LanguageSelectorComponent } from '../language-selector/language-selector.component';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterModule, SearchComponent, NgIf],
+  imports: [RouterModule, SearchComponent, NgIf, LanguageSelectorComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -43,12 +44,12 @@ export class HeaderComponent implements OnInit {
 
   dropdownOpen = false;
   searchOpen = false;
-  selectedValue!: string|null;
+  selectedValue: string | null = null;
   selectedLanguage!: string|undefined;
   langMap = new Map<string, string>();
   constructor(private router: Router){
-    this.langMap.set("en", "EN");
-    this.langMap.set("ru", "RU");
+    this.langMap.set("en", "en");
+    this.langMap.set("ru", "ru");
   }
 
   ngOnInit(): void {

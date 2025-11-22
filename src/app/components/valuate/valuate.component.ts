@@ -7,10 +7,13 @@ import { ValuationResult } from '../../dto/valuation/valuation.model';
 import { ValuationService } from '../../services/valuation.service';
 import { ErrorStateComponent } from '../error-state/error-state.component';
 import { AbbreviateNumberPipe } from '../../custom-pipe/abbreviate-number.pipe';
+import { TabsComponent } from '../tabs/tabs.component';
+import { TabComponent } from '../tab/tab.component';
+import { StockCardComponent } from '../stock-card/stock-card.component';
 
 @Component({
   selector: 'app-valuate',
-  imports: [NgFor,CommonModule, ErrorStateComponent, AbbreviateNumberPipe],
+  imports: [NgFor,CommonModule, ErrorStateComponent, AbbreviateNumberPipe, TabsComponent, TabComponent, StockCardComponent],
   templateUrl: './valuate.component.html',
   styleUrl: './valuate.component.css'
 })
@@ -172,9 +175,13 @@ export class ValuateComponent implements OnInit{
 
   pegLabel:string = "PEG";
 
-  mainStockData:string = "Main company data";
-  mainStockDataRu:string = "Основные данны";
-  mainStockDataEn: string = "Main company data";
+  mainStockData:string = "About company";
+  mainStockDataRu:string = "О компании";
+  mainStockDataEn: string = "About company";
+
+  finanacialOverviewLabel:string = "Financial Overview";
+  finanacialOverviewLabelRu:string = "Финансовые Показатели";
+  finanacialOverviewLabelEn: string = "Financial Overview";
 
   noValuation: string  = "Valuation is not possible because of negatvie growth values."
   noValuationRu: string  = "Оценка невозможна из-за отрицательных знчений роста прибыли."
@@ -231,6 +238,7 @@ export class ValuateComponent implements OnInit{
       this.metricLabel = this.metricLabelRu;
 
       this.mainStockData = this.mainStockDataRu;
+      this.finanacialOverviewLabel = this.finanacialOverviewLabelRu;
 
       this.noValuation = this.noValuationRu;
       this.noValuationData = this.noValuationDataRu;
@@ -280,6 +288,7 @@ export class ValuateComponent implements OnInit{
       this.metricLabel = this.metricLabelEn;
 
       this.mainStockData = this.mainStockDataEn;
+      this.finanacialOverviewLabel = this.finanacialOverviewLabelEn;
 
       this.noValuation = this.noValuationEn;
       this.noValuationData = this.noValuationDataEn;

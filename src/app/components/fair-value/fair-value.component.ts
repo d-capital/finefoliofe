@@ -50,7 +50,7 @@ export class FairValueComponent implements OnInit {
           description: "Для простоты расчета значение коэффициента Цена акции / прибыль на акцию (PEG, Price / Earnings to Growth Ratio) равно 1."
         },
         {
-          image: "final.png",
+          image: "finalru.png",
           title: "Финальный результат оценки справедливой стоимости",
           subtitle: "—",
           description: "Мы автоматически высчитываем справедливую стоимость акции, потенциал роста или снижения и делаем оценку недооценена или переоценена акция."

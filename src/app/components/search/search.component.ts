@@ -6750,7 +6750,7 @@ export class SearchComponent implements OnInit {
   //localization
     placeholder:string = "Search stock...";
     placeholderEn:string = "Search stock...";
-    placeholderRu:string = "Искать акцию...";
+    placeholderRu:string = "Введите тикер акции";
 
   constructor(private router: Router) { }
 

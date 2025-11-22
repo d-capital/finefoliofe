@@ -1,0 +1,47 @@
+.tabs-container {
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.tabs-nav {
+  display: flex;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e9ecef;
+}
+
+button {
+  padding: 16px 44px 16px 10px;
+  border: none;
+  background: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  text-align: left;
+}
+
+button:hover {
+  background-color: #e9ecef;
+}
+
+button.active {
+  color: #000000;
+  font-weight: 600;
+  position: relative;
+}
+
+button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #000000;
+}
+
+.tabs-content {
+  padding: 10px;
+}

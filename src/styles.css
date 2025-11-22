@@ -19,7 +19,10 @@ a:hover {
 /* === Section layout === */
 section {
   max-width: 1200px;
-  margin:auto
+  margin-bottom:auto;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:70px;
 }
 section h2 {
   font-size: 2rem;
@@ -32,7 +35,6 @@ section h2 {
 .card {
   background: #fff;
   border-radius: 12px;
-  margin: 20px 0;
 }
 
 /* === Buttons === */
@@ -72,8 +74,9 @@ ul li, ol li {
 @media (max-width: 768px) {
   section {
     padding: 50px 15px;
+    margin-top:70px;
   }
   section h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }

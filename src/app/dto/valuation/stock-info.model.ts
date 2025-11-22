@@ -10,4 +10,6 @@ export interface StockInfo {
   epsTtm: number;
   peTtm: number;
   dividendYield: number;
+  freeCashFlow: number;
+  debtToEquity: number;
 }

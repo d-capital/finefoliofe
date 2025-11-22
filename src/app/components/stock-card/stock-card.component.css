@@ -1,0 +1,48 @@
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Прижимает элементы к краям */
+  gap: 16px; /* Увеличен для наглядности */
+  color: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 200px; /* Увеличен для теста */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+  /* Для отладки — временно */
+  outline: 1px solid rgba(255, 255, 0, 0.3);
+}
+
+/* Явно задаём ширину для иконок */
+.card .icon {
+  flex: 0 0 24px; /* Фиксированная ширина */
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Текст занимает оставшееся пространство */
+.card .text {
+  text-align: right;
+}
+
+.card .percent {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.card .label {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* Цвета фона */
+.green {
+  background-color: #00B200;
+}
+
+.red {
+  background-color: #D30000;
+}

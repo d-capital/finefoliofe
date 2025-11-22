@@ -1,0 +1,17 @@
+<div class="tabs-container">
+  <div class="tabs-nav">
+    <button 
+      *ngFor="let tab of tabs"
+      [class.active]="tab.active"
+      (click)="selectTab(tab)"
+      [attr.aria-selected]="tab.active"
+      type="button"
+    >
+      {{ tab.title }}
+    </button>
+  </div>
+
+  <div class="tabs-content">
+    <ng-content></ng-content>
+  </div>
+</div>
