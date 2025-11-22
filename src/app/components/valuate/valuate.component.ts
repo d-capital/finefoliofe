@@ -106,9 +106,9 @@ export class ValuateComponent implements OnInit{
   formulaLabelRu:string = "Формула";
   formulaLabelEn:string = "Formula";
 
-  formulaExplanationLabel:string = "EPS x 5 Year Average Net Income Growth Rate";
-  formulaExplanationLabelRu:string = "Темп роста чистой прибыли за 5 лет (Net Income Growth Rate 5 years) * Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) = Справедливая стоимость по формуле Питера Линча";
-  formulaExplanationLabelEn:string = "Net Income Growth Rate (5 years) * Basic Earnings per Share (EPS TTM, Earnings per share Trailing Twelve Months) = Fair Value (FV)";
+  formulaExplanationLabel:string = "EPS x 5 Year Average Net Income Growth Rate x PEG";
+  formulaExplanationLabelRu:string = "Темп роста чистой прибыли за 5 лет (Net Income Growth Rate 5 years) * Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) * PEG (PE TTM / Темп роста чистой прибыли за 5 лет) = Справедливая стоимость по формуле Питера Линча";
+  formulaExplanationLabelEn:string = "Net Income Growth Rate (5 years) * Basic Earnings per Share (EPS TTM, Earnings per share Trailing Twelve Months) * PEG (PE TTM / 5 years average net income growth rate) = Fair Value (FV)";
 
   //historicalProfit
   netProfitGrowthLabel:string = "Net Income";
@@ -137,8 +137,8 @@ export class ValuateComponent implements OnInit{
   aboutLynchFormulaLabelEn:string = "About Lynch Formula";
 
   aboutLynchFormulaText:string = "The Lynch model helps estimate a stock's fair price based on earnings and growth expectations. It is often used by value investors to determine whether a stock is undervalued or overvalued.";
-  aboutLynchFormulaTextRu:string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча.<br>Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per share).<br>Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет.<br>Базовая прибыль на акцию (EPS, Earnings per share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months).";
-  aboutLynchFormulaTextEn:string = "We calculate the fair value of a share using the following version of Peter Lynch's formula.<br>Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per share).<br>Earnings Growth Rate is the growth of net income over the past 5 years.<br>Basic Earnings per Share (EPS, Earnings per share) in our version of the formula is basic earnings per share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months).";
+  aboutLynchFormulaTextRu:string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча.<br>Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per share) * Цена акции / прибыль на акцию (PEG).<br>Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный как арифметическое среднее за соответствующий период.<br>Базовая прибыль на акцию (EPS, Earnings per share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months). Цена акции / прибыль на акцию (PEG, Price / Earnings to Growth Ratio) - это деление коэффициента Цена / прибыль (P / E, Price / Earnings Ratio) на прогнозируемый будущий темп роста прибыли компании (Earnings Growth Rate). Для простоты расчета коэффициент PEG по умолчанию равен значению '1'";
+  aboutLynchFormulaTextEn:string = "We calculate the fair value of a share using the following version of Peter Lynch's formula.<br>Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per share) * Price/Earnings Growth (PEG).<br>Earnings Growth Rate is the growth of net income over the past 5 years, calculated as arithmetic average.<br>Basic Earnings per Share (EPS, Earnings per share) in our version of the formula is basic earnings per share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months).PEG, Price / Earnings to Growth Ratio is result of division of P/E (Price / Earnings Ratio) by Earnings Growth Rate. For simplification we use PEG equal to '1'";
 
   undervaluedLabel:string = "Undervalued";
   undervaluedLabelRu:string = "Недооценена";
@@ -154,9 +154,9 @@ export class ValuateComponent implements OnInit{
   fairPriceExplanation: string = "";
   howFairPriceWasCalulated: string = "";
 
-  growthRateCalcExplanation: string = "Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет";
-  growthRateCalcExplanationRu: string = "Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет";
-  growthRateCalcExplanationEn: string = "Net Income growth rate for 1, 3, 5 last years";
+  growthRateCalcExplanation: string = "Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет посчтитаны как арифметическое среднее за соответсвующие периоды";
+  growthRateCalcExplanationRu: string = "Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет посчтитаны как арифметическое среднее за соответсвующие периоды";
+  growthRateCalcExplanationEn: string = "Net Income growth rate for 1, 3, 5 last years calculated as arithmetic average for the given period";
 
   metricLabel: string = "Metric";
   metricLabelRu: string = "Показатель";
@@ -174,6 +174,12 @@ export class ValuateComponent implements OnInit{
   epsTtmExplanation: string = "";
 
   pegLabel:string = "PEG";
+  pegLabelRu:string = "Цена акции и прибыль к росту прибыли (PEG)";
+  pegLabelEn:string = "Price / Earnings / Growth Ration (PEG)";
+
+  pegExplanation:string = "PEG is set to '1' for simplification of calculation";
+  pegExplanationRu:string = "Коэффициент PEG для простоты расчета по умолчанию равен значению '1'";
+  pegExplanationEn:string = "PEG is set to '1' for simplification of calculation";
 
   mainStockData:string = "About company";
   mainStockDataRu:string = "О компании";
@@ -242,6 +248,9 @@ export class ValuateComponent implements OnInit{
 
       this.noValuation = this.noValuationRu;
       this.noValuationData = this.noValuationDataRu;
+
+      this.pegLabel = this.pegLabelRu;
+      this.pegExplanation = this.pegExplanationRu;
     }
     else{
       this.loadingLabel = this.loadingLabelEn;
@@ -292,6 +301,9 @@ export class ValuateComponent implements OnInit{
 
       this.noValuation = this.noValuationEn;
       this.noValuationData = this.noValuationDataEn;
+
+      this.pegLabel = this.pegLabelEn;
+      this.pegExplanation = this.pegExplanationEn;
 
     }
 

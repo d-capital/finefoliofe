@@ -6748,8 +6748,8 @@ export class SearchComponent implements OnInit {
   selectedIndex: number = -1;
 
   //localization
-    placeholder:string = "Search stock...";
-    placeholderEn:string = "Search stock...";
+    placeholder:string = "Enter stock ticker";
+    placeholderEn:string = "Enter stock ticker";
     placeholderRu:string = "Введите тикер акции";
 
   constructor(private router: Router) { }
