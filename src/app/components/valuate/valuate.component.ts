@@ -10,6 +10,7 @@ import { AbbreviateNumberPipe } from '../../custom-pipe/abbreviate-number.pipe';
 import { TabsComponent } from '../tabs/tabs.component';
 import { TabComponent } from '../tab/tab.component';
 import { StockCardComponent } from '../stock-card/stock-card.component';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-valuate',
@@ -20,7 +21,8 @@ import { StockCardComponent } from '../stock-card/stock-card.component';
 export class ValuateComponent implements OnInit{
   constructor(
     private ValuationServiceApi: ValuationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ){}
   stockInfo!: StockInfo;
   valuation!: ValuationResult;
@@ -342,14 +344,17 @@ export class ValuateComponent implements OnInit{
       }
       this.loading = false;
     },
-      err => {
-        this.error = true;
-        this.loading = false;
-        if (err instanceof HttpErrorResponse) {
-          
-          if (err.status === 422) {
-            this.serverErrors = err.error.message
-          }
+      (err: HttpErrorResponse) => {
+        if (err instanceof HttpErrorResponse && err.status === 404) {
+          this.error = true;
+          this.loading = false;
+          this.cdr.detectChanges();
+        } else {
+          // Другие ошибки (например, 500, сеть и т.д.)
+          console.error('Unexpected error:', err);
+          this.error = true;
+          this.loading = false;
+          this.cdr.detectChanges();
         }
       }
     )

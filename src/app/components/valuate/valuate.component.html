@@ -1,6 +1,14 @@
 
-<ng-container *ngIf="!loading && !error; else loadingSkeleton">
-  <ng-container *ngIf="!error; else errorTemplate">
+
+<ng-container *ngIf="loading">
+  <ng-template [ngTemplateOutlet]="loadingSkeleton"></ng-template>
+</ng-container>
+
+<ng-container *ngIf="error">
+  <ng-template [ngTemplateOutlet]="errorTemplate"></ng-template>
+</ng-container>
+
+<ng-container *ngIf="!loading && !error;">
     <div class="valuate-container">
       <section class="top-card">
         <h1>{{ stockInfo.name }}</h1>
@@ -188,7 +196,6 @@
         </app-tab>
       </app-tabs>
     </div>
-  </ng-container>
 </ng-container>
 
 <!-- Skeleton Template -->
