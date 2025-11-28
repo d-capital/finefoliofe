@@ -1337,6 +1337,7 @@ export class SearchComponent implements OnInit {
     "NASDAQ:FINW:FinWise Bancorp Common Stock",
     "NASDAQ:FIP:FTAI Infrastructure Inc. Common Stock ",
     "NASDAQ:FISI:Financial Institutions Inc. Common Stock",
+    "NASDAQ:FISV:Fiserv, Inc.",
     "NASDAQ:FITB:Fifth Third Bancorp Common Stock",
     "NASDAQ:FITBI:Fifth Third Bancorp Depositary Shares",
     "NASDAQ:FITBO:Fifth Third Bancorp Depositary Shares each representing a 1/1000th ownership interest in a share of Non-Cumulative Perpetual Preferred Stock Series K",

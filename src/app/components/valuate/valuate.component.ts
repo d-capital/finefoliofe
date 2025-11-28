@@ -109,8 +109,12 @@ export class ValuateComponent implements OnInit{
   formulaLabelEn:string = "Formula";
 
   formulaExplanationLabel:string = "EPS x 5 Year Average Net Income Growth Rate x PEG";
-  formulaExplanationLabelRu:string = "Темп роста чистой прибыли за 5 лет (Net Income Growth Rate 5 years) * Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) * PEG (PE TTM / Темп роста чистой прибыли за 5 лет) = Справедливая стоимость по формуле Питера Линча";
+  formulaExplanationLabelRu:string = "Темп роста чистой прибыли за 5 лет (Net Income Growth Rate 5 years) * Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) * PEG (PE TTM / Темп роста чистой прибыли за 5 лет) = Справедливая стоимость по формуле Питера Линча.";
   formulaExplanationLabelEn:string = "Net Income Growth Rate (5 years) * Basic Earnings per Share (EPS TTM, Earnings per share Trailing Twelve Months) * PEG (PE TTM / 5 years average net income growth rate) = Fair Value (FV)";
+
+  maxGrowthRateNote:string = "Если темп роста чистой прибыли за 5 лет был больше 25% мы используем 25, так как Питер Линч называл рост более 25 процентов в год неустойчивым."
+  maxGrowthRateNoteRu:string = "Если темп роста чистой прибыли за 5 лет был больше 25% мы используем 25, так как Питер Линч называл рост более 25 процентов в год неустойчивым."
+  maxGrowthRateNoteEn:string = "If the net profit growth rate over 5 years was greater than 25%, we use 25, since Peter Lynch called growth of more than 25 percent per year unsustainable."
 
   //historicalProfit
   netProfitGrowthLabel:string = "Net Income";
@@ -221,6 +225,7 @@ export class ValuateComponent implements OnInit{
       this.resultLabel = this.resultLabelRu;
       this.formulaLabel = this.formulaLabelRu;
       this.formulaExplanationLabel = this.formulaExplanationLabelRu;
+      this.maxGrowthRateNote = this.maxGrowthRateNoteRu;
 
       //historicalProfit
       this.netProfitGrowthLabel = this.netProfitGrowthLabelRu;
@@ -274,6 +279,7 @@ export class ValuateComponent implements OnInit{
       this.resultLabel = this.resultLabelEn;
       this.formulaLabel = this.formulaLabelEn;
       this.formulaExplanationLabel = this.formulaExplanationLabelEn;
+      this.maxGrowthRateNote = this.maxGrowthRateNoteEn;
 
       //historicalProfit
       this.netProfitGrowthLabel = this.netProfitGrowthLabelEn;
