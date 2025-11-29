@@ -6747,6 +6747,13 @@ export class SearchComponent implements OnInit {
   searchValue: string = '';
   showDropdown = false;
   selectedIndex: number = -1;
+  pairsToShow: string[]=[
+    "NASDAQ:TSLA:Tesla Inc. Common Stock",
+    "NASDAQ:COST:Costco Wholesale Corporation Common Stock",
+    "NASDAQ:AAPL:Apple Inc. Common Stock",
+    "NASDAQ:FISV:Fiserv, Inc.",
+    "NASDAQ:MSFT:Microsoft Corporation Common Stock",
+  ];
 
   //localization
     placeholder:string = "Enter stock ticker";
@@ -6763,6 +6770,17 @@ export class SearchComponent implements OnInit {
     else{
       this.placeholder = this.placeholderEn;
     }
+    var currentPairsHistory = localStorage.getItem('pairsHistory')
+    if (currentPairsHistory) {
+      try {
+        const parsedData = JSON.parse(currentPairsHistory);
+        if (Array.isArray(parsedData)) {
+          this.pairsToShow = parsedData;
+        }
+      } catch (e) {
+        console.error('Ошибка при чтении из localStorage:', e);
+      }
+    }
   }
   onInputChange(): void {
     this.filteredPairs = this.assets.filter(asset =>
@@ -6775,6 +6793,7 @@ export class SearchComponent implements OnInit {
   onSelect(pair: string): void {
     this.searchValue = pair;
     this.showDropdown = false;
+    this.addNewPair(pair);
     this.close.emit();
     this.navigateToPair(pair);
   }
@@ -6806,7 +6825,8 @@ export class SearchComponent implements OnInit {
     }
   }
   onFocus(): void {
-    this.filteredPairs = [...this.assets].slice(0,10);
+    this.filteredPairs = this.pairsToShow;
+    //this.filteredPairs = [...this.assets].slice(0,10);
     this.selectedIndex = -1;
     this.showDropdown = true;
   }
@@ -6825,5 +6845,27 @@ export class SearchComponent implements OnInit {
       console.log(this.filteredPairs.at(this.selectedIndex));
       event.preventDefault();
     }
+  }
+
+  addNewPair(newPair: string): void {
+    if (!newPair) return;
+
+    // Проверяем, есть ли элемент в списке
+    const index = this.pairsToShow.indexOf(newPair);
+
+    if (index === -1) {
+      // Элемента нет в списке → добавляем в начало
+      this.pairsToShow.unshift(newPair);
+    } else {
+      // Элемент уже есть → перемещаем в начало
+      this.pairsToShow.splice(index, 1); // удаляем из текущей позиции
+      this.pairsToShow.unshift(newPair);  // добавляем в начало
+    }
+
+    // Ограничиваем длину списка до 5 элементов
+    if (this.pairsToShow.length > 5) {
+      this.pairsToShow.pop();
+    }
+    localStorage.setItem('pairsHistory', JSON.stringify(this.pairsToShow));
   }
 }
