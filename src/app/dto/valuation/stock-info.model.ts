@@ -7,6 +7,8 @@ export interface StockInfo {
   capitalization: string;
   sector: string;
   industry: string;
+  sectorRu: string;
+  industryRu: string;
   epsTtm: number;
   peTtm: number;
   dividendYield: number;

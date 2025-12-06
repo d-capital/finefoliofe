@@ -13,7 +13,8 @@
       <section class="top-card">
         <h1>{{ stockInfo.name }}</h1>
         <h4>{{ ticker }} * {{ exchange }}</h4>
-        <h1>${{ uiRounding(stockInfo.price) }}</h1>
+        <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(stockInfo.price) }}</h1>
+        <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(stockInfo.price) }}</h1>
       </section>
 
       <app-tabs>
@@ -71,7 +72,8 @@
 
               <section class="card">
                 <h2>{{ fairPriceLabel }}</h2>
-                <h1>${{ uiRounding(valuation.fairPrice) }}</h1>
+                <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(valuation.fairPrice) }}</h1>
+                <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(valuation.fairPrice) }}</h1>
                 <p>{{ fairPriceExplanation }}</p>
               </section>
 
@@ -129,7 +131,8 @@
 
               <section class="card">
                 <h2>{{ epsTtmLabel }}</h2>
-                <h1>${{ uiRounding(stockInfo.epsTtm) }}</h1>
+                <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(stockInfo.epsTtm) }}</h1>
+                <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(stockInfo.epsTtm) }}</h1>
                 <p>{{ epsTtmExplanation }}</p>
               </section>
 
@@ -186,11 +189,13 @@
             <div class="info-grid">
               <div>
                 <h3>{{ sectorLabel }}</h3>
-                <p>{{ stockInfo.sector }}</p>
+                <p *ngIf="pageLanguage === 'ru'">{{ stockInfo.sectorRu }}</p>
+                <p *ngIf="pageLanguage === 'en'">{{ stockInfo.sector }}</p>
               </div>
               <div>
                 <h3>{{ industryLabel }}</h3>
-                <p>{{ stockInfo.industry }}</p>
+                <p *ngIf="pageLanguage === 'ru'">{{ stockInfo.industryRu }}</p>
+                <p *ngIf="pageLanguage === 'en'">{{ stockInfo.industry }}</p>
               </div>
             </div>
           </section>

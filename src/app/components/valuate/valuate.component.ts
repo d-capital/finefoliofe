@@ -203,8 +203,11 @@ export class ValuateComponent implements OnInit{
   noValuationDataRu: string  = "Оценка невозможна из-за отсутствия данных."
   noValuationDataEn: string  = "Valuation is not possible because of missing data."
 
+  pageLanguage!:string;
+
   ngOnInit(): void {
     var language = localStorage.getItem('language');
+    this.pageLanguage = language ? language : 'en';
     if(language == 'ru'){
       this.loadingLabel = this.loadingLabelRu;
       this.exchangeLabel = this.exchangeLabelRu;
@@ -322,31 +325,31 @@ export class ValuateComponent implements OnInit{
     this.ValuationServiceApi.getValuation(this.ticker, this.exchange).pipe().subscribe(data => {
       this.stockInfo = data['stockInfo'];
       this.valuation = data['valuation'];
-      var shownFairPrice = this.round(this.valuation.fairPrice);
-      var currentPrice = this.round(this.stockInfo.price);
-      var percentPotential = this.round(this.valuation.resultPercent);
-      var epsTtmRounded = this.round(this.stockInfo.epsTtm);
+      var shownFairPrice = this.round(this.valuation.fairPrice, this.exchange);
+      var currentPrice = this.round(this.stockInfo.price, this.exchange);
+      var percentPotential = this.round(this.valuation.resultPercent, "noexchange");
+      var epsTtmRounded = this.round(this.stockInfo.epsTtm, this.exchange);
       if(this.valuation.resultLabel === "Undervalued" && language == 'ru'){
-        this.undervaluedExplanation = `Акция является недооцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал роста на ${percentPotential}% с учетом текущей рыночной цены $${currentPrice} и справедливой стоимости по формуле Питера Линча $${shownFairPrice}.`;
+        this.undervaluedExplanation = `Акция является недооцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал роста на ${percentPotential}% с учетом текущей рыночной цены ${currentPrice} и справедливой стоимости по формуле Питера Линча ${shownFairPrice}.`;
       }
       else if(this.valuation.resultLabel === "Undervalued" && language == 'en'){
-        this.undervaluedExplanation = `According to Peter Lynch model this stock is undervalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have growth potential of ${percentPotential}% with current price of $${currentPrice} and fair price calculated with Peter Lynch formula of $${shownFairPrice}.`;
+        this.undervaluedExplanation = `According to Peter Lynch model this stock is undervalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have growth potential of ${percentPotential}% with current price of ${currentPrice} and fair price calculated with Peter Lynch formula of ${shownFairPrice}.`;
       }
       else if(this.valuation.resultLabel === "Overvalued" && language == 'ru'){
-        this.overvaluedExplanation = `Акция является переоцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал снижения на ${percentPotential}% с учетом текущей рыночной цены $${currentPrice} и справедливой стоимости по формуле Питера Линча $${shownFairPrice}.`;
+        this.overvaluedExplanation = `Акция является переоцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал снижения на ${percentPotential}% с учетом текущей рыночной цены ${currentPrice} и справедливой стоимости по формуле Питера Линча ${shownFairPrice}.`;
       }
       else if(this.valuation.resultLabel === "Overvalued" && language == 'en'){
-        this.overvaluedExplanation = `According to Peter Lynch model this stock is overvalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have downside potential of ${percentPotential}% with current price of $${currentPrice} and fair price calculated with Peter Lynch formula of $${shownFairPrice}.`;
+        this.overvaluedExplanation = `According to Peter Lynch model this stock is overvalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have downside potential of ${percentPotential}% with current price of ${currentPrice} and fair price calculated with Peter Lynch formula of ${shownFairPrice}.`;
       }
       if(language == 'ru'){
-        this.fairPriceExplanation = `Справедливая стоимость акции ${this.stockInfo.name} (${this.ticker}) $${shownFairPrice} посчитана по формуле Питера Линча.`;
+        this.fairPriceExplanation = `Справедливая стоимость акции ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} посчитана по формуле Питера Линча.`;
         this.howFairPriceWasCalulated = `Как была посчитана справедливая стоимость`;
-        this.epsTtmExplanation = `Текущее значение базовой прибыли на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) составляет $${epsTtmRounded}.`
+        this.epsTtmExplanation = `Текущее значение базовой прибыли на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) составляет ${epsTtmRounded}.`
       }
       else if (language == 'en'){
-        this.fairPriceExplanation = `Fair price of stock ${this.stockInfo.name} (${this.ticker}) $${shownFairPrice} is calculated based on Petere Lynch formula.`;
+        this.fairPriceExplanation = `Fair price of stock ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} is calculated based on Petere Lynch formula.`;
         this.howFairPriceWasCalulated = `How fair price was calculated`;
-        this.epsTtmExplanation = `Current trailing twelve months earnings per share (EPS TTM) is $${epsTtmRounded}.`
+        this.epsTtmExplanation = `Current trailing twelve months earnings per share (EPS TTM) is ${epsTtmRounded}.`
       }
       this.loading = false;
     },
@@ -365,12 +368,21 @@ export class ValuateComponent implements OnInit{
       }
     )
   }
-  round(value: number): string {
+  round(value: number, exchange: string): string {
     if (value !== null){
-      return (value).toFixed(2);
+      if(exchange === "MOEX"){
+        return "₽" + (value).toFixed(2);
+      }
+      else if (exchange === 'noexchange'){
+        return (value).toFixed(2);
+      }
+      else{
+        return "$" + (value).toFixed(2);
+      }
+      
     }
     else{
-      return "0.00"
+      return "$0.00"
     }
   }
 
