@@ -45,9 +45,9 @@ export class ValuateComponent implements OnInit{
   countryLabelRu: string = "Страна: ";
   countryLabelEn: string = "Country: ";
 
-  stockInformationLabel:string = "Stock Information";
-  stockInformationLabelRu:string = "О компании";
-  stockInformationLabelEn:string = "Stock Information";
+  stockInformationLabel:string = "Overview";
+  stockInformationLabelRu:string = "Обзор";
+  stockInformationLabelEn:string = "Overview";
 
   priceLabel:string = "Price:";
   priceLabelRu:string = "Цена:";
@@ -84,9 +84,9 @@ export class ValuateComponent implements OnInit{
   valuationResultsLabelRu:string = "Резултат Оценки";
   valuationResultsLabelEn:string = "Valuation Result";
 
-  valuationOverviewLabel: string = "Overview of Valuation";
-  valuationOverviewLabelRu: string = "Обзор Оценки";
-  valuationOverviewLabelEn: string = "Overview of Valuation";
+  valuationOverviewLabel: string = "Valuation";
+  valuationOverviewLabelRu: string = "Оценка";
+  valuationOverviewLabelEn: string = "Valuation";
 
   downsidePotentialLabel:string = "Downside potential";
   downsidePotentialLabelRu:string = "Потенциал снижения";
@@ -191,9 +191,9 @@ export class ValuateComponent implements OnInit{
   mainStockDataRu:string = "О компании";
   mainStockDataEn: string = "About company";
 
-  finanacialOverviewLabel:string = "Financial Overview";
-  finanacialOverviewLabelRu:string = "Финансовые Показатели";
-  finanacialOverviewLabelEn: string = "Financial Overview";
+  finanacialOverviewLabel:string = "Financials";
+  finanacialOverviewLabelRu:string = "Финансовые показатели";
+  finanacialOverviewLabelEn: string = "Financials";
 
   noValuation: string  = "Valuation is not possible because of negatvie growth values."
   noValuationRu: string  = "Оценка невозможна из-за отрицательных знчений роста прибыли."
