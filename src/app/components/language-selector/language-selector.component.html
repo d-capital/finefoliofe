@@ -8,10 +8,23 @@
 
     <div class="dropdown" [class.show]="isDropdownOpen">
         <ul>
-            <li *ngFor="let lang of languages" [class.active]="lang.code === selectedValue"
-                [class.hover]="hoveredLang === lang.code" (mouseenter)="hoveredLang = lang.code"
-                (mouseleave)="hoveredLang = null" (click)="onSelectionChange(lang.code)">
-                {{ lang.label }}
+            <li *ngFor="let lang of languages"
+                [class.active]="lang.code === selectedValue"
+                [class.hover]="hoveredLang === lang.code"
+                (mouseenter)="hoveredLang = lang.code"
+                (mouseleave)="hoveredLang = null"
+                (click)="onSelectionChange(lang.code)">
+
+            {{ lang.label }}
+
+                <!-- Галочка -->
+                <svg *ngIf="lang.code === selectedValue"
+                    class="checkmark"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24">
+                    <path d="M20 6L9 17l-5-5" stroke-width="3" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </li>
         </ul>
     </div>

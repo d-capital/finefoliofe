@@ -161,7 +161,7 @@
                 <p>{{ stockInfo.capitalization | abbreviateNumber }}</p>
               </div>
               <div class="grid-cell">
-                <h3>{{ epsTtmLabelCompanyInfo }}</h3>
+                <h3>{{ epsTtmLabel }}</h3>
                 <p>{{ uiRounding(stockInfo.epsTtm) }}</p>
               </div>
               <div class="grid-cell">
@@ -177,11 +177,11 @@
                 <p>{{ uiRounding(stockInfo.dividendYield) }}%</p>
               </div>
               <div class="grid-cell">
-                <h3>FCF</h3>
+                <h3>{{ fcfLabel }}</h3>
                 <p>{{ stockInfo.freeCashFlow | abbreviateNumber }}</p>
               </div>
               <div class="grid-cell">
-                <h3>D/E</h3>
+                <h3>{{ deLabel }}</h3>
                 <p>{{ uiRounding(stockInfo.debtToEquity) }}</p>
               </div>
             </div>

@@ -65,19 +65,19 @@ export class ValuateComponent implements OnInit{
   industryLabelRu:string = "Индустрия";
   industryLabelEn:string = "Industry";
 
-  epsTtmLabel:string = "EPS (TTM):";
+  epsTtmLabel:string = "EPS (TTM)";
   epsTtmLabelRu:string = "Базовая прибыль на акцию (EPS TTM)";
   epsTtmLabelEn:string = "Basic earnings per share (EPS TTM)";
 
   epsTtmLabelCompanyInfo:string = "EPS (TTM)";
 
   peTtmLabel:string = "P/E (TTM)";
-  peTtmLabelRu:string = "P/E (TTM)";
-  peTtmLabelEn:string = "P/E (TTM)";
+  peTtmLabelRu:string = "Цена/прибыль (P/E TTM)";
+  peTtmLabelEn:string = "Price to earnings ratio (P/E TTM)";
 
-  dividendsYieldLabel:string = "Dividend Yield:";
-  dividendsYieldLabelRu:string = "Дивидендная доходность:";
-  dividendsYieldLabelEn:string = "Dividend Yield:";
+  dividendsYieldLabel:string = "Dividend Yield";
+  dividendsYieldLabelRu:string = "Дивидендная доходность";
+  dividendsYieldLabelEn:string = "Dividend Yield";
 
   //valuation card
   valuationResultsLabel:string = "Valuation Result";
@@ -96,13 +96,13 @@ export class ValuateComponent implements OnInit{
   upsidePotentialLabelRu:string = "Потенциал роста";
   upsidePotentialLabelEn:string = "Upside potential";
 
-  fairPriceLabel:string = "Fair Price";
-  fairPriceLabelRu:string = "Справедливая Цена";
-  fairPriceLabelEn:string = "Fair Price";
+  fairPriceLabel:string = "Fair price";
+  fairPriceLabelRu:string = "Справедливая цена";
+  fairPriceLabelEn:string = "Fair price";
 
-  resultLabel:string = "Result:";
-  resultLabelRu:string = "Результат:";
-  resultLabelEn:string = "Result:";
+  resultLabel:string = "Result";
+  resultLabelRu:string = "Результат";
+  resultLabelEn:string = "Result";
 
   formulaLabel:string = "Formula";
   formulaLabelRu:string = "Формула";
@@ -203,6 +203,14 @@ export class ValuateComponent implements OnInit{
   noValuationDataRu: string  = "Оценка невозможна из-за отсутствия данных."
   noValuationDataEn: string  = "Valuation is not possible because of missing data."
 
+  fcfLabel: string = "FCF";
+  fcfLabelRu: string = "Свободный денежный поток (FCF)";
+  fcfLabelEn: string = "Free cash flow (FCF)";
+
+  deLabel: string = "D/E";
+  deLabelRu: string = "Долг к собственному капиталу (D/E)";
+  deLabelEn: string = "Debt to  equity (D/E)";
+
   pageLanguage!:string;
 
   ngOnInit(): void {
@@ -261,6 +269,9 @@ export class ValuateComponent implements OnInit{
 
       this.pegLabel = this.pegLabelRu;
       this.pegExplanation = this.pegExplanationRu;
+
+      this.fcfLabel = this.fcfLabelRu;
+      this.deLabel = this.deLabelRu;
     }
     else{
       this.loadingLabel = this.loadingLabelEn;
@@ -315,6 +326,9 @@ export class ValuateComponent implements OnInit{
 
       this.pegLabel = this.pegLabelEn;
       this.pegExplanation = this.pegExplanationEn;
+
+      this.fcfLabel = this.fcfLabelEn;
+      this.deLabel = this.deLabelEn;
 
     }
 

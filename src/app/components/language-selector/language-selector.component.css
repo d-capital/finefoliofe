@@ -60,3 +60,18 @@
 .language-selector .dropdown ul li.hover {
   background-color: #f5f5f5;
 }
+.language-selector .dropdown ul li {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.language-selector .dropdown ul li .checkmark {
+  width: 18px;
+  height: 18px;
+  color: #1976d2;
+}

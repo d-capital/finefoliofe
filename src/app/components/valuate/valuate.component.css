@@ -1,14 +1,19 @@
 .valuate-container {
   max-width: 1200px;
   margin: 0 auto 0 auto;
-  padding: 1rem;
+  padding: 0rem 1rem 0rem 1rem;
   font-family: 'Montserrat', sans-serif;
-  color: #111827;
+  color: #000000;
 }
 
 h1 {
   font-size: 3rem;
   color: #000000;
+  line-height: 1rem;
+}
+
+h4{
+  margin-inline-start: 0.35%;
 }
 
 .exchange {
@@ -46,7 +51,7 @@ ul li {
 
 .explanation {
   font-size: 0.95rem;
-  color: #374151;
+  color: #000000;
 }
 
 .undervalued {
