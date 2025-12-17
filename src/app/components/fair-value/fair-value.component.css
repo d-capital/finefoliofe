@@ -1,5 +1,6 @@
 .fair-value {
   text-align: center;
+  margin-top: 100px;
 }
 
 .cards {
@@ -12,6 +13,10 @@
 @media (max-width: 768px) {
   .cards {
     grid-template-columns: 1fr; /* stack on small screens */
+  }
+  .fair-value {
+    text-align: center;
+    margin-top: 0px;
   }
 }
 
@@ -38,7 +43,7 @@
 }
 
 .card-content h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   margin: 0 0 8px;
 }

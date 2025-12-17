@@ -11,7 +11,7 @@
 <ng-container *ngIf="!loading && !error;">
     <div class="valuate-container">
       <section class="top-card">
-        <h1>{{ stockInfo.name }}</h1>
+        <h1 class="stockname">{{ stockInfo.name }}</h1>
         <h4>{{ ticker }} * {{ exchange }}</h4>
         <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(stockInfo.price) }}</h1>
         <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(stockInfo.price) }}</h1>
@@ -19,7 +19,7 @@
 
       <app-tabs>
         <app-tab title="{{valuationOverviewLabel}}">
-          <div *ngIf="valuation.avgGrowth === null">
+          <div *ngIf="valuation.avgGrowth === null || stockInfo.epsTtm === null">
             <h2 style="color: grey;">{{ noValuationData }}</h2>
           </div>
 
@@ -79,7 +79,7 @@
 
               <section class="card">
                 <h2>{{ howFairPriceWasCalulated }}</h2>
-                <h1>{{ valuation.formula }}</h1>
+                <h1 class="formula">{{ valuation.formula }}</h1>
                 <p>{{ formulaLabel }}</p>
                 <p class="explanation">{{ formulaExplanationLabel }}</p>
                 <p class="explanation">{{ maxGrowthRateNote }}</p>
@@ -88,11 +88,11 @@
               <!-- Historical profit -->
               <section *ngIf="valuation.netProfitHistory.length > 0" class="card">
                 <h2>{{ netProfitGrowthLabel }}</h2>
-                <p><strong>{{ averageIncomeGrowthLabel }}</strong></p>
+                <!--p><strong>{{ averageIncomeGrowthLabel }}</strong></p-->
                 <ul>
-                  <li><strong>{{ valuation.avgGrowth.fiveYears }}%</strong> - {{ averageFiveYearsGrowth }}</li>
-                  <li><strong>{{ valuation.avgGrowth.threeYears }}%</strong> - {{ averageThreeYearsGrowth }}</li>
-                  <li><strong>{{ valuation.avgGrowth.ttm }}%</strong> - {{ averageIncomeGrowthTtm }}</li>
+                  <li><strong>{{ mathRounding(valuation.avgGrowth.fiveYears) }}%</strong> - {{ averageFiveYearsGrowth }}</li>
+                  <li><strong>{{ mathRounding(valuation.avgGrowth.threeYears) }}%</strong> - {{ averageThreeYearsGrowth }}</li>
+                  <li><strong>{{ mathRounding(valuation.avgGrowth.ttm) }}%</strong> - {{ averageIncomeGrowthTtm }}</li>
                 </ul>
                 <p>{{ growthRateCalcExplanation }}</p>
                 <div class="table-wrapper">
@@ -189,13 +189,15 @@
             <div class="info-grid">
               <div>
                 <h3>{{ sectorLabel }}</h3>
-                <p *ngIf="pageLanguage === 'ru'">{{ stockInfo.sectorRu }}</p>
-                <p *ngIf="pageLanguage === 'en'">{{ stockInfo.sector }}</p>
+                <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange === 'MOEX'">{{ stockInfo.sectorRu }}</p>
+                <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.sector }}</p>
+                <p *ngIf="pageLanguage === 'en' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.sector }}</p>
               </div>
               <div>
                 <h3>{{ industryLabel }}</h3>
-                <p *ngIf="pageLanguage === 'ru'">{{ stockInfo.industryRu }}</p>
-                <p *ngIf="pageLanguage === 'en'">{{ stockInfo.industry }}</p>
+                <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange === 'MOEX'">{{ stockInfo.industryRu }}</p>
+                <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.industry }}</p>
+                <p *ngIf="pageLanguage === 'en' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.industry }}</p>
               </div>
             </div>
           </section>

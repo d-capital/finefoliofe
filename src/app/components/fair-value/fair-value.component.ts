@@ -34,7 +34,7 @@ export class FairValueComponent implements OnInit {
         {
           image: "eps.png",
           title: "Базовая прибыль на акцию (EPS)",
-          subtitle: "EPS",
+          subtitle: "—",
           description: "Мы применяем коэффициент Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) в формуле Питера Линча."
         },
         {
@@ -47,7 +47,7 @@ export class FairValueComponent implements OnInit {
           image: "blog-preview/peg.png",
           title: "Цена акции / прибыль на акцию (PEG)",
           subtitle: "—",
-          description: "Для простоты расчета значение коэффициента Цена акции / прибыль на акцию (PEG, Price / Earnings to Growth Ratio) равно 1."
+          description: "Питер Линч популяризировал коэффициент Цена акции / рост прибыли на акцию (PEG, Price / Earnings to Growth Ratio). С помощью него оценивается насколько акция недооценена или переоценена с учетом прогнозируемого темпа роста прибыли компании. Для простоты расчета коэффициент Цена акции / прост прибыли на акцию (PEG) по умолчанию равен значению '1'."
         },
         {
           image: "finalru.png",
@@ -81,7 +81,7 @@ export class FairValueComponent implements OnInit {
           image: "blog-preview/peg.png",
           title: "Stock price / EPS (PEG)",
           subtitle: "—",
-          description: "For ease of calculation, the Price/Earnings to Growth Ratio (PEG) is equal to 1."
+          description: "Peter Lynch popularized the price-to-earnings-growth (PEG) ratio. This measure determines whether a stock is currently undervalued or overvalued based on the company's projected earnings growth rate. To simplify calculations, the PEG ratio is set to '1' by default."
         },
         {
           image: "final.png",

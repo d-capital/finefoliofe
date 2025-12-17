@@ -72,7 +72,7 @@ export class ValuateComponent implements OnInit{
   epsTtmLabelCompanyInfo:string = "EPS (TTM)";
 
   peTtmLabel:string = "P/E (TTM)";
-  peTtmLabelRu:string = "Цена/прибыль (P/E TTM)";
+  peTtmLabelRu:string = "Цена / прибыль (P/E TTM)";
   peTtmLabelEn:string = "Price to earnings ratio (P/E TTM)";
 
   dividendsYieldLabel:string = "Dividend Yield";
@@ -126,16 +126,16 @@ export class ValuateComponent implements OnInit{
   averageIncomeGrowthLabelEn: string = "Average Growth:";
 
   averageIncomeGrowthTtm:string = "TTM: ";
-  averageIncomeGrowthTtmRu:string = "темп роста чистой прибыли (Net Income) за 1 год";
-  averageIncomeGrowthTtmEn:string = "trailing 12 month Net Income growth rate (TTM)";
+  averageIncomeGrowthTtmRu:string = "темп роста чистой прибыли (Net Income) за 1 год.";
+  averageIncomeGrowthTtmEn:string = "trailing 12 month Net Income growth rate (TTM).";
 
   averageThreeYearsGrowth:string = "3 Years: ";
-  averageThreeYearsGrowthRu:string = "темп роста чистой прибыли (Net Income) за 3 года";
-  averageThreeYearsGrowthEn:string = "3 years Net Income growth rate";
+  averageThreeYearsGrowthRu:string = "темп роста чистой прибыли (Net Income) за 3 года.";
+  averageThreeYearsGrowthEn:string = "3 years Net Income growth rate.";
 
   averageFiveYearsGrowth:string = "5 Years: ";
-  averageFiveYearsGrowthRu:string = "темп роста чистой прибыли (Net Income) за 5 лет";
-  averageFiveYearsGrowthEn:string = "5 years Net Income growth rate";
+  averageFiveYearsGrowthRu:string = "темп роста чистой прибыли (Net Income) за 5 лет.";
+  averageFiveYearsGrowthEn:string = "5 years Net Income growth rate.";
 
   //lynch explanation
   aboutLynchFormulaLabel:string = "About Lynch Formula";
@@ -143,8 +143,8 @@ export class ValuateComponent implements OnInit{
   aboutLynchFormulaLabelEn:string = "About Lynch Formula";
 
   aboutLynchFormulaText:string = "The Lynch model helps estimate a stock's fair price based on earnings and growth expectations. It is often used by value investors to determine whether a stock is undervalued or overvalued.";
-  aboutLynchFormulaTextRu:string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча.<br>Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per share) * Цена акции / прибыль на акцию (PEG).<br>Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный как арифметическое среднее за соответствующий период.<br>Базовая прибыль на акцию (EPS, Earnings per share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months). Цена акции / прибыль на акцию (PEG, Price / Earnings to Growth Ratio) - это деление коэффициента Цена / прибыль (P / E, Price / Earnings Ratio) на прогнозируемый будущий темп роста прибыли компании (Earnings Growth Rate). Для простоты расчета коэффициент PEG по умолчанию равен значению '1'";
-  aboutLynchFormulaTextEn:string = "We calculate the fair value of a share using the following version of Peter Lynch's formula.<br>Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per share) * Price/Earnings Growth (PEG).<br>Earnings Growth Rate is the growth of net income over the past 5 years, calculated as arithmetic average.<br>Basic Earnings per Share (EPS, Earnings per share) in our version of the formula is basic earnings per share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months).PEG, Price / Earnings to Growth Ratio is result of division of P/E (Price / Earnings Ratio) by Earnings Growth Rate. For simplification we use PEG equal to '1'";
+  aboutLynchFormulaTextRu:string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча.<br>Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per share) * Цена акции / прибыль на акцию (PEG).<br>Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный как арифметическое среднее за соответствующий период.<br>Базовая прибыль на акцию (EPS, Earnings per share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months). Цена акции / рост прибыли на акцию (PEG, Price / Earnings to Growth Ratio) - это деление коэффициента Цена / прибыль (P / E, Price / Earnings Ratio) на прогнозируемый будущий темп роста прибыли компании (Earnings Growth Rate). Для простоты расчета коэффициент Цена акции / рост прибыли на акцию (PEG) по умолчанию равен значению '1'.";
+  aboutLynchFormulaTextEn:string = "We calculate the fair value of a share using the following version of Peter Lynch's formula.<br>Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per share) * Price/Earnings Growth (PEG).<br>Earnings Growth Rate is the growth of net income over the past 5 years, calculated as arithmetic average.<br>Basic Earnings per Share (EPS, Earnings per share) in our version of the formula is basic earnings per share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months).The Price/Earnings to Growth Ratio (PEG) is the Price/Earnings Ratio (P/E) divided by the company's projected future earnings growth rate (Earnings Growth Rate). For ease of calculation, the PEG ratio is set to '1' by default.";
 
   undervaluedLabel:string = "Undervalued";
   undervaluedLabelRu:string = "Недооценена";
@@ -160,9 +160,9 @@ export class ValuateComponent implements OnInit{
   fairPriceExplanation: string = "";
   howFairPriceWasCalulated: string = "";
 
-  growthRateCalcExplanation: string = "Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет посчтитаны как арифметическое среднее за соответсвующие периоды";
-  growthRateCalcExplanationRu: string = "Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет посчтитаны как арифметическое среднее за соответсвующие периоды";
-  growthRateCalcExplanationEn: string = "Net Income growth rate for 1, 3, 5 last years calculated as arithmetic average for the given period";
+  growthRateCalcExplanation: string = "Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет посчтитаны как арифметическое среднее за соответсвующие периоды.";
+  growthRateCalcExplanationRu: string = "Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет посчтитаны как арифметическое среднее за соответсвующие периоды.";
+  growthRateCalcExplanationEn: string = "Net Income growth rate for 1, 3, 5 last years calculated as arithmetic average for the given period.";
 
   metricLabel: string = "Metric";
   metricLabelRu: string = "Показатель";
@@ -180,12 +180,12 @@ export class ValuateComponent implements OnInit{
   epsTtmExplanation: string = "";
 
   pegLabel:string = "PEG";
-  pegLabelRu:string = "Цена акции и прибыль к росту прибыли (PEG)";
+  pegLabelRu:string = "Цена акции к росту прибыли на акцию (PEG)";
   pegLabelEn:string = "Price / Earnings / Growth Ration (PEG)";
 
-  pegExplanation:string = "PEG is set to '1' for simplification of calculation";
-  pegExplanationRu:string = "Коэффициент PEG для простоты расчета по умолчанию равен значению '1'";
-  pegExplanationEn:string = "PEG is set to '1' for simplification of calculation";
+  pegExplanation:string = "For ease of calculation, the Price/Earnings to Growth Ratio (PEG) is set to 1 by default.";
+  pegExplanationRu:string = "Коэффициент Цена акции / рост прибыли на акцию (PEG, Price / Earnings to Growth Ratio) для простоты расчета по умолчанию равен значению '1'.";
+  pegExplanationEn:string = "For ease of calculation, the Price/Earnings to Growth Ratio (PEG) is set to 1 by default.";
 
   mainStockData:string = "About company";
   mainStockDataRu:string = "О компании";
@@ -403,6 +403,15 @@ export class ValuateComponent implements OnInit{
   uiRounding(value:number): string{
     if (value !== null){
       return (value).toFixed(2);
+    }
+    else{
+      return "-"
+    }
+  }
+
+  mathRounding(value:number): string{
+    if (value !== null){
+      return (value).toFixed(0);
     }
     else{
       return "-"

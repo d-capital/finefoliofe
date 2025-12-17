@@ -1,6 +1,7 @@
 .faq-section {
   padding: 60px 20px;
   text-align: center;
+  margin-top: 30px;
 }
 
 .faq-section h2 {
@@ -43,7 +44,7 @@
 .faq-answer {
   margin-top: 10px;
   font-size: 15px;
-  color: #333;
+  color: #000000;
   line-height: 1.6;
 }
 
@@ -51,4 +52,11 @@ hr {
   border: none;
   border-top: 1px solid #ddd;
   margin: 15px 0 0;
+}
+
+
+@media (max-width:768px){
+  .faq-section {
+    margin-top: 0px;
+  }
 }

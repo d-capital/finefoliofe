@@ -18,6 +18,7 @@
   color: #000000;
   font-size: 1rem;
   outline: none;
+  font-family: "Montserrat", sans-serif;
 }
 
 .dropdown {
@@ -63,7 +64,7 @@
 }
 
 .dropdown li:hover {
-  background-color: #bcbcbc;
+  background-color: #f5f5f5;
 }
 .dropdown li.selected {
   background-color: #bcbcbc;

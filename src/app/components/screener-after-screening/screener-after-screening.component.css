@@ -1,3 +1,7 @@
+.after-screening-section{
+  margin-top: 50px;
+}
+
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -36,4 +40,10 @@
   font-size: 15px;
   color: #000000;
   line-height: 1.5;
+}
+
+@media (max-width:768px) {
+    .after-screening-section{
+    margin-top: 0px;
+  }
 }

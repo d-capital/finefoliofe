@@ -19,7 +19,7 @@ export class StockCardComponent {
 
    formatValue(value:number): string {
     if (this.value !== null){
-      var val = (this.value).toFixed(2)
+      var val = (Math.floor(this.value)).toFixed(0)
       if (value > 0){
         return "+"+ val + "%";
       }else{
