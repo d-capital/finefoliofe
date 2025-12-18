@@ -192,12 +192,14 @@
                 <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange === 'MOEX'">{{ stockInfo.sectorRu }}</p>
                 <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.sector }}</p>
                 <p *ngIf="pageLanguage === 'en' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.sector }}</p>
+                <p *ngIf="pageLanguage === 'en' && stockInfo.exchange === 'MOEX'">{{ stockInfo.sector }}</p>
               </div>
               <div>
                 <h3>{{ industryLabel }}</h3>
                 <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange === 'MOEX'">{{ stockInfo.industryRu }}</p>
                 <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.industry }}</p>
                 <p *ngIf="pageLanguage === 'en' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.industry }}</p>
+                <p *ngIf="pageLanguage === 'en' && stockInfo.exchange === 'MOEX'">{{ stockInfo.industry }}</p>
               </div>
             </div>
           </section>
