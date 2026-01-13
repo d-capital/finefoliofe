@@ -20,6 +20,13 @@ export class ValuationService {
     return this.http.get(this.getValuationUrl+exchange+"/"+ticker,
       {headers: headers}).pipe(catchError(this.erroHandler));
   }
+  public getDcfValuation(ticker:string, exchange: string): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.get(this.getValuationUrl+"dcf/"+exchange+"/"+ticker,
+      {headers: headers}).pipe(catchError(this.erroHandler));
+  }
   erroHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'server Error');
   }

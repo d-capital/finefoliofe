@@ -1,6 +1,7 @@
-import { Component, ContentChildren, QueryList, AfterContentInit } from '@angular/core';
+import { Component, ContentChildren, QueryList, AfterContentInit, Optional, Host } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
 import { NgFor } from '@angular/common';
+import { ValuateComponent } from '../valuate/valuate.component';
 @Component({
   selector: 'app-tabs',
   imports: [NgFor],
@@ -9,6 +10,7 @@ import { NgFor } from '@angular/common';
 })
 export class TabsComponent implements AfterContentInit {
   @ContentChildren(TabComponent) tabs!: QueryList<TabComponent>;
+  constructor(@Optional() @Host() private parent: ValuateComponent) {}
 
   ngAfterContentInit() {
     // Активируем первую вкладку по умолчанию
@@ -27,5 +29,8 @@ export class TabsComponent implements AfterContentInit {
     
     // Активируем выбранную вкладку
     selectedTab.active = true;
+    if(selectedTab.name === "dcf_valuation"){
+       this.parent.getDcfValuation();
+    }
   }
 }
