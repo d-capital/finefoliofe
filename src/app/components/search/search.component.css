@@ -69,3 +69,65 @@
 .dropdown li.selected {
   background-color: #bcbcbc;
 }
+
+.exchange-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  overflow-x: auto;
+}
+
+.exchange-selector button {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  background-color: #f0f0f0;
+  color: #333;
+
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.exchange-selector button:hover {
+  background-color: #e2e2e2;
+}
+
+.exchange-selector button.active {
+  background-color: #1c1c1c;
+  color: #eaeaea;
+}
+
+/* SVG icon */
+.exchange-selector .icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.75;
+}
+
+/* active icon */
+.exchange-selector button.active .icon {
+  opacity: 1;
+  filter: brightness(1.3);
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+  .exchange-selector button {
+    padding: 0.45rem;
+  }
+
+  .exchange-selector .label {
+    display: none;
+  }
+
+  .exchange-selector .icon {
+    width: 18px;
+    height: 18px;
+  }
+}

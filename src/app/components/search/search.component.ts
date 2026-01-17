@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, HostListener, OnInit,EventEmitter,Output } from '@angular/core';
+import { Component, HostListener, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrl: './search.component.css'
 })
 export class SearchComponent implements OnInit {
-    @Output() close = new EventEmitter<void>();
-    assets: string[] = [
+  @Output() close = new EventEmitter<void>();
+  assets: string[] = [
     "NASDAQ:AACB:Artius II Acquisition Inc. Class A Ordinary Shares",
     "NASDAQ:AACBR:Artius II Acquisition Inc. Rights",
     "NASDAQ:AACBU:Artius II Acquisition Inc. Units",
@@ -6971,12 +6971,12 @@ export class SearchComponent implements OnInit {
     "MOEX:GAZT:ГАЗ-Тек ао",
     "MOEX:KGKC:КурганГКао",
     "MOEX:MGNZ:СМЗ-ао"
-];
+  ];
   filteredPairs: string[] = [...this.assets];
   searchValue: string = '';
   showDropdown = false;
   selectedIndex: number = -1;
-  pairsToShow: string[]=[
+  pairsToShow: string[] = [
     "NASDAQ:TSLA:Tesla Inc. Common Stock",
     "NASDAQ:COST:Costco Wholesale Corporation Common Stock",
     "NASDAQ:AAPL:Apple Inc. Common Stock",
@@ -6985,18 +6985,26 @@ export class SearchComponent implements OnInit {
   ];
 
   //localization
-    placeholder:string = "Enter stock ticker";
-    placeholderEn:string = "Enter stock ticker";
-    placeholderRu:string = "Введите тикер акции";
+  placeholder: string = "Enter stock ticker";
+  placeholderEn: string = "Enter stock ticker";
+  placeholderRu: string = "Введите тикер акции";
+  exchanges = [
+    { code: 'ALL', label: 'All', icon: 'exchanges/all.svg' },
+    { code: 'NASDAQ', label: 'NASDAQ', icon: 'exchanges/nasdaq.svg' },
+    { code: 'NYSE', label: 'NYSE', icon: 'exchanges/nyse.svg' },
+    { code: 'MOEX', label: 'MOEX', icon: 'exchanges/moex.svg' }
+  ];
+
+  selectedExchange = 'ALL';
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     var language = localStorage.getItem('language');
-    if(language == 'ru'){
+    if (language == 'ru') {
       this.placeholder = this.placeholderRu;
     }
-    else{
+    else {
       this.placeholder = this.placeholderEn;
     }
     var currentPairsHistory = localStorage.getItem('pairsHistory')
@@ -7012,9 +7020,20 @@ export class SearchComponent implements OnInit {
     }
   }
   onInputChange(): void {
-    this.filteredPairs = this.assets.filter(asset =>
-      asset.toLowerCase().includes(this.searchValue.toLowerCase())
-    ).slice(0,10);
+    this.filteredPairs = this.assets
+      .filter(asset => {
+        const matchesText = asset
+          .toLowerCase()
+          .includes(this.searchValue.toLowerCase());
+
+        const matchesExchange =
+          this.selectedExchange === 'ALL' ||
+          asset.startsWith(this.selectedExchange + ':');
+
+        return matchesText && matchesExchange;
+      })
+      .slice(0, 10);
+
     this.selectedIndex = -1;
     this.showDropdown = true;
   }
@@ -7042,9 +7061,9 @@ export class SearchComponent implements OnInit {
     var exchange = splitted[0];
     var name = splitted[2];
     this.router.navigate(['/valuate', exchange, ticker])
-    .then(() => {
-      window.location.reload();
-    });
+      .then(() => {
+        window.location.reload();
+      });
   }
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent): void {
@@ -7060,7 +7079,7 @@ export class SearchComponent implements OnInit {
     this.showDropdown = true;
   }
 
-   onKeyDown(event: KeyboardEvent): void {
+  onKeyDown(event: KeyboardEvent): void {
     if (!this.showDropdown) return;
 
     if (event.key === 'ArrowDown') {
@@ -7096,5 +7115,10 @@ export class SearchComponent implements OnInit {
       this.pairsToShow.pop();
     }
     localStorage.setItem('pairsHistory', JSON.stringify(this.pairsToShow));
+  }
+
+  selectExchange(exchange: string): void {
+    this.selectedExchange = exchange;
+    this.onInputChange();
   }
 }

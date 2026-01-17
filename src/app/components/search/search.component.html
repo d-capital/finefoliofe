@@ -1,17 +1,17 @@
 <div class="search-container">
-  <input
-    type="text"
-    [(ngModel)]="searchValue"
-    (input)="onInputChange()"
-    (keydown.enter)="onEnter()"
-    (focus)="onFocus()"
-    (keydown)="onKeyDown($event)"
-    placeholder="{{ placeholder }}"
-    class="search-input"
-  />
+  <div class="exchange-selector">
+    <button *ngFor="let ex of exchanges" (click)="selectExchange(ex.code)"
+      [class.active]="ex.code === selectedExchange">
+      <img class="icon" [src]="ex.icon" [alt]="ex.label" />
+      <span class="label">{{ ex.label }}</span>
+    </button>
+  </div>
+  <input type="text" [(ngModel)]="searchValue" (input)="onInputChange()" (keydown.enter)="onEnter()" (focus)="onFocus()"
+    (keydown)="onKeyDown($event)" placeholder="{{ placeholder }}" class="search-input" />
 
   <ul class="dropdown" *ngIf="showDropdown">
-    <li *ngFor="let pair of filteredPairs; let i = index" (click)="onSelect(pair) " [class.selected]="i === selectedIndex">
+    <li *ngFor="let pair of filteredPairs; let i = index" (click)="onSelect(pair) "
+      [class.selected]="i === selectedIndex">
       {{ pair }}
     </li>
   </ul>
