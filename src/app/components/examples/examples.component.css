@@ -67,3 +67,23 @@
   color: #00ff66;
   font-weight: 600;
 }
+
+.undervalued {
+  color: #059669; /* green */
+  font-weight: normal;
+}
+
+.overvalued {
+  color: #dc2626; /* red */
+  font-weight: normal;
+}
+
+.stockcardlink{
+  color: #ffffff;
+  transition: color 0.2s ease;
+  text-align: center;
+}
+
+.stockcardlink:hover{
+  color: #c9c9c9;
+}

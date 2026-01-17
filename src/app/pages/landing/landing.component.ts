@@ -5,6 +5,7 @@ import { FaqComponent } from '../../components/faq/faq.component';
 import { ValuationHeroComponent } from '../../components/valuation-hero/valuation-hero.component';
 import { ScreenerAfterScreeningComponent } from '../../components/screener-after-screening/screener-after-screening.component';
 import { Title, Meta } from '@angular/platform-browser';
+import { ExamplesComponent } from '../../components/examples/examples.component';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { Title, Meta } from '@angular/platform-browser';
     HowItWorksComponent,
     FairValueComponent,
     FaqComponent,
-    ScreenerAfterScreeningComponent
+    ScreenerAfterScreeningComponent, 
+    ExamplesComponent
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
