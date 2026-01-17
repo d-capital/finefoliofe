@@ -46,3 +46,24 @@
 .red {
   background-color: #D30000;
 }
+
+@media (max-width: 480px) {
+  .card {
+    width: auto;        /* or 100% */
+    max-width: 100px;   /* optional */
+    padding: 14px 18px;
+  }
+
+  .card .percent {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.0;
+  }
+
+  .card .label {
+    font-size: 8px;
+    opacity: 0.9;
+    line-height: 1.0;
+  }
+
+}
