@@ -7,9 +7,6 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
 }
-p{
-  margin-left: 0.7%;
-}
 
 .footer-container {
   display: grid;
@@ -20,14 +17,13 @@ p{
 
 .footer-logo img {
   width: 100px;
-  height: 30px;
+  height: 20px;
   margin-bottom: 0.5rem;
 }
 
 .footer-logo .tagline {
   font-size: 0.9rem;
   color: #000000;
-  margin-left: 0.7%;
 }
 
 .footer-links h4,
@@ -119,4 +115,18 @@ p{
   background-color: #f3f4f6;
   color: #9ca3af;
   cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+
+  .footer {
+    background: #ffffff; /* dark slate */
+    color: #000000; /* light gray */
+    padding: 0rem;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+  }
+  
 }
