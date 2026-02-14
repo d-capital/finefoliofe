@@ -28,19 +28,19 @@ export class ExamplesComponent implements OnInit {
       this.title = "Примеры";
       this.subtitle = "Изучите нашу коллекцию идей.";
       this.examples = [
-        { company: "Cбербанк", ticker: "SBER", upside: 506, status: "Undervalued", link: "/valuate/MOEX/SBER"},
-        { company: "Мать и Дитя", ticker: "MDMG", upside: 78, status: "Undervalued", link: "/valuate/MOEX/MDMG" },
-        { company: "ИНАРКТИКА", ticker: "AQUA", upside: 499, status: "Undervalued", link: "/valuate/MOEX/AQUA" },
-        { company: "X5", ticker: "X5", upside: 293, status: "Undervalued", link: "/valuate/MOEX/X5" }
+        { company: "Pfizer, Inc.", ticker: "PFE", upside: 68, status: "Undervalued", link: "/securities/NYSE-PFE"},
+        { company: "Block, Inc.", ticker: "XYZ", upside: 93, status: "Undervalued", link: "/securities/NYSE-XYZ" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 6, status: "Undervalued", link: "/securities/NYSE-NVO" },
+        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Undervalued", link: "/securities/NASDAQ-COKE" }
       ];
     } else {
       this.title = "Examples";
       this.subtitle = "Explore our collection of ideas.";
       this.examples = [
-        { company: "Pfizer, Inc.", ticker: "PFE", upside: 68, status: "Undervalued", link: "/valuate/NYSE/PFE"},
-        { company: "Block, Inc.", ticker: "XYZ", upside: 93, status: "Undervalued", link: "/valuate/NYSE/XYZ" },
-        { company: "Novo Nordisk", ticker: "NVO", upside: 6, status: "Undervalued", link: "/valuate/NYSE/NVO" },
-        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Undervalued", link: "/valuate/NASDAQ/COKE" }
+        { company: "Pfizer, Inc.", ticker: "PFE", upside: 68, status: "Undervalued", link: "/securities/NYSE-PFE"},
+        { company: "Block, Inc.", ticker: "XYZ", upside: 93, status: "Undervalued", link: "/securities/NYSE-XYZ" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 6, status: "Undervalued", link: "/securities/NYSE-NVO" },
+        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Undervalued", link: "/securities/NASDAQ-COKE" }
       ];
     }
   }

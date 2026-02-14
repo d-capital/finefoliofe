@@ -7060,7 +7060,7 @@ export class SearchComponent implements OnInit {
     var ticker = splitted[1];
     var exchange = splitted[0];
     var name = splitted[2];
-    this.router.navigate(['/valuate', exchange, ticker])
+    this.router.navigate(['/securities', exchange + '-' +  ticker])
       .then(() => {
         window.location.reload();
       });

@@ -12,7 +12,7 @@ import { ArticlelistComponent } from './components/articlelist/articlelist.compo
 export const routes: Routes = [
     { path: '', component: LandingComponent },
     { path: 'valuation', component: ValuationComponent },
-    { path: 'valuate/:exchange/:ticker', component:ValuateComponent},
+    { path: 'securities/:exchange-ticker', component:ValuateComponent},
     { path: 'screener', component:ScreenerComponent },
     { path:'about', component: AboutComponent },
     { path:'article/:id', component: ArticleComponent},

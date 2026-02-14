@@ -40,7 +40,7 @@
             <tbody>
                 <tr *ngFor="let r of results">
                     <!--td>{{r.id}}</td-->
-                    <td><a href="/valuate/{{r.exchange}}/{{r.ticker}}">{{r.company}}</a></td>
+                    <td><a href="/securities/{{r.exchange}}-{{r.ticker}}">{{r.company}}</a></td>
                     <td>{{r.ticker}}</td>
                     <td *ngIf="r.fairPrice && r.price && r.result=='Overvalued'"style="width: 100px;">📉 ({{ roundAndConvertToPercent(r.fairPrice/r.price) }}%)</td>
                     <td *ngIf="r.fairPrice && r.price && r.result=='Undervalued'"style="width: 100px;">📈 ({{ roundAndConvertToPercent(r.fairPrice/r.price) }}%)</td>
