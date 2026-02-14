@@ -196,7 +196,7 @@ export class ValuateComponent implements OnInit {
   finanacialOverviewLabelEn: string = "Financials";
 
   noValuation: string = "Valuation is not possible because of negatvie growth values."
-  noValuationRu: string = "Оценка невозможна из-за отрицательных знчений роста прибыли."
+  noValuationRu: string = "Оценка невозможна из-за отрицательных значений роста прибыли."
   noValuationEn: string = "Valuation is not possible because of negatvie growth values."
 
   noValuationData: string = "Valuation is not possible because of missing data."
