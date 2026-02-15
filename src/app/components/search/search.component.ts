@@ -7051,7 +7051,7 @@ export class SearchComponent implements OnInit {
       this.onSelect(this.filteredPairs[this.selectedIndex]);
     } else {
       this.showDropdown = false;
-      this.navigateToPair(this.searchValue);
+      this.navigateToPair(this.filteredPairs[0]);
     }
   }
 
