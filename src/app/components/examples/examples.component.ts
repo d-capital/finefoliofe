@@ -28,10 +28,10 @@ export class ExamplesComponent implements OnInit {
       this.title = "Примеры";
       this.subtitle = "Изучите нашу коллекцию идей.";
       this.examples = [
-        { company: "Pfizer, Inc.", ticker: "PFE", upside: 68, status: "Undervalued", link: "/securities/NYSE-PFE"},
-        { company: "Block, Inc.", ticker: "XYZ", upside: 93, status: "Undervalued", link: "/securities/NYSE-XYZ" },
-        { company: "Novo Nordisk", ticker: "NVO", upside: 6, status: "Undervalued", link: "/securities/NYSE-NVO" },
-        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Undervalued", link: "/securities/NASDAQ-COKE" }
+        { company: "Pfizer, Inc.", ticker: "PFE", upside: 68, status: "Недооценена", link: "/securities/NYSE-PFE"},
+        { company: "Block, Inc.", ticker: "XYZ", upside: 93, status: "Недооценена", link: "/securities/NYSE-XYZ" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 6, status: "Недооценена", link: "/securities/NYSE-NVO" },
+        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Недооценена", link: "/securities/NASDAQ-COKE" }
       ];
     } else {
       this.title = "Examples";
