@@ -68,8 +68,8 @@ export class FairValueComponent implements OnInit {
         {
           image: "eps.png",
           title: "Basic earnings per share, EPS",
-          subtitle: "EPS",
-          description: "Мы применяем коэффициент Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) в формуле Питера Линча."
+          subtitle: "—",
+          description: "We use the Earnings per share Trailing Twelve Months (EPS TTM) ratio in Peter Lynch's formula."
         },
         {
           image: "growth.png",
