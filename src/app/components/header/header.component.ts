@@ -46,6 +46,7 @@ export class HeaderComponent implements OnInit {
   searchOpen = false;
   selectedValue: string | null = null;
   selectedLanguage!: string|undefined;
+  pageLanguage: string = "en";
   langMap = new Map<string, string>();
   constructor(private router: Router){
     this.langMap.set("en", "en");
@@ -54,6 +55,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedValue  = localStorage.getItem("language") ? localStorage.getItem("language"):"en";
+    this.pageLanguage = this.selectedValue ? this.selectedValue.toString() : "en";
     var langCode = this.selectedValue ? this.selectedValue.toString() : "en";
     this.selectedLanguage = this.langMap.get(langCode);
     var language = localStorage.getItem('language');

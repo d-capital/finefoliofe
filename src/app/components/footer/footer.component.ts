@@ -1,9 +1,10 @@
+import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterModule],
+  imports: [RouterModule, NgIf],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })
@@ -43,12 +44,15 @@ export class FooterComponent implements OnInit {
   navLinkScreenerLabelRu: string = "Скриннер";
   navLinkScreenerLabelEn: string = "Screener";
 
+  pageLanguage: string = "en";
+
   constructor(){
      this.langMap.set("en", "English");
      this.langMap.set("ru", "Русский");
   }
   ngOnInit(): void {
     this.selectedValue  = localStorage.getItem("language") ? localStorage.getItem("language"):"en";
+    this.pageLanguage = this.selectedValue ? this.selectedValue.toString() : "en";
     var langCode = this.selectedValue ? this.selectedValue.toString() : "en";
     this.selectedLanguage = this.langMap.get(langCode);
     var language = localStorage.getItem('language');

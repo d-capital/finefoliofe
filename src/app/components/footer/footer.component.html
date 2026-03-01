@@ -2,7 +2,8 @@
     <div class="footer-container">
         <!-- Logo -->
         <div class="footer-logo">
-            <img src="logo.png" alt="Site Logo" />
+            <img *ngIf="pageLanguage == 'en'" src="logo.png" alt="Site Logo" />
+            <img *ngIf="pageLanguage == 'ru'" src="logoru.png" alt="Site Logo" />
             <p class="tagline">hello&#64;valestor.com</p>
         </div>
         <!-- Site Links -->

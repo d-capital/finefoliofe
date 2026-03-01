@@ -25,7 +25,7 @@ export class ScreenerAfterScreeningComponent implements OnInit{
       this.title = "What to Do After Valuation";
       this.steps = [
         { number: 1, title: "Do your own research", description: "\"Always do your homework\", said Peter Lynch. Conduct your own research. He claimed that two hours is enough to research each company. For example, it's helpful to understand whether the company has a market moat compared to competitors in its industry, the reasons for its profit growth, the sustainability or instability of profit growth, the level of debt, the size of dividends and cash flow, the proportion of institutional investors, and whether insiders are buying shares."},
-        { number: 2, title: "Find out the fair value estimate using other valuation methods", description: "Apply other methods of estimating fair value, such as discounted cash flow (DCF) and relative analysis." },
+        { number: 2, title: "Calculate the fair value through different valuation methodologies", description: "Consider other ways to determine the fair value, such as discounted cash flow (DCF), relative analysis." },
       ];
     }
   }
