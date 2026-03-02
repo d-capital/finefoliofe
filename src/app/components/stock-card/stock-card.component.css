@@ -6,7 +6,7 @@
   color: white;
   padding: 20px 30px;
   border-radius: 8px;
-  width: 200px; /* Увеличен для теста */
+  width:200px; /* Увеличен для теста */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   font-weight: 500;
   /* Для отладки — временно */
@@ -47,21 +47,21 @@
   background-color: #D30000;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1000px) {
   .card {
     width: auto;        /* or 100% */
-    max-width: 100px;   /* optional */
     padding: 14px 18px;
+    height: 100px;
   }
 
   .card .percent {
-    font-size: 12px;
+    font-size: 30px;
     font-weight: 400;
-    line-height: 1.0;
+    line-height: 1.5;
   }
 
   .card .label {
-    font-size: 8px;
+    font-size: 14px;
     opacity: 0.9;
     line-height: 1.0;
   }
