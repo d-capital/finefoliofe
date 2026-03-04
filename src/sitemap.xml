@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org">
   <url>
     <!-- Полный адрес страницы -->
-    <loc>https://www.fine-folio.ru</loc> 
+    <loc>https://valestor.com</loc> 
     
     <!-- Дата последнего изменения (помогает роботу понять, пора ли переиндексировать страницу) -->
-    <lastmod>2026-01-17</lastmod>
+    <lastmod>2026-03-04</lastmod>
     
     <!-- Частота обновлений (параметр носит рекомендательный характер) -->
     <changefreq>monthly</changefreq>

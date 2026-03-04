@@ -9,18 +9,20 @@ import { SearchComponent } from '../search/search.component';
   styleUrl: './valuation-hero.component.css'
 })
 export class ValuationHeroComponent implements OnInit {
-  title:string = "Peter Lynch Method";
+  title:string = "Peter Lynch Fair Value Calculator";
   subtitle:string = "Invest like Peter Lynch. Find out the fair value of a stock using Peter Lynch's formula. Before buying or selling a stock, find out whether it's undervalued or overvalued to make smart investment decisions.";
 
   titleRu: string = "Метод Питера Линча";
   subtitleRu: string = "Инвестируй, как Питер Линч. Узнай справедливую стоимость акции по формуле Питера Линча. Перед тем как покупать или продавать акцию выясни оценки недооцененности или переоцененности, потенциал роста или снижения, чтобы принимать разумные инвестиционные решения";
   
-  titleEn: string = "Peter Lynch Method";
+  titleEn: string = "Peter Lynch Fair Value Calculator";
   subtitleEn: string = "Invest like Peter Lynch. Find out the fair value of a stock using Peter Lynch's formula. Before buying or selling a stock, find out whether it's undervalued or overvalued to make smart investment decisions.";
 
+  pageLanguage:string = 'en';
 
   ngOnInit(): void {
     var language = localStorage.getItem('language');
+    this.pageLanguage = language ? language : 'en';
     if(language == 'ru'){
       this.title = this.titleRu;
       this.subtitle = this.subtitleRu;
