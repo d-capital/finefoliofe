@@ -10,7 +10,7 @@
     (keydown)="onKeyDown($event)" placeholder="{{ placeholder }}" class="search-input" />
 
   <ul class="dropdown" *ngIf="showDropdown">
-    <li *ngFor="let pair of filteredPairs; let i = index" (click)="onSelect(pair) "
+    <li onclick="ym(106716051,'reachGoal','selected_ticker')" *ngFor="let pair of filteredPairs; let i = index" (click)="onSelect(pair) "
       [class.selected]="i === selectedIndex">
       {{ pair }}
     </li>
