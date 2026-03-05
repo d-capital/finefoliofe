@@ -2,7 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, HostListener, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
+declare var ym: any;
 @Component({
   selector: 'app-search',
   imports: [NgFor, NgIf, FormsModule],
@@ -20920,6 +20920,7 @@ export class SearchComponent implements OnInit {
 
   pageLanguage: string = localStorage.getItem('language') || 'en';
   lang: string = this.pageLanguage === 'ru' ? 'ru' : 'en';
+  
 
   constructor(private router: Router) { }
 
@@ -20986,6 +20987,7 @@ export class SearchComponent implements OnInit {
     var ticker = splitted[1].toLocaleLowerCase();
     var exchange = splitted[0].toLocaleLowerCase();
     var name = splitted[2];
+    ym(106716051,'reachGoal','selected_ticker')
     this.router.navigate(['/'.concat(this.lang).concat('/stocks/').concat(exchange).concat('-').concat(ticker).concat('/peter-lynch-fair-value-calculator')])
       .then(() => {
         window.location.reload();
