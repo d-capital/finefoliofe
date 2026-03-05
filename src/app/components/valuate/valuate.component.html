@@ -130,14 +130,14 @@
               <p>{{ epsTtmExplanation }}</p>
             </section>
 
-            <section class="card">
+            <section class="card  valuate-section">
               <h2>{{ pegLabel }}</h2>
               <h1>1</h1>
               <p>{{ pegExplanation }}</p>
             </section>
 
             <!-- Lynch explanation -->
-            <section *ngIf="valuation.avgGrowth.fiveYears > 0" class="card">
+            <section *ngIf="valuation.avgGrowth.fiveYears > 0" class="card  valuate-section">
               <h2>{{ aboutLynchFormulaLabel }}</h2>
               <p [innerHTML]="aboutLynchFormulaText"></p>
             </section>
