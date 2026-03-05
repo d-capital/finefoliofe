@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     console.log(navigator.language)
     const urlLang = window.location.href.split('/')[3]; 
     var isUserLangSet = localStorage.getItem("isUserLangSet");
-    
+    var localStorageLang = localStorage.getItem("language"); 
     if (isUserLangSet !== "yes") {
       
       if (navigator.language == "ru" || navigator.language == "ru-RU") {
@@ -32,8 +32,14 @@ export class AppComponent implements OnInit {
         localStorage.setItem("language", urlLang);
       }
     }else{
-      if(urlLang !== localStorage.getItem("language")){
+      if(urlLang !== localStorage.getItem("language") && urlLang !==""){
         localStorage.setItem("language", urlLang);
+        localStorage.setItem("isUserLangSet", "yes")
+      }else if(urlLang === "" && (localStorageLang === "ru"|| localStorageLang === "en")){
+        localStorage.setItem("language", localStorageLang);
+        localStorage.setItem("isUserLangSet", "yes")
+      }else{
+        localStorage.setItem("language", "en");
         localStorage.setItem("isUserLangSet", "yes")
       }
     }
