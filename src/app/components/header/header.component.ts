@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
 import { NgIf } from '@angular/common';
 import { LanguageSelectorComponent } from '../language-selector/language-selector.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -76,6 +77,7 @@ export class HeaderComponent implements OnInit {
       this.searchLabel = this.searchLabelEn;
     }
   }
+  
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
@@ -108,7 +110,7 @@ export class HeaderComponent implements OnInit {
 
   // ✅ ESC key handler
   @HostListener('document:keydown.escape', ['$event'])
-  onEscKey(event: KeyboardEvent) {
+  onEscKey(event: Event) {
     if (this.searchOpen) {
       this.searchOpen = false;
       event.stopPropagation();

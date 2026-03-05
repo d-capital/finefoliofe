@@ -20918,6 +20918,9 @@ export class SearchComponent implements OnInit {
 
   selectedExchange = 'ALL';
 
+  pageLanguage: string = localStorage.getItem('language') || 'en';
+  lang: string = this.pageLanguage === 'ru' ? 'ru' : 'en';
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -20980,10 +20983,10 @@ export class SearchComponent implements OnInit {
 
   private navigateToPair(pair: string): void {
     var splitted = pair.split(":");
-    var ticker = splitted[1];
-    var exchange = splitted[0];
+    var ticker = splitted[1].toLocaleLowerCase();
+    var exchange = splitted[0].toLocaleLowerCase();
     var name = splitted[2];
-    this.router.navigate(['/securities', exchange + '-' +  ticker])
+    this.router.navigate(['/'.concat(this.lang).concat('/stocks/').concat(exchange).concat('-').concat(ticker).concat('/peter-lynch-fair-value-calculator')])
       .then(() => {
         window.location.reload();
       });

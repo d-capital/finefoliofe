@@ -186,6 +186,10 @@ ul li {
   .valuate-container {
     margin: 0 auto 50px auto;
   }
+  .valuate-section{
+    padding: 0 16px 0 16px;
+  }
+
 
 }
 

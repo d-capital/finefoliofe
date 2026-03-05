@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'finefolio-fe';
+  isAlive:boolean = false;
   constructor(
   ) {
     console.log(navigator.language)
@@ -23,5 +23,13 @@ export class AppComponent {
         localStorage.setItem("language", "en");
       }
     }
+  }
+  ngOnInit(): void {
+    this.reloadLayout();
+  }
+
+  reloadLayout() {
+    this.isAlive = false;
+    setTimeout(() => this.isAlive = true, 1);
   }
 }

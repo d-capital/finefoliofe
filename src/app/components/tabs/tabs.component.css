@@ -11,7 +11,7 @@
 }
 
 button {
-  padding: 16px 44px 16px 10px;
+  padding: 16px 44px 16px 7px;
   border: none;
   font-size: 18px;
   background: none;
@@ -41,6 +41,13 @@ button.active::after {
   background-color: #000000;
 }
 
-.tabs-content {
-  padding: 10px;
+@media (max-width:768px){
+  .tabs-nav {
+    display: flex;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e9ecef;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 16px;
+  }
+
 }

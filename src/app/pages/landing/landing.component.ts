@@ -37,7 +37,7 @@ export class LandingComponent implements OnInit {
     if(language == 'ru'){
       this.erSearchText = this.erSearchTextRu;
       this.historySearchText = this.historySearchTextRu;
-      this.titleService.setTitle('Valestor - Метод Питера Линча | Найди недооцененные акции с потенциалом роста для своего инвестиционного портфеля');
+      this.titleService.setTitle('Валестор - Метод Питера Линча | Найди недооцененные акции с потенциалом роста для своего инвестиционного портфеля');
       this.metaService.updateTag({
         name: 'description',
         content: 'Перед тем как покупать или продавать акцию узнай справедливую стоимость, оценку недооцененности или переоцененности, потенциал роста или снижения по методу Питера Линча'
@@ -46,10 +46,10 @@ export class LandingComponent implements OnInit {
     else{
       this.erSearchText = this.erSearchTextEn;
       this.historySearchText = this.historySearchTextEn;
-      this.titleService.setTitle('Valestor - The Peter Lynch Method | Find Undervalued Stocks with Growth Potential for Your Portfolio');
+      this.titleService.setTitle('Peter Lynch Fair Value Calculator: Instant Automated Stock Valuation | Valestor.com');
       this.metaService.updateTag({
         name: 'description',
-        content: 'Before buying or selling a stock, find out its fair value, undervaluation or overvaluation, and potential for growth or decline using Peter Lynch\'s method.'
+        content: 'Calculate fair value instantly using our automated Peter Lynch formula tool. Find out if a stock is undervalued or overvalued before you invest. Make smart decisions with our stock valuation calculator.'
       });
     }
   }

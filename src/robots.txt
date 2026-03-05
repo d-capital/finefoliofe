@@ -1,2 +1,8 @@
 User-agent: *
-Disallow: /
+Disallow: /admin/          # Закрыть админку (если есть)
+Disallow: /login/          # Страница входа
+Disallow: /private/        # Личные кабинеты
+Allow: /src/*.js           # Разрешить доступ к скриптам для индексации
+Allow: /src/*.css          # Разрешить стили
+
+Sitemap: https://valestor.com

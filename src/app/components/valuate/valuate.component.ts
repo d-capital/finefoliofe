@@ -342,8 +342,8 @@ export class ValuateComponent implements OnInit {
     const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
     const tickerCode = params ? params[1] : 'AAPL';
     const exchangeCode = params ? params[0] :  'NYSE';
-    this.ticker = tickerCode ? tickerCode : 'AAPL';
-    this.exchange = exchangeCode ? exchangeCode : 'NYSE';
+    this.ticker = tickerCode ? tickerCode.toLocaleUpperCase() : 'AAPL';
+    this.exchange = exchangeCode ? exchangeCode.toLocaleUpperCase() : 'NYSE';
     this.ValuationServiceApi.getValuation(this.ticker, this.exchange).pipe().subscribe(data => {
       this.stockInfo = data['stockInfo'];
       this.valuation = data['valuation'];

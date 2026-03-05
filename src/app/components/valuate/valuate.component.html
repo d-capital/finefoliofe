@@ -8,7 +8,7 @@
 
 <ng-container *ngIf="!loading && !error;">
   <div class="valuate-container">
-    <section class="top-card">
+    <section class="top-card valuate-section">
       <h1 class="stockname">{{ stockInfo.name }}</h1>
       <h4>{{ ticker }} * {{ exchange }}</h4>
       <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(stockInfo.price) }}</h1>
@@ -30,7 +30,7 @@
         <div *ngIf="valuation.avgGrowth !== null">
           <div *ngIf="valuation.avgGrowth.fiveYears > 0">
             <!-- Valuation -->
-            <section class="top-card">
+            <section class="top-card valuate-section">
               <h2>
                 <strong>{{ resultLabel }}</strong>
               </h2>
@@ -62,14 +62,14 @@
               </p>
             </section>
 
-            <section class="card">
+            <section class="card valuate-section">
               <h2>{{ fairPriceLabel }}</h2>
               <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(valuation.fairPrice) }}</h1>
               <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(valuation.fairPrice) }}</h1>
               <p>{{ fairPriceExplanation }}</p>
             </section>
 
-            <section class="card">
+            <section class="card valuate-section">
               <h2>{{ howFairPriceWasCalulated }}</h2>
               <h1 class="formula">{{ valuation.formula }}</h1>
               <p>{{ formulaLabel }}</p>
@@ -78,7 +78,7 @@
             </section>
 
             <!-- Historical profit -->
-            <section *ngIf="valuation.netProfitHistory.length > 0" class="card">
+            <section *ngIf="valuation.netProfitHistory.length > 0" class="card valuate-section">
               <h2>{{ netProfitGrowthLabel }}</h2>
               <!--p><strong>{{ averageIncomeGrowthLabel }}</strong></p-->
               <ul>
@@ -123,7 +123,7 @@
               </div>
             </section>
 
-            <section class="card">
+            <section class="card valuate-section">
               <h2>{{ epsTtmLabel }}</h2>
               <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(stockInfo.epsTtm) }}</h1>
               <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(stockInfo.epsTtm) }}</h1>
@@ -147,7 +147,7 @@
 
       <app-tab title="{{stockInformationLabel}}" name="overview">
         <!-- Public stock data -->
-        <section class="top-card">
+        <section class="top-card valuate-section">
           <h2>{{ finanacialOverviewLabel }}</h2>
           <div class="data-grid">
             <div class="grid-cell">
@@ -328,21 +328,21 @@
 
 <!-- Skeleton Template -->
 <ng-template #loadingSkeleton>
-  <div class="valuate-container">
+  <div class="valuate-container valuate-section">
     <h1 class="skeleton-box long"></h1>
     <p class="exchange skeleton-box medium"></p>
 
-    <div class="card">
+    <div class="card valuate-section">
       <h2 class="skeleton-box medium"></h2>
       <div *ngFor="let i of [1,2,3,4,5,6]" class="skeleton-box short"></div>
     </div>
 
-    <div class="card">
+    <div class="card valuate-section">
       <h2 class="skeleton-box medium"></h2>
       <div *ngFor="let i of [1,2,3]" class="skeleton-box medium"></div>
     </div>
 
-    <div class="card">
+    <div class="card valuate-section">
       <h2 class="skeleton-box medium"></h2>
       <div *ngFor="let i of [1,2,3,4,5]" class="skeleton-box long"></div>
     </div>
