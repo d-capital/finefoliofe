@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable, Inject} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './app.component.css',
   standalone: true
 })
+@Injectable({ providedIn: 'root' })
 export class AppComponent implements OnInit {
   title = 'finefolio-fe';
   isAlive:boolean = false;
-  constructor(private route:ActivatedRoute
+  constructor(private route:ActivatedRoute, @Inject(DOCUMENT) private document: Document
   ) {
     console.log(navigator.language)
     const urlLang = window.location.href.split('/')[3]; 
@@ -37,10 +40,20 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.reloadLayout();
+    this.addCanonicalLink('https://valestor.com/');
   }
 
   reloadLayout() {
     this.isAlive = false;
     setTimeout(() => this.isAlive = true, 1);
   }
+
+  addCanonicalLink(url: string): void {
+      if(document.querySelectorAll("link[rel='canonical']").length === 0){
+        const link: HTMLLinkElement = this.document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        link.setAttribute('href', url);
+        this.document.head.appendChild(link);
+      }
+  };
 }
