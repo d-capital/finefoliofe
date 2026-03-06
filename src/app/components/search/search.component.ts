@@ -20987,8 +20987,14 @@ export class SearchComponent implements OnInit {
     var ticker = splitted[1].toLocaleLowerCase();
     var exchange = splitted[0].toLocaleLowerCase();
     var name = splitted[2];
-    ym(106716051,'reachGoal','selected_ticker')
-    this.router.navigate(['/'.concat(this.lang).concat('/stocks/').concat(exchange).concat('-').concat(ticker).concat('/peter-lynch-fair-value-calculator')])
+    ym(106716051,'reachGoal','selected_ticker');
+    let path = '';
+    if (this.lang === 'ru') {
+      path = `/ru/stocks/${exchange}-${ticker}/peter-lynch-fair-value-calculator`;
+    } else {
+      path = `/stocks/${exchange}-${ticker}/peter-lynch-fair-value-calculator`;
+    }
+    this.router.navigate([path])
       .then(() => {
         window.location.reload();
       });

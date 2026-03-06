@@ -14,19 +14,24 @@ export class LanguageRedirectComponent implements OnInit {
   constructor(private router: Router, @Inject(DOCUMENT) private document: Document) {}
   
   ngOnInit(): void {
-    const savedLang = localStorage.getItem('language');
-    const supportedLangs = ['en', 'ru'];
+    this.checkAndRedirect();
+    // Re-check after a short delay in case language was just changed
+    setTimeout(() => this.checkAndRedirect(), 100);
+  }
 
-    const lang = supportedLangs.includes(savedLang ?? '')
-      ? savedLang
-      : 'en';
-    var reLang = lang ?? 'en';   
-    this.router.navigate([`/${lang}`], { replaceUrl: true });
-    if(reLang == 'ru'){
-      this.addCanonicalLink('https://valestor.com/')
-    }
-    if(reLang == 'en'){
-      this.addCanonicalLink('https://valestor.com/')
+  checkAndRedirect(): void {
+    const savedLang = localStorage.getItem('language');
+    if (savedLang === 'ru') {
+      if (window.location.pathname !== '/ru') {
+        this.router.navigate(['/ru'], { replaceUrl: true });
+      }
+      this.addCanonicalLink('https://valestor.com/');
+    } else {
+      // English is default, stay at root
+      if (window.location.pathname !== '/') {
+        this.router.navigate(['/'], { replaceUrl: true });
+      }
+      this.addCanonicalLink('https://valestor.com/');
     }
   }
   addCanonicalLink(url: string): void {

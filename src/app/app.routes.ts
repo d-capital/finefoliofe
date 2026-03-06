@@ -23,9 +23,10 @@ export class LanguageGuard implements CanActivate {
 }
 
 export const routes: Routes = [
+  // Russian routes under /ru
   {
-    path: ':lang',
-    component: MainLayoutComponent, 
+    path: 'ru',
+    component: MainLayoutComponent,
     children: [
       { path: '', component: LandingComponent },
       { path: 'valuation', component: ValuationComponent },
@@ -36,6 +37,20 @@ export const routes: Routes = [
       // ... your other child routes
     ]
   },
-  { path: '', component: LanguageRedirectComponent, pathMatch: 'full' },
-  { path: '**', redirectTo: 'en' }
+  // English routes at root
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      { path: '', component: LandingComponent },
+      { path: 'valuation', component: ValuationComponent },
+      {
+        path: 'stocks/:exchange-ticker/peter-lynch-fair-value-calculator',
+        component: ValuateComponent
+      },
+      // ... your other child routes
+    ]
+  },
+  // Redirect unknown paths to root
+  { path: '**', redirectTo: '' }
 ];

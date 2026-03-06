@@ -22,14 +22,27 @@ export class LanguageSelectorComponent {
 
   onSelectionChange(newValue: string) {
     this.selectedValue = newValue;
-    console.log('Selected value:', this.selectedValue);
     localStorage.setItem('language', this.selectedValue);
     localStorage.setItem('isUserLangSet', 'yes');
-    console.log(this.router.url);
-    const url = `/${this.selectedValue}`+this.router.url.substring(3);
-    this.router.navigateByUrl('/', { skipLocationChange: false }).then(() => {
-      this.router.navigate([url]);
-    });
+    let currentUrl = this.router.url;
+    if (this.selectedValue === 'ru') {
+      // If not already in /ru, add /ru
+      if (!currentUrl.startsWith('/ru')) {
+        if (currentUrl === '/' || currentUrl === '') {
+          this.router.navigate(['/ru']);
+        } else {
+          this.router.navigate(['/ru' + currentUrl]);
+        }
+      }
+    } else {
+      // Remove /ru if present
+      if (currentUrl.startsWith('/ru')) {
+        const newUrl = currentUrl.replace(/^\/ru/, '') || '/';
+        this.router.navigate([newUrl]);
+      } else {
+        this.router.navigate(['/']);
+      }
+    }
   }
 
   toggleDropdown() {

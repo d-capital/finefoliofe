@@ -17,36 +17,32 @@ export class AppComponent implements OnInit {
   isAlive:boolean = false;
   constructor(private route:ActivatedRoute, @Inject(DOCUMENT) private document: Document
   ) {
-    console.log(navigator.language)
-    const urlLang = window.location.href.split('/')[3]; 
-    var isUserLangSet = localStorage.getItem("isUserLangSet");
-    var localStorageLang = localStorage.getItem("language"); 
-    if (isUserLangSet !== "yes") {
-      
-      if (navigator.language == "ru" || navigator.language == "ru-RU") {
-        localStorage.setItem("language", "ru");
-        localStorage.setItem("isUserLangSet", "yes")
-      }
-      else {
-        localStorage.setItem("isUserLangSet", "yes")
-        localStorage.setItem("language", urlLang);
-      }
-    }else{
-      if(urlLang !== localStorage.getItem("language") && urlLang !==""){
-        localStorage.setItem("language", urlLang);
-        localStorage.setItem("isUserLangSet", "yes")
-      }else if(urlLang === "" && (localStorageLang === "ru"|| localStorageLang === "en")){
-        localStorage.setItem("language", localStorageLang);
-        localStorage.setItem("isUserLangSet", "yes")
-      }else{
-        localStorage.setItem("language", "en");
-        localStorage.setItem("isUserLangSet", "yes")
+    this.syncLanguageWithUrl();
+    // Listen for navigation events to keep language in sync
+    window.addEventListener('popstate', () => this.syncLanguageWithUrl());
+  }
+
+  syncLanguageWithUrl() {
+    const pathSegment = window.location.pathname.split('/')[1];
+    const isUserLangSet = localStorage.getItem('isUserLangSet');
+    if (isUserLangSet !== 'yes') {
+      if (pathSegment === 'ru') {
+        localStorage.setItem('language', 'ru');
+        localStorage.setItem('isUserLangSet', 'yes');
+      } else {
+        localStorage.setItem('language', 'en');
+        localStorage.setItem('isUserLangSet', 'yes');
       }
     }
   }
   ngOnInit(): void {
     this.reloadLayout();
     this.addCanonicalLink('https://valestor.com/');
+    // Redirect to /ru if language is ru and path is /
+    const lang = localStorage.getItem('language');
+    if (lang === 'ru' && window.location.pathname === '/') {
+      window.location.replace('/ru');
+    }
   }
 
   reloadLayout() {

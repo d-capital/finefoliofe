@@ -37,10 +37,10 @@ export class ExamplesComponent implements OnInit {
       this.title = "Examples";
       this.subtitle = "Explore our collection of ideas.";
       this.examples = [
-        { company: "Pfizer, Inc.", ticker: "PFE", upside: 68, status: "Undervalued", link: "/en/stocks/nyse-pfe/peter-lynch-fair-value-calculator"},
-        { company: "Block, Inc.", ticker: "XYZ", upside: 93, status: "Undervalued", link: "/en/stocks/nyse-xyz/peter-lynch-fair-value-calculator" },
-        { company: "Novo Nordisk", ticker: "NVO", upside: 6, status: "Undervalued", link: "/en/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
-        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Undervalued", link: "/en/stocks/nyse-coke/peter-lynch-fair-value-calculator" }
+        { company: "Pfizer, Inc.", ticker: "PFE", upside: 68, status: "Undervalued", link: "/stocks/nyse-pfe/peter-lynch-fair-value-calculator"},
+        { company: "Block, Inc.", ticker: "XYZ", upside: 93, status: "Undervalued", link: "/stocks/nyse-xyz/peter-lynch-fair-value-calculator" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 6, status: "Undervalued", link: "/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
+        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Undervalued", link: "/stocks/nyse-coke/peter-lynch-fair-value-calculator" }
       ];
     }
   }
