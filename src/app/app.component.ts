@@ -37,9 +37,13 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.reloadLayout();
-    this.addCanonicalLink('https://valestor.com/');
     // Redirect to /ru if language is ru and path is /
     const lang = localStorage.getItem('language');
+    if (lang ==='ru'){
+      this.addCanonicalLink('https://valestor.com/ru');
+    } else{
+      this.addCanonicalLink('https://valestor.com/');
+    }
     if (lang === 'ru' && window.location.pathname === '/') {
       window.location.replace('/ru');
     }
