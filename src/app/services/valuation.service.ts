@@ -25,7 +25,7 @@ export class ValuationService {
       this.getValuationUrl = 'http://finefoliobe:3000/valuation/'; 
     } else {
       // Public address for the user's browser
-      this.getValuationUrl = 'https://valestor.com/valuation/';
+      this.getValuationUrl = 'https://valestor.com/api/valuation/';
     }
   }
 
