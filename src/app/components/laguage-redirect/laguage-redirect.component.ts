@@ -25,13 +25,11 @@ export class LanguageRedirectComponent implements OnInit {
       if (window.location.pathname !== '/ru') {
         this.router.navigate(['/ru'], { replaceUrl: true });
       }
-      this.addCanonicalLink('https://valestor.com/');
     } else {
       // English is default, stay at root
       if (window.location.pathname !== '/') {
         this.router.navigate(['/'], { replaceUrl: true });
       }
-      this.addCanonicalLink('https://valestor.com/');
     }
   }
   addCanonicalLink(url: string): void {

@@ -1,8 +1,9 @@
 import { Component, OnInit, Injectable, Inject} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
-
+import { SeoService } from './services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,11 @@ import { DOCUMENT } from '@angular/common';
 export class AppComponent implements OnInit {
   title = 'finefolio-fe';
   isAlive:boolean = false;
-  constructor(private route:ActivatedRoute, @Inject(DOCUMENT) private document: Document
+  constructor(
+    private route:ActivatedRoute, 
+    @Inject(DOCUMENT) private document: Document, 
+    private seoService: SeoService,
+    private router: Router,
   ) {
     this.syncLanguageWithUrl();
     // Listen for navigation events to keep language in sync
@@ -36,14 +41,14 @@ export class AppComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.seoService.updateSeoTags(window.location.pathname);
+    });
     this.reloadLayout();
     // Redirect to /ru if language is ru and path is /
     const lang = localStorage.getItem('language');
-    if (lang ==='ru'){
-      this.addCanonicalLink('https://valestor.com/ru');
-    } else{
-      this.addCanonicalLink('https://valestor.com/');
-    }
     if (lang === 'ru' && window.location.pathname === '/') {
       window.location.replace('/ru');
     }
