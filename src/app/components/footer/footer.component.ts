@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserStorageService } from '../../services/browser-storage.service';
@@ -6,7 +5,7 @@ import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterModule, NgIf],
+  imports: [RouterModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })
