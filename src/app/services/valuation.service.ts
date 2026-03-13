@@ -22,7 +22,7 @@ export class ValuationService {
     if (isPlatformServer(this.platformId)) {
       // Internal Docker address (no HTTPS needed, Caddy is skipped)
       // Replace 'backend-container-name' with your actual backend container name
-      this.getValuationUrl = 'http://finefoliobe:8080/api/valuation'; 
+      this.getValuationUrl = 'http://finefoliobe:3000/api/valuation'; 
     } else {
       // Public address for the user's browser
       this.getValuationUrl = 'https://valestor.com/api/valuation';
