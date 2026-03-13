@@ -1,5 +1,6 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 interface FAQ {
   q: string;
@@ -18,8 +19,10 @@ export class FaqComponent implements OnInit {
   title = "";
   faqs: FAQ[] = [];
 
+  constructor(private browserStorageService: BrowserStorageService) {}
+
   ngOnInit(): void {
-    const lang = localStorage.getItem("language");
+    const lang = this.browserStorageService.getItem("language");
     if (lang === "ru") {
       this.title = "Часто задаваемые вопросы";
       this.faqs = [

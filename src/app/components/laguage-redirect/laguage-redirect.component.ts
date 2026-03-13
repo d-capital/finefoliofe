@@ -1,6 +1,8 @@
 import { Component, OnInit,Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { BrowserStorageService } from '../../services/browser-storage.service';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-laguage-redirect',
@@ -11,7 +13,12 @@ import { DOCUMENT } from '@angular/common';
 @Injectable({ providedIn: 'root' })
 export class LanguageRedirectComponent implements OnInit {
 
-  constructor(private router: Router, @Inject(DOCUMENT) private document: Document) {}
+  constructor(
+    private router: Router, 
+    @Inject(DOCUMENT) private document: Document,
+    private browserStorageService: BrowserStorageService,
+    private windowService: WindowService
+  ) {}
   
   ngOnInit(): void {
     this.checkAndRedirect();
@@ -20,14 +27,14 @@ export class LanguageRedirectComponent implements OnInit {
   }
 
   checkAndRedirect(): void {
-    const savedLang = localStorage.getItem('language');
+    const savedLang = this.browserStorageService.getItem('language');
     if (savedLang === 'ru') {
-      if (window.location.pathname !== '/ru') {
+      if (this.windowService.pathname !== '/ru') {
         this.router.navigate(['/ru'], { replaceUrl: true });
       }
     } else {
       // English is default, stay at root
-      if (window.location.pathname !== '/') {
+      if (this.windowService.pathname !== '/') {
         this.router.navigate(['/'], { replaceUrl: true });
       }
     }

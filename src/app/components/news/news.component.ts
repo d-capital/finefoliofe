@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgFor, NgIf } from '@angular/common';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 @Component({
   selector: 'app-news',
@@ -9,15 +10,16 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './news.component.html',
   styleUrl: './news.component.css'
 })
-export class NewsComponent {
+export class NewsComponent implements OnInit {
   public news: any;
   serverErrors=[];
   constructor(
-    private newsApiService: NewsService
+    private newsApiService: NewsService,
+    private browserStorageService: BrowserStorageService
   ) { }
 
   ngOnInit() {
-    var language = localStorage.getItem('language');
+    var language = this.browserStorageService.getItem('language');
     this.newsApiService.getNews().pipe().subscribe(data=>{
       if(language == 'ru'){
         this.news = data['news_ru'];

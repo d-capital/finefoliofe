@@ -4,6 +4,8 @@ import { filter } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { SeoService } from './services/seo.service';
+import { BrowserStorageService } from './services/browser-storage.service';
+import { WindowService } from './services/window.service';
 
 @Component({
   selector: 'app-root',
@@ -21,22 +23,25 @@ export class AppComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document, 
     private seoService: SeoService,
     private router: Router,
+    private browserStorageService: BrowserStorageService,
+    private windowService: WindowService,
   ) {
     this.syncLanguageWithUrl();
     // Listen for navigation events to keep language in sync
-    window.addEventListener('popstate', () => this.syncLanguageWithUrl());
+    this.windowService.addEventListener('popstate', () => this.syncLanguageWithUrl());
   }
 
   syncLanguageWithUrl() {
-    const pathSegment = window.location.pathname.split('/')[1];
-    const isUserLangSet = localStorage.getItem('isUserLangSet');
+    const pathname = this.windowService.pathname;
+    const pathSegment = pathname.split('/')[1];
+    const isUserLangSet = this.browserStorageService.getItem('isUserLangSet');
     if (isUserLangSet !== 'yes') {
       if (pathSegment === 'ru') {
-        localStorage.setItem('language', 'ru');
-        localStorage.setItem('isUserLangSet', 'yes');
+        this.browserStorageService.setItem('language', 'ru');
+        this.browserStorageService.setItem('isUserLangSet', 'yes');
       } else {
-        localStorage.setItem('language', 'en');
-        localStorage.setItem('isUserLangSet', 'yes');
+        this.browserStorageService.setItem('language', 'en');
+        this.browserStorageService.setItem('isUserLangSet', 'yes');
       }
     }
   }
@@ -44,13 +49,13 @@ export class AppComponent implements OnInit {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      this.seoService.updateSeoTags(window.location.pathname);
+      this.seoService.updateSeoTags(this.windowService.pathname);
     });
     this.reloadLayout();
     // Redirect to /ru if language is ru and path is /
-    const lang = localStorage.getItem('language');
-    if (lang === 'ru' && window.location.pathname === '/') {
-      window.location.replace('/ru');
+    const lang = this.browserStorageService.getItem('language');
+    if (lang === 'ru' && this.windowService.pathname === '/') {
+      this.windowService.replace('/ru');
     }
   }
 
@@ -60,7 +65,7 @@ export class AppComponent implements OnInit {
   }
 
   addCanonicalLink(url: string): void {
-      if(document.querySelectorAll("link[rel='canonical']").length === 0){
+      if(this.document.querySelectorAll("link[rel='canonical']").length === 0){
         const link: HTMLLinkElement = this.document.createElement('link');
         link.setAttribute('rel', 'canonical');
         link.setAttribute('href', url);

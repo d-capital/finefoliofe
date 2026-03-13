@@ -1,7 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 interface BlogPost {
   title: string;
@@ -20,8 +20,11 @@ export class BlogPreviewComponent implements OnInit{
   title = "";
   posts: BlogPost[] = [];
   seeAll = "";
+
+  constructor(private browserStorageService: BrowserStorageService) {}
+
   ngOnInit(): void {
-    const lang = localStorage.getItem("language");
+    const lang = this.browserStorageService.getItem("language");
     if (lang === "ru") {
       this.title = "Блог";
       this.seeAll = "Смотреть все статьи";

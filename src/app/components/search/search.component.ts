@@ -2,6 +2,9 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, HostListener, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BrowserStorageService } from '../../services/browser-storage.service';
+import { WindowService } from '../../services/window.service';
+
 declare var ym: any;
 @Component({
   selector: 'app-search',
@@ -20918,14 +20921,22 @@ export class SearchComponent implements OnInit {
 
   selectedExchange = 'ALL';
 
-  pageLanguage: string = localStorage.getItem('language') || 'en';
-  lang: string = this.pageLanguage === 'ru' ? 'ru' : 'en';
+  pageLanguage: string = 'en';
+  lang: string = 'en';
   
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private browserStorageService: BrowserStorageService,
+    private windowService: WindowService
+  ) {
+    const storedLang = this.browserStorageService.getItem('language');
+    this.pageLanguage = storedLang || 'en';
+    this.lang = this.pageLanguage === 'ru' ? 'ru' : 'en';
+  }
 
   ngOnInit(): void {
-    var language = localStorage.getItem('language');
+    var language = this.browserStorageService.getItem('language');
     if (language == 'ru') {
       this.placeholder = this.placeholderRu;
       this.assets = this.assetsru;
@@ -20934,7 +20945,7 @@ export class SearchComponent implements OnInit {
       this.placeholder = this.placeholderEn;
       this.assets = this.assetsen;
     }
-    var currentPairsHistory = localStorage.getItem('pairsHistory')
+    var currentPairsHistory = this.browserStorageService.getItem('pairsHistory')
     if (currentPairsHistory) {
       try {
         const parsedData = JSON.parse(currentPairsHistory);
@@ -20996,7 +21007,7 @@ export class SearchComponent implements OnInit {
     }
     this.router.navigate([path])
       .then(() => {
-        window.location.reload();
+        this.windowService.reload();
       });
   }
   @HostListener('document:click', ['$event'])
@@ -21048,7 +21059,7 @@ export class SearchComponent implements OnInit {
     if (this.pairsToShow.length > 5) {
       this.pairsToShow.pop();
     }
-    localStorage.setItem('pairsHistory', JSON.stringify(this.pairsToShow));
+    this.browserStorageService.setItem('pairsHistory', JSON.stringify(this.pairsToShow));
   }
 
   selectExchange(exchange: string): void {

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ScreenerResult } from '../../dto/screener/screener-result.model';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, DOCUMENT } from '@angular/common';
 import { ScreenerService } from '../../services/screener.service';
 import { FormsModule } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AbbreviateNumberPipe } from '../../custom-pipe/abbreviate-number.pipe';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 interface Column {
   short: string;
@@ -42,10 +43,12 @@ export class ScreenerResultsComponent implements OnInit{
 
   constructor(
       private screenerService: ScreenerService,
+      private browserStorageService: BrowserStorageService,
+      @Inject(DOCUMENT) private document: Document
     ) {}
 
   ngOnInit(): void {
-    const lang = localStorage.getItem('language');
+    const lang = this.browserStorageService.getItem('language');
     this.lang = lang;
     if (lang === 'ru') {
       this.title = "Результаты скрининга";

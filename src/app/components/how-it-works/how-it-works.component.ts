@@ -1,6 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Step } from '../../dto/step/step.model';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 interface Quote {
   text: string;
@@ -20,8 +21,10 @@ export class HowItWorksComponent implements OnInit{
   screenshot = "lynch-photo.png"; // replace with real screenshot
   quote!: Quote;
 
+  constructor(private browserStorageService: BrowserStorageService) {}
+
   ngOnInit(): void {
-    const lang = localStorage.getItem("language");
+    const lang = this.browserStorageService.getItem("language");
     if (lang === "ru") {
       this.title = "Как работает сервис";
       this.steps = [

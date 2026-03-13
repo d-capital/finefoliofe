@@ -1,6 +1,8 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { BrowserStorageService } from '../../services/browser-storage.service';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-error-state',
@@ -27,10 +29,14 @@ export class ErrorStateComponent implements OnInit {
   oopsLabelEn: string  = "Oops!";
 
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private browserStorageService: BrowserStorageService,
+    private windowService: WindowService
+  ) {}
 
   ngOnInit(): void {
-    var language = localStorage.getItem('language');
+    var language = this.browserStorageService.getItem('language');
     if(language == 'ru'){
       this.message = this.messageRu;
       this.retryLabel = this.retryLableRu;
@@ -48,6 +54,6 @@ export class ErrorStateComponent implements OnInit {
     this.router.navigate(['/']);
   }
   reload(){
-    window.location.reload();
+    this.windowService.reload();
   }
 }

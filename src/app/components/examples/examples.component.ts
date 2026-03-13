@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { StockCardComponent } from '../stock-card/stock-card.component';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 interface Example {
   company: string;
@@ -21,8 +22,10 @@ export class ExamplesComponent implements OnInit {
   subtitle = "";
   examples: Example[] = [];
 
+  constructor(private browserStorageService: BrowserStorageService) {}
+
   ngOnInit(): void {
-    const lang = localStorage.getItem("language");
+    const lang = this.browserStorageService.getItem("language");
 
     if (lang === "ru") {
       this.title = "Примеры";

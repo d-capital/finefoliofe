@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MacroDataService } from '../../services/macrodata.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule, NgFor, DOCUMENT } from '@angular/common';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 @Component({
   selector: 'app-macrodata',
@@ -40,10 +41,12 @@ export class MacrodataComponent {
 
   constructor(
     private MacroDataServiceApi: MacroDataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private browserStorageService: BrowserStorageService,
+    @Inject(DOCUMENT) private document: Document
   ) {
 
-    var language = localStorage.getItem('language');
+    var language = this.browserStorageService.getItem('language');
     if(language == 'ru'){
       this.eventMap.set("gdp","Рост ВВП");
       this.eventMap.set("unemployment","Безработица");

@@ -1,6 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Step } from '../../dto/step/step.model';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 @Component({
   selector: 'app-screener-after-screening',
@@ -13,8 +14,10 @@ export class ScreenerAfterScreeningComponent implements OnInit{
   subtitle = '';
   steps: Step[] = [];
 
+  constructor(private browserStorageService: BrowserStorageService) {}
+
   ngOnInit(): void {
-    const lang = localStorage.getItem('language');
+    const lang = this.browserStorageService.getItem('language');
     if (lang === 'ru') {
       this.title = "Что делать после оценки";
       this.steps = [
