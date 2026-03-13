@@ -1,19 +1,18 @@
+# Use Node 20 for Angular 19 compatibility
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build -- --configuration=production
+RUN npm run build
 
 FROM node:20-alpine
 WORKDIR /app
-# Copy the entire dist folder
 COPY --from=builder /app/dist/finefolio-fe ./dist/finefolio-fe
 
-# Set these so the server knows where to listen
-ENV HOST=0.0.0.0
+# Express server defaults to 4000
 ENV PORT=4000
 EXPOSE 4000
 
-# Point to the specific entry point discovered
-CMD ["node", "dist/finefolio-fe/server/main.server.mjs"]
+# This is the file that actually 'stays alive'
+CMD ["node", "dist/finefolio-fe/server/server.mjs"]
