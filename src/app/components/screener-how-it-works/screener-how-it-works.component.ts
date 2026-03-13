@@ -1,5 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 @Component({
   selector: 'app-screener-how-it-works',
@@ -12,8 +13,10 @@ export class ScreenerHowItWorksComponent implements OnInit {
   subtitle = '';
   steps: string[] = [];
 
+  constructor(private browserStorageService: BrowserStorageService) {}
+
   ngOnInit(): void {
-    const lang = localStorage.getItem('language');
+    const lang = this.browserStorageService.getItem('language');
     if (lang === 'ru') {
       this.title = "Как это работает";
       this.subtitle = "Простой процесс в несколько шагов:";

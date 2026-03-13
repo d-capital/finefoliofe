@@ -1,5 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 @Component({
   selector: 'app-why-us',
@@ -11,8 +12,10 @@ export class WhyUsComponent implements OnInit {
   title = "";
   benefits: string[] = [];
 
+  constructor(private browserStorageService: BrowserStorageService) {}
+
   ngOnInit(): void {
-    const lang = localStorage.getItem("language");
+    const lang = this.browserStorageService.getItem("language");
     if (lang === "ru") {
       this.title = "Почему мы?";
       this.benefits = [

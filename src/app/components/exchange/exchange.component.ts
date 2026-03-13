@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ExchangeInfo } from '../../dto/exchange-info/exchange-info.model';
 import { CommonModule, NgIf } from '@angular/common';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 @Component({
   selector: 'app-exchange',

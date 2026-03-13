@@ -2,6 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 
 @Component({
@@ -128,9 +129,12 @@ export class MacrosearchComponent implements OnInit {
   placeholderRu: string = "Введите название показателя...";
   placeholderEn: string = "Search macro data...";
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private browserStorageService: BrowserStorageService
+  ) {
 
-    var language = localStorage.getItem('language');
+    var language = this.browserStorageService.getItem('language');
     if(language == 'ru'){
       this.eventMap.set("Рост ВВП","gdp");
       this.eventMap.set("Безработица","unemployment");
@@ -165,7 +169,7 @@ export class MacrosearchComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    var language = localStorage.getItem('language');
+    var language = this.browserStorageService.getItem('language');
     if(language == 'ru'){
       this.placeholder = this.placeholderRu;
       this.macroEvents = this.macroEventsRu;

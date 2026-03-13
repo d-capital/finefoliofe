@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 @Component({
   selector: 'app-screener-hero',
@@ -12,8 +13,10 @@ export class ScreenerHeroComponent implements OnInit {
   subtitle = "";
   button = "";
 
+  constructor(private browserStorageService: BrowserStorageService) {}
+
   ngOnInit(): void {
-    const lang = localStorage.getItem('language');
+    const lang = this.browserStorageService.getItem('language');
     if (lang === 'ru') {
       this.title = "Скринер акций";
       this.subtitle = "Находите недооцененные компании по модели Питера Линча.";

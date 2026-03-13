@@ -1,6 +1,8 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { BrowserStorageService } from '../../services/browser-storage.service';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-footer',
@@ -46,16 +48,19 @@ export class FooterComponent implements OnInit {
 
   pageLanguage: string = "en";
 
-  constructor(){
+  constructor(
+    private browserStorageService: BrowserStorageService,
+    private windowService: WindowService
+  ){
      this.langMap.set("en", "English");
      this.langMap.set("ru", "Русский");
   }
   ngOnInit(): void {
-    this.selectedValue  = localStorage.getItem("language") ? localStorage.getItem("language"):"en";
+    this.selectedValue  = this.browserStorageService.getItem("language") || "en";
     this.pageLanguage = this.selectedValue ? this.selectedValue.toString() : "en";
     var langCode = this.selectedValue ? this.selectedValue.toString() : "en";
     this.selectedLanguage = this.langMap.get(langCode);
-    var language = localStorage.getItem('language');
+    var language = this.browserStorageService.getItem('language');
     if(language == 'ru'){
       this.disclaimer = this.disclaimerRu;
       this.navLinkHomeLabel = this.navLinkHomeLabelRu;
@@ -79,8 +84,8 @@ export class FooterComponent implements OnInit {
   onSelectionChange(newValue: string) {
     this.selectedValue = newValue;
     console.log('Selected value:', this.selectedValue);
-    localStorage.setItem("language",this.selectedValue);
-    localStorage.setItem("isUserLangSet","yes");
-    window.location.reload();
+    this.browserStorageService.setItem("language", this.selectedValue);
+    this.browserStorageService.setItem("isUserLangSet", "yes");
+    this.windowService.reload();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 @Component({
   selector: 'app-about',
@@ -19,8 +20,10 @@ export class AboutComponent implements OnInit{
   missionTitle = "";
   missionText = "";
 
+  constructor(private browserStorageService: BrowserStorageService) {}
+
   ngOnInit(): void {
-    const lang = localStorage.getItem("language");
+    const lang = this.browserStorageService.getItem("language");
 
     if (lang === "ru") {
       this.heroTitle = "О нас";

@@ -1,5 +1,6 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 interface FairValueCard {
   image: string;
@@ -19,8 +20,10 @@ export class FairValueComponent implements OnInit {
   title = "";
   cards: FairValueCard[] = [];
 
+  constructor(private browserStorageService: BrowserStorageService) {}
+
   ngOnInit(): void {
-    const lang = localStorage.getItem("language");
+    const lang = this.browserStorageService.getItem("language");
 
     if (lang === "ru") {
       this.title = "Как мы считаем справедливую стоимость";

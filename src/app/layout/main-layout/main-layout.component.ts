@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
-
+import { BrowserStorageService } from '../../services/browser-storage.service';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -12,11 +13,15 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './main-layout.component.css'
 })
 export class MainLayoutComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private browserStorageService: BrowserStorageService,
+    private windowService: WindowService
+  ) {}
 
   ngOnInit(): void {
-    const lang = localStorage.getItem('language');
-    if (lang === 'ru' && window.location.pathname === '/') {
+    const lang = this.browserStorageService.getItem('language');
+    if (lang === 'ru' && this.windowService.pathname === '/') {
       this.router.navigate(['/ru']);
     }
   }

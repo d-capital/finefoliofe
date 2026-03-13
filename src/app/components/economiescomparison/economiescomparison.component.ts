@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CountriesService } from '../../services/countries.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Country } from '../../dto/exchange-info/country.model';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 @Component({
   selector: 'app-economiescomparison',
@@ -38,6 +39,7 @@ export class EconomiescomparisonComponent {
 
   constructor(
     private countriesService: CountriesService,
+    private browserStorageService: BrowserStorageService,
   ) {
     countriesService.getCountriesInfo(this.countriesList).pipe().subscribe(data => {
       this.countries = data;
@@ -50,7 +52,7 @@ export class EconomiescomparisonComponent {
           }
         }
       })
-    var language = localStorage.getItem('language');
+    var language = this.browserStorageService.getItem('language');
     if (language == 'ru') {
       this.countryMap.set( "usd", "США");
       this.countryMap.set("gbp","Великобритания");

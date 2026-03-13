@@ -6,6 +6,7 @@ import { ValuationHeroComponent } from '../../components/valuation-hero/valuatio
 import { ScreenerAfterScreeningComponent } from '../../components/screener-after-screening/screener-after-screening.component';
 import { Title, Meta } from '@angular/platform-browser';
 import { ExamplesComponent } from '../../components/examples/examples.component';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 
 @Component({
@@ -22,7 +23,11 @@ import { ExamplesComponent } from '../../components/examples/examples.component'
   styleUrl: './landing.component.css'
 })
 export class LandingComponent implements OnInit {
-   constructor(private titleService: Title, private metaService: Meta) {}
+   constructor(
+    private titleService: Title, 
+    private metaService: Meta,
+    private browserStorageService: BrowserStorageService
+  ) {}
 
   erSearchTextEn:string = "Side-by-Side Currency Comparison:";
   erSearchTextRu:string = "Сравнение валют"; 
@@ -33,7 +38,7 @@ export class LandingComponent implements OnInit {
   historySearchText:string = "Historical Data Download:"
 
   ngOnInit(): void {
-    var language = localStorage.getItem('language');
+    var language = this.browserStorageService.getItem('language');
     if(language == 'ru'){
       this.erSearchText = this.erSearchTextRu;
       this.historySearchText = this.historySearchTextRu;

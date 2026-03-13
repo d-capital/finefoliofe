@@ -1,6 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, EventEmitter, HostListener, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { BrowserStorageService } from '../../services/browser-storage.service';
 
 @Component({
   selector: 'app-language-selector',
@@ -10,7 +11,10 @@ import { Router } from '@angular/router';
 })
 export class LanguageSelectorComponent {
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private browserStorageService: BrowserStorageService
+  ) {}
   @Output() close = new EventEmitter<void>();
   @Input() selectedValue!: string | undefined; 
   isDropdownOpen = false;
@@ -22,8 +26,8 @@ export class LanguageSelectorComponent {
 
   onSelectionChange(newValue: string) {
     this.selectedValue = newValue;
-    localStorage.setItem('language', this.selectedValue);
-    localStorage.setItem('isUserLangSet', 'yes');
+    this.browserStorageService.setItem('language', this.selectedValue);
+    this.browserStorageService.setItem('isUserLangSet', 'yes');
     let currentUrl = this.router.url;
     if (this.selectedValue === 'ru') {
       // If not already in /ru, add /ru

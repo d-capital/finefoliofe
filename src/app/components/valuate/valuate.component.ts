@@ -1,4 +1,4 @@
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule, isPlatformBrowser, NgFor } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { TabsComponent } from '../tabs/tabs.component';
 import { TabComponent } from '../tab/tab.component';
 import { StockCardComponent } from '../stock-card/stock-card.component';
 import { ChangeDetectorRef } from '@angular/core';
+import { Inject, PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-valuate',
@@ -22,7 +23,8 @@ export class ValuateComponent implements OnInit {
   constructor(
     private ValuationServiceApi: ValuationService,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
   stockInfo!: StockInfo;
   valuation!: ValuationResult;
@@ -221,174 +223,176 @@ export class ValuateComponent implements OnInit {
   dcfError:boolean = false;
 
   ngOnInit(): void {
-    var language = localStorage.getItem('language');
-    this.pageLanguage = language ? language : 'en';
-    if (language == 'ru') {
-      this.loadingLabel = this.loadingLabelRu;
-      this.exchangeLabel = this.exchangeLabelRu;
-      this.countryLabel = this.countryLabelRu;
-      this.stockInformationLabel = this.stockInformationLabelRu;
-      this.priceLabel = this.priceLabelRu;
-      this.marketCapLabel = this.marketCapLabelRu;
-      this.sectorLabel = this.sectorLabelRu;
-      this.industryLabel = this.industryLabelRu;
-      this.epsTtmLabel = this.epsTtmLabelRu;
-      this.peTtmLabel = this.peTtmLabelRu;
-      this.dividendsYieldLabel = this.dividendsYieldLabelRu;
-
-      //valuation card
-      this.valuationResultsLabel = this.valuationResultsLabelRu;
-      this.valuationOverviewLabel = this.valuationOverviewLabelRu;
-      this.fairPriceLabel = this.fairPriceLabelRu;
-      this.resultLabel = this.resultLabelRu;
-      this.formulaLabel = this.formulaLabelRu;
-      this.formulaExplanationLabel = this.formulaExplanationLabelRu;
-      this.maxGrowthRateNote = this.maxGrowthRateNoteRu;
-
-      //historicalProfit
-      this.netProfitGrowthLabel = this.netProfitGrowthLabelRu;
-      this.averageIncomeGrowthLabel = this.averageIncomeGrowthLabelRu;
-      this.averageIncomeGrowthTtm = this.averageIncomeGrowthTtmRu;
-      this.averageThreeYearsGrowth = this.averageThreeYearsGrowthRu;
-      this.averageFiveYearsGrowth = this.averageFiveYearsGrowthRu;
-
-      //lynch explanation
-      this.aboutLynchFormulaLabel = this.aboutLynchFormulaLabelRu;
-      this.aboutLynchFormulaText = this.aboutLynchFormulaTextRu;
-
-      this.undervaluedLabel = this.undervaluedLabelRu;
-      this.overvaluedLabel = this.overvaluedLabelRu;
-
-      this.downsidePotentialLabel = this.downsidePotentialLabelRu;
-      this.upsidePotentialLabel = this.upsidePotentialLabelRu;
-
-      this.growthRateCalcExplanation = this.growthRateCalcExplanationRu;
-
-      this.growthLabel = this.growthLabelRu;
-      this.netProfitLabel = this.netProfitLabelRu;
-      this.metricLabel = this.metricLabelRu;
-
-      this.mainStockData = this.mainStockDataRu;
-      this.finanacialOverviewLabel = this.finanacialOverviewLabelRu;
-
-      this.noValuation = this.noValuationRu;
-      this.noValuationData = this.noValuationDataRu;
-
-      this.pegLabel = this.pegLabelRu;
-      this.pegExplanation = this.pegExplanationRu;
-
-      this.fcfLabel = this.fcfLabelRu;
-      this.deLabel = this.deLabelRu;
-    }
-    else {
-      this.loadingLabel = this.loadingLabelEn;
-      this.exchangeLabel = this.exchangeLabelEn;
-      this.countryLabel = this.countryLabelEn;
-      this.stockInformationLabel = this.stockInformationLabelEn;
-      this.priceLabel = this.priceLabelEn;
-      this.marketCapLabel = this.marketCapLabelEn;
-      this.sectorLabel = this.sectorLabelEn;
-      this.industryLabel = this.industryLabelEn;
-      this.epsTtmLabel = this.epsTtmLabelEn;
-      this.peTtmLabel = this.peTtmLabelEn;
-      this.dividendsYieldLabel = this.dividendsYieldLabelEn;
-
-      //valuation card
-      this.valuationResultsLabel = this.valuationResultsLabelEn;
-      this.valuationOverviewLabel = this.valuationOverviewLabelEn;
-      this.fairPriceLabel = this.fairPriceLabelEn;
-      this.resultLabel = this.resultLabelEn;
-      this.formulaLabel = this.formulaLabelEn;
-      this.formulaExplanationLabel = this.formulaExplanationLabelEn;
-      this.maxGrowthRateNote = this.maxGrowthRateNoteEn;
-
-      //historicalProfit
-      this.netProfitGrowthLabel = this.netProfitGrowthLabelEn;
-      this.averageIncomeGrowthLabel = this.averageIncomeGrowthLabelEn;
-      this.averageIncomeGrowthTtm = this.averageIncomeGrowthTtmEn;
-      this.averageThreeYearsGrowth = this.averageThreeYearsGrowthEn;
-      this.averageFiveYearsGrowth = this.averageFiveYearsGrowthEn;
-
-      //lynch explanation
-      this.aboutLynchFormulaLabel = this.aboutLynchFormulaLabelEn;
-      this.aboutLynchFormulaText = this.aboutLynchFormulaTextEn;
-
-      this.undervaluedLabel = this.undervaluedLabelEn;
-      this.overvaluedLabel = this.overvaluedLabelEn;
-
-      this.downsidePotentialLabel = this.downsidePotentialLabelEn;
-      this.upsidePotentialLabel = this.upsidePotentialLabelEn;
-
-      this.growthRateCalcExplanation = this.growthRateCalcExplanationEn;
-
-      this.growthLabel = this.growthLabelEn;
-      this.netProfitLabel = this.netProfitLabelEn;
-      this.metricLabel = this.metricLabelEn;
-
-      this.mainStockData = this.mainStockDataEn;
-      this.finanacialOverviewLabel = this.finanacialOverviewLabelEn;
-
-      this.noValuation = this.noValuationEn;
-      this.noValuationData = this.noValuationDataEn;
-
-      this.pegLabel = this.pegLabelEn;
-      this.pegExplanation = this.pegExplanationEn;
-
-      this.fcfLabel = this.fcfLabelEn;
-      this.deLabel = this.deLabelEn;
-
-    }
-
-    const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
-    const tickerCode = params ? params[1] : 'AAPL';
-    const exchangeCode = params ? params[0] :  'NYSE';
-    this.ticker = tickerCode ? tickerCode.toLocaleUpperCase() : 'AAPL';
-    this.exchange = exchangeCode ? exchangeCode.toLocaleUpperCase() : 'NYSE';
-    this.ValuationServiceApi.getValuation(this.ticker, this.exchange).pipe().subscribe(data => {
-      this.stockInfo = data['stockInfo'];
-      this.valuation = data['valuation'];
-      var shownFairPrice = this.round(this.valuation.fairPrice, this.exchange);
-      var currentPrice = this.round(this.stockInfo.price, this.exchange);
-      var percentPotential = this.round(this.valuation.resultPercent, "noexchange");
-      var epsTtmRounded = this.round(this.stockInfo.epsTtm, this.exchange);
-      if (this.valuation.resultLabel === "Undervalued" && language == 'ru') {
-        this.undervaluedExplanation = `Акция является недооцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал роста на ${percentPotential}% с учетом текущей рыночной цены ${currentPrice} и справедливой стоимости по формуле Питера Линча ${shownFairPrice}.`;
-      }
-      else if (this.valuation.resultLabel === "Undervalued" && language == 'en') {
-        this.undervaluedExplanation = `According to Peter Lynch model this stock is undervalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have growth potential of ${percentPotential}% with current price of ${currentPrice} and fair price calculated with Peter Lynch formula of ${shownFairPrice}.`;
-      }
-      else if (this.valuation.resultLabel === "Overvalued" && language == 'ru') {
-        this.overvaluedExplanation = `Акция является переоцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал снижения на ${percentPotential}% с учетом текущей рыночной цены ${currentPrice} и справедливой стоимости по формуле Питера Линча ${shownFairPrice}.`;
-      }
-      else if (this.valuation.resultLabel === "Overvalued" && language == 'en') {
-        this.overvaluedExplanation = `According to Peter Lynch model this stock is overvalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have downside potential of ${percentPotential}% with current price of ${currentPrice} and fair price calculated with Peter Lynch formula of ${shownFairPrice}.`;
-      }
+    if (isPlatformBrowser(this.platformId)) {
+      var language = localStorage.getItem('language');
+      this.pageLanguage = language ? language : 'en';
       if (language == 'ru') {
-        this.fairPriceExplanation = `Справедливая стоимость акции ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} посчитана по формуле Питера Линча.`;
-        this.howFairPriceWasCalulated = `Как была посчитана справедливая стоимость`;
-        this.epsTtmExplanation = `Текущее значение базовой прибыли на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) составляет ${epsTtmRounded}.`
+        this.loadingLabel = this.loadingLabelRu;
+        this.exchangeLabel = this.exchangeLabelRu;
+        this.countryLabel = this.countryLabelRu;
+        this.stockInformationLabel = this.stockInformationLabelRu;
+        this.priceLabel = this.priceLabelRu;
+        this.marketCapLabel = this.marketCapLabelRu;
+        this.sectorLabel = this.sectorLabelRu;
+        this.industryLabel = this.industryLabelRu;
+        this.epsTtmLabel = this.epsTtmLabelRu;
+        this.peTtmLabel = this.peTtmLabelRu;
+        this.dividendsYieldLabel = this.dividendsYieldLabelRu;
+
+        //valuation card
+        this.valuationResultsLabel = this.valuationResultsLabelRu;
+        this.valuationOverviewLabel = this.valuationOverviewLabelRu;
+        this.fairPriceLabel = this.fairPriceLabelRu;
+        this.resultLabel = this.resultLabelRu;
+        this.formulaLabel = this.formulaLabelRu;
+        this.formulaExplanationLabel = this.formulaExplanationLabelRu;
+        this.maxGrowthRateNote = this.maxGrowthRateNoteRu;
+
+        //historicalProfit
+        this.netProfitGrowthLabel = this.netProfitGrowthLabelRu;
+        this.averageIncomeGrowthLabel = this.averageIncomeGrowthLabelRu;
+        this.averageIncomeGrowthTtm = this.averageIncomeGrowthTtmRu;
+        this.averageThreeYearsGrowth = this.averageThreeYearsGrowthRu;
+        this.averageFiveYearsGrowth = this.averageFiveYearsGrowthRu;
+
+        //lynch explanation
+        this.aboutLynchFormulaLabel = this.aboutLynchFormulaLabelRu;
+        this.aboutLynchFormulaText = this.aboutLynchFormulaTextRu;
+
+        this.undervaluedLabel = this.undervaluedLabelRu;
+        this.overvaluedLabel = this.overvaluedLabelRu;
+
+        this.downsidePotentialLabel = this.downsidePotentialLabelRu;
+        this.upsidePotentialLabel = this.upsidePotentialLabelRu;
+
+        this.growthRateCalcExplanation = this.growthRateCalcExplanationRu;
+
+        this.growthLabel = this.growthLabelRu;
+        this.netProfitLabel = this.netProfitLabelRu;
+        this.metricLabel = this.metricLabelRu;
+
+        this.mainStockData = this.mainStockDataRu;
+        this.finanacialOverviewLabel = this.finanacialOverviewLabelRu;
+
+        this.noValuation = this.noValuationRu;
+        this.noValuationData = this.noValuationDataRu;
+
+        this.pegLabel = this.pegLabelRu;
+        this.pegExplanation = this.pegExplanationRu;
+
+        this.fcfLabel = this.fcfLabelRu;
+        this.deLabel = this.deLabelRu;
       }
-      else if (language == 'en') {
-        this.fairPriceExplanation = `Fair price of stock ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} is calculated based on Petere Lynch formula.`;
-        this.howFairPriceWasCalulated = `How fair price was calculated`;
-        this.epsTtmExplanation = `Current trailing twelve months earnings per share (EPS TTM) is ${epsTtmRounded}.`
+      else {
+        this.loadingLabel = this.loadingLabelEn;
+        this.exchangeLabel = this.exchangeLabelEn;
+        this.countryLabel = this.countryLabelEn;
+        this.stockInformationLabel = this.stockInformationLabelEn;
+        this.priceLabel = this.priceLabelEn;
+        this.marketCapLabel = this.marketCapLabelEn;
+        this.sectorLabel = this.sectorLabelEn;
+        this.industryLabel = this.industryLabelEn;
+        this.epsTtmLabel = this.epsTtmLabelEn;
+        this.peTtmLabel = this.peTtmLabelEn;
+        this.dividendsYieldLabel = this.dividendsYieldLabelEn;
+
+        //valuation card
+        this.valuationResultsLabel = this.valuationResultsLabelEn;
+        this.valuationOverviewLabel = this.valuationOverviewLabelEn;
+        this.fairPriceLabel = this.fairPriceLabelEn;
+        this.resultLabel = this.resultLabelEn;
+        this.formulaLabel = this.formulaLabelEn;
+        this.formulaExplanationLabel = this.formulaExplanationLabelEn;
+        this.maxGrowthRateNote = this.maxGrowthRateNoteEn;
+
+        //historicalProfit
+        this.netProfitGrowthLabel = this.netProfitGrowthLabelEn;
+        this.averageIncomeGrowthLabel = this.averageIncomeGrowthLabelEn;
+        this.averageIncomeGrowthTtm = this.averageIncomeGrowthTtmEn;
+        this.averageThreeYearsGrowth = this.averageThreeYearsGrowthEn;
+        this.averageFiveYearsGrowth = this.averageFiveYearsGrowthEn;
+
+        //lynch explanation
+        this.aboutLynchFormulaLabel = this.aboutLynchFormulaLabelEn;
+        this.aboutLynchFormulaText = this.aboutLynchFormulaTextEn;
+
+        this.undervaluedLabel = this.undervaluedLabelEn;
+        this.overvaluedLabel = this.overvaluedLabelEn;
+
+        this.downsidePotentialLabel = this.downsidePotentialLabelEn;
+        this.upsidePotentialLabel = this.upsidePotentialLabelEn;
+
+        this.growthRateCalcExplanation = this.growthRateCalcExplanationEn;
+
+        this.growthLabel = this.growthLabelEn;
+        this.netProfitLabel = this.netProfitLabelEn;
+        this.metricLabel = this.metricLabelEn;
+
+        this.mainStockData = this.mainStockDataEn;
+        this.finanacialOverviewLabel = this.finanacialOverviewLabelEn;
+
+        this.noValuation = this.noValuationEn;
+        this.noValuationData = this.noValuationDataEn;
+
+        this.pegLabel = this.pegLabelEn;
+        this.pegExplanation = this.pegExplanationEn;
+
+        this.fcfLabel = this.fcfLabelEn;
+        this.deLabel = this.deLabelEn;
+
       }
-      this.loading = false;
-    },
-      (err: HttpErrorResponse) => {
-        if (err instanceof HttpErrorResponse && err.status === 404) {
-          this.error = true;
-          this.loading = false;
-          this.cdr.detectChanges();
-        } else {
-          // Другие ошибки (например, 500, сеть и т.д.)
-          console.error('Unexpected error:', err);
-          this.error = true;
-          this.loading = false;
-          this.cdr.detectChanges();
+
+      const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
+      const tickerCode = params ? params[1] : 'AAPL';
+      const exchangeCode = params ? params[0] :  'NYSE';
+      this.ticker = tickerCode ? tickerCode.toLocaleUpperCase() : 'AAPL';
+      this.exchange = exchangeCode ? exchangeCode.toLocaleUpperCase() : 'NYSE';
+      this.ValuationServiceApi.getValuation(this.ticker, this.exchange).pipe().subscribe(data => {
+        this.stockInfo = data['stockInfo'];
+        this.valuation = data['valuation'];
+        var shownFairPrice = this.round(this.valuation.fairPrice, this.exchange);
+        var currentPrice = this.round(this.stockInfo.price, this.exchange);
+        var percentPotential = this.round(this.valuation.resultPercent, "noexchange");
+        var epsTtmRounded = this.round(this.stockInfo.epsTtm, this.exchange);
+        if (this.valuation.resultLabel === "Undervalued" && language == 'ru') {
+          this.undervaluedExplanation = `Акция является недооцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал роста на ${percentPotential}% с учетом текущей рыночной цены ${currentPrice} и справедливой стоимости по формуле Питера Линча ${shownFairPrice}.`;
         }
-      }
-    )
+        else if (this.valuation.resultLabel === "Undervalued" && language == 'en') {
+          this.undervaluedExplanation = `According to Peter Lynch model this stock is undervalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have growth potential of ${percentPotential}% with current price of ${currentPrice} and fair price calculated with Peter Lynch formula of ${shownFairPrice}.`;
+        }
+        else if (this.valuation.resultLabel === "Overvalued" && language == 'ru') {
+          this.overvaluedExplanation = `Акция является переоцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал снижения на ${percentPotential}% с учетом текущей рыночной цены ${currentPrice} и справедливой стоимости по формуле Питера Линча ${shownFairPrice}.`;
+        }
+        else if (this.valuation.resultLabel === "Overvalued" && language == 'en') {
+          this.overvaluedExplanation = `According to Peter Lynch model this stock is overvalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have downside potential of ${percentPotential}% with current price of ${currentPrice} and fair price calculated with Peter Lynch formula of ${shownFairPrice}.`;
+        }
+        if (language == 'ru') {
+          this.fairPriceExplanation = `Справедливая стоимость акции ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} посчитана по формуле Питера Линча.`;
+          this.howFairPriceWasCalulated = `Как была посчитана справедливая стоимость`;
+          this.epsTtmExplanation = `Текущее значение базовой прибыли на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) составляет ${epsTtmRounded}.`
+        }
+        else if (language == 'en') {
+          this.fairPriceExplanation = `Fair price of stock ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} is calculated based on Petere Lynch formula.`;
+          this.howFairPriceWasCalulated = `How fair price was calculated`;
+          this.epsTtmExplanation = `Current trailing twelve months earnings per share (EPS TTM) is ${epsTtmRounded}.`
+        }
+        this.loading = false;
+      },
+        (err: HttpErrorResponse) => {
+          if (err instanceof HttpErrorResponse && err.status === 404) {
+            this.error = true;
+            this.loading = false;
+            this.cdr.detectChanges();
+          } else {
+            // Другие ошибки (например, 500, сеть и т.д.)
+            console.error('Unexpected error:', err);
+            this.error = true;
+            this.loading = false;
+            this.cdr.detectChanges();
+          }
+        }
+      )
+    }
   }
   round(value: number, exchange: string): string {
     if (value !== null) {
