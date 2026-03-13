@@ -3,12 +3,13 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build -- --configuration=production
+RUN npm run build
 
-FROM nginx:1.25-alpine
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/dist/finefolio-fe/browser /usr/share/nginx/html
+FROM node:18-alpine-slim
+WORKDIR /app
+# Copy the built server and browser files
+COPY --from=builder /app/dist/finefolio-fe ./dist/finefolio-fe
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 4000
+# Start the Node.js server instead of Nginx
+CMD ["node", "dist/finefolio-fe/server/server.mjs"]
