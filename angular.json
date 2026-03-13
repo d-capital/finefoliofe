@@ -35,7 +35,9 @@
             ],
             "scripts": [],
             "server": "src/main.server.ts",
-            "ssr": true,
+            "ssr":  {
+              "entry": "src/server.ts" 
+            },
             "prerender": false
           },
           "configurations": {
