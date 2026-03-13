@@ -8,8 +8,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class ValuationService {
   //private getValuationUrl = 'https://finefoliobe.onrender.com/valuation/'
-  private getValuationUrl = 'http://127.0.0.1:8000/valuation/'
-  //private getValuationUrl = '/api/valuation/'
+  //private getValuationUrl = 'http://127.0.0.1:8000/valuation/'
+  private getValuationUrl = '/api/valuation/'
 
   constructor(private http: HttpClient) { }
 
