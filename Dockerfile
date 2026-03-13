@@ -16,4 +16,4 @@ ENV PORT=4000
 
 EXPOSE 4000
 # Run the server entry point (check if your file is .mjs or .js)
-CMD ["node", "dist/finefolio-fe/server/server.mjs"]
+CMD ["node", "dist/finefolio-fe/server/main.server.mjs"]
