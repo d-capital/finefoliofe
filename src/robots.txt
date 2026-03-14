@@ -2,5 +2,7 @@ User-agent: *
 Disallow: /admin/
 Disallow: /login/
 Disallow: /private/
+Disallow: /en
+Disallow: /en/
 Allow: /
 Sitemap: https://valestor.com/sitemap.xml

@@ -12,6 +12,7 @@ import { TabComponent } from '../tab/tab.component';
 import { StockCardComponent } from '../stock-card/stock-card.component';
 import { ChangeDetectorRef } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-valuate',
@@ -24,7 +25,9 @@ export class ValuateComponent implements OnInit {
     private ValuationServiceApi: ValuationService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private titleService: Title, 
+    private metaService: Meta,
   ) { }
   stockInfo!: StockInfo;
   valuation!: ValuationResult;
@@ -224,6 +227,11 @@ export class ValuateComponent implements OnInit {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
+      const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
+      const tickerCode = params ? params[1] : 'AAPL';
+      const exchangeCode = params ? params[0] :  'NYSE';
+      this.ticker = tickerCode ? tickerCode.toLocaleUpperCase() : 'AAPL';
+      this.exchange = exchangeCode ? exchangeCode.toLocaleUpperCase() : 'NYSE';
       var language = localStorage.getItem('language');
       this.pageLanguage = language ? language : 'en';
       if (language == 'ru') {
@@ -282,6 +290,11 @@ export class ValuateComponent implements OnInit {
 
         this.fcfLabel = this.fcfLabelRu;
         this.deLabel = this.deLabelRu;
+        this.titleService.setTitle(`Oценка акции ${this.ticker} (${this.exchange}) по Методу Питера Линча - Валестор`);
+        this.metaService.updateTag({
+          name: 'description',
+          content: 'Узнайте справедливую стоимость акции ' + this.ticker + ' (' + this.exchange + ') по формуле Питера Линча. Наша автоматизированная оценка поможет вам определить, является ли акция недооцененной или переоцененной, и принять обоснованное инвестиционное решение.'
+        });
       }
       else {
         this.loadingLabel = this.loadingLabelEn;
@@ -339,14 +352,12 @@ export class ValuateComponent implements OnInit {
 
         this.fcfLabel = this.fcfLabelEn;
         this.deLabel = this.deLabelEn;
-
+        this.titleService.setTitle(`${this.ticker} (${this.exchange}) stock valuation by Peter Lynch method - Valestor`);
+        this.metaService.updateTag({
+          name: 'description',
+          content: 'Find out the fair value of ' + this.ticker + ' (' + this.exchange + ') stock using Peter Lynch formula. Our automated evaluation will help you determine if the stock is undervalued or overvalued, and make an informed investment decision.'
+        });
       }
-
-      const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
-      const tickerCode = params ? params[1] : 'AAPL';
-      const exchangeCode = params ? params[0] :  'NYSE';
-      this.ticker = tickerCode ? tickerCode.toLocaleUpperCase() : 'AAPL';
-      this.exchange = exchangeCode ? exchangeCode.toLocaleUpperCase() : 'NYSE';
       this.ValuationServiceApi.getValuation(this.ticker, this.exchange).pipe().subscribe(data => {
         this.stockInfo = data['stockInfo'];
         this.valuation = data['valuation'];
