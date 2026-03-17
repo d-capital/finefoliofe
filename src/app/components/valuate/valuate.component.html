@@ -13,6 +13,24 @@
       <h4>{{ ticker }} * {{ exchange }}</h4>
       <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(stockInfo.price) }}</h1>
       <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(stockInfo.price) }}</h1>
+      <div ngSkipHydration>
+        <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'en'" style="line-height: 1.2px;">
+          <p>Data powered by <b>TradingView</b></p>
+          <p style="color: gray;">updated today at {{ displayTime }}</p>
+        </div>
+        <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'en'" style="line-height: 1.2px;">
+          <p>Data powered by <b>MOEX API</b></p>
+          <p style="color: gray;">updated today at {{ displayTime }}</p>
+        </div>
+        <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'ru'" style="line-height: 1.2px;">
+          <p>Данные от <b>TradingView</b></p>
+          <p style="color: gray;">oбновлены сегодня в {{ displayTime }}</p>
+        </div>
+        <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'ru'" style="line-height: 1.2px;">
+          <p>Данные от <b>MOEX API</b></p>
+          <p style="color: gray;">oбновлены сегодня в {{ displayTime }}</p>
+        </div>
+      </div>
     </section>
 
     <app-tabs>

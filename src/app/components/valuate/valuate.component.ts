@@ -1,4 +1,4 @@
-import { CommonModule, isPlatformBrowser, NgFor } from '@angular/common';
+import { CommonModule, formatDate, isPlatformBrowser, NgFor } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -225,6 +225,8 @@ export class ValuateComponent implements OnInit {
 
   dcfError:boolean = false;
 
+  displayTime: string = 'Loading...';
+
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
@@ -358,6 +360,15 @@ export class ValuateComponent implements OnInit {
           content: 'Find out the fair value of ' + this.ticker + ' (' + this.exchange + ') stock using Peter Lynch formula. Our automated evaluation will help you determine if the stock is undervalued or overvalued, and make an informed investment decision.'
         });
       }
+      const now = new Date();
+      const timeStr = formatDate(now, 'HH:mm', 'en-US');
+      
+      // Calculate GMT offset
+      const offsetMinutes = -now.getTimezoneOffset();
+      const offsetHours = offsetMinutes / 60;
+      const gmtStr = `GMT${offsetHours >= 0 ? '+' : ''}${offsetHours}`;
+
+      this.displayTime = `${timeStr} ${gmtStr}`;
       this.ValuationServiceApi.getValuation(this.ticker, this.exchange).pipe().subscribe(data => {
         this.stockInfo = data['stockInfo'];
         this.valuation = data['valuation'];
