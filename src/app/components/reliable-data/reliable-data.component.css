@@ -1,0 +1,51 @@
+.exchange-logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.reliable-data-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.reliable-data-grid {
+  display: grid;
+  padding-top: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin: 0 auto;
+}
+.reliable-data-block {
+  background: linear-gradient(145deg, #0d1f2d, #123);
+  border-radius: 16px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.reliable-data-logo {
+  width: 48px;
+  height: 48px;
+  margin-right: 16px;
+}
+.reliable-data-info {
+  display: flex;
+  flex-direction: column;
+}
+.reliable-data-source {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.reliable-data-exchanges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.reliable-data-exchange {
+  color: #ccc;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+}

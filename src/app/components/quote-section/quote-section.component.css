@@ -1,0 +1,48 @@
+.quote-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 140px;
+  margin-top: 80px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.quote-image img {
+  max-width: 480px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.quote-text {
+  flex: 1;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.quote-author-subtitle {
+  color: gray;
+  font-weight: 200;
+}
+.quote-text h4 {
+  font-size: 18px;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .quote-section {
+    flex-direction: column;
+    text-align: left;
+    gap: 40px;
+  }
+  .quote-image{
+    margin-left: 9px;
+  }
+  .quote-text {
+    text-align: left;
+  }
+  .quote-image img {
+    max-width: 280px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+}

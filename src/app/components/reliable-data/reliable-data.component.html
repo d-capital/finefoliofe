@@ -1,0 +1,19 @@
+<section class="reliable-data-section">
+  <h2 class="reliable-data-title">{{ title }}</h2>
+  <div class="reliable-data-grid">
+    <div *ngFor="let source of sources" class="reliable-data-block">
+      <img [src]="source.logoUrl" alt="{{source.sourceName}} logo" class="reliable-data-logo">
+      <div class="reliable-data-info">
+        <div class="reliable-data-source">{{source.sourceName}}</div>
+        <div class="reliable-data-exchanges">
+          <ng-container *ngFor="let ex of source.exchanges">
+            <span class="reliable-data-exchange">
+              <img [src]="ex.logo" alt="{{ex.name}} logo" class="exchange-logo">
+              {{ex.name}}
+            </span>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

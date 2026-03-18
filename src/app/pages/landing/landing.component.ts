@@ -6,7 +6,9 @@ import { ValuationHeroComponent } from '../../components/valuation-hero/valuatio
 import { ScreenerAfterScreeningComponent } from '../../components/screener-after-screening/screener-after-screening.component';
 import { Title, Meta } from '@angular/platform-browser';
 import { ExamplesComponent } from '../../components/examples/examples.component';
+import { ReliableDataComponent } from '../../components/reliable-data/reliable-data.component';
 import { BrowserStorageService } from '../../services/browser-storage.service';
+import { QuoteSectionComponent } from '../../components/quote-section/quote-section.component';
 
 
 @Component({
@@ -17,17 +19,21 @@ import { BrowserStorageService } from '../../services/browser-storage.service';
     FairValueComponent,
     FaqComponent,
     ScreenerAfterScreeningComponent, 
-    ExamplesComponent
+    ExamplesComponent,
+    ReliableDataComponent,
+    QuoteSectionComponent
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
 })
 export class LandingComponent implements OnInit {
-   constructor(
+  constructor(
     private titleService: Title, 
     private metaService: Meta,
     private browserStorageService: BrowserStorageService
   ) {}
+
+
 
   erSearchTextEn:string = "Side-by-Side Currency Comparison:";
   erSearchTextRu:string = "Сравнение валют"; 
