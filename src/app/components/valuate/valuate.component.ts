@@ -227,6 +227,43 @@ export class ValuateComponent implements OnInit {
 
   displayTime: string = 'Loading...';
 
+  reliableDataSources: string = "Reliable Data Sources";
+  reliableDataSourcesRu: string = "Надежные источники данных";
+  reliableDataSourcesEn: string = "Reliable Data Sources";
+
+  datapoints: string[] = [
+    "<b>Price</b> - close price of an asset from TradingView (updates when you open the page)",
+    "<b>EPS TTM</b> - value from TradingView (updates when you open the page)",
+    "<b>Net Income Growth Rate</b> - value from SEC fillings (updates when yearly SEC fillings are submitted, usually in February-March)",
+  ];
+  datapointsRu: string[] = [
+    "<b>Цена</b> - цена закрытия актива полученная от TradingView (обновляется при открытии страницы)",
+    "<b>Базовая прибыль на акцию (EPS TTM)</b> - значение полученное от TradingView (обновляется при открытии страницы)",
+    "<b>Темп роста чистой прибыли (Net Income Growth Rate)</b> - значение из отчетов SEC (обновляется при публикации годовых отчетов SEC, обычно в феврале-марте)",
+  ];
+  datapointsEn: string[] = [
+    "<b>Price</b> - close price of an asset from TradingView (updates when you open the page)",
+    "<b>EPS TTM</b> - value from TradingView (updates when you open the page)",
+    "<b>Net Income Growth Rate</b> - value from SEC fillings (updates when yearly SEC fillings are submitted, usually in February-March)",
+  ];
+
+  datapointsMoex: string[] = [
+    "<b>Price</b> - close price of an asset from MOEX API (updates when you open the page)",
+    "<b>EPS TTM</b> - value from the latest quarterly report (every quarter when report is published)",
+    "<b>Net Income Growth Rate</b> - value from the latest yearly report (updates when yearly report is submitted, usually in February-March)",
+  ];
+  datapointsMoexRu: string[] = [
+    "<b>Цена</b> - цена закрытия актива полученная от MOEX API (обновляется при открытии страницы)",
+    "<b>Базовая прибыль на акцию (EPS TTM)</b> - значение из последнего квартального отчета (обновляется каждый квартал при публикации отчета)",
+    "<b>Темп роста чистой прибыли (Net Income Growth Rate)</b> - значение из годового отчета компании (обновляется при публикации годовых отчетов, обычно в феврале-марте)",
+  ];
+  datapointsMoexEn: string[] = [
+    "<b>Price</b> - close price of an asset from MOEX API (updates when you open the page)",
+    "<b>EPS TTM</b> - value from the latest quarterly report (every quarter when report is published)",
+    "<b>Net Income Growth Rate</b> - value from the latest yearly report (updates when yearly report is submitted, usually in February-March)",
+  ];
+
+
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
@@ -292,6 +329,15 @@ export class ValuateComponent implements OnInit {
 
         this.fcfLabel = this.fcfLabelRu;
         this.deLabel = this.deLabelRu;
+        
+        this.reliableDataSources = this.reliableDataSourcesRu;
+        if (this.exchange === 'MOEX'){
+          this.datapoints = this.datapointsMoexRu;
+        }
+        else{
+          this.datapoints = this.datapointsRu;
+        }
+        
         this.titleService.setTitle(`Oценка акции ${this.ticker} (${this.exchange}) по Методу Питера Линча - Валестор`);
         this.metaService.updateTag({
           name: 'description',
@@ -354,6 +400,15 @@ export class ValuateComponent implements OnInit {
 
         this.fcfLabel = this.fcfLabelEn;
         this.deLabel = this.deLabelEn;
+
+        this.reliableDataSources = this.reliableDataSourcesEn;
+        if (this.exchange === 'MOEX'){
+          this.datapoints = this.datapointsMoexEn;
+        }
+        else{
+          this.datapoints = this.datapointsEn;
+        }
+
         this.titleService.setTitle(`${this.ticker} (${this.exchange}) stock valuation by Peter Lynch method - Valestor`);
         this.metaService.updateTag({
           name: 'description',

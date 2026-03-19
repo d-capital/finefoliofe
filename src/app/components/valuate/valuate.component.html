@@ -159,6 +159,12 @@
               <h2>{{ aboutLynchFormulaLabel }}</h2>
               <p [innerHTML]="aboutLynchFormulaText"></p>
             </section>
+            <section *ngIf="valuation.avgGrowth.fiveYears > 0" class="card  valuate-section">
+              <h2>{{ reliableDataSources }}</h2>
+              <ul *ngFor="let datapoint of datapoints">
+                <li [innerHTML]="datapoint"></li>
+              </ul>
+            </section>
           </div>
         </div>
       </app-tab>
