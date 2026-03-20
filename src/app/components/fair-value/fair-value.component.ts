@@ -32,7 +32,7 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Формула справедливой стоимости Линча",
           subtitle: "—",
-          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS) * Цена акции / прибыль на акцию (PEG)."
+          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS)."
         },
         {
           image: "eps.png",
@@ -46,12 +46,14 @@ export class FairValueComponent implements OnInit {
           subtitle: "—",
           description: "Темп роста прибыли формуле - это арифметическое среднее роста чистой прибыли (Net Income) за последние 5 лет."
         },
+        /*
         {
           image: "blog-preview/peg.png",
           title: "Цена акции / прибыль на акцию (PEG)",
           subtitle: "—",
           description: "Питер Линч популяризировал коэффициент Цена акции / рост прибыли на акцию (PEG, Price / Earnings to Growth Ratio). С помощью него оценивается насколько акция недооценена или переоценена с учетом прогнозируемого темпа роста прибыли компании. Для простоты расчета коэффициент Цена акции / прост прибыли на акцию (PEG) по умолчанию равен значению '1'."
         },
+        */
         {
           image: "finalru.png",
           title: "Финальный результат оценки справедливой стоимости",
@@ -66,7 +68,7 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Lynch Fair Value Formula",
           subtitle: "—",
-          description: "We calculate fair value using the following version of Peter Lynch's formula. Peter Lynch's fair value per share = Earnings Growth Rate * Basic Earnings per Share (EPS) * Share Price / Earnings per Share (PEG)."
+          description: "We calculate fair value using the following version of Peter Lynch's formula. Peter Lynch's fair value per share = Earnings Growth Rate * Basic Earnings per Share (EPS)."
         },
         {
           image: "eps.png",
@@ -80,12 +82,14 @@ export class FairValueComponent implements OnInit {
           subtitle: "—",
           description: "The profit growth rate formula is arithmetic average growth rate of net income over the past 5 years."
         },
+        /*
         {
           image: "blog-preview/peg.png",
           title: "Stock price / EPS (PEG)",
           subtitle: "—",
           description: "Peter Lynch popularized the price-to-earnings-growth (PEG) ratio. This measure determines whether a stock is currently undervalued or overvalued based on the company's projected earnings growth rate. To simplify calculations, the PEG ratio is set to '1' by default."
         },
+        */
         {
           image: "final.png",
           title: "Final result of fair value calculation",
