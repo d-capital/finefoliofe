@@ -119,7 +119,11 @@ export class ValuateComponent implements OnInit {
 
   maxGrowthRateNote: string = "Если темп роста чистой прибыли за 5 лет был больше 25% мы используем 25, так как Питер Линч называл рост более 25 процентов в год неустойчивым."
   maxGrowthRateNoteRu: string = "Если темп роста чистой прибыли за 5 лет был больше 25% мы используем 25, так как Питер Линч называл рост более 25 процентов в год неустойчивым."
-  maxGrowthRateNoteEn: string = "If the net profit growth rate over 5 years was greater than 25%, we use 25, since Peter Lynch called growth of more than 25 percent per year unsustainable."
+  maxGrowthRateNoteEn: string = "If the net income growth rate over 5 years was greater than 25%, we use 25, since Peter Lynch called growth of more than 25 percent per year unsustainable."
+
+  minimumValuesNote: string = "If basic earnings per share (EPS TTM) is less then 0, we would use 0 as EPS in the formula. If the net income growth rate over 5 years is less than 0%, we would use 0 for growth rate in the formula.";
+  minimumValuesNoteRu: string = "Если базовая прибыль на акцию (EPS TTM) меньше 0, то в формуле используется значение 0 для EPS. Если темп роста чистой прибыли за 5 лет меньше 0%, то в формуле используется значение 0 для темпа роста.";
+  minimumValuesNoteEn: string = "If basic earnings per share (EPS TTM) is less then 0, we would use 0 as EPS in the formula. If the net income growth rate over 5 years is less than 0%, we would use 0 for growth rate in the formula.";
 
   //historicalProfit
   netProfitGrowthLabel: string = "Net Income";
@@ -204,9 +208,9 @@ export class ValuateComponent implements OnInit {
   noValuationRu: string = "Оценка невозможна из-за отрицательных значений роста прибыли."
   noValuationEn: string = "Valuation is not possible because of negatvie growth values."
 
-  noValuationData: string = "Valuation is not possible because of missing data."
-  noValuationDataRu: string = "Оценка невозможна из-за отсутствия данных."
-  noValuationDataEn: string = "Valuation is not possible because of missing data."
+  noValuationData: string = "Valuation is not possible because of missing data on "
+  noValuationDataRu: string = "Оценка невозможна из-за отсутствия данных o "
+  noValuationDataEn: string = "Valuation is not possible because of missing data on "
 
   fcfLabel: string = "FCF";
   fcfLabelRu: string = "Свободный денежный поток (FCF)";
@@ -294,6 +298,7 @@ export class ValuateComponent implements OnInit {
         this.formulaLabel = this.formulaLabelRu;
         this.formulaExplanationLabel = this.formulaExplanationLabelRu;
         this.maxGrowthRateNote = this.maxGrowthRateNoteRu;
+        this.minimumValuesNote = this.minimumValuesNoteRu;
 
         //historicalProfit
         this.netProfitGrowthLabel = this.netProfitGrowthLabelRu;
@@ -365,6 +370,7 @@ export class ValuateComponent implements OnInit {
         this.formulaLabel = this.formulaLabelEn;
         this.formulaExplanationLabel = this.formulaExplanationLabelEn;
         this.maxGrowthRateNote = this.maxGrowthRateNoteEn;
+        this.minimumValuesNote = this.minimumValuesNoteEn;
 
         //historicalProfit
         this.netProfitGrowthLabel = this.netProfitGrowthLabelEn;
@@ -431,6 +437,31 @@ export class ValuateComponent implements OnInit {
         var currentPrice = this.round(this.stockInfo.price, this.exchange);
         var percentPotential = this.round(this.valuation.resultPercent, "noexchange");
         var epsTtmRounded = this.round(this.stockInfo.epsTtm, this.exchange);
+        if(language == "ru"){
+          if (!this.stockInfo.epsTtm && this.valuation.avgGrowth){
+            this.noValuationData += "EPS.";
+          }
+          if (this.stockInfo.epsTtm && !this.valuation.avgGrowth){
+            this.noValuationData += "темпе роста чистой прибыли.";
+          }
+          if (!this.stockInfo.epsTtm && !this.valuation.avgGrowth){
+            this.noValuationData += "EPS и темпе роста чистой прибыли.";
+          }
+        }
+        if(language == "en"){
+          if (!this.stockInfo.epsTtm && this.valuation.avgGrowth){
+            this.noValuationData += "EPS.";
+          }
+          if (this.stockInfo.epsTtm && !this.valuation.avgGrowth){
+            this.noValuationData += "Net Income Growth Rate.";
+          }
+          if (!this.stockInfo.epsTtm && !this.valuation.avgGrowth){
+            this.noValuationData += "EPS and Net Income Growth Rate.";
+          }
+        }
+        if(this.valuation.fairPrice<0){
+          this.valuation.fairPrice = 0;
+        }
         if (this.valuation.resultLabel === "Undervalued" && language == 'ru') {
           this.undervaluedExplanation = `Акция является недооцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал роста на ${percentPotential}% с учетом текущей рыночной цены ${currentPrice} и справедливой стоимости по формуле Питера Линча ${shownFairPrice}.`;
         }
@@ -485,7 +516,7 @@ export class ValuateComponent implements OnInit {
 
     }
     else {
-      return "$0.00"
+      return "$N/A"
     }
   }
 
@@ -494,7 +525,7 @@ export class ValuateComponent implements OnInit {
       return (value).toFixed(2);
     }
     else {
-      return "-"
+      return "N/A"
     }
   }
 
@@ -503,7 +534,7 @@ export class ValuateComponent implements OnInit {
       return (value).toFixed(0);
     }
     else {
-      return "-"
+      return "N/A"
     }
   }
 

@@ -34,7 +34,7 @@ export class ExamplesComponent implements OnInit {
         { company: "Pfizer, Inc.", ticker: "PFE", upside: 68, status: "Недооценена", link: "/ru/stocks/nyse-pfe/peter-lynch-fair-value-calculator"},
         { company: "Block, Inc.", ticker: "XYZ", upside: 93, status: "Недооценена", link: "/ru/stocks/nyse-xyz/peter-lynch-fair-value-calculator" },
         { company: "Novo Nordisk", ticker: "NVO", upside: 6, status: "Недооценена", link: "/ru/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
-        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Недооценена", link: "/ru/stocks/nyse-coke/peter-lynch-fair-value-calculator" }
+        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Недооценена", link: "/ru/stocks/nasdaq-coke/peter-lynch-fair-value-calculator" }
       ];
     } else {
       this.title = "Examples";
@@ -43,7 +43,7 @@ export class ExamplesComponent implements OnInit {
         { company: "Pfizer, Inc.", ticker: "PFE", upside: 68, status: "Undervalued", link: "/stocks/nyse-pfe/peter-lynch-fair-value-calculator"},
         { company: "Block, Inc.", ticker: "XYZ", upside: 93, status: "Undervalued", link: "/stocks/nyse-xyz/peter-lynch-fair-value-calculator" },
         { company: "Novo Nordisk", ticker: "NVO", upside: 6, status: "Undervalued", link: "/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
-        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Undervalued", link: "/stocks/nyse-coke/peter-lynch-fair-value-calculator" }
+        { company: "Coca-Cola", ticker: "COKE", upside: 16, status: "Undervalued", link: "/stocks/nasdaq-coke/peter-lynch-fair-value-calculator" }
       ];
     }
   }
