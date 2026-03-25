@@ -129,8 +129,7 @@
                       <td *ngFor="let item of valuation.netProfitHistory; let i = index">
                         <ng-container *ngIf="i > 0">
                           {{
-                          ((valuation.netProfitHistory[i].value - valuation.netProfitHistory[i - 1].value)
-                          / valuation.netProfitHistory[i - 1].value * 100) | number:'1.0-0'
+                            getYearToYearGrowhtRate(valuation.netProfitHistory[i - 1].value,valuation.netProfitHistory[i].value)| number:'1.0-0'
                           }}%
                         </ng-container>
                         <ng-container *ngIf="i === 0">—</ng-container>

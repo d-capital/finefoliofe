@@ -567,4 +567,9 @@ export class ValuateComponent implements OnInit {
   
   )
   }
+
+  getYearToYearGrowhtRate(prev:number, current: number):number{
+    var rate = ((current - prev)/ Math.abs(prev)) * 100
+    return rate
+  }
 }
