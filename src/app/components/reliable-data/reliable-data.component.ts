@@ -28,18 +28,16 @@ export class ReliableDataComponent {
   sources: ReliableDataSource[] = [
     {
       logoUrl: 'sec.png',
-      sourceName: 'SEC',
+      sourceName: 'U.S. Securities & Exchange Commission (SEC)',
       exchanges: [
-        { name: 'NYSE', logo: 'exchanges/nyse.svg' },
-        { name: 'NASDAQ', logo: 'exchanges/nasdaq.svg' }
+        { name: 'NYSE, NASDAQ', logo: 'exchanges/nyse.svg' }
       ]
     },
     {
       logoUrl: 'tradingviewlogo.png',
       sourceName: 'TradingView',
       exchanges: [
-        { name: 'NYSE', logo: 'exchanges/nyse.svg' },
-        { name: 'NASDAQ', logo: 'exchanges/nasdaq.svg' }
+        { name: 'NYSE, NASDAQ', logo: 'exchanges/nyse.svg' }
       ]
     },
     {

@@ -20916,7 +20916,7 @@ export class SearchComponent implements OnInit {
     { code: 'ALL', label: 'All', icon: 'exchanges/all.svg' },
     { code: 'NASDAQ', label: 'NASDAQ', icon: 'exchanges/nasdaq.svg' },
     { code: 'NYSE', label: 'NYSE', icon: 'exchanges/nyse.svg' },
-    { code: 'MOEX', label: 'MOEX', icon: 'exchanges/moex.svg' }
+    { code: 'MOEX', label: 'MOEX', icon: 'exchanges/moex.png' }
   ];
 
   selectedExchange = 'ALL';
