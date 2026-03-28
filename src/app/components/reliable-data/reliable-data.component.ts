@@ -23,7 +23,7 @@ interface ReliableDataSource {
 export class ReliableDataComponent {
   title = 'Надежные источники данных';
   titleRu = 'Надежные источники данных';
-  titleEn = 'Trusted data sources';
+  titleEn = 'Trusted Data Sources';
   constructor(private browserStorageService: BrowserStorageService) {}
   sources: ReliableDataSource[] = [
     {

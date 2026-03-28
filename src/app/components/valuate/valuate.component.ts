@@ -72,7 +72,7 @@ export class ValuateComponent implements OnInit {
 
   epsTtmLabel: string = "EPS (TTM)";
   epsTtmLabelRu: string = "Базовая прибыль на акцию (EPS TTM)";
-  epsTtmLabelEn: string = "Basic earnings per share (EPS TTM)";
+  epsTtmLabelEn: string = "Basic Earnings Per Share (EPS TTM)";
 
   epsTtmLabelCompanyInfo: string = "EPS (TTM)";
 
