@@ -41,13 +41,15 @@ button.active::after {
   background-color: #000000;
 }
 
-@media (max-width:768px){
+@media (max-width:1300px){
   .tabs-nav {
     display: flex;
     background-color: #ffffff;
     border-bottom: 1px solid #e9ecef;
     font-family: 'Montserrat', sans-serif;
     margin-left: 16px;
+    padding: 0rem 4px 0rem 4px;
+
   }
 
 }

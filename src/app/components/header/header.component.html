@@ -1,5 +1,6 @@
 <header class="header">
-  <nav class="nav">
+  <div class="container">
+    <nav class="nav">
     <!-- Logo -->
     <a routerLink="/" class="logo">
       <img src="logo.png" alt="Logo" />
@@ -50,7 +51,8 @@
       <!--li><a routerLink="/blog" routerLinkActive="active">{{navLinkBlogLabel}}</a></li>
       <li><a routerLink="/about" routerLinkActive="active">{{navLinkAboutLabel}}</a></li-->
     </ul>
-  </nav>
+    </nav>
+  </div>
 
   <!-- TradingView-style search modal -->
   <div class="search-modal" *ngIf="searchOpen" (click)="toggleSearchPopup()">

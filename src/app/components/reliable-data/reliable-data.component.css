@@ -20,6 +20,8 @@
 .reliable-data-block {
   background: linear-gradient(145deg, #0d1f2d, #123);
   border-radius: 16px;
+  min-height: 80px;
+  max-height: 80px;
   padding: 20px;
   color: white;
   display: flex;
