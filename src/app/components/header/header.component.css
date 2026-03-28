@@ -1,7 +1,7 @@
 .header {
   background: #ffffff;
   border-bottom: 0px solid #ccc;
-  padding: 1px 155px 1px 155px;
+  padding: 1px 0;
   font-family: 'Montserrat', sans-serif;
   position: sticky;
   top: 0;
@@ -58,7 +58,7 @@ ul li svg {
 }
 
 /* Responsive styles */
-@media (max-width: 915px) {
+@media (max-width: 1300px) {
   .nav{
     display: flex;
     align-items: center;
@@ -69,7 +69,7 @@ ul li svg {
   .header {
     background: #ffffff;
     border-bottom: 0px solid #ccc;
-    padding: 1px 1rem 1px 1rem;
+    padding: 0rem 32px 0rem 32px;
     font-family: 'Montserrat', sans-serif;
     position: sticky;
     top: 0;
@@ -98,7 +98,7 @@ ul li svg {
   }*/
 }
 
-@media (max-width: 412px) {
+@media (max-width: 768px) {
   .nav{
     display: flex;
     align-items: center;
@@ -109,7 +109,7 @@ ul li svg {
   .header {
     background: #ffffff;
     border-bottom: 0px solid #ccc;
-    padding: 1px 32px 1px 32px;
+    padding: 0rem 32px 0rem 32px;
     font-family: 'Montserrat', sans-serif;
     position: sticky;
     top: 0;

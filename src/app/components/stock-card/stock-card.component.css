@@ -47,7 +47,7 @@
   background-color: #D30000;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1300px) {
   .card {
     width: auto;        /* or 100% */
     padding: 14px 18px;

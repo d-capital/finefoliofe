@@ -2,18 +2,17 @@
   padding: 60px 32px 0 32px;
   text-align: center;
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .faq-section h2 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 100px;
-  max-width: 800px;
   margin: 0 auto;
 }
 
 .faq-list {
-  max-width: 800px;
   margin: 0 auto;
   text-align: left;
   margin-top: 3%;
@@ -55,7 +54,7 @@ hr {
 }
 
 
-@media (max-width:768px){
+@media (max-width:1300px){
   .faq-section {
     margin-top: 0px;
   }

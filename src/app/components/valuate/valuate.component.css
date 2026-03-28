@@ -71,6 +71,7 @@ ul li {
   background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
+  padding: 0rem 32px 0rem 32px;
   border-radius: 4px;
   margin: 0.4rem 0;
   line-height: 1.2rem; /* match text height */
@@ -164,7 +165,7 @@ ul li {
   grid-template-columns: repeat(auto-fit, minmax(5%, 30%));
 }
 
-@media (max-width:768px){
+@media (max-width:1300px){
   h2{
     font-size: 24px;
   }
@@ -189,7 +190,6 @@ ul li {
   .valuate-section{
     padding: 0 16px 0 16px;
   }
-
 
 }
 

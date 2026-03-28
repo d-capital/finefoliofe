@@ -1,7 +1,7 @@
 .footer {
   background: #ffffff; /* dark slate */
   color: #000000; /* light gray */
-  padding: 1px 155px 1px 155px;
+  padding: 1px 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
 }
@@ -114,17 +114,17 @@
   color: #9ca3af;
   cursor: not-allowed;
 }
-@media (max-width: 915px) {
+@media (max-width: 1300px) {
   .footer {
     background: #ffffff; /* dark slate */
     color: #000000; /* light gray */
-    padding: 1px 1rem 1px 1rem;
+    padding: 0rem 32px 0rem 32px;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
   }
 }
 
-@media (max-width: 412px) {
+@media (max-width: 768px) {
 
   .footer {
     background: #ffffff; /* dark slate */
