@@ -32,7 +32,7 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Формула справедливой стоимости Линча",
           subtitle: "—",
-          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS)."
+          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS) * Цена акции / Прибыль на акцию / Темп роста прибыли (PEG)."
         },
         {
           image: "eps.png",
@@ -44,16 +44,14 @@ export class FairValueComponent implements OnInit {
           image: "growth.png",
           title: "Темп роста прибыли",
           subtitle: "—",
-          description: "Темп роста прибыли формуле - это арифметическое среднее роста чистой прибыли (Net Income) за последние 5 лет."
+          description: "Темп роста прибыли в формуле - это арифметическое среднее роста чистой прибыли (Net Income) за последние 5 лет."
         },
-        /*
         {
           image: "blog-preview/peg.png",
-          title: "Цена акции / прибыль на акцию (PEG)",
+          title: "Цена акции / Прибыль на акцию / Темп роста прибыли (PEG)",
           subtitle: "—",
-          description: "Питер Линч популяризировал коэффициент Цена акции / рост прибыли на акцию (PEG, Price / Earnings to Growth Ratio). С помощью него оценивается насколько акция недооценена или переоценена с учетом прогнозируемого темпа роста прибыли компании. Для простоты расчета коэффициент Цена акции / прост прибыли на акцию (PEG) по умолчанию равен значению '1'."
+          description: "Питер Линч популяризировал коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG, Price / Earnings / Net IncomeGrowth Ratio). С помощью него оценивается насколько акция недооценена или переоценена с учетом прогнозируемого темпа роста прибыли компании."
         },
-        */
         {
           image: "finalru.png",
           title: "Финальный результат оценки справедливой стоимости",
@@ -68,7 +66,7 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Lynch Fair Value Formula",
           subtitle: "—",
-          description: "We calculate fair value using the following version of Peter Lynch's formula. Peter Lynch's fair value per share = Earnings Growth Rate * Basic Earnings per Share (EPS)."
+          description: "We calculate fair value using the following version of Peter Lynch's formula. Peter Lynch's fair value per share = Earnings Growth Rate * Basic Earnings per Share (EPS) * Price / Earnings per Share / Net Income Growth Rate (PEG)."
         },
         {
           image: "eps.png",
@@ -78,18 +76,16 @@ export class FairValueComponent implements OnInit {
         },
         {
           image: "growth.png",
-          title: "Earnings Growth Rate",
+          title: "Net Income Growth Rate",
           subtitle: "—",
-          description: "The profit growth rate formula is arithmetic average growth rate of net income over the past 5 years."
+          description: "The net income growth rate formula is arithmetic average growth rate of net income over the past 5 years."
         },
-        /*
         {
           image: "blog-preview/peg.png",
           title: "Stock price / EPS (PEG)",
           subtitle: "—",
-          description: "Peter Lynch popularized the price-to-earnings-growth (PEG) ratio. This measure determines whether a stock is currently undervalued or overvalued based on the company's projected earnings growth rate. To simplify calculations, the PEG ratio is set to '1' by default."
+          description: "Peter Lynch popularized the Price / Earnings per Share / Net Income Growth Rate (PEG) ratio. This measure determines whether a stock is currently undervalued or overvalued based on the company's projected net income growth rate."
         },
-        */
         {
           image: "final.png",
           title: "Final result of fair value calculation",

@@ -15,19 +15,19 @@
       <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(stockInfo.price) }}</h1>
       <div ngSkipHydration>
         <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'en'" style="line-height: 1.2px;">
-          <p>Data powered by <b>TradingView</b></p>
+          <p>Data powered by <b><a href="https://www.tradingview.com/symbols/{{ stockInfo.exchange }}-{{ ticker }}/" target="_blank">TradingView</a></b></p>
           <p style="color: gray;">updated today at {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'en'" style="line-height: 1.2px;">
-          <p>Data powered by <b>MOEX API</b></p>
+          <p>Data powered by <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">MOEX API</a></b></p>
           <p style="color: gray;">updated today at {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'ru'" style="line-height: 1.2px;">
-          <p>Данные от <b>TradingView</b></p>
+          <p>Данные от <b><a href="https://www.tradingview.com/symbols/{{ stockInfo.exchange }}-{{ ticker }}/" target="_blank">TradingView</a></b></p>
           <p style="color: gray;">oбновлены сегодня в {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'ru'" style="line-height: 1.2px;">
-          <p>Данные от <b>MOEX API</b></p>
+          <p>Данные от <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">MOEX API</a></b></p>
           <p style="color: gray;">oбновлены сегодня в {{ displayTime }}</p>
         </div>
       </div>
@@ -192,11 +192,11 @@
               <p>{{ epsTtmExplanation }}</p>
             </section>
 
-            <!--section class="card  valuate-section">
+            <section class="card  valuate-section">
               <h2>{{ pegLabel }}</h2>
-              <h1>1</h1>
+              <h1>{{ uiRounding(valuation.peg) }}</h1>
               <p>{{ pegExplanation }}</p>
-            </section-->
+            </section>
 
             <!-- Lynch explanation -->
             <section class="card  valuate-section">

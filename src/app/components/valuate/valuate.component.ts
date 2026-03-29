@@ -64,7 +64,7 @@ export class ValuateComponent implements OnInit {
 
   sectorLabel: string = "Sector";
   sectorLabelRu: string = "Сектор";
-  sectorLabelEn: string = "Sector:";
+  sectorLabelEn: string = "Sector";
 
   industryLabel: string = "Industry";
   industryLabelRu: string = "Индустрия";
@@ -114,8 +114,8 @@ export class ValuateComponent implements OnInit {
   formulaLabelEn: string = "Formula";
 
   formulaExplanationLabel: string = "EPS x 5 Year Average Net Income Growth Rate";
-  formulaExplanationLabelRu: string = "Темп роста чистой прибыли за 5 лет (Net Income Growth Rate 5 years) * Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) = Справедливая стоимость по формуле Питера Линча.";
-  formulaExplanationLabelEn: string = "Net Income Growth Rate (5 years) * Basic Earnings per Share (EPS TTM, Earnings per share Trailing Twelve Months) = Fair Value (FV)";
+  formulaExplanationLabelRu: string = "Темп роста чистой прибыли за 5 лет (Net Income Growth Rate 5 years) * Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) * Цена акции / Прибыль на акцию / Темп роста прибыли (PEG, Price / Earnings / Net IncomeGrowth Ratio) = Справедливая стоимость по формуле Питера Линча.";
+  formulaExplanationLabelEn: string = "Net Income Growth Rate (5 years) * Basic Earnings per Share (EPS TTM, Earnings per share Trailing Twelve Months) * Price / Earnings per Share / Net Income Growth Rate (PEG) = Fair Value (FV)";
 
   maxGrowthRateNote: string = "Если темп роста чистой прибыли за 5 лет был больше 25% мы используем 25, так как Питер Линч называл рост более 25 процентов в год неустойчивым."
   maxGrowthRateNoteRu: string = "Если темп роста чистой прибыли за 5 лет был больше 25% мы используем 25, так как Питер Линч называл рост более 25 процентов в год неустойчивым."
@@ -152,8 +152,8 @@ export class ValuateComponent implements OnInit {
   aboutLynchFormulaLabelEn: string = "About Lynch Formula";
 
   aboutLynchFormulaText: string = "The Lynch model helps estimate a stock's fair price based on earnings and growth expectations. It is often used by value investors to determine whether a stock is undervalued or overvalued.";
-  aboutLynchFormulaTextRu: string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча.<br>Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per share).<br>Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный как арифметическое среднее за соответствующий период.<br>Базовая прибыль на акцию (EPS, Earnings per share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months).";
-  aboutLynchFormulaTextEn: string = "We calculate the fair value of a share using the following version of Peter Lynch's formula.<br>Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per share).<br>Earnings Growth Rate is the growth of net income over the past 5 years, calculated as arithmetic average.<br>Basic Earnings per Share (EPS, Earnings per share) in our version of the formula is basic earnings per share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months).";
+  aboutLynchFormulaTextRu: string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча.<br>Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Net Income Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per share).<br>Темп роста прибыли (Net Income Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный как арифметическое среднее за соответствующий период.<br>Базовая прибыль на акцию (EPS, Earnings per share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months). Цена акции / Прибыль на акцию / Темп роста прибыли (PEG, Price / Earnings / Net IncomeGrowth Ratio) - это деление коэффициента Цена / прибыль (P / E, Price / Earnings Ratio) на прогнозируемый будущий темп роста прибыли компании (Net Income Growth Rate).";
+  aboutLynchFormulaTextEn: string = "We calculate the fair value of a share using the following version of Peter Lynch's formula.<br>Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per share) * Price / Earnings per Share / Net Income Growth Rate (PEG).<br>Net Income Growth Rate is the growth of net income over the past 5 years, calculated as arithmetic average.<br>Basic Earnings per Share (EPS, Earnings per share) in our version of the formula is basic earnings per share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months). The Price / Earnings per Share / Net Income Growth Rate (PEG) is the Price/Earnings Ratio (P/E) divided by the company's projected future  Net Income Growth Rate.";
 
   undervaluedLabel: string = "Undervalued";
   undervaluedLabelRu: string = "Недооценена";
@@ -189,12 +189,12 @@ export class ValuateComponent implements OnInit {
   epsTtmExplanation: string = "";
 
   pegLabel: string = "PEG";
-  pegLabelRu: string = "Цена акции к росту прибыли на акцию (PEG)";
-  pegLabelEn: string = "Price / Earnings / Growth Ration (PEG)";
+  pegLabelRu: string = "Цена акции / Прибыль на акцию / Темп роста прибыли (PEG)";
+  pegLabelEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG)";
 
-  pegExplanation: string = "For ease of calculation, the Price/Earnings to Growth Ratio (PEG) is set to 1 by default.";
-  pegExplanationRu: string = "Коэффициент Цена акции / рост прибыли на акцию (PEG, Price / Earnings to Growth Ratio) для простоты расчета по умолчанию равен значению '1'.";
-  pegExplanationEn: string = "For ease of calculation, the Price/Earnings to Growth Ratio (PEG) is set to 1 by default.";
+  pegExplanation: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's projected future Net Income Growth Rate.";
+  pegExplanationRu: string = "Коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG, Price / Earnings / Net IncomeGrowth Ratio) расчитывается как коэффициент Цена акции / Прибыль на акцию (P/E, Price to Earnings Ratio) деленный на темп роста прибыли.";
+  pegExplanationEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's projected future Net Income Growth Rate.";
 
   mainStockData: string = "About company";
   mainStockDataRu: string = "О компании";
@@ -480,7 +480,7 @@ export class ValuateComponent implements OnInit {
           this.epsTtmExplanation = `Текущее значение базовой прибыли на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) составляет ${epsTtmRounded}.`
         }
         else if (language == 'en') {
-          this.fairPriceExplanation = `Fair price of stock ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} is calculated based on Petere Lynch formula.`;
+          this.fairPriceExplanation = `Fair price of stock ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} is calculated based on Peter Lynch formula.`;
           this.howFairPriceWasCalulated = `How fair price was calculated`;
           this.epsTtmExplanation = `Current trailing twelve months earnings per share (EPS TTM) is ${epsTtmRounded}.`
         }
