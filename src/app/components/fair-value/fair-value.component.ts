@@ -70,7 +70,7 @@ export class FairValueComponent implements OnInit {
         },
         {
           image: "eps.png",
-          title: "Basic earnings per share, EPS",
+          title: "Basic Earnings Per Share, EPS",
           subtitle: "—",
           description: "We use the Earnings per share Trailing Twelve Months (EPS TTM) ratio in Peter Lynch's formula."
         },
@@ -82,13 +82,13 @@ export class FairValueComponent implements OnInit {
         },
         {
           image: "blog-preview/peg.png",
-          title: "Stock price / EPS (PEG)",
+          title: "Price / Earnings / Net Income Growth Rate (PEG)",
           subtitle: "—",
           description: "Peter Lynch popularized the Price / Earnings per Share / Net Income Growth Rate (PEG) ratio. This measure determines whether a stock is currently undervalued or overvalued based on the company's projected net income growth rate."
         },
         {
           image: "final.png",
-          title: "Final result of fair value calculation",
+          title: "Final Result of Fair Value Calculation",
           subtitle: "—",
           description: "We automatically calculate the fair value of a share, its potential for growth or decline, and assess whether the share is undervalued or overvalued."
         }
