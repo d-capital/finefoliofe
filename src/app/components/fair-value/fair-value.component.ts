@@ -32,7 +32,7 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Формула справедливой стоимости Линча",
           subtitle: "—",
-          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS) * Цена акции / Прибыль на акцию / Темп роста прибыли (PEG)."
+          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS)."
         },
         {
           image: "eps.png",
@@ -66,25 +66,25 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Lynch Fair Value Formula",
           subtitle: "—",
-          description: "We calculate fair value using the following version of Peter Lynch's formula. Peter Lynch's fair value per share = Earnings Growth Rate * Basic Earnings per Share (EPS) * Price / Earnings per Share / Net Income Growth Rate (PEG)."
+          description: "We calculate fair value using the following version of Peter Lynch's formula. Peter Lynch's fair value per share = Earnings Growth Rate * Basic Earnings per Share (EPS)."
         },
         {
           image: "eps.png",
-          title: "Basic Earnings Per Share, EPS",
+          title: "Basic Earnings per Share, EPS",
           subtitle: "—",
-          description: "We use the Earnings per share Trailing Twelve Months (EPS TTM) ratio in Peter Lynch's formula."
+          description: "We use the Earnings per Share Trailing Twelve Months (EPS TTM) ratio in Peter Lynch's formula."
         },
         {
           image: "growth.png",
           title: "Net Income Growth Rate",
           subtitle: "—",
-          description: "The net income growth rate formula is arithmetic average growth rate of net income over the past 5 years."
+          description: "The Net Income Growth Rate formula is arithmetic average growth rate of net income over the past 5 years."
         },
         {
           image: "blog-preview/peg.png",
           title: "Price / Earnings / Net Income Growth Rate (PEG)",
           subtitle: "—",
-          description: "Peter Lynch popularized the Price / Earnings per Share / Net Income Growth Rate (PEG) ratio. This measure determines whether a stock is currently undervalued or overvalued based on the company's projected net income growth rate."
+          description: "Peter Lynch popularized the Price / Earnings per Share / Net Income Growth Rate (PEG) ratio. This measure determines whether a stock is currently undervalued or overvalued based on the company's historical Net Income Growth Rate."
         },
         {
           image: "final.png",

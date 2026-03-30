@@ -60,6 +60,48 @@
   min-width: 130px;
 }
 
+.skeleton-card {
+  background: #1a2636;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1a2636 25%, #22334a 50%, #1a2636 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s infinite linear;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.skeleton-title {
+  width: 80px;
+  height: 20px;
+}
+.skeleton-ticker {
+  width: 40px;
+  height: 14px;
+}
+.skeleton-stockcard {
+  width: 100px;
+  height: 60px;
+  margin: 16px auto;
+}
+.skeleton-status {
+  width: 60px;
+  height: 18px;
+  margin: 0 auto;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 @media (max-width: 768px) {
   .example-card {
     flex: 0 0 calc(60vw - 10px);
@@ -74,6 +116,7 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+  height: 70px;
 }
 
 .company-info h3 {
@@ -127,17 +170,17 @@
 @media (max-width: 480px) {
   .company-info h3 {
     margin: 0;
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .company-info small {
-    font-size: 12px;
+    font-size: 16px;
     color: #bbb;
   }
   .undervalued {
     color: #059669; /* green */
     font-weight: normal;
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .overvalued {

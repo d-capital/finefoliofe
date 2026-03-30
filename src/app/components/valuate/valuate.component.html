@@ -86,6 +86,12 @@
               <p>{{ fairPriceExplanation }}</p>
             </section>
 
+            <section class="card  valuate-section">
+              <h2>{{ pegLabel }}</h2>
+              <h1>{{ uiRounding(valuation.peg) }}</h1>
+              <p>{{ pegExplanation }}</p>
+            </section>
+
             <section class="card valuate-section">
               <h2>{{ howFairPriceWasCalulated }}</h2>
               <h1 class="formula">{{ valuation.formula }}</h1>
@@ -192,12 +198,6 @@
               <p>{{ epsTtmExplanation }}</p>
             </section>
 
-            <section class="card  valuate-section">
-              <h2>{{ pegLabel }}</h2>
-              <h1>{{ uiRounding(valuation.peg) }}</h1>
-              <p>{{ pegExplanation }}</p>
-            </section>
-
             <!-- Lynch explanation -->
             <section class="card  valuate-section">
               <h2>{{ aboutLynchFormulaLabel }}</h2>
@@ -230,10 +230,10 @@
               <h3>{{ peTtmLabel }}</h3>
               <p>{{ uiRounding(stockInfo.peTtm) }}</p>
             </div>
-            <!--div class="grid-cell">
+            <div class="grid-cell">
                 <h3>{{ pegLabel }}</h3>
                 <p>{{ uiRounding(valuation.peg) }}</p>
-              </div-->
+            </div>
             <div class="grid-cell">
               <h3>{{ dividendsYieldLabel }}</h3>
               <p>{{ uiRounding(stockInfo.dividendYield) }}%</p>

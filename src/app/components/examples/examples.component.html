@@ -3,19 +3,31 @@
   <p class="subtitle">{{ subtitle }}</p>
 
   <div class="examples-grid">
-    <div *ngFor="let ex of examples" class="example-card">
-
-      <div class="company-info">
-        <div>
-          <h3>{{ ex.company }}</h3>
-          <small>{{ ex.ticker }}</small>
+    <ng-container *ngIf="!loading; else loadingSkeleton">
+      <div *ngFor="let ex of examples" class="example-card">
+        <div class="company-info">
+          <div>
+            <h3>{{ ex.company }}</h3>
+            <small>{{ ex.ticker }}</small>
+          </div>
         </div>
+        <a class="stockcardlink" href="{{ex.link}}">
+          <app-stock-card [value]="ex.upside" label="{{ex.status}}" color="green"></app-stock-card>
+        </a>
+        <h3 class="undervalued">{{ex.status}}</h3>
       </div>
-      <a class="stockcardlink" href="{{ex.link}}">
-        <app-stock-card [value]="ex.upside" label="{{ex.status}}" color="green"></app-stock-card>
-      </a>
-      <h3 class="undervalued">{{ex.status}}</h3>
-
-    </div>
+    </ng-container>
+    <ng-template #loadingSkeleton>
+      <div *ngFor="let n of [1,2,3,4]" class="example-card skeleton-card">
+        <div class="company-info">
+          <div>
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-ticker"></div>
+          </div>
+        </div>
+        <div class="skeleton skeleton-stockcard"></div>
+        <div class="skeleton skeleton-status"></div>
+      </div>
+    </ng-template>
   </div>
 </section>
