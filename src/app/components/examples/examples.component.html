@@ -14,7 +14,7 @@
         <a class="stockcardlink" href="{{ex.link}}">
           <app-stock-card [value]="ex.upside" label="{{ex.status}}" color="green"></app-stock-card>
         </a>
-        <h3 class="undervalued">{{ex.status}}</h3>
+        <h3 class="undervalued">{{ex.cardStatus}}</h3>
       </div>
     </ng-container>
     <ng-template #loadingSkeleton>

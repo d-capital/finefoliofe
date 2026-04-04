@@ -8,6 +8,7 @@ interface Example {
   ticker: string;
   upside: number;
   status: string;
+  cardStatus:string;
   link: string;
 }
 
@@ -41,17 +42,17 @@ export class ExamplesComponent implements OnInit {
 
     if (lang === "ru") {
       this.examples = [
-        { company: "Pfizer, Inc.", ticker: "PFE", upside: 26, status: "Недооценена", link: "/ru/stocks/nyse-pfe/peter-lynch-fair-value-calculator" },
-        { company: "Vital Farms, Inc.", ticker: "VITL", upside: 182, status: "Недооценена", link: "/ru/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator" },
-        { company: "Novo Nordisk", ticker: "NVO", upside: 132, status: "Недооценена", link: "/ru/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
-        { company: "Dr. Reddy's Laboratories Ltd", ticker: "RDY", upside: 44, status: "Недооценена", link: "/ru/stocks/nyse-rdy/peter-lynch-fair-value-calculator" }
+        { company: "Pfizer, Inc.", ticker: "PFE", upside: 20, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-pfe/peter-lynch-fair-value-calculator" },
+        { company: "Vital Farms, Inc.", ticker: "VITL", upside: 195, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 126, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
+        { company: "Dr. Reddy's Laboratories Ltd", ticker: "RDY", upside: 46, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-rdy/peter-lynch-fair-value-calculator" }
       ];
     } else {
       this.examples = [
-        { company: "Pfizer, Inc.", ticker: "PFE", upside: 26, status: "Undervalued", link: "/stocks/nyse-pfe/peter-lynch-fair-value-calculator" },
-        { company: "Vital Farms, Inc.", ticker: "VITL", upside: 182, status: "Undervalued", link: "/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator" },
-        { company: "Novo Nordisk", ticker: "NVO", upside: 132, status: "Undervalued", link: "/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
-        { company: "Dr. Reddy's Laboratories Ltd", ticker: "RDY", upside: 44, status: "Undervalued", link: "/stocks/nyse-rdy/peter-lynch-fair-value-calculator" }
+        { company: "Pfizer, Inc.", ticker: "PFE", upside: 20, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-pfe/peter-lynch-fair-value-calculator" },
+        { company: "Vital Farms, Inc.", ticker: "VITL", upside: 195, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 126, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
+        { company: "Dr. Reddy's Laboratories Ltd", ticker: "RDY", upside: 46, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-rdy/peter-lynch-fair-value-calculator" }
       ];
     }
   }

@@ -2,8 +2,22 @@
   <h2>{{ title }}</h2>
   <div class="cards">
     <div class="card" *ngFor="let card of cards">
-      <div class="card-image">
+      <div *ngIf="!card.isFinalResult" class="card-image">
         <img [src]="card.image" [alt]="card.title" />
+      </div>
+      <div *ngIf="card.isFinalResult" class="card-image">
+          <div class="example-card">
+            <div class="company-info">
+              <div>
+                <h3>{{ example.company }}</h3>
+                <small>{{ example.ticker }}</small>
+              </div>
+            </div>
+          <a class="stockcardlink" href="{{example.link}}">
+            <app-stock-card [value]="example.upside" label="{{example.status}}" color="green"></app-stock-card>
+          </a>
+          <h3 class="undervalued">{{example.status}}</h3>
+        </div>
       </div>
       <div class="card-content">
         <h3>{{ card.title }}</h3>

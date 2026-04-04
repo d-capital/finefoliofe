@@ -11,8 +11,12 @@
     <section class="top-card valuate-section">
       <h1 class="stockname">{{ stockInfo.name }}</h1>
       <h4>{{ ticker }} * {{ exchange }}</h4>
-      <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(stockInfo.price) }}</h1>
-      <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(stockInfo.price) }}</h1>
+      <p class="h1-style" *ngIf="stockInfo.exchange !== 'MOEX'">
+        ${{ uiRounding(stockInfo.price) }}
+      </p>
+      <p class="h1-style" *ngIf="stockInfo.exchange === 'MOEX'">
+        ₽{{ uiRounding(stockInfo.price) }}
+      </p>
       <div ngSkipHydration>
         <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'en'" style="line-height: 1.2px;">
           <p>Data powered by <b><a href="https://www.tradingview.com/symbols/{{ stockInfo.exchange }}-{{ ticker }}/" target="_blank">TradingView</a></b></p>
@@ -47,7 +51,7 @@
                 <h2>
                   <strong>{{ resultLabel }}</strong>
                 </h2>
-                <h1>
+                <div class="h1-style">
                   <div *ngIf="valuation.resultLabel === 'Undervalued'">
                     <app-stock-card [value]="valuation.resultPercent" label="{{upsidePotentialLabel}}" color="green">
                     </app-stock-card>
@@ -56,7 +60,7 @@
                     <app-stock-card [value]="valuation.resultPercent" label="{{downsidePotentialLabel}}" color="red">
                     </app-stock-card>
                   </div>
-                </h1>
+                </div>
                 <h3>
                   <span *ngIf="valuation.resultLabel === 'Undervalued'" class="undervalued">
                     {{ undervaluedLabel }}
@@ -81,20 +85,24 @@
 
             <section class="card valuate-section">
               <h2>{{ fairPriceLabel }}</h2>
-              <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(valuation.fairPrice) }}</h1>
-              <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(valuation.fairPrice) }}</h1>
+              <p class="h1-style" *ngIf="stockInfo.exchange !== 'MOEX'">
+                ${{ uiRounding(valuation.fairPrice) }}
+              </p>
+              <p class="h1-style" *ngIf="stockInfo.exchange === 'MOEX'">
+                ₽{{ uiRounding(valuation.fairPrice) }}
+              </p>
               <p>{{ fairPriceExplanation }}</p>
             </section>
 
             <section class="card  valuate-section">
               <h2>{{ pegLabel }}</h2>
-              <h1>{{ uiRounding(valuation.peg) }}</h1>
+              <p class="h1-style">{{ uiRounding(valuation.peg) }}</p>
               <p>{{ pegExplanation }}</p>
             </section>
 
             <section class="card valuate-section">
               <h2>{{ howFairPriceWasCalulated }}</h2>
-              <h1 class="formula">{{ valuation.formula }}</h1>
+              <p class="formula h1-style">{{ valuation.formula }}</p>
               <p>{{ formulaLabel }}</p>
               <p class="explanation">{{ formulaExplanationLabel }}</p>
               <p class="explanation">{{ maxGrowthRateNote }}</p>
@@ -193,8 +201,12 @@
 
             <section class="card valuate-section">
               <h2>{{ epsTtmLabel }}</h2>
-              <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(stockInfo.epsTtm) }}</h1>
-              <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(stockInfo.epsTtm) }}</h1>
+              <p class="h1-style" *ngIf="stockInfo.exchange !== 'MOEX'">
+                ${{ uiRounding(stockInfo.epsTtm) }}
+              </p>
+              <p class="h1-style" *ngIf="stockInfo.exchange === 'MOEX'">
+                ₽{{ uiRounding(stockInfo.epsTtm) }}
+              </p>
               <p>{{ epsTtmExplanation }}</p>
             </section>
 
@@ -273,7 +285,7 @@
           <h2>
             <strong>{{ resultLabel }}</strong>
           </h2>
-          <h1>
+          <p style="h1-style">
             <div *ngIf="dcfValuationResult === 'Undervalued'">
               <app-stock-card [value]="dcfValuationPercentage" label="{{upsidePotentialLabel}}" color="green">
               </app-stock-card>
@@ -282,7 +294,7 @@
               <app-stock-card [value]="dcfValuationPercentage" label="{{downsidePotentialLabel}}" color="red">
               </app-stock-card>
             </div>
-          </h1>
+          </p>
           <h3>
             <span *ngIf="dcfValuationResult === 'Undervalued'" class="undervalued">
               {{ undervaluedLabel }}
@@ -293,8 +305,8 @@
           </h3>
           <h2>{{ fairPriceLabel }}</h2>
           <div *ngIf="dcfValuation">
-            <h1 *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(dcfValuation) }}</h1>
-            <h1 *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(dcfValuation) }}</h1>
+            <p *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(dcfValuation) }}</p>
+            <p *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(dcfValuation) }}</p>
           </div>
         </div>
         <div *ngIf="pageLanguage == 'en'">
@@ -397,7 +409,7 @@
 <!-- Skeleton Template -->
 <ng-template #loadingSkeleton>
   <div class="valuate-container valuate-section">
-    <h1 class="skeleton-box long"></h1>
+    <p class="h1-style" class="skeleton-box long"></p>
     <p class="exchange skeleton-box medium"></p>
 
     <div class="card valuate-section">

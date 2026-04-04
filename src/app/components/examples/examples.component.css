@@ -148,8 +148,8 @@
 }
 
 .undervalued {
-  color: #059669; /* green */
-  font-weight: normal;
+  color: #17AC04; /* green */
+  font-weight: bold;
 }
 
 .overvalued {
@@ -178,14 +178,14 @@
     color: #bbb;
   }
   .undervalued {
-    color: #059669; /* green */
-    font-weight: normal;
+    color: #17AC04; /* green */
+    font-weight: bold;
     font-size: 16px;
   }
 
   .overvalued {
     color: #dc2626; /* red */
-    font-weight: normal;
+    font-weight: bold;
     font-size: 12px;
   }
 

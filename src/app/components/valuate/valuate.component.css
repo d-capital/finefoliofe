@@ -11,7 +11,13 @@ h1 {
   color: #000000;
   line-height: 3rem;
 }
-
+.h1-style {
+  font-size: 3rem;
+  color: #000000;
+  line-height: 3rem;
+  font-weight: 600;
+  margin-top: 0.7rem;
+}
 h4{
   margin-inline-start: 0.35%;
 }
@@ -39,6 +45,7 @@ h4{
   color: #000000;
 }
 
+
 ul {
   list-style: none;
   padding: 0;
@@ -55,13 +62,15 @@ ul li {
 }
 
 .undervalued {
-  color: #059669; /* green */
-  font-weight: normal;
+  font-size: 21px;
+  color: #17AC04; /* green */
+  font-weight: bold;
 }
 
 .overvalued {
+  font-size: 21px;
   color: #dc2626; /* red */
-  font-weight: normal;
+  font-weight: bold;
 }
 
 

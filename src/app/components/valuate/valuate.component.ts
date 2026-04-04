@@ -152,8 +152,8 @@ export class ValuateComponent implements OnInit {
   aboutLynchFormulaLabelEn: string = "About Lynch Formula";
 
   aboutLynchFormulaText: string = "The Lynch model helps estimate a stock's fair price based on earnings and growth expectations. It is often used by value investors to determine whether a stock is undervalued or overvalued.";
-  aboutLynchFormulaTextRu: string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча.<br>Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Net Income Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per Share).<br>Темп роста прибыли (Net Income Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный как арифметическое среднее за соответствующий период.<br>Базовая прибыль на акцию (EPS, Earnings per Share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per Share Trailing Twelve Months).";
-  aboutLynchFormulaTextEn: string = "We calculate the fair value of a share using the following version of Peter Lynch's formula.<br>Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per Share).<br>Net Income Growth Rate is the growth of net income over the past 5 years, calculated as arithmetic average.<br>Basic Earnings per Share (EPS, Earnings per Share) in our version of the formula is Basic Earnings per Share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months).";
+  aboutLynchFormulaTextRu: string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Net Income Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per Share). Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный, как арифметическое среднее за соответствующий период.  Базовая прибыль на акцию (EPS, Earnings per Share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per Share Trailing Twelve Months). ";
+  aboutLynchFormulaTextEn: string = "We calculate the fair value of a share using the following version of Peter Lynch's formula. Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per Share). Earnings Growth Rate is the growth rate of Net Income over the past 5 years, calculated as the arithmetic average for the corresponding period. Basic Earnings per Share (EPS, Earnings per Share) in our version of the formula is Basic Earnings per Share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months).";
 
   undervaluedLabel: string = "Undervalued";
   undervaluedLabelRu: string = "Недооценена";
@@ -194,7 +194,7 @@ export class ValuateComponent implements OnInit {
 
   pegExplanation: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio, if Net Income Growth Rate is 0% or negative, PEG ratio will be equal to 0.";
   pegExplanationRu: string = "Коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG, Price / Earnings / Net IncomeGrowth Ratio) расчитывается как коэффициент Цена акции / Прибыль на акцию (P/E, Price to Earnings Ratio) деленный на темп роста прибыли. Если темп роста прибыли более 25%, мы используем 25% для расчета PEG, если темп роста прибыли 0% или отрицательный, PEG будет равен 0.";
-  pegExplanationEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG, if Net Income Growth Rate is 0% or negative, PEG ratio will be equal to 0.";
+  pegExplanationEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio, if Net Income Growth Rate is 0% or negative, PEG ratio will be equal to 0.<";
 
   mainStockData: string = "About company";
   mainStockDataRu: string = "О компании";
@@ -342,12 +342,6 @@ export class ValuateComponent implements OnInit {
         else{
           this.datapoints = this.datapointsRu;
         }
-        
-        this.titleService.setTitle(`Oценка акции ${this.ticker} (${this.exchange}) по Методу Питера Линча - Валестор`);
-        this.metaService.updateTag({
-          name: 'description',
-          content: 'Узнайте справедливую стоимость акции ' + this.ticker + ' (' + this.exchange + ') по формуле Питера Линча. Наша автоматизированная оценка поможет вам определить, является ли акция недооцененной или переоцененной, и принять обоснованное инвестиционное решение.'
-        });
       }
       else {
         this.loadingLabel = this.loadingLabelEn;
@@ -414,12 +408,6 @@ export class ValuateComponent implements OnInit {
         else{
           this.datapoints = this.datapointsEn;
         }
-
-        this.titleService.setTitle(`${this.ticker} (${this.exchange}) stock valuation by Peter Lynch method - Valestor`);
-        this.metaService.updateTag({
-          name: 'description',
-          content: 'Find out the fair value of ' + this.ticker + ' (' + this.exchange + ') stock using Peter Lynch formula. Our automated evaluation will help you determine if the stock is undervalued or overvalued, and make an informed investment decision.'
-        });
       }
       const now = new Date();
       const timeStr = formatDate(now, 'HH:mm', 'en-US');
@@ -437,6 +425,9 @@ export class ValuateComponent implements OnInit {
         var currentPrice = this.round(this.stockInfo.price, this.exchange);
         var percentPotential = this.round(this.valuation.resultPercent, "noexchange");
         var epsTtmRounded = this.round(this.stockInfo.epsTtm, this.exchange);
+        if(this.valuation.fairPrice<0){
+          this.valuation.fairPrice = 0;
+        }
         if(language == "ru"){
           if (!this.stockInfo.epsTtm && this.valuation.avgGrowth){
             this.noValuationData += "EPS.";
@@ -447,6 +438,11 @@ export class ValuateComponent implements OnInit {
           if (!this.stockInfo.epsTtm && !this.valuation.avgGrowth){
             this.noValuationData += "EPS и темпе роста чистой прибыли.";
           }
+          this.titleService.setTitle(`Оценка акции ${this.truncateStockName(this.stockInfo.name)} (${this.ticker}) по методу Питера Линча | Валестор`);
+          this.metaService.updateTag({
+            name: 'description',
+            content: 'Рассчитай справедливую стоимость акции ' + this.truncateStockName(this.stockInfo.name) + ' (' + this.ticker + ') по методу Питера Линча. Узнай, переоценена или недооценена акция, ее потенциал роста или снижения перед покупкой или продажей.'
+          });
         }
         if(language == "en"){
           if (!this.stockInfo.epsTtm && this.valuation.avgGrowth){
@@ -458,9 +454,17 @@ export class ValuateComponent implements OnInit {
           if (!this.stockInfo.epsTtm && !this.valuation.avgGrowth){
             this.noValuationData += "EPS and Net Income Growth Rate.";
           }
-        }
-        if(this.valuation.fairPrice<0){
-          this.valuation.fairPrice = 0;
+          var downUpText = ''
+          if (this.valuation.resultLabel === 'Overvalued'){
+            var downUpText = ' downside potential.'
+          }else{
+            var downUpText = ' upside potential.'
+          }
+          this.titleService.setTitle(`${this.truncateStockName(this.stockInfo.name)} (${this.ticker}) Peter Lynch Fair Value | Valestor.сom`);
+          this.metaService.updateTag({
+            name: 'description',
+            content: 'Calculate ' + this.truncateStockName(this.stockInfo.name) + ' (' + this.ticker + ') fair value using the Peter Lynch formula. Find out if the stock is undervalued or overvalued, its upside or downside potential before you buy or sell.'
+          });
         }
         if (this.valuation.resultLabel === "Undervalued" && language == 'ru') {
           this.undervaluedExplanation = `Акция является недооцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал роста на ${percentPotential}% с учетом текущей рыночной цены ${currentPrice} и справедливой стоимости по формуле Питера Линча ${shownFairPrice}.`;
@@ -481,7 +485,7 @@ export class ValuateComponent implements OnInit {
         }
         else if (language == 'en') {
           this.fairPriceExplanation = `Fair price of stock ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} is calculated based on Peter Lynch formula.`;
-          this.howFairPriceWasCalulated = `How Fair Price was calculated`;
+          this.howFairPriceWasCalulated = `How Fair Price Was Calculated`;
           this.epsTtmExplanation = `Current trailing twelve months Earnings per Share (EPS TTM) is ${epsTtmRounded}.`
         }
         if(this.valuation.avgGrowth === null){
@@ -579,4 +583,11 @@ export class ValuateComponent implements OnInit {
     var rate = ((current - prev)/ Math.abs(prev)) * 100
     return rate
   }
+
+  truncateStockName(name: string): string {
+  if (name.length > 30) {
+    return name.substring(0, 27) + "...";
+  }
+  return name;
+}
 }
