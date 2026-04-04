@@ -156,8 +156,8 @@ export class ValuateComponent implements OnInit {
   aboutLynchFormulaTextEn: string = "<p>We calculate the fair value of a share using the following version of Peter Lynch's formula. Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per Share). Basic Earnings per Share (EPS, Earnings per Share) in our version of the formula is Basic Earnings per Share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months). Earnings Growth Rate is the growth rate of Net Income over the past 5 years, calculated as Coumpond Anual Growth Rate (CAGR) for the corresponding period.</p><p>Coumpond Anual Growth Rate (CAGR) formula is modified to account for cases when beginning value (B) is negative by subtracting beginning value (B) and adding absolute value of beginning value(|B|) from ending value (E) in nominator and diving it by aboslute value of beginning value(|B|).</p>";
 
   aboutFullNegativeCagr: string = "<p>If ending (E) and beginning (B) values are negative we take absolute value of division of ending by beginning value (|E/B|) and multiply result by -1.</p>";
-  aboutFullNegativeCagrRu: string = "<p>Если конеченое (E) и начальное (B) значения оба отрицательные мы берем модуль деления конечного значения на начальное значениие (|E/B|) умножая полученное значение на -1.</p>";
-  aboutFullNegativeCagrEn: string = "<p>If ending (E) and beginning (B) values are negative we take absolute value of division of ending by beginning value (|E/B|) and multiply result by -1.</p>";
+  aboutFullNegativeCagrRu: string = "<p>Если конеченое (E) и начальное (B) значения оба отрицательные или результат деления отрицательный мы берем модуль деления конечного значения на начальное значениие (|E/B|) умножая полученное значение на -1.</p>";
+  aboutFullNegativeCagrEn: string = "<p>If ending (E) and beginning (B) values are negative or result of division is negative we take absolute value of division of ending by beginning value (|E/B|) and multiply result by -1.</p>";
 
   undervaluedLabel: string = "Undervalued";
   undervaluedLabelRu: string = "Недооценена";
@@ -648,9 +648,14 @@ export class ValuateComponent implements OnInit {
        */
       const absBeg = Math.abs(start);
       const numerator = endingValue - start + absBeg;
-      cagr = Math.pow(numerator / absBeg, 1 / numberOfYears) - 1;
+      if ((numerator / absBeg)<0){
+        cagr = (Math.pow(Math.abs(numerator / absBeg), 1 / numberOfYears) - 1)*-1;
+      }
+      else {
+        cagr = Math.pow(numerator / absBeg, 1 / numberOfYears) - 1;
+      }
     }
 
-    return cagr;
+    return cagr*100;
   };
 }
