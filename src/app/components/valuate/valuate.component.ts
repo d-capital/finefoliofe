@@ -194,7 +194,19 @@ export class ValuateComponent implements OnInit {
 
   pegExplanation: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio, if Net Income Growth Rate is 0% or negative, PEG ratio will be equal to 0.";
   pegExplanationRu: string = "Коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG, Price / Earnings / Net IncomeGrowth Ratio) расчитывается как коэффициент Цена акции / Прибыль на акцию (P/E, Price to Earnings Ratio) деленный на темп роста прибыли. Если темп роста прибыли более 25%, мы используем 25% для расчета PEG, если темп роста прибыли 0% или отрицательный, PEG будет равен 0.";
-  pegExplanationEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio, if Net Income Growth Rate is 0% or negative, PEG ratio will be equal to 0.<";
+  pegExplanationEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio, if Net Income Growth Rate is 0% or negative, PEG ratio will be equal to 0.";
+
+  pegFairLabel:string = "Fairly valued";
+  pegOverLabel:string = "Overvalued";
+  pegUnderLabel:string = "Undervalued";
+
+  pegFairLabelEn:string = "Fairly valued";
+  pegOverLabelEn:string = "Overvalued";
+  pegUnderLabelEn:string = "Undervalued";
+
+  pegFairLabelRu:string = "Справедливо оценена";
+  pegOverLabelRu:string = "Переоценена";
+  pegUnderLabelRu:string = "Недоценена";
 
   mainStockData: string = "About company";
   mainStockDataRu: string = "О компании";
@@ -342,6 +354,11 @@ export class ValuateComponent implements OnInit {
         else{
           this.datapoints = this.datapointsRu;
         }
+
+        //peg over and under
+        this.pegFairLabel = this.pegFairLabelRu;
+        this.pegOverLabel = this.pegOverLabelRu;
+        this.pegUnderLabel = this.pegUnderLabelRu;
       }
       else {
         this.loadingLabel = this.loadingLabelEn;
@@ -408,6 +425,11 @@ export class ValuateComponent implements OnInit {
         else{
           this.datapoints = this.datapointsEn;
         }
+
+        //peg over and under
+        this.pegFairLabel = this.pegFairLabelEn;
+        this.pegOverLabel = this.pegOverLabelEn;
+        this.pegUnderLabel = this.pegUnderLabelEn;
       }
       const now = new Date();
       const timeStr = formatDate(now, 'HH:mm', 'en-US');

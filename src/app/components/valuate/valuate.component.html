@@ -97,6 +97,9 @@
             <section class="card  valuate-section">
               <h2>{{ pegLabel }}</h2>
               <p class="h1-style">{{ uiRounding(valuation.peg) }}</p>
+              <p *ngIf="valuation.peg===0">{{pegFairLabel}}</p>
+              <p *ngIf="valuation.peg>1">{{pegOverLabel}}</p>
+              <p *ngIf="valuation.peg<1">{{pegUnderLabel}}</p>
               <p>{{ pegExplanation }}</p>
             </section>
 
