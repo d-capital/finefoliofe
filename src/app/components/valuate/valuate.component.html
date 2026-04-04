@@ -123,7 +123,8 @@
                 </li>
                 <li><strong>{{ mathRounding(valuation.avgGrowth.ttm) }}%</strong> - {{ averageIncomeGrowthTtm }}</li>
               </ul>
-              <p>{{ growthRateCalcExplanation }}</p>
+              <p [innerHTML]="growthRateCalcExplanation"></p>
+              
               <div class="table-wrapper">
                 <table class="financial-table">
                   <thead>
@@ -217,6 +218,87 @@
             <section class="card  valuate-section">
               <h2>{{ aboutLynchFormulaLabel }}</h2>
               <p [innerHTML]="aboutLynchFormulaText"></p>
+              <math xmlns="http://w3.org" display="block">
+                <mrow>
+                  <!-- Label -->
+                  <mi>CAGR</mi>
+                  <mo>=</mo>
+                  <msup>
+                    <!-- Main Parentheses -->
+                    <mrow>
+                      <mo fence="true" stretchy="true">(</mo>
+                      <mfrac>
+                        <mrow>
+                          <mi>E</mi>
+                          <mo>&minus;</mo>
+                          <mi>B</mi>
+                          <mo>+</mo>
+                          <!-- Absolute Value Bars -->
+                          <mrow>
+                            <mo fence="true" stretchy="true">|</mo>
+                            <mi>B</mi>
+                            <mo fence="true" stretchy="true">|</mo>
+                          </mrow>
+                        </mrow>
+                        <mrow>
+                          <mrow>
+                            <mo fence="true" stretchy="true">|</mo>
+                            <mi>B</mi>
+                            <mo fence="true" stretchy="true">|</mo>
+                          </mrow>
+                        </mrow>
+                      </mfrac>
+                      <mo fence="true" stretchy="true">)</mo>
+                    </mrow>
+                    <!-- Exponent -->
+                    <mrow>
+                      <mn>1</mn>
+                      <mo>/</mo>
+                      <mi>n</mi>
+                    </mrow>
+                  </msup>
+                  <mo>&minus;</mo>
+                  <mn>1</mn>
+                </mrow>
+              </math>
+              <p [innerHTML]="aboutFullNegativeCagr"></p>
+              <math xmlns="http://w3.org" display="block">
+                <mrow>
+                  <mi>CAGR</mi>
+                  <mo>=</mo>
+                  <!-- Outer Parentheses -->
+                  <mo>(</mo>
+                  <mrow>
+                    <!-- Inner Parentheses with Exponent -->
+                    <msup>
+                      <mrow>
+                        <mo fence="true" stretchy="true">(</mo>
+                        <mrow>
+                          <mo fence="true" stretchy="true">|</mo>
+                          <mfrac>
+                            <mi>E</mi>
+                            <mi>B</mi>
+                          </mfrac>
+                          <mo fence="true" stretchy="true">|</mo>
+                        </mrow>
+                        <mo fence="true" stretchy="true">)</mo>
+                      </mrow>
+                      <mrow>
+                        <mn>1</mn>
+                        <mo>/</mo>
+                        <mi>n</mi>
+                      </mrow>
+                    </msup>
+                    <mo>&minus;</mo>
+                    <mn>1</mn>
+                  </mrow>
+                  <mo>)</mo>
+                  <!-- Multiply by -1 -->
+                  <mo>&times;</mo>
+                  <mo>&minus;</mo>
+                  <mn>1</mn>
+                </mrow>
+              </math>
             </section>
             <section class="card  valuate-section">
               <h2>{{ reliableDataSources }}</h2>

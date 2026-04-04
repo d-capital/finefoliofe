@@ -152,8 +152,12 @@ export class ValuateComponent implements OnInit {
   aboutLynchFormulaLabelEn: string = "About Lynch Formula";
 
   aboutLynchFormulaText: string = "The Lynch model helps estimate a stock's fair price based on earnings and growth expectations. It is often used by value investors to determine whether a stock is undervalued or overvalued.";
-  aboutLynchFormulaTextRu: string = "Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Net Income Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per Share). Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный, как арифметическое среднее за соответствующий период.  Базовая прибыль на акцию (EPS, Earnings per Share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per Share Trailing Twelve Months). ";
-  aboutLynchFormulaTextEn: string = "We calculate the fair value of a share using the following version of Peter Lynch's formula. Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per Share). Earnings Growth Rate is the growth rate of Net Income over the past 5 years, calculated as the arithmetic average for the corresponding period. Basic Earnings per Share (EPS, Earnings per Share) in our version of the formula is Basic Earnings per Share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months).";
+  aboutLynchFormulaTextRu: string = "<p>Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Net Income Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per Share). Базовая прибыль на акцию (EPS, Earnings per Share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per Share Trailing Twelve Months). Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный, как совокупный среднегодовой темп роста (CAGR, Coumpond Anual Growth Rate) за соответствующий период.</p><p>Формула совокупного среднегодового темпа роста (CAGR, Coumpond Anual Growth Rate) модифицирована так, чтобы учитывать случаи когда начальное значение (B) отрицательные вычитая начальное значение (B) и добавляя модуль начального значение (|B|) из конечного значения (E) в числителе и деля его на модуль начального значения(|B|).</p> ";
+  aboutLynchFormulaTextEn: string = "<p>We calculate the fair value of a share using the following version of Peter Lynch's formula. Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per Share). Basic Earnings per Share (EPS, Earnings per Share) in our version of the formula is Basic Earnings per Share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months). Earnings Growth Rate is the growth rate of Net Income over the past 5 years, calculated as Coumpond Anual Growth Rate (CAGR) for the corresponding period.</p><p>Coumpond Anual Growth Rate (CAGR) formula is modified to account for cases when beginning value (B) is negative by subtracting beginning value (B) and adding absolute value of beginning value(|B|) from ending value (E) in nominator and diving it by aboslute value of beginning value(|B|).</p>";
+
+  aboutFullNegativeCagr: string = "<p>If ending (E) and beginning (B) values are negative we take absolute value of division of ending by beginning value (|E/B|) and multiply result by -1.</p>";
+  aboutFullNegativeCagrRu: string = "<p>Если конеченое (E) и начальное (B) значения оба отрицательные мы берем модуль деления конечного значения на начальное значениие (|E/B|) умножая полученное значение на -1.</p>";
+  aboutFullNegativeCagrEn: string = "<p>If ending (E) and beginning (B) values are negative we take absolute value of division of ending by beginning value (|E/B|) and multiply result by -1.</p>";
 
   undervaluedLabel: string = "Undervalued";
   undervaluedLabelRu: string = "Недооценена";
@@ -169,9 +173,9 @@ export class ValuateComponent implements OnInit {
   fairPriceExplanation: string = "";
   howFairPriceWasCalulated: string = "";
 
-  growthRateCalcExplanation: string = "Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет посчтитаны как арифметическое среднее за соответсвующие периоды.";
-  growthRateCalcExplanationRu: string = "Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет посчтитаны как арифметическое среднее за соответсвующие периоды.";
-  growthRateCalcExplanationEn: string = "Net Income growth rate for 1, 3, 5 last years calculated as arithmetic average for the given period.";
+  growthRateCalcExplanation: string = "<p>Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет посчтитаны как совокупный среднегодовой темп роста (CAGR) за соответсвующие периоды. Формула модифицирована, чтобы учитывать отрицательные начальное и конечное значения.</p>";
+  growthRateCalcExplanationRu: string = "<p>Темпы роста чистой прибыли (Net Income) за 1, 3, 5 лет посчтитаны как совокупный среднегодовой темп роста (CAGR) за соответсвующие периоды. Формула модифицирована, чтобы учитывать отрицательные начальное и конечное значения.</p>";
+  growthRateCalcExplanationEn: string = "<p>Net Income growth rate for 1, 3, 5 last years calculated as compaund average growth rate (CAGR). The formula is modified to account for negative beginning and ending values.</p>";
 
   metricLabel: string = "Metric";
   metricLabelRu: string = "Показатель";
@@ -200,13 +204,13 @@ export class ValuateComponent implements OnInit {
   pegOverLabel:string = "Overvalued";
   pegUnderLabel:string = "Undervalued";
 
-  pegFairLabelEn:string = "Fairly valued";
-  pegOverLabelEn:string = "Overvalued";
-  pegUnderLabelEn:string = "Undervalued";
+  pegFairLabelEn:string = "Stock is fairly valued according to Peter Lynch value investing model.";
+  pegOverLabelEn:string = "Stock is overvalued according to Peter Lynch value investing model.";
+  pegUnderLabelEn:string = "Stock is undervalued according to Peter Lynch value investing model.";
 
-  pegFairLabelRu:string = "Справедливо оценена";
-  pegOverLabelRu:string = "Переоценена";
-  pegUnderLabelRu:string = "Недоценена";
+  pegFairLabelRu:string = "Акция спарведливо оценена по методу Питера Линча.";
+  pegOverLabelRu:string = "Акция переоценена по методу Питера Линча.";
+  pegUnderLabelRu:string = "Акция недооценена по методу Питера Линча.";
 
   mainStockData: string = "About company";
   mainStockDataRu: string = "О компании";
@@ -359,6 +363,9 @@ export class ValuateComponent implements OnInit {
         this.pegFairLabel = this.pegFairLabelRu;
         this.pegOverLabel = this.pegOverLabelRu;
         this.pegUnderLabel = this.pegUnderLabelRu;
+
+        //cagr additional explanation in about the formula
+        this.aboutFullNegativeCagr = this.aboutFullNegativeCagrRu;
       }
       else {
         this.loadingLabel = this.loadingLabelEn;
@@ -430,6 +437,7 @@ export class ValuateComponent implements OnInit {
         this.pegFairLabel = this.pegFairLabelEn;
         this.pegOverLabel = this.pegOverLabelEn;
         this.pegUnderLabel = this.pegUnderLabelEn;
+        this.aboutFullNegativeCagr = this.aboutFullNegativeCagrEn;
       }
       const now = new Date();
       const timeStr = formatDate(now, 'HH:mm', 'en-US');
@@ -475,12 +483,6 @@ export class ValuateComponent implements OnInit {
           }
           if (!this.stockInfo.epsTtm && !this.valuation.avgGrowth){
             this.noValuationData += "EPS and Net Income Growth Rate.";
-          }
-          var downUpText = ''
-          if (this.valuation.resultLabel === 'Overvalued'){
-            var downUpText = ' downside potential.'
-          }else{
-            var downUpText = ' upside potential.'
           }
           this.titleService.setTitle(`${this.truncateStockName(this.stockInfo.name)} (${this.ticker}) Peter Lynch Fair Value | Valestor.сom`);
           this.metaService.updateTag({
@@ -602,14 +604,53 @@ export class ValuateComponent implements OnInit {
   }
 
   getYearToYearGrowhtRate(prev:number, current: number):number{
-    var rate = ((current - prev)/ Math.abs(prev)) * 100
-    return rate
+    if (prev === 0 && current<0){
+      return -100
+    }else if (prev === 0 && current>0){
+      return 100;
+    }else{
+      var rate = ((current - prev)/ Math.abs(prev)) * 100
+      return rate
+    }
   }
 
   truncateStockName(name: string): string {
-  if (name.length > 30) {
-    return name.substring(0, 27) + "...";
+    if (name.length > 30) {
+      return name.substring(0, 27) + "...";
+    }
+    return name;
   }
-  return name;
-}
+
+  calculateCagr(
+    beginningValue: number,
+    endingValue: number,
+    numberOfYears: number
+  ): number {
+    if (numberOfYears <= 0) {
+      throw new Error("Number of years must be greater than zero.");
+    }
+
+    // Handle division by zero
+    let start = beginningValue === 0 ? 0.1 : beginningValue;
+
+    let cagr: number;
+
+    if (endingValue < 0 && start < 0) {
+      /**
+       * Calculates CAGR for negative start and end value:
+       * ((|Ending / Beginning|)^(1/n) - 1
+       */
+      cagr = (Math.pow(Math.abs(endingValue / start), 1 / numberOfYears) - 1)*-1;
+    } else {
+      /**
+       * Calculates CAGR based on formula:
+       * ((Ending - Beginning + |Beginning|) / |Beginning|)^(1/n) - 1
+       */
+      const absBeg = Math.abs(start);
+      const numerator = endingValue - start + absBeg;
+      cagr = Math.pow(numerator / absBeg, 1 / numberOfYears) - 1;
+    }
+
+    return cagr;
+  };
 }

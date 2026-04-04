@@ -58,7 +58,7 @@ export class FairValueComponent implements OnInit {
           image: "growth.png",
           title: "Темп роста прибыли",
           subtitle: "—",
-          description: "Темп роста прибыли в формуле - это арифметическое среднее роста чистой прибыли (Net Income) за последние 5 лет.",
+          description: "Темп роста прибыли в формуле - это совокупный среднегодовой темп роста (CAGR) чистой прибыли (Net Income) за последние 5 лет.",
           isFinalResult:false
         },/*
         {
@@ -98,7 +98,7 @@ export class FairValueComponent implements OnInit {
           image: "growth.png",
           title: "Earnings Growth Rate",
           subtitle: "—",
-          description: "The Earnings Growth Rate formula is arithmetic average growth rate of Net Income over the past 5 years.",
+          description: "The Earnings Growth Rate formula is Coumpond Anual Growth Rate (CAGR) of Net Income over the past 5 years.",
           isFinalResult:false
         },/*
         {
