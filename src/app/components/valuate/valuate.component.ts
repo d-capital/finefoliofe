@@ -287,7 +287,7 @@ export class ValuateComponent implements OnInit {
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
-      const tickerCode = params ? params[1] : 'AAPL';
+      const tickerCode = params ? decodeURI(params[1]) : 'AAPL';
       const exchangeCode = params ? params[0] :  'NYSE';
       this.ticker = tickerCode ? tickerCode.toLocaleUpperCase() : 'AAPL';
       this.exchange = exchangeCode ? exchangeCode.toLocaleUpperCase() : 'NYSE';
