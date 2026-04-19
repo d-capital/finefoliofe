@@ -125,6 +125,10 @@ export class ValuateComponent implements OnInit {
   minimumValuesNoteRu: string = "Если базовая прибыль на акцию (EPS TTM) меньше 0, то в формуле используется значение 0 для EPS. Если темп роста чистой прибыли за 5 лет меньше 0%, то в формуле используется значение 0 для темпа роста.";
   minimumValuesNoteEn: string = "If Basic Earnings per Share (EPS TTM) is less then 0, we would use 0 as EPS in the formula. If the Net Income Growth Rate over 5 years is less than 0%, we would use 0 for growth rate in the formula.";
 
+  notEnoughDataNote:string = "If the Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years is less than 0, then the fair value estimate using the formula is not possible.";
+  notEnoughDataNoteRu:string = "Если базовая прибыль на акцию (EPS TTM) и/или темп роста чистой прибыли (Net Income Growth Rate) меньше 0, то оценка справедливой стоимости по формуле невозможна.";
+  notEnoughDataNoteEn:string = "If the Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years is less than 0, then the fair value estimate using the formula is not possible.";
+
   //historicalProfit
   netProfitGrowthLabel: string = "Net Income";
   netProfitGrowthLabelRu: string = "Темп роста чистой прибыли (Net Income Growth Rate)";
@@ -196,9 +200,9 @@ export class ValuateComponent implements OnInit {
   pegLabelRu: string = "Цена акции / Прибыль на акцию / Темп роста прибыли (PEG)";
   pegLabelEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG)";
 
-  pegExplanation: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio, if Net Income Growth Rate is 0% or negative, PEG ratio will be equal to 0.";
-  pegExplanationRu: string = "Коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG, Price / Earnings / Net IncomeGrowth Ratio) расчитывается как коэффициент Цена акции / Прибыль на акцию (P/E, Price to Earnings Ratio) деленный на темп роста прибыли. Если темп роста прибыли более 25%, мы используем 25% для расчета PEG, если темп роста прибыли 0% или отрицательный, PEG будет равен 0.";
-  pegExplanationEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio, if Net Income Growth Rate is 0% or negative, PEG ratio will be equal to 0.";
+  pegExplanation: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio.";
+  pegExplanationRu: string = "Коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG, Price / Earnings / Net IncomeGrowth Ratio) расчитывается как коэффициент Цена акции / Прибыль на акцию (P/E, Price to Earnings Ratio) деленный на темп роста прибыли. Если темп роста прибыли более 25%, мы используем 25% для расчета PEG.";
+  pegExplanationEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio.";
 
   pegFairLabel:string = "Fairly valued";
   pegOverLabel:string = "Overvalued";
@@ -227,6 +231,10 @@ export class ValuateComponent implements OnInit {
   noValuationData: string = "Valuation is not possible because of missing data on "
   noValuationDataRu: string = "Оценка невозможна из-за отсутствия данных o "
   noValuationDataEn: string = "Valuation is not possible because of missing data on "
+
+  noValuationLabel: string = "Valuation is not possible";
+  noValuationLabelRu: string = "Оценка невозможна";
+  noValuationLabelEn: string = "Valuation is not possible";
 
   fcfLabel: string = "FCF";
   fcfLabelRu: string = "Свободный денежный поток (FCF)";
@@ -283,6 +291,25 @@ export class ValuateComponent implements OnInit {
     "<b>Net Income Growth Rate</b> - value from the latest yearly report (updates when yearly report is submitted, usually in February-March)",
   ];
 
+  naText: string = "N/A";
+  naTextRu: string = "Н/Д";
+  naTextEn: string = "N/A";
+
+  noValuationAvailable: boolean = false;
+
+  noValuationExplanation: string = `Peter Lynch's fair value formula is designed for growing companies with positive Earnings per Share (EPS > 0) and a positive earnings growth rate (Net Income Growth Rate > 0). COMPANY_NAME (TICKER_ON_PAGE) has a negative EPS and/or negative Net Income Growth Rate. Under these conditions, Peter Lynch's formula results in a negative fair value and loses economic meaning. We recommend using other value investing approaches for analyzing the company, such as the Discounted Cash Flow (DCF) model and relative analysis.`;
+
+  noValuationExplanationRu: string = `Формула справедливой стоимости Питера Линча рассчитана на растущие компании с положительной чистой прибылью (EPS > 0) и положительным темпом роста прибыли (Earnings Growth Rate > 0). У COMPANY_NAME (TICKER_ON_PAGE) значение прибыли на акцию (EPS) и/или темп роста прибыли (Earnings Growth Rate) отрицательно. При таких данных формула Питера Линча дает отрицательную справедливую цену и теряет экономический смысл. Рекомендуем использовать для анализа компании другие подходы стоимостного инвестирования - модель дисконтирования денежных потоков (DCF, Discounted Cash Flow) и сравнительный анализ (Relative analysis).`;
+
+  noValuationExplanationEn: string = `Peter Lynch's fair value formula is designed for growing companies with positive Earnings per Share (EPS > 0) and a positive earnings growth rate (Net Income Growth Rate > 0). COMPANY_NAME (TICKER_ON_PAGE) has a negative EPS and/or negative Net Income Growth Rate. Under these conditions, Peter Lynch's formula results in a negative fair value and loses economic meaning. We recommend using other value investing approaches for analyzing the company, such as the Discounted Cash Flow (DCF) model and relative analysis.`;
+
+  noPegExplanation: string = `PEG of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative Earnings per Share (EPS TTM) and/or Earnings Growth Rate over 5 years.`;
+  noPegExplanationEn: string = `PEG of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative Earnings per Share (EPS TTM) and/or Earnings Growth Rate over 5 years.`;
+  noPegExplanationRu: string = `Коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG) акции COMPANY_NAME (TICKER_ON_PAGE) не может быть рассчитан по формуле Питера Линча из-за отрицательной прибыли на акцию за последние 12 месяцев (EPS TTM) и/или темпа роста прибыли (Net Income Growth Rate) за 5 лет.`;
+
+  noFairPriceExplanation: string = `Fair price of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years.`;
+  noFairPriceExplanationEn: string = `Fair price of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years.`;
+  noFairPriceExplanationRu: string = `Справедливая цена акции COMPANY_NAME (TICKER_ON_PAGE) не может быть рассчитана по формуле Питера Линча из-за отрицательной прибыли на акцию за последние 12 месяцев (EPS TTM) и/или темпа роста прибыли (Net Income Growth Rate) за 5 лет .`;
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -366,6 +393,15 @@ export class ValuateComponent implements OnInit {
 
         //cagr additional explanation in about the formula
         this.aboutFullNegativeCagr = this.aboutFullNegativeCagrRu;
+        this.naText = this.naTextRu;
+
+        this.noValuationLabel = this.noValuationLabelRu;
+        this.noValuationExplanation = this.noValuationExplanationRu;
+
+        this.noPegExplanation = this.noPegExplanationRu;
+        this.noFairPriceExplanation = this.noFairPriceExplanationRu;
+        this.notEnoughDataNote = this.notEnoughDataNoteRu;
+
       }
       else {
         this.loadingLabel = this.loadingLabelEn;
@@ -438,6 +474,15 @@ export class ValuateComponent implements OnInit {
         this.pegOverLabel = this.pegOverLabelEn;
         this.pegUnderLabel = this.pegUnderLabelEn;
         this.aboutFullNegativeCagr = this.aboutFullNegativeCagrEn;
+
+        this.naText = this.naTextEn;
+
+        this.noValuationLabel = this.noValuationLabelEn;
+        this.noValuationExplanation = this.noValuationExplanationEn;
+
+        this.noPegExplanation = this.noPegExplanationEn;
+        this.noFairPriceExplanation = this.noFairPriceExplanationEn;
+        this.notEnoughDataNote = this.notEnoughDataNoteEn;
       }
       const now = new Date();
       const timeStr = formatDate(now, 'HH:mm', 'en-US');
@@ -512,13 +557,34 @@ export class ValuateComponent implements OnInit {
           this.howFairPriceWasCalulated = `How Fair Price Was Calculated`;
           this.epsTtmExplanation = `Current trailing twelve months Earnings per Share (EPS TTM) is ${epsTtmRounded}.`
         }
+        this.noValuationExplanation = this.noValuationExplanation.replace('COMPANY_NAME', this.stockInfo.name).replace('TICKER_ON_PAGE', this.ticker);
+        this.noPegExplanation = this.noPegExplanation.replace('COMPANY_NAME', this.stockInfo.name).replace('TICKER_ON_PAGE', this.ticker);
+        this.noFairPriceExplanation = this.noFairPriceExplanation.replace('COMPANY_NAME', this.stockInfo.name).replace('TICKER_ON_PAGE', this.ticker);
+        this.noValuationAvailable = this.valuation.avgGrowth === null || 
+          this.valuation.avgGrowth !==null && this.valuation.avgGrowth.fiveYears === null || 
+          this.valuation.avgGrowth !==null && this.valuation.avgGrowth.fiveYears !==null && this.valuation.avgGrowth.fiveYears <= 0 ||
+          this.stockInfo.epsTtm === null ||
+          this.stockInfo.epsTtm !==null && this.stockInfo.epsTtm <= 0 ;
+        
         if(this.valuation.avgGrowth === null){
           this.valuation.avgGrowth = {
             ttm: 0,
             threeYears: 0,
             fiveYears: 0
           };
+          this.valuation.formula = this.getValuationFormula(
+            this.naText,
+            this.round(this.stockInfo.epsTtm, this.exchange),
+            this.round(this.valuation.fairPrice, this.exchange)
+          );
+        }else{
+          this.valuation.formula = this.getValuationFormula(
+            this.round(this.valuation.avgGrowth.fiveYears, this.exchange),
+            this.round(this.stockInfo.epsTtm, this.exchange),
+            this.round(this.valuation.fairPrice, this.exchange)
+          );
         }
+
         this.loading = false;
       },
         (err: HttpErrorResponse) => {
@@ -551,7 +617,7 @@ export class ValuateComponent implements OnInit {
 
     }
     else {
-      return "$N/A"
+      return this.naText;
     }
   }
 
@@ -560,7 +626,7 @@ export class ValuateComponent implements OnInit {
       return (value).toFixed(2);
     }
     else {
-      return "N/A"
+      return this.naText;
     }
   }
 
@@ -569,7 +635,7 @@ export class ValuateComponent implements OnInit {
       return (value).toFixed(0);
     }
     else {
-      return "N/A"
+      return this.naText;
     }
   }
 
@@ -663,4 +729,24 @@ export class ValuateComponent implements OnInit {
 
     return cagr*100;
   };
-}
+
+  getValuationFormula(averageGrowthRate: string, eps: string, fairPrice: string): string {
+    const format = (val: string) => {
+      if (val.includes('-')) {
+        const symbol = val.charAt(0); // Gets "₽"
+        const numberPart = val.substring(1); // Gets "36.07"
+        return `${symbol}(${numberPart})`;
+      }
+      return val;
+    };
+
+    averageGrowthRate = format(averageGrowthRate);
+    eps = format(eps);
+    fairPrice = format(fairPrice);
+    if (this.noValuationAvailable){
+      fairPrice = this.naText;
+    }
+
+    return `${averageGrowthRate} X ${eps} = ${fairPrice}`;
+  }
+} 

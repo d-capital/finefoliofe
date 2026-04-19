@@ -13,8 +13,44 @@ export class StockCardComponent {
   @Input() label: string = '';             // text under percent
   @Input() color: 'green' | 'red' = 'green';
 
+  get isNA(): boolean {
+    return this.value === -100 || this.value === 0;
+  }
+
+  get displayColor(): 'green' | 'red' | 'grey' {
+    if (this.isNA) {
+      return 'grey';
+    }
+    return this.color;
+  }
+
   get arrow(): string {
+    if (this.isNA) {
+      return '';
+    }
     return this.color === 'green' ? '↑' : '↓';
+  }
+
+  get displayValue(): string {
+    if (this.isNA) {
+      const lang = this.getLanguage();
+      return lang === 'ru' ? 'Н/Д' : 'N/A';
+    }
+    return this.formatValue(this.value);
+  }
+  get labelText(): string {
+    if (this.isNA) {
+      return '';
+    }
+    return this.label;
+  }
+
+  private getLanguage(): string {
+    // Check localStorage for language preference
+    const stored = localStorage.getItem('language');
+    if (stored) return stored;
+    // Fallback to browser locale
+    return navigator.language.startsWith('ru') ? 'ru' : 'en';
   }
 
    formatValue(value:number): string {

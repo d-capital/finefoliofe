@@ -62,19 +62,27 @@
                   </div>
                 </div>
                 <h3>
-                  <span *ngIf="valuation.resultLabel === 'Undervalued'" class="undervalued">
+                  <span *ngIf="!noValuationAvailable && valuation.resultLabel === 'Undervalued'" class="undervalued">
                     {{ undervaluedLabel }}
                   </span>
-                  <span *ngIf="valuation.resultLabel === 'Overvalued'" class="overvalued">
+                  <span *ngIf="!noValuationAvailable && valuation.resultLabel === 'Overvalued'" class="overvalued">
                     {{ overvaluedLabel }}
                   </span>
                 </h3>
+                <h3>
+                  <span style="color: gray;" *ngIf="noValuationAvailable">
+                    {{ noValuationLabel }}
+                  </span>
+                </h3>
                 <p>
-                  <span *ngIf="valuation.resultLabel === 'Undervalued'">
+                  <span *ngIf="!noValuationAvailable && valuation.resultLabel === 'Undervalued'">
                     {{ undervaluedExplanation }}
                   </span>
-                  <span *ngIf="valuation.resultLabel === 'Overvalued'">
+                  <span *ngIf="!noValuationAvailable && valuation.resultLabel === 'Overvalued'">
                     {{ overvaluedExplanation }}
+                  </span>
+                  <span *ngIf="noValuationAvailable">
+                    {{ noValuationExplanation }}
                   </span>
                 </p>    
               </div>    
@@ -85,22 +93,30 @@
 
             <section class="card valuate-section">
               <h2>{{ fairPriceLabel }}</h2>
-              <p class="h1-style" *ngIf="stockInfo.exchange !== 'MOEX'">
+              <p class="h1-style" *ngIf="!noValuationAvailable && stockInfo.exchange !== 'MOEX'">
                 ${{ uiRounding(valuation.fairPrice) }}
               </p>
-              <p class="h1-style" *ngIf="stockInfo.exchange === 'MOEX'">
+              <p class="h1-style" *ngIf="!noValuationAvailable && stockInfo.exchange === 'MOEX'">
                 ₽{{ uiRounding(valuation.fairPrice) }}
               </p>
-              <p>{{ fairPriceExplanation }}</p>
+              <p class="h1-style" *ngIf="noValuationAvailable">
+                {{ naText }}
+              </p>
+              <p *ngIf="!noValuationAvailable">{{ fairPriceExplanation }}</p>
+              <p *ngIf="noValuationAvailable">{{ noFairPriceExplanation }}</p>
             </section>
 
             <section class="card  valuate-section">
               <h2>{{ pegLabel }}</h2>
-              <p class="h1-style">{{ uiRounding(valuation.peg) }}</p>
-              <p *ngIf="valuation.peg===0">{{pegFairLabel}}</p>
-              <p *ngIf="valuation.peg>1">{{pegOverLabel}}</p>
-              <p *ngIf="valuation.peg<1">{{pegUnderLabel}}</p>
-              <p>{{ pegExplanation }}</p>
+              <p *ngIf="!noValuationAvailable" class="h1-style">{{ uiRounding(valuation.peg) }}</p>
+              <p *ngIf="noValuationAvailable" class="h1-style">{{ naText }}</p>
+              <div *ngIf="!noValuationAvailable">
+                <p *ngIf="valuation.peg===0">{{pegFairLabel}}</p>
+                <p *ngIf="valuation.peg>1">{{pegOverLabel}}</p>
+                <p *ngIf="valuation.peg<1">{{pegUnderLabel}}</p>
+              </div>
+              <p *ngIf="!noValuationAvailable">{{ pegExplanation }}</p>
+              <p *ngIf="noValuationAvailable">{{ noPegExplanation }}</p>
             </section>
 
             <section class="card valuate-section">
@@ -110,6 +126,7 @@
               <p class="explanation">{{ formulaExplanationLabel }}</p>
               <p class="explanation">{{ maxGrowthRateNote }}</p>
               <p class="explanation">{{ minimumValuesNote }}</p>
+              <p class="explanation">{{ notEnoughDataNote }}</p>
             </section>
 
             <!-- Historical profit -->
@@ -162,11 +179,11 @@
               <h2>{{ netProfitGrowthLabel }}</h2>
               <!--p><strong>{{ averageIncomeGrowthLabel }}</strong></p-->
               <ul>
-                <li><strong>N/A</strong> - {{ averageFiveYearsGrowth }}
+                <li><strong>{{naText}}</strong> - {{ averageFiveYearsGrowth }}
                 </li>
-                <li><strong>N/A</strong> - {{ averageThreeYearsGrowth }}
+                <li><strong>{{naText}}</strong> - {{ averageThreeYearsGrowth }}
                 </li>
-                <li><strong>N/A</strong> - {{ averageIncomeGrowthTtm }}</li>
+                <li><strong>{{naText}}</strong> - {{ averageIncomeGrowthTtm }}</li>
               </ul>
               <p>{{ growthRateCalcExplanation }}</p>
               <div class="table-wrapper">
@@ -329,7 +346,12 @@
             </div>
             <div class="grid-cell">
                 <h3>{{ pegLabel }}</h3>
+              <div *ngIf="!noValuationAvailable">
                 <p>{{ uiRounding(valuation.peg) }}</p>
+              </div>
+              <div *ngIf="noValuationAvailable">
+                <p>{{ naText }}</p>
+              </div>
             </div>
             <div class="grid-cell">
               <h3>{{ dividendsYieldLabel }}</h3>

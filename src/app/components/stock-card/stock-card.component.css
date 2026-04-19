@@ -11,6 +11,7 @@
   font-weight: 500;
   /* Для отладки — временно */
   outline: 1px solid rgba(255, 255, 0, 0.3);
+  height: 60px;
 }
 
 /* Явно задаём ширину для иконок */
@@ -46,6 +47,10 @@
 
 .red {
   background-color: #D30000;
+}
+
+.grey {
+  background-color: #999999;
 }
 
 @media (max-width: 1300px) {
