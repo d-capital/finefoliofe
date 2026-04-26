@@ -11,6 +11,7 @@
     <section class="top-card valuate-section">
       <h1 class="stockname">{{ stockInfo.name }}</h1>
       <h4>{{ ticker }} * {{ exchange }}</h4>
+      <p *ngIf="legalTextNeeded">{{legalText}}</p>
       <p class="h1-style" *ngIf="stockInfo.exchange !== 'MOEX'">
         ${{ uiRounding(stockInfo.price) }}
       </p>

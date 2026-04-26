@@ -13,6 +13,7 @@ import { StockCardComponent } from '../stock-card/stock-card.component';
 import { ChangeDetectorRef } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { GeoService } from '../../services/geo.service';
 
 @Component({
   selector: 'app-valuate',
@@ -28,6 +29,7 @@ export class ValuateComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private titleService: Title, 
     private metaService: Meta,
+    private geoService: GeoService
   ) { }
   stockInfo!: StockInfo;
   valuation!: ValuationResult;
@@ -309,7 +311,12 @@ export class ValuateComponent implements OnInit {
 
   noAverageGrowthData:boolean = false;
 
-  ngOnInit(): void {
+  legalTextNeeded:boolean = false;
+  legalText:string = '';
+  legalTextRu: string = '*признана экстремистской, запрещена на территории РФ.';
+  legalTextEn: string = '*is regonzide as extrimist, forbidden on the territory of Russian Federation.'
+
+  async ngOnInit(): Promise<void> {
     if (isPlatformBrowser(this.platformId)) {
       const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
       const tickerCode = params ? decodeURI(params[1]) : 'AAPL';
@@ -480,6 +487,14 @@ export class ValuateComponent implements OnInit {
         this.noFairPriceExplanation = this.noFairPriceExplanationEn;
         this.notEnoughDataNote = this.notEnoughDataNoteEn;
       }
+      if(this.ticker === "META"){
+        this.legalTextNeeded = true;
+        if(language === "ru"){
+          this.legalText = this.legalTextRu;
+        }else{
+          this.legalText = this.legalTextEn;
+        }
+      }
       const now = new Date();
       const timeStr = formatDate(now, 'HH:mm', 'en-US');
       
@@ -608,6 +623,11 @@ export class ValuateComponent implements OnInit {
       )
     }
   }
+
+  async getRussianUser(){
+    return await this.geoService.isRussianUser()
+  }
+
   round(value: number, exchange: string): string {
     if (value !== null) {
       if (exchange === "MOEX") {
@@ -754,4 +774,5 @@ export class ValuateComponent implements OnInit {
 
     return `${averageGrowthRate} X ${eps} = ${fairPrice}`;
   }
+  
 } 

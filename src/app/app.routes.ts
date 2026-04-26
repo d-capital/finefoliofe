@@ -12,6 +12,7 @@ import { Injectable } from '@angular/core';
 import { LanguageRedirectComponent } from './components/laguage-redirect/laguage-redirect.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { CookiePolicyComponent } from './pages/cookie-policy/cookie-policy.component';
+import { tickerGuard } from './guards/ticker.guard';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageGuard implements CanActivate {
@@ -34,7 +35,8 @@ export const routes: Routes = [
       { path: 'valuation', component: ValuationComponent },
       {
         path: 'stocks/:exchange-ticker/peter-lynch-fair-value-calculator',
-        component: ValuateComponent
+        component: ValuateComponent,
+        canActivate: [tickerGuard]
       },
       // ... your other child routes
     ]
@@ -49,7 +51,8 @@ export const routes: Routes = [
       { path: 'valuation', component: ValuationComponent },
       {
         path: 'stocks/:exchange-ticker/peter-lynch-fair-value-calculator',
-        component: ValuateComponent
+        component: ValuateComponent,
+        canActivate: [tickerGuard]
       },
       // ... your other child routes
     ]
