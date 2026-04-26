@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { CookieConsentService } from '../../services/cookie-consent.service';
 import { Subject } from 'rxjs';
@@ -35,6 +35,7 @@ export class CookieConsentComponent implements OnInit, OnDestroy {
         private cookieConsentService: CookieConsentService,
         private router: Router,
         private browserStorageService: BrowserStorageService,
+        @Inject(PLATFORM_ID) private platformId: Object,
     ) { }
 
     ngOnInit(): void {
@@ -48,13 +49,13 @@ export class CookieConsentComponent implements OnInit, OnDestroy {
             this.moreInfoButtonLabel = this.moreInfoButtonLabelEn;
             this.consentText = this.consentTextEn;
         }
-        if (!this.cookieConsentService.hasConsented()) {
-            console.log('[CookieConsentComponent] Showing consent notification');
-            this.showNotification = true;
-        } else {
-            console.log('[CookieConsentComponent] User already consented, hiding notification');
-            this.showNotification = false;
-        }
+        if(isPlatformBrowser(this.platformId)){
+            if (!localStorage.getItem('cookieConsent')) {
+                this.showNotification = true;
+            } else {
+                this.showNotification = false;
+            }
+    }
 
         this.consentCheckComplete = true;
     }
@@ -78,9 +79,12 @@ export class CookieConsentComponent implements OnInit, OnDestroy {
     }
 
     onMoreInfo(): void {
-        console.log('[CookieConsentComponent] Opening cookie policy page');
-        // Открываем страницу с политикой cookies
-        this.router.navigate(['/cookie-policy']);
+        const lang = this.browserStorageService.getItem("language");
+        if (lang === "ru") {
+            this.router.navigate(['/ru/cookie-policy']);
+        } else {
+            this.router.navigate(['/cookie-policy']);
+        }
     }
 
     ngOnDestroy(): void {

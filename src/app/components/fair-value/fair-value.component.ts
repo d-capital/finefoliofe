@@ -44,14 +44,14 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Формула справедливой стоимости Линча",
           subtitle: "—",
-          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Базовая прибыль на акцию (EPS).",
+          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Прибыль на акцию за последние 12 месяцев (EPS TTM).",
           isFinalResult:false
         },
         {
           image: "eps.png",
-          title: "Базовая прибыль на акцию (EPS)",
+          title: "Прибыль на акцию за последние 12 месяцев (EPS TTM)",
           subtitle: "—",
-          description: "Мы применяем коэффициент Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) в формуле Питера Линча.",
+          description: "Мы применяем коэффициент прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per share Trailing Twelve Months) в формуле Питера Линча.",
           isFinalResult:false
         },
         {
@@ -84,12 +84,12 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Lynch Fair Value Formula",
           subtitle: "—",
-          description: "We calculate fair value using the following version of Peter Lynch's formula. Peter Lynch's fair value per share = Earnings Growth Rate * Basic Earnings per Share (EPS).",
+          description: "We calculate fair value using the following version of Peter Lynch's formula. Peter Lynch's fair value per share = Net Income Growth Rate * Earnings per Share Trailing Twelve Month (EPS TTM).",
           isFinalResult:false
         },
         {
           image: "eps.png",
-          title: "Basic Earnings per Share, EPS",
+          title: "Earnings per Share, EPS",
           subtitle: "—",
           description: "We use the Earnings per Share Trailing Twelve Months (EPS TTM) ratio in Peter Lynch's formula.",
           isFinalResult:false

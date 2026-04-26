@@ -71,8 +71,8 @@ export class ValuateComponent implements OnInit {
   industryLabelEn: string = "Industry";
 
   epsTtmLabel: string = "EPS (TTM)";
-  epsTtmLabelRu: string = "Базовая прибыль на акцию (EPS TTM)";
-  epsTtmLabelEn: string = "Basic Earnings per Share (EPS TTM)";
+  epsTtmLabelRu: string = "Прибыль на акцию за последние 12 месяцев (EPS TTM)";
+  epsTtmLabelEn: string = "Earnings per Share Trailing Twelve Month (EPS TTM)";
 
   epsTtmLabelCompanyInfo: string = "EPS (TTM)";
 
@@ -114,19 +114,15 @@ export class ValuateComponent implements OnInit {
   formulaLabelEn: string = "Formula";
 
   formulaExplanationLabel: string = "EPS x 5 Year Average Net Income Growth Rate";
-  formulaExplanationLabelRu: string = "Темп роста чистой прибыли за 5 лет (Net Income Growth Rate 5 years) * Базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per Share Trailing Twelve Months)  = Справедливая стоимость по формуле Питера Линча.";
-  formulaExplanationLabelEn: string = "Net Income Growth Rate (5 years) * Basic Earnings per Share (EPS TTM, Earnings per Share Trailing Twelve Months) = Fair Value (FV)";
+  formulaExplanationLabelRu: string = "Темп роста чистой прибыли за 5 лет (Net Income Growth Rate 5 years) * Прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per Share Trailing Twelve Months)  = Справедливая стоимость по формуле Питера Линча.";
+  formulaExplanationLabelEn: string = "Net Income Growth Rate (5 years) * Earnings per Share Trailing Twelve Month (EPS TTM) = Fair Value (FV)";
 
   maxGrowthRateNote: string = "Если темп роста чистой прибыли за 5 лет был больше 25% мы используем 25, так как Питер Линч называл рост более 25 процентов в год неустойчивым."
   maxGrowthRateNoteRu: string = "Если темп роста чистой прибыли за 5 лет был больше 25% мы используем 25, так как Питер Линч называл рост более 25 процентов в год неустойчивым."
   maxGrowthRateNoteEn: string = "If the Net Income Growth Rate over 5 years was greater than 25%, we use 25, since Peter Lynch called growth of more than 25 percent per year unsustainable."
 
-  minimumValuesNote: string = "If Basic Earnings per Share (EPS TTM) is less then 0, we would use 0 as EPS in the formula. If the Net Income Growth Rate over 5 years is less than 0%, we would use 0 for growth rate in the formula.";
-  minimumValuesNoteRu: string = "Если базовая прибыль на акцию (EPS TTM) меньше 0, то в формуле используется значение 0 для EPS. Если темп роста чистой прибыли за 5 лет меньше 0%, то в формуле используется значение 0 для темпа роста.";
-  minimumValuesNoteEn: string = "If Basic Earnings per Share (EPS TTM) is less then 0, we would use 0 as EPS in the formula. If the Net Income Growth Rate over 5 years is less than 0%, we would use 0 for growth rate in the formula.";
-
-  notEnoughDataNote:string = "If the Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years is less than 0, then the fair value estimate using the formula is not possible.";
-  notEnoughDataNoteRu:string = "Если базовая прибыль на акцию (EPS TTM) и/или темп роста чистой прибыли (Net Income Growth Rate) меньше 0, то оценка справедливой стоимости по формуле невозможна.";
+  notEnoughDataNote:string = "If the Earnings per Share Trailing Twelve Month (EPS TTM) and/or Net Income Growth Rate over 5 years is less than 0, then the fair value estimate using the formula is not possible.";
+  notEnoughDataNoteRu:string = "Если прибыль на акцию за последние 12 месяцев (EPS TTM) и/или темп роста чистой прибыли (Net Income Growth Rate) меньше 0, то оценка справедливой стоимости по формуле невозможна.";
   notEnoughDataNoteEn:string = "If the Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years is less than 0, then the fair value estimate using the formula is not possible.";
 
   //historicalProfit
@@ -156,8 +152,8 @@ export class ValuateComponent implements OnInit {
   aboutLynchFormulaLabelEn: string = "About Lynch Formula";
 
   aboutLynchFormulaText: string = "The Lynch model helps estimate a stock's fair price based on earnings and growth expectations. It is often used by value investors to determine whether a stock is undervalued or overvalued.";
-  aboutLynchFormulaTextRu: string = "<p>Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Net Income Growth Rate) * Базовая прибыль на акцию (EPS, Earnings per Share). Базовая прибыль на акцию (EPS, Earnings per Share) в нашей версии формулы - это базовая прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per Share Trailing Twelve Months). Темп роста прибыли (Earnings Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный, как совокупный среднегодовой темп роста (CAGR, Coumpond Anual Growth Rate) за соответствующий период.</p><p>Формула совокупного среднегодового темпа роста (CAGR, Coumpond Anual Growth Rate) модифицирована так, чтобы учитывать случаи когда начальное значение (B) отрицательные вычитая начальное значение (B) и добавляя модуль начального значение (|B|) из конечного значения (E) в числителе и деля его на модуль начального значения(|B|).</p> ";
-  aboutLynchFormulaTextEn: string = "<p>We calculate the fair value of a share using the following version of Peter Lynch's formula. Fair value of a share according to Peter Lynch = Earnings Growth Rate * Basic Earnings per Share (EPS, Earnings per Share). Basic Earnings per Share (EPS, Earnings per Share) in our version of the formula is Basic Earnings per Share over the past 12 months (EPS TTM, Earnings per share Trailing Twelve Months). Earnings Growth Rate is the growth rate of Net Income over the past 5 years, calculated as Coumpond Anual Growth Rate (CAGR) for the corresponding period.</p><p>Coumpond Anual Growth Rate (CAGR) formula is modified to account for cases when beginning value (B) is negative by subtracting beginning value (B) and adding absolute value of beginning value(|B|) from ending value (E) in nominator and diving it by aboslute value of beginning value(|B|).</p>";
+  aboutLynchFormulaTextRu: string = "<p>Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Net Income Growth Rate) * прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per Share Trailing Twelve Month). Темп роста прибыли (Net Income Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный, как совокупный среднегодовой темп роста (CAGR, Coumpond Anual Growth Rate) за соответствующий период.</p><p>Формула совокупного среднегодового темпа роста (CAGR, Coumpond Anual Growth Rate) модифицирована так, чтобы учитывать случаи когда начальное значение (B) отрицательные вычитая начальное значение (B) и добавляя модуль начального значение (|B|) из конечного значения (E) в числителе и деля его на модуль начального значения(|B|).</p> ";
+  aboutLynchFormulaTextEn: string = "<p>We calculate the fair value of a share using the following version of Peter Lynch's formula. Fair value of a share according to Peter Lynch = Net Income Growth Rate * Earnings per Share Trailing Twelve Month (EPS TTM). Net Income Growth Rate is calculated as Coumpond Anual Growth Rate (CAGR) for the last 5 years.</p><p>Coumpond Anual Growth Rate (CAGR) formula is modified to account for cases when beginning value (B) is negative by subtracting beginning value (B) and adding absolute value of beginning value(|B|) from ending value (E) in nominator and diving it by aboslute value of beginning value(|B|).</p>";
 
   aboutFullNegativeCagr: string = "<p>If ending (E) and beginning (B) values are negative we take absolute value of division of ending by beginning value (|E/B|) and multiply result by -1.</p>";
   aboutFullNegativeCagrRu: string = "<p>Если конеченое (E) и начальное (B) значения оба отрицательные или результат деления отрицательный мы берем модуль деления конечного значения на начальное значениие (|E/B|) умножая полученное значение на -1.</p>";
@@ -266,7 +262,7 @@ export class ValuateComponent implements OnInit {
   ];
   datapointsRu: string[] = [
     "<b>Цена</b> - цена закрытия актива полученная от TradingView (обновляется при открытии страницы)",
-    "<b>Базовая прибыль на акцию (EPS TTM)</b> - значение полученное от TradingView (обновляется при открытии страницы)",
+    "<b>Прибыль на акцию за последние 12 месяцев (EPS TTM)</b> - значение полученное от TradingView (обновляется при открытии страницы)",
     "<b>Темп роста чистой прибыли (Net Income Growth Rate)</b> - значение из отчетов SEC (обновляется при публикации годовых отчетов SEC, обычно в феврале-марте)",
   ];
   datapointsEn: string[] = [
@@ -281,14 +277,14 @@ export class ValuateComponent implements OnInit {
     "<b>Net Income Growth Rate</b> - value from the latest yearly report (updates when yearly report is submitted, usually in February-March)",
   ];
   datapointsMoexRu: string[] = [
-    "<b>Цена</b> - цена закрытия актива полученная от MOEX API (обновляется при открытии страницы)",
-    "<b>Базовая прибыль на акцию (EPS TTM)</b> - значение из последнего квартального отчета (обновляется каждый квартал при публикации отчета)",
-    "<b>Темп роста чистой прибыли (Net Income Growth Rate)</b> - значение из годового отчета компании (обновляется при публикации годовых отчетов, обычно в феврале-марте)",
+    "<b>Цена</b> - цена закрытия актива полученная от MOEX API, обновляется при открытии страницы.",
+    "<b>Прибыль на акцию за последние 12 месяцев (EPS TTM)</b> - значение из последнего квартального отчета, обновляется каждый квартал при публикации отчета.",
+    "<b>Темп роста чистой прибыли (Net Income Growth Rate)</b> - значение из годового отчета компании, обновляется при публикации годовых отчетов, обычно в феврале-марте.",
   ];
   datapointsMoexEn: string[] = [
-    "<b>Price</b> - close price of an asset from MOEX API (updates when you open the page)",
-    "<b>EPS TTM</b> - value from the latest quarterly report (every quarter when report is published)",
-    "<b>Net Income Growth Rate</b> - value from the latest yearly report (updates when yearly report is submitted, usually in February-March)",
+    "<b>Price</b> - close price of an asset from MOEX API, is updated when you open the page.",
+    "<b>EPS TTM</b> - value from the latest quarterly report, is updated every quarter when report is published.",
+    "<b>Net Income Growth Rate</b> - value from the latest yearly report, is updated when yearly report is submitted, usually in February-March.",
   ];
 
   naText: string = "N/A";
@@ -297,19 +293,19 @@ export class ValuateComponent implements OnInit {
 
   noValuationAvailable: boolean = false;
 
-  noValuationExplanation: string = `Peter Lynch's fair value formula is designed for growing companies with positive Earnings per Share (EPS > 0) and a positive earnings growth rate (Net Income Growth Rate > 0). COMPANY_NAME (TICKER_ON_PAGE) has a negative EPS and/or negative Net Income Growth Rate. Under these conditions, Peter Lynch's formula results in a negative fair value and loses economic meaning. We recommend using other value investing approaches for analyzing the company, such as the Discounted Cash Flow (DCF) model and relative analysis.`;
+  noValuationExplanation: string = `Peter Lynch's fair value formula is designed for growing companies with positive Earnings per Share Trailing Twelve Month (EPS TTM > 0) and a positive growth rate of net income (Net Income Growth Rate > 0). COMPANY_NAME (TICKER_ON_PAGE) has a negative or missing EPS TTM and/or negative or missing Net Income Growth Rate. Under these conditions, Peter Lynch's formula results in a negative fair value and loses economic meaning or can not be calculated at all.`;
 
-  noValuationExplanationRu: string = `Формула справедливой стоимости Питера Линча рассчитана на растущие компании с положительной чистой прибылью (EPS > 0) и положительным темпом роста прибыли (Earnings Growth Rate > 0). У COMPANY_NAME (TICKER_ON_PAGE) значение прибыли на акцию (EPS) и/или темп роста прибыли (Earnings Growth Rate) отрицательно. При таких данных формула Питера Линча дает отрицательную справедливую цену и теряет экономический смысл. Рекомендуем использовать для анализа компании другие подходы стоимостного инвестирования - модель дисконтирования денежных потоков (DCF, Discounted Cash Flow) и сравнительный анализ (Relative analysis).`;
+  noValuationExplanationRu: string = `Формула справедливой стоимости Питера Линча рассчитана на растущие компании с положительной прибылью на акцию за последние 12 месяцев (EPS TTM > 0) и положительным темпом роста чистой прибыли (Net Icome Growth Rate > 0). У COMPANY_NAME (TICKER_ON_PAGE) значение прибыли на акцию  за последние 12 месяцев (EPS TTM) и/или темп роста прибыли (Net Icome Growth Rate) отрицательно либо отсутсвует. При таких данных формула Питера Линча либо дает отрицательную справедливую цену и теряет экономический смысл либо вообще не может быть посчитана.`;
 
-  noValuationExplanationEn: string = `Peter Lynch's fair value formula is designed for growing companies with positive Earnings per Share (EPS > 0) and a positive earnings growth rate (Net Income Growth Rate > 0). COMPANY_NAME (TICKER_ON_PAGE) has a negative EPS and/or negative Net Income Growth Rate. Under these conditions, Peter Lynch's formula results in a negative fair value and loses economic meaning. We recommend using other value investing approaches for analyzing the company, such as the Discounted Cash Flow (DCF) model and relative analysis.`;
+  noValuationExplanationEn: string = `Peter Lynch's fair value formula is designed for growing companies with positive Earnings per Share Trailing Twelve Month (EPS TTM > 0) and a positive growth rate of net income (Net Income Growth Rate > 0). COMPANY_NAME (TICKER_ON_PAGE) has a negative or missing EPS TTM and/or negative or missing Net Income Growth Rate. Under these conditions, Peter Lynch's formula results in a negative fair value and loses economic meaning or can not be calculated at all.`;
 
-  noPegExplanation: string = `PEG of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative Earnings per Share (EPS TTM) and/or Earnings Growth Rate over 5 years.`;
-  noPegExplanationEn: string = `PEG of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative Earnings per Share (EPS TTM) and/or Earnings Growth Rate over 5 years.`;
-  noPegExplanationRu: string = `Коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG) акции COMPANY_NAME (TICKER_ON_PAGE) не может быть рассчитан по формуле Питера Линча из-за отрицательной прибыли на акцию за последние 12 месяцев (EPS TTM) и/или темпа роста прибыли (Net Income Growth Rate) за 5 лет.`;
+  noPegExplanation: string = `PEG of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative or missing Earnings per Share Trailing Twelve Month (EPS TTM) and/or Net Income Growth Rate over 5 years.`;
+  noPegExplanationEn: string = `PEG of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative or missing Earnings per Share Trailing Twelve Month (EPS TTM) and/or Net Income Growth Rate over 5 years.`;
+  noPegExplanationRu: string = `Коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG) акции COMPANY_NAME (TICKER_ON_PAGE) не может быть рассчитан по формуле Питера Линча из-за отрицательной или отсутсвующей прибыли на акцию за последние 12 месяцев (EPS TTM) и/или темпа роста прибыли (Net Income Growth Rate) за 5 лет.`;
 
-  noFairPriceExplanation: string = `Fair price of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years.`;
-  noFairPriceExplanationEn: string = `Fair price of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years.`;
-  noFairPriceExplanationRu: string = `Справедливая цена акции COMPANY_NAME (TICKER_ON_PAGE) не может быть рассчитана по формуле Питера Линча из-за отрицательной прибыли на акцию за последние 12 месяцев (EPS TTM) и/или темпа роста прибыли (Net Income Growth Rate) за 5 лет .`;
+  noFairPriceExplanation: string = `Fair price of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative or missing Earnings per Share Trailing Twelve Month (EPS TTM) and/or Net Income Growth Rate over 5 years.`;
+  noFairPriceExplanationEn: string = `Fair price of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative or missing Earnings per Share Trailing Twelve Month (EPS TTM) and/or Net Income Growth Rate over 5 years.`;
+  noFairPriceExplanationRu: string = `Справедливая цена акции COMPANY_NAME (TICKER_ON_PAGE) не может быть рассчитана по формуле Питера Линча из-за отрицательной или отсутствующей прибыли на акцию за последние 12 месяцев (EPS TTM) и/или темпа роста прибыли (Net Income Growth Rate) за 5 лет .`;
 
   noAverageGrowthData:boolean = false;
 
@@ -343,7 +339,6 @@ export class ValuateComponent implements OnInit {
         this.formulaLabel = this.formulaLabelRu;
         this.formulaExplanationLabel = this.formulaExplanationLabelRu;
         this.maxGrowthRateNote = this.maxGrowthRateNoteRu;
-        this.minimumValuesNote = this.minimumValuesNoteRu;
 
         //historicalProfit
         this.netProfitGrowthLabel = this.netProfitGrowthLabelRu;
@@ -426,7 +421,6 @@ export class ValuateComponent implements OnInit {
         this.formulaLabel = this.formulaLabelEn;
         this.formulaExplanationLabel = this.formulaExplanationLabelEn;
         this.maxGrowthRateNote = this.maxGrowthRateNoteEn;
-        this.minimumValuesNote = this.minimumValuesNoteEn;
 
         //historicalProfit
         this.netProfitGrowthLabel = this.netProfitGrowthLabelEn;

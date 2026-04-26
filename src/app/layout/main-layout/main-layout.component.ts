@@ -5,10 +5,11 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { BrowserStorageService } from '../../services/browser-storage.service';
 import { WindowService } from '../../services/window.service';
+import { CookieConsentComponent } from '../../components/cookie-consent/cookie-consent.component';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [HeaderComponent,FooterComponent,RouterOutlet],
+  imports: [HeaderComponent,FooterComponent,RouterOutlet,CookieConsentComponent],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css'
 })

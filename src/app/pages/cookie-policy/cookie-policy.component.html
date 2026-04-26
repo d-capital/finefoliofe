@@ -6,9 +6,9 @@
       <h2>{{ section.title }}</h2>
 
       <div *ngFor="let subsection of section.subsections" class="subsection">
-        <h3 *ngIf="subsection.title" [ngClass]="{'subsection-title-with-content': subsection.content}">
-          {{ subsection.title }}
-        </h3>
+        <p *ngIf="subsection.title">
+          <b>{{ subsection.title }}</b>
+        </p>
 
         <p *ngIf="typeof subsection.content === 'string' && subsection.content" class="subsection-text">
           {{ subsection.content }}
