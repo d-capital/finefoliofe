@@ -9,7 +9,7 @@
   animation: slideUp 0.3s ease-in-out;
 }
 
-@keyframes slideUp {
+/*@keyframes slideUp {
   from {
     transform: translateY(100%);
     opacity: 0;
@@ -18,7 +18,7 @@
     transform: translateY(0);
     opacity: 1;
   }
-}
+}*/
 
 .cookie-consent-container {
   max-width: 1200px;
