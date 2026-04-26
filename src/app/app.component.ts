@@ -6,10 +6,11 @@ import { DOCUMENT } from '@angular/common';
 import { SeoService } from './services/seo.service';
 import { BrowserStorageService } from './services/browser-storage.service';
 import { WindowService } from './services/window.service';
+import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CookieConsentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true
@@ -54,6 +55,7 @@ export class AppComponent implements OnInit {
     this.reloadLayout();
     // Redirect to /ru if language is ru and path is /
     const lang = this.browserStorageService.getItem('language');
+    this.updateFavicon(lang);
     if (lang === 'ru' && this.windowService.pathname === '/') {
       this.windowService.replace('/ru');
     }
@@ -72,4 +74,16 @@ export class AppComponent implements OnInit {
         this.document.head.appendChild(link);
       }
   };
+
+  updateFavicon(lang: string | null) {
+    const favicon = this.document.getElementById('app-favicon') as HTMLLinkElement;
+    if (favicon) {
+      const cacheBuster = `?v=${new Date().getTime()}`;
+      if(lang === 'ru'){
+        favicon.href = 'faviconru.ico'+cacheBuster;
+      } else {
+        favicon.href = 'favicon.ico'+cacheBuster;
+      }
+    }
+  }
 }

@@ -1,0 +1,38 @@
+<div class="cookie-policy-wrapper">
+  <div class="cookie-policy-content">
+    <h1>{{ content.title }}</h1>
+
+    <div *ngFor="let section of content.sections" class="section">
+      <h2>{{ section.title }}</h2>
+
+      <div *ngFor="let subsection of section.subsections" class="subsection">
+        <h3 *ngIf="subsection.title" [ngClass]="{'subsection-title-with-content': subsection.content}">
+          {{ subsection.title }}
+        </h3>
+
+        <p *ngIf="typeof subsection.content === 'string' && subsection.content" class="subsection-text">
+          {{ subsection.content }}
+        </p>
+
+        <div *ngIf="typeof subsection.content === 'object'" class="subsection-list">
+          <p *ngFor="let item of subsection.content">{{ item }}</p>
+        </div>
+
+        <div *ngIf="subsection.table" class="table-wrapper">
+          <table class="policy-table">
+            <thead>
+              <tr>
+                <th *ngFor="let header of subsection.table.headers">{{ header }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of subsection.table.rows">
+                <td *ngFor="let cell of row">{{ cell }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import { ArticlelistComponent } from './components/articlelist/articlelist.compo
 import { Injectable } from '@angular/core';
 import { LanguageRedirectComponent } from './components/laguage-redirect/laguage-redirect.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { CookiePolicyComponent } from './pages/cookie-policy/cookie-policy.component';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageGuard implements CanActivate {
@@ -29,6 +30,7 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: '', component: LandingComponent },
+      { path: 'cookie-policy', component: CookiePolicyComponent },
       { path: 'valuation', component: ValuationComponent },
       {
         path: 'stocks/:exchange-ticker/peter-lynch-fair-value-calculator',
@@ -43,6 +45,7 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: '', component: LandingComponent },
+      { path: 'cookie-policy', component: CookiePolicyComponent },
       { path: 'valuation', component: ValuationComponent },
       {
         path: 'stocks/:exchange-ticker/peter-lynch-fair-value-calculator',

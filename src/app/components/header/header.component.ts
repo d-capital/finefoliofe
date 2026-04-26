@@ -45,6 +45,10 @@ export class HeaderComponent implements OnInit {
   searchLabelEn: string = "Search"
   searchLabelRu: string = "Поиск"
 
+  logo: string = "";
+  logoRu: string = "logoru.png";
+  logoEn: string = "logo.png";
+
   dropdownOpen = false;
   searchOpen = false;
   selectedValue: string | null = null;
@@ -73,6 +77,7 @@ export class HeaderComponent implements OnInit {
       this.navLinkScreenerLabel = this.navLinkScreenerLabelRu;
       this.servicesLabel = this.servicesLabelRu;
       this.searchLabel = this.searchLabelRu;
+      this.logo = this.logoRu;
     }
     else{
       this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEn;
@@ -81,6 +86,7 @@ export class HeaderComponent implements OnInit {
       this.navLinkScreenerLabel = this.navLinkScreenerLabelEn;
       this.servicesLabel = this.servicesLabelEn;
       this.searchLabel = this.searchLabelEn;
+      this.logo = this.logoEn;
     }
   }
   

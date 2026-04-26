@@ -130,7 +130,7 @@
             </section>
 
             <!-- Historical profit -->
-            <section *ngIf="valuation.netProfitHistory && valuation.netProfitHistory.length > 0" class="card valuate-section">
+            <section *ngIf="!noAverageGrowthData && valuation.netProfitHistory && valuation.netProfitHistory.length > 0 " class="card valuate-section">
               <h2>{{ netProfitGrowthLabel }}</h2>
               <!--p><strong>{{ averageIncomeGrowthLabel }}</strong></p-->
               <ul>
@@ -175,7 +175,7 @@
               </div>
             </section>
 
-            <section *ngIf="valuation.netProfitHistory && valuation.netProfitHistory.length === 0" class="card valuate-section">
+            <section *ngIf="noAverageGrowthData" class="card valuate-section">
               <h2>{{ netProfitGrowthLabel }}</h2>
               <!--p><strong>{{ averageIncomeGrowthLabel }}</strong></p-->
               <ul>
@@ -185,7 +185,7 @@
                 </li>
                 <li><strong>{{naText}}</strong> - {{ averageIncomeGrowthTtm }}</li>
               </ul>
-              <p>{{ growthRateCalcExplanation }}</p>
+              <p [innerHTML]="growthRateCalcExplanation"></p>
               <div class="table-wrapper">
                 <table class="financial-table">
                   <thead>

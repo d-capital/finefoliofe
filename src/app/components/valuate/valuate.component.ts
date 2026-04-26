@@ -311,6 +311,8 @@ export class ValuateComponent implements OnInit {
   noFairPriceExplanationEn: string = `Fair price of stock COMPANY_NAME (TICKER_ON_PAGE) cannot be calculated based on Peter Lynch formula due to negative Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years.`;
   noFairPriceExplanationRu: string = `Справедливая цена акции COMPANY_NAME (TICKER_ON_PAGE) не может быть рассчитана по формуле Питера Линча из-за отрицательной прибыли на акцию за последние 12 месяцев (EPS TTM) и/или темпа роста прибыли (Net Income Growth Rate) за 5 лет .`;
 
+  noAverageGrowthData:boolean = false;
+
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
@@ -572,17 +574,26 @@ export class ValuateComponent implements OnInit {
             threeYears: 0,
             fiveYears: 0
           };
+          this.noAverageGrowthData = true;
           this.valuation.formula = this.getValuationFormula(
             this.naText,
             this.round(this.stockInfo.epsTtm, this.exchange),
             this.round(this.valuation.fairPrice, this.exchange)
           );
         }else{
-          this.valuation.formula = this.getValuationFormula(
-            this.round(this.valuation.avgGrowth.fiveYears, this.exchange),
-            this.round(this.stockInfo.epsTtm, this.exchange),
-            this.round(this.valuation.fairPrice, this.exchange)
-          );
+          if (this.valuation.avgGrowth.fiveYears<25){
+            this.valuation.formula = this.getValuationFormula(
+              this.round(this.valuation.avgGrowth.fiveYears, 'noexchange'),
+              this.round(this.stockInfo.epsTtm, this.exchange),
+              this.round(this.valuation.fairPrice, this.exchange)
+            );
+          }else{
+            this.valuation.formula = this.getValuationFormula(
+              this.round(25,'noexchange'),
+              this.round(this.stockInfo.epsTtm, this.exchange),
+              this.round(this.valuation.fairPrice, this.exchange)
+            );
+          }
         }
 
         this.loading = false;

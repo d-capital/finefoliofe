@@ -45,6 +45,10 @@ export class FooterComponent implements OnInit {
   navLinkScreenerLabelRu: string = "Скриннер";
   navLinkScreenerLabelEn: string = "Screener";
 
+  logo: string = "";
+  logoRu: string = "logoru.png";
+  logoEn: string = "logo.png";
+
   pageLanguage: string = "en";
 
   constructor(
@@ -68,6 +72,7 @@ export class FooterComponent implements OnInit {
       this.navLinkAboutLabel = this.navLinkAboutLabelRu;
       this.quickLinksLabel = this.quickLinksLabelRu;
       this.navLinkScreenerLabel = this.navLinkScreenerLabelRu;
+      this.logo = this.logoRu;
     }
     else{
       this.disclaimer = this.disclaimerEn;
@@ -77,6 +82,7 @@ export class FooterComponent implements OnInit {
       this.navLinkAboutLabel = this.navLinkAboutLabelEn;
       this.quickLinksLabel = this.quickLinksLabelEn;
       this.navLinkScreenerLabel = this.navLinkScreenerLabelEn;
+      this.logo = this.logoEn;
     }
   }
 

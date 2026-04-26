@@ -1,0 +1,17 @@
+<div class="cookie-consent-banner" *ngIf="showNotification">
+  <div class="cookie-consent-container">
+    <div class="cookie-consent-content">
+      <p class="cookie-consent-text">
+        {{ consentText }}
+      </p>
+      <div class="cookie-consent-actions">
+        <button class="cookie-consent-button" (click)="onAgree()">
+          {{ agreeButtonLabel }}
+        </button>
+        <a href="javascript:void(0)" class="cookie-consent-link" (click)="onMoreInfo()">
+          {{ moreInfoButtonLabel }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
