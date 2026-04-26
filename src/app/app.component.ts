@@ -1,16 +1,18 @@
-import { Component, OnInit, Injectable, Inject} from '@angular/core';
+import { Component, OnInit, Injectable, Inject,PLATFORM_ID } from '@angular/core';
 import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgIf } from '@angular/common';
 import { SeoService } from './services/seo.service';
 import { BrowserStorageService } from './services/browser-storage.service';
 import { WindowService } from './services/window.service';
 import { CookieConsentComponent } from './components/cookie-consent/cookie-consent.component';
+import { CookieConsentService } from './services/cookie-consent.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CookieConsentComponent],
+  imports: [RouterOutlet, CookieConsentComponent,NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true
@@ -19,6 +21,7 @@ import { CookieConsentComponent } from './components/cookie-consent/cookie-conse
 export class AppComponent implements OnInit {
   title = 'finefolio-fe';
   isAlive:boolean = false;
+  showNotification: boolean = false;
   constructor(
     private route:ActivatedRoute, 
     @Inject(DOCUMENT) private document: Document, 
@@ -26,6 +29,8 @@ export class AppComponent implements OnInit {
     private router: Router,
     private browserStorageService: BrowserStorageService,
     private windowService: WindowService,
+    private cookieConsentService: CookieConsentService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.syncLanguageWithUrl();
     // Listen for navigation events to keep language in sync
@@ -58,6 +63,13 @@ export class AppComponent implements OnInit {
     this.updateFavicon(lang);
     if (lang === 'ru' && this.windowService.pathname === '/') {
       this.windowService.replace('/ru');
+    }
+    if (isPlatformBrowser(this.platformId)) {
+      if (!localStorage.getItem('cookieConsent')) {
+          this.showNotification = true;
+      } else {
+          this.showNotification = false;
+      }
     }
   }
 

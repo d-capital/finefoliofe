@@ -11,10 +11,11 @@ import { BrowserStorageService } from '../../services/browser-storage.service';
     standalone: true,
     imports: [CommonModule],
     templateUrl: './cookie-consent.component.html',
-    styleUrl: './cookie-consent.component.css'
+    styleUrls: ['./cookie-consent.component.css']
 })
 export class CookieConsentComponent implements OnInit, OnDestroy {
     showNotification = false;
+    consentCheckComplete = false;
     
     agreeButtonLabel: string = "I Agree";
     agreeButtonLabelRu: string = "Понятно";
@@ -52,7 +53,10 @@ export class CookieConsentComponent implements OnInit, OnDestroy {
             this.showNotification = true;
         } else {
             console.log('[CookieConsentComponent] User already consented, hiding notification');
+            this.showNotification = false;
         }
+
+        this.consentCheckComplete = true;
     }
 
     onAgree(): void {
