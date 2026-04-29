@@ -19,6 +19,7 @@ interface ContentSubsection {
 
 interface Content {
   title: string;
+  subtitle:string;
   sections: ContentSection[];
 }
 
@@ -35,6 +36,7 @@ export class CookiePolicyComponent implements OnInit {
 
   private ruContent: Content = {
     title: 'Политика использования файлов cookie',
+    subtitle:'Редакция 1 от 22.04.2026',
     sections: [
       {
         title: '1. Общие положения',
@@ -228,6 +230,7 @@ export class CookiePolicyComponent implements OnInit {
 
   private enContent: Content = {
     title: 'Cookie Policy',
+    subtitle:'Revision 1 of 22.04.2026',
     sections: [
       {
         title: '1. General Provisions',

@@ -123,9 +123,9 @@ export class ValuateComponent implements OnInit {
   maxGrowthRateNoteRu: string = "Если темп роста чистой прибыли за 5 лет был больше 25% мы используем 25, так как Питер Линч называл рост более 25 процентов в год неустойчивым."
   maxGrowthRateNoteEn: string = "If the Net Income Growth Rate over 5 years was greater than 25%, we use 25, since Peter Lynch called growth of more than 25 percent per year unsustainable."
 
-  notEnoughDataNote:string = "If the Earnings per Share Trailing Twelve Month (EPS TTM) and/or Net Income Growth Rate over 5 years is less than 0, then the fair value estimate using the formula is not possible.";
-  notEnoughDataNoteRu:string = "Если прибыль на акцию за последние 12 месяцев (EPS TTM) и/или темп роста чистой прибыли (Net Income Growth Rate) меньше 0, то оценка справедливой стоимости по формуле невозможна.";
-  notEnoughDataNoteEn:string = "If the Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years is less than 0, then the fair value estimate using the formula is not possible.";
+  notEnoughDataNote:string = "If the Earnings per Share Trailing Twelve Month (EPS TTM) and/or Net Income Growth Rate over 5 years is less than 0 or missing, then the fair value estimate using the formula is not possible.";
+  notEnoughDataNoteRu:string = "Если прибыль на акцию за последние 12 месяцев (EPS TTM) и/или темп роста чистой прибыли (Net Income Growth Rate) меньше 0 или отсутсвует, то оценка справедливой стоимости по формуле невозможна.";
+  notEnoughDataNoteEn:string = "If the Earnings per Share (EPS TTM) and/or Net Income Growth Rate over 5 years is less than 0 or missing, then the fair value estimate using the formula is not possible.";
 
   //historicalProfit
   netProfitGrowthLabel: string = "Net Income";
@@ -154,8 +154,8 @@ export class ValuateComponent implements OnInit {
   aboutLynchFormulaLabelEn: string = "About Lynch Formula";
 
   aboutLynchFormulaText: string = "The Lynch model helps estimate a stock's fair price based on earnings and growth expectations. It is often used by value investors to determine whether a stock is undervalued or overvalued.";
-  aboutLynchFormulaTextRu: string = "<p>Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Net Income Growth Rate) * прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per Share Trailing Twelve Month). Темп роста прибыли (Net Income Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный, как совокупный среднегодовой темп роста (CAGR, Coumpond Anual Growth Rate) за соответствующий период.</p><p>Формула совокупного среднегодового темпа роста (CAGR, Coumpond Anual Growth Rate) модифицирована так, чтобы учитывать случаи когда начальное значение (B) отрицательные вычитая начальное значение (B) и добавляя модуль начального значение (|B|) из конечного значения (E) в числителе и деля его на модуль начального значения(|B|).</p> ";
-  aboutLynchFormulaTextEn: string = "<p>We calculate the fair value of a share using the following version of Peter Lynch's formula. Fair value of a share according to Peter Lynch = Net Income Growth Rate * Earnings per Share Trailing Twelve Month (EPS TTM). Net Income Growth Rate is calculated as Coumpond Anual Growth Rate (CAGR) for the last 5 years.</p><p>Coumpond Anual Growth Rate (CAGR) formula is modified to account for cases when beginning value (B) is negative by subtracting beginning value (B) and adding absolute value of beginning value(|B|) from ending value (E) in nominator and diving it by aboslute value of beginning value(|B|).</p>";
+  aboutLynchFormulaTextRu: string = "<p>Мы считаем справедливую стоимость акции по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Net Income Growth Rate) * прибыль на акцию за последние 12 месяцев (EPS TTM, Earnings per Share Trailing Twelve Month). Темп роста прибыли (Net Income Growth Rate) - это рост показателя чистая прибыль (Net Income) за последние 5 лет, посчитанный, как совокупный среднегодовой темп роста (CAGR, Compound Anual Growth Rate) за соответствующий период.</p><p>Формула совокупного среднегодового темпа роста (CAGR, Compound Anual Growth Rate) модифицирована так, чтобы учитывать случаи когда начальное значение (B) отрицательное: для этого из конченого значения (E) вычитается начальное значение (B) и добавляется модуль начального значение (|B|) в числителе, в знаменателе при этом берется модуль начального значения (|B|).</p> ";
+  aboutLynchFormulaTextEn: string = "<p>We calculate the fair value of a share using the following version of Peter Lynch's formula. Fair value of a share according to Peter Lynch = Net Income Growth Rate * Earnings per Share Trailing Twelve Month (EPS TTM). Net Income Growth Rate is calculated as Compound Anual Growth Rate (CAGR) for the last 5 years.</p><p>Compound Anual Growth Rate (CAGR) formula is modified to account for cases when beginning value (B) is negative by subtracting beginning value (B) and adding absolute value of beginning value(|B|) from ending value (E) in nominator and diving it by absolute value of beginning value(|B|).</p>";
 
   aboutFullNegativeCagr: string = "<p>If ending (E) and beginning (B) values are negative we take absolute value of division of ending by beginning value (|E/B|) and multiply result by -1.</p>";
   aboutFullNegativeCagrRu: string = "<p>Если конеченое (E) и начальное (B) значения оба отрицательные или результат деления отрицательный мы берем модуль деления конечного значения на начальное значениие (|E/B|) умножая полученное значение на -1.</p>";
@@ -198,9 +198,9 @@ export class ValuateComponent implements OnInit {
   pegLabelRu: string = "Цена акции / Прибыль на акцию / Темп роста прибыли (PEG)";
   pegLabelEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG)";
 
-  pegExplanation: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio.";
-  pegExplanationRu: string = "Коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG, Price / Earnings / Net IncomeGrowth Ratio) расчитывается как коэффициент Цена акции / Прибыль на акцию (P/E, Price to Earnings Ratio) деленный на темп роста прибыли. Если темп роста прибыли более 25%, мы используем 25% для расчета PEG.";
-  pegExplanationEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price to Earnings Ratio (P/E) divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio.";
+  pegExplanation: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price divivded by Earnings per Share divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio.";
+  pegExplanationRu: string = "Коэффициент Цена акции / Прибыль на акцию / Темп роста прибыли (PEG, Price / Earnings per Share / Net Income Growth Ratio) расчитывается как цена акции деленная на прибыль на акцию (Earnings per Share) деленная на темп роста прибыли. Если темп роста прибыли более 25%, мы используем 25% для расчета PEG.";
+  pegExplanationEn: string = "Price / Earnings per Share / Net Income Growth Rate (PEG) is calulated as Price divivded by Earnings per Share divided by the company's historical Net Income Growth Rate. If Net Income Growth Rate is more than 25%, we use 25% to calculate PEG ratio.";
 
   pegFairLabel:string = "Fairly valued";
   pegOverLabel:string = "Overvalued";
@@ -315,6 +315,8 @@ export class ValuateComponent implements OnInit {
   legalText:string = '';
   legalTextRu: string = '*признана экстремистской, запрещена на территории РФ.';
   legalTextEn: string = '*is regonzide as extrimist, forbidden on the territory of Russian Federation.'
+
+  noNetProfitHistory:{ year: string; value: string }[] = []
 
   async ngOnInit(): Promise<void> {
     if (isPlatformBrowser(this.platformId)) {
@@ -584,6 +586,28 @@ export class ValuateComponent implements OnInit {
             fiveYears: 0
           };
           this.noAverageGrowthData = true;
+          this.noNetProfitHistory = [
+            {
+              year:"2021",
+              value: this.naText,
+            },
+            {
+              year:"2022",
+              value: this.naText,
+            },
+            {
+              year:"2023",
+              value: this.naText,
+            },
+            {
+              year:"2024",
+              value: this.naText,
+            },
+            {
+              year:"2025",
+              value: this.naText,
+            }
+          ]
           this.valuation.formula = this.getValuationFormula(
             this.naText,
             this.round(this.stockInfo.epsTtm, this.exchange),
