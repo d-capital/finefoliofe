@@ -44,7 +44,7 @@ export class FairValueComponent implements OnInit {
           image: "formula.png",
           title: "Формула справедливой стоимости Линча",
           subtitle: "—",
-          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Earnings Growth Rate) * Прибыль на акцию за последние 12 месяцев (EPS TTM).",
+          description: "Мы считаем справедливую стоимость по следующей версии формулы Питера Линча. Справедливая стоимость акции по Питеру Линчу = Темп роста прибыли (Net Income Growth Rate) * Прибыль на акцию за последние 12 месяцев (EPS TTM).",
           isFinalResult:false
         },
         {
@@ -98,7 +98,7 @@ export class FairValueComponent implements OnInit {
           image: "growth.png",
           title: "Earnings Growth Rate",
           subtitle: "—",
-          description: "The Earnings Growth Rate formula is Compound Anual Growth Rate (CAGR) of Net Income over the past 5 years.",
+          description: "The Earnings Growth Rate formula is Compound Annual Growth Rate (CAGR) of Net Income over the past 5 years.",
           isFinalResult:false
         },/*
         {
