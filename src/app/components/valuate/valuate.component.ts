@@ -14,6 +14,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { GeoService } from '../../services/geo.service';
+import remUrlsData from './remurls.json'; 
 
 @Component({
   selector: 'app-valuate',
@@ -31,6 +32,7 @@ export class ValuateComponent implements OnInit {
     private metaService: Meta,
     private geoService: GeoService
   ) { }
+  private urlsToRemove: string[] = remUrlsData.urlsToRemove;
   stockInfo!: StockInfo;
   valuation!: ValuationResult;
   loading: boolean = true;
@@ -321,6 +323,8 @@ export class ValuateComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     if (isPlatformBrowser(this.platformId)) {
       const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
+      const exchangeAndTicker = this.route.snapshot.paramMap.get('exchange-ticker') ?? "AAPL";
+      this.updateNoIndexTag(exchangeAndTicker);
       const tickerCode = params ? decodeURI(params[1]) : 'AAPL';
       const exchangeCode = params ? params[0] :  'NYSE';
       this.ticker = tickerCode ? tickerCode.toLocaleUpperCase() : 'AAPL';
@@ -797,6 +801,15 @@ export class ValuateComponent implements OnInit {
     }
 
     return `${averageGrowthRate} X ${eps} = ${fairPrice}`;
+  }
+
+
+  private updateNoIndexTag(exchangeAndTicker:string) {
+    const robots = this.urlsToRemove.includes(exchangeAndTicker) 
+      ? 'noindex' 
+      : 'index';
+    
+    this.metaService.updateTag({ name: 'robots', content: robots });
   }
   
 } 
