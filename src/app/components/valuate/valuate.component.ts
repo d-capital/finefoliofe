@@ -759,7 +759,7 @@ export class ValuateComponent implements OnInit {
        * Calculates CAGR for negative start and end value:
        * ((|Ending / Beginning|)^(1/n) - 1
        */
-      if (endingValue<beginningValue){
+      if (Math.abs(endingValue)<Math.abs(beginningValue)){
         cagr = (Math.pow(Math.abs(endingValue / start), 1 / numberOfYears) - 1)*-1;
       }
       else {
