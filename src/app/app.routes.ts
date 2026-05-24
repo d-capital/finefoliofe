@@ -16,7 +16,7 @@ import { tickerGuard } from './guards/ticker.guard';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageGuard implements CanActivate {
-  supportedLangs = ['en', 'fr', 'de'];
+  supportedLangs = ['en', 'fr', 'de', 'ru', 'es'];
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const lang = route.paramMap.get('lang');
@@ -28,6 +28,22 @@ export const routes: Routes = [
   // Russian routes under /ru
   {
     path: 'ru',
+    component: MainLayoutComponent,
+    children: [
+      { path: '', component: LandingComponent },
+      { path: 'cookie-policy', component: CookiePolicyComponent },
+      { path: 'valuation', component: ValuationComponent },
+      {
+        path: 'stocks/:exchange-ticker/peter-lynch-fair-value-calculator',
+        component: ValuateComponent,
+        canActivate: [tickerGuard]
+      },
+      // ... your other child routes
+    ]
+  },
+  // Spanish routes under /es
+  {
+    path: 'es',
     component: MainLayoutComponent,
     children: [
       { path: '', component: LandingComponent },

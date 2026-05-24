@@ -37,15 +37,17 @@ export class LandingComponent implements OnInit {
 
   erSearchTextEn:string = "Side-by-Side Currency Comparison:";
   erSearchTextRu:string = "Сравнение валют"; 
+  erSearchTextEs:string = "Comparación de monedas lado a lado:";
   erSearchText:string = "Side-by-Side Currency Comparison:"
 
   historySearchTextEn:string = "Historical Data Download:";
   historySearchTextRu:string = "Скачать исторические данные:"; 
+  historySearchTextEs:string = "Descarga de datos históricos:";
   historySearchText:string = "Historical Data Download:"
 
   ngOnInit(): void {
     var language = this.browserStorageService.getItem('language');
-    if(language == 'ru'){
+    if (language == 'ru') {
       this.erSearchText = this.erSearchTextRu;
       this.historySearchText = this.historySearchTextRu;
       this.titleService.setTitle('Валестор - Метод Питера Линча | Найди недооцененные акции с потенциалом роста для своего инвестиционного портфеля');
@@ -53,8 +55,15 @@ export class LandingComponent implements OnInit {
         name: 'description',
         content: 'Перед тем как покупать или продавать акцию узнай справедливую стоимость, оценку недооцененности или переоцененности, потенциал роста или снижения по методу Питера Линча'
       });
-    }
-    else{
+    } else if (language == 'es') {
+      this.erSearchText = this.erSearchTextEs;
+      this.historySearchText = this.historySearchTextEs;
+      this.titleService.setTitle('Valestor - Calculadora de valor razonable de Peter Lynch | Valoración automatizada de acciones');
+      this.metaService.updateTag({
+        name: 'description',
+        content: 'Calcule el valor razonable al instante con nuestra herramienta automatizada basada en la fórmula de Peter Lynch.'
+      });
+    } else {
       this.erSearchText = this.erSearchTextEn;
       this.historySearchText = this.historySearchTextEn;
       this.titleService.setTitle('Peter Lynch Fair Value Calculator: Instant Automated Stock Valuation | Valestor.com');

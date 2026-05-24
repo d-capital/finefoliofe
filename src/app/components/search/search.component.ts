@@ -20908,7 +20908,7 @@ export class SearchComponent implements OnInit {
   ) {
     const storedLang = this.browserStorageService.getItem('language');
     this.pageLanguage = storedLang || 'en';
-    this.lang = this.pageLanguage === 'ru' ? 'ru' : 'en';
+    this.lang = this.pageLanguage ? this.pageLanguage : 'en';
   }
 
   ngOnInit(): void {
@@ -20978,7 +20978,11 @@ export class SearchComponent implements OnInit {
     let path = '';
     if (this.lang === 'ru') {
       path = `/ru/stocks/${exchange}-${ticker}/peter-lynch-fair-value-calculator`;
-    } else {
+    } 
+    else if (this.lang === 'es') {
+      path = `/es/stocks/${exchange}-${ticker}/peter-lynch-fair-value-calculator`;
+    }
+    else {
       path = `/stocks/${exchange}-${ticker}/peter-lynch-fair-value-calculator`;
     }
     this.router.navigate([path])

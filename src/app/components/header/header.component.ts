@@ -62,13 +62,14 @@ export class HeaderComponent implements OnInit {
   ){
     this.langMap.set("en", "en");
     this.langMap.set("ru", "ru");
+    this.langMap.set("es", "es");
   }
 
   ngOnInit(): void {
     this.selectedValue  = this.browserStorageService.getItem("language") || "en";
     this.pageLanguage = this.selectedValue ? this.selectedValue.toString() : "en";
     var langCode = this.selectedValue ? this.selectedValue.toString() : "en";
-    this.selectedLanguage = this.langMap.get(langCode);
+    this.selectedLanguage = this.langMap.get(langCode) || langCode;
     var language = this.browserStorageService.getItem('language');
     if(language == 'ru'){
       this.navLinkValuateStockLabel = this.navLinkValuateStockLabelRu;
@@ -78,8 +79,16 @@ export class HeaderComponent implements OnInit {
       this.servicesLabel = this.servicesLabelRu;
       this.searchLabel = this.searchLabelRu;
       this.logo = this.logoRu;
-    }
-    else{
+    } else if (language == 'es') {
+      // Spanish: reuse English text for now; customize as needed
+      this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEn;
+      this.navLinkBlogLabel = this.navLinkBlogLabelEn;
+      this.navLinkAboutLabel = this.navLinkAboutLabelEn;
+      this.navLinkScreenerLabel = this.navLinkScreenerLabelEn;
+      this.servicesLabel = this.servicesLabelEn;
+      this.searchLabel = this.searchLabelEn;
+      this.logo = this.logoEn;
+    } else {
       this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEn;
       this.navLinkBlogLabel = this.navLinkBlogLabelEn;
       this.navLinkAboutLabel = this.navLinkAboutLabelEn;

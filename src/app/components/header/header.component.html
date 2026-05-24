@@ -36,7 +36,7 @@
           <option value="en">EN</option>
           <option value="ru">RU</option>
         </select-->
-        <app-language-selector [selectedValue]="selectedLanguage"></app-language-selector>
+        <app-language-selector [selectedValue]="selectedLanguage" (languageChange)="onSelectionChange($event)"></app-language-selector>
       </li>
       <!--li class="dropdown" [class.open]="dropdownOpen">
         <a (click)="toggleDropdown($event)">

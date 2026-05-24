@@ -31,7 +31,7 @@ interface Content {
   styleUrl: './cookie-policy.component.css'
 })
 export class CookiePolicyComponent implements OnInit {
-  currentLanguage: 'en' | 'ru' = 'en';
+  currentLanguage: 'en' | 'ru' | 'es' = 'en';
   content!: Content;
 
   private ruContent: Content = {
@@ -430,7 +430,7 @@ export class CookiePolicyComponent implements OnInit {
 
   ngOnInit(): void {
     const lang = this.browserStorageService.getItem('language');
-    this.currentLanguage = lang === 'ru' ? 'ru' : 'en';
+    this.currentLanguage = lang === 'ru' ? 'ru' : (lang === 'es' ? 'es' : 'en');
     this.content = this.currentLanguage === 'ru' ? this.ruContent : this.enContent;
     console.log('[CookiePolicyComponent] Language:', this.currentLanguage);
     if (this.currentLanguage === 'ru'){
@@ -439,7 +439,13 @@ export class CookiePolicyComponent implements OnInit {
         name: 'description',
         content: 'Политика использования файлов cookie'
       });
-    }else{
+    } else if (this.currentLanguage === 'es') {
+      this.titleService.setTitle(`Valestor - Política de cookies`);
+      this.metaService.updateTag({
+        name: 'description',
+        content: 'Política de cookies'
+      });
+    } else {
       this.titleService.setTitle(`Valestor - Cookie Policy`);
       this.metaService.updateTag({
         name: 'description',

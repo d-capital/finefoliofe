@@ -32,6 +32,10 @@ export class LanguageRedirectComponent implements OnInit {
       if (this.windowService.pathname !== '/ru') {
         this.router.navigate(['/ru'], { replaceUrl: true });
       }
+    } else if (savedLang === 'es') {
+      if (this.windowService.pathname !== '/es') {
+        this.router.navigate(['/es'], { replaceUrl: true });
+      }
     } else {
       // English is default, stay at root
       if (this.windowService.pathname !== '/') {

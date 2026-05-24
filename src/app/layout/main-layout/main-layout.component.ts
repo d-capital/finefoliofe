@@ -25,5 +25,8 @@ export class MainLayoutComponent implements OnInit {
     if (lang === 'ru' && this.windowService.pathname === '/') {
       this.router.navigate(['/ru']);
     }
+    if (lang === 'es' && this.windowService.pathname === '/') {
+      this.router.navigate(['/es']);
+    }
   }
 }
