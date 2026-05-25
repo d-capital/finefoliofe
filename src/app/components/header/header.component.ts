@@ -26,24 +26,31 @@ export class HeaderComponent implements OnInit {
 
   navLinkValuateStockLabelRu: string = "Оценить Акцию";
   navLinkValuateStockLabelEn: string = "Valuate Stock";
+  navLinkValuateStockLabelEs: string = "Valorar Acción";
 
   navLinkScreenerLabelRu: string = "Скриннер";
   navLinkScreenerLabelEn: string = "Screener";
+  navLinkScreenerLabelEs: string = "Escáner";
 
   navLinkBlogLabelRu: string = "Блог";
   navLinkBlogLabelEn: string = "Blog";
+  navLinkBlogLabelEs: string = "Blog";
 
   navLinkAboutLabelRu: string = "О нас";
   navLinkAboutLabelEn: string = "About Us";
+  navLinkAboutLabelEs: string = "Sobre Nosotros";
 
   quickLinksLabelRu: string = "Страницы";
   quickLinksLabelEn: string = "Quick Links";
+  quickLinksLabelEs: string = "Enlaces Rápidos";
 
   servicesLabelEn: string = "Services";
   servicesLabelRu: string = "Сервисы";
+  servicesLabelEs: string = "Servicios";
 
-  searchLabelEn: string = "Search"
-  searchLabelRu: string = "Поиск"
+  searchLabelEn: string = "Search";
+  searchLabelRu: string = "Поиск";
+  searchLabelEs: string = "Buscar";
 
   logo: string = "";
   logoRu: string = "logoru.png";
@@ -80,13 +87,12 @@ export class HeaderComponent implements OnInit {
       this.searchLabel = this.searchLabelRu;
       this.logo = this.logoRu;
     } else if (language == 'es') {
-      // Spanish: reuse English text for now; customize as needed
-      this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEn;
-      this.navLinkBlogLabel = this.navLinkBlogLabelEn;
-      this.navLinkAboutLabel = this.navLinkAboutLabelEn;
-      this.navLinkScreenerLabel = this.navLinkScreenerLabelEn;
-      this.servicesLabel = this.servicesLabelEn;
-      this.searchLabel = this.searchLabelEn;
+      this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEs;
+      this.navLinkBlogLabel = this.navLinkBlogLabelEs;
+      this.navLinkAboutLabel = this.navLinkAboutLabelEs;
+      this.navLinkScreenerLabel = this.navLinkScreenerLabelEs;
+      this.servicesLabel = this.servicesLabelEs;
+      this.searchLabel = this.searchLabelEs;
       this.logo = this.logoEn;
     } else {
       this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEn;
