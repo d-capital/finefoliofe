@@ -11,7 +11,7 @@ import { TabsComponent } from '../tabs/tabs.component';
 import { TabComponent } from '../tab/tab.component';
 import { StockCardComponent } from '../stock-card/stock-card.component';
 import { ChangeDetectorRef } from '@angular/core';
-import { Inject, PLATFORM_ID } from '@angular/core';
+import { Inject, PLATFORM_ID, Injector } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { GeoService } from '../../services/geo.service';
 import remUrlsData from './remurls.json'; 
