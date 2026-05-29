@@ -35,6 +35,14 @@
           <p>Данные от <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">MOEX API</a></b></p>
           <p style="color: gray;">oбновлены сегодня в {{ displayTime }}</p>
         </div>
+        <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'es'" style="line-height: 1.2px;">
+          <p>Datos proporcionados por <b><a href="https://www.tradingview.com/symbols/{{ stockInfo.exchange }}-{{ ticker }}/" target="_blank">TradingView</a></b></p>
+          <p style="color: gray;">actualizado hoy a {{ displayTime }}</p>
+        </div>
+        <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'es'" style="line-height: 1.2px;">
+          <p>Datos proporcionados por <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">MOEX API</a></b></p>
+          <p style="color: gray;">actualizado hoy a {{ displayTime }}</p>
+        </div>
       </div>
     </section>
 
@@ -369,15 +377,15 @@
               <h3>{{ sectorLabel }}</h3>
               <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange === 'MOEX'">{{ stockInfo.sectorRu }}</p>
               <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.sector }}</p>
-              <p *ngIf="pageLanguage === 'en' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.sector }}</p>
-              <p *ngIf="pageLanguage === 'en' && stockInfo.exchange === 'MOEX'">{{ stockInfo.sector }}</p>
+              <p *ngIf="pageLanguage !== 'ru' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.sector }}</p>
+              <p *ngIf="pageLanguage !== 'ru' && stockInfo.exchange === 'MOEX'">{{ stockInfo.sector }}</p>
             </div>
             <div>
               <h3>{{ industryLabel }}</h3>
               <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange === 'MOEX'">{{ stockInfo.industryRu }}</p>
               <p *ngIf="pageLanguage === 'ru' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.industry }}</p>
-              <p *ngIf="pageLanguage === 'en' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.industry }}</p>
-              <p *ngIf="pageLanguage === 'en' && stockInfo.exchange === 'MOEX'">{{ stockInfo.industry }}</p>
+              <p *ngIf="pageLanguage !== 'ru' && stockInfo.exchange !== 'MOEX'">{{ stockInfo.industry }}</p>
+              <p *ngIf="pageLanguage !== 'ru' && stockInfo.exchange === 'MOEX'">{{ stockInfo.industry }}</p>
             </div>
           </div>
         </section>

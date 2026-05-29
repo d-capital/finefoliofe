@@ -15,6 +15,7 @@ import { Inject, PLATFORM_ID } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { GeoService } from '../../services/geo.service';
 import remUrlsData from './remurls.json'; 
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-valuate',
@@ -30,7 +31,8 @@ export class ValuateComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private titleService: Title, 
     private metaService: Meta,
-    private geoService: GeoService
+    private geoService: GeoService,
+    private languageService: LanguageService
   ) { }
   private urlsToRemove: string[] = remUrlsData.urlsToRemove;
   stockInfo!: StockInfo;
@@ -331,6 +333,89 @@ export class ValuateComponent implements OnInit {
       this.exchange = exchangeCode ? exchangeCode.toLocaleUpperCase() : 'NYSE';
       var language = localStorage.getItem('language');
       this.pageLanguage = language ? language : 'en';
+      this.languageService.getLabels(this.pageLanguage, ['valuation']).pipe().subscribe(
+        data => {
+          this.loadingLabel = data.labels.find((l: any) => l.label === 'loadingLabel')?.text || '';
+          this.exchangeLabel = data.labels.find((l: any) => l.label === 'exchangeLabel')?.text || '';
+          this.countryLabel = data.labels.find((l: any) => l.label === 'countryLabel')?.text || '';
+          this.stockInformationLabel = data.labels.find((l: any) => l.label === 'stockInformationLabel')?.text || '';
+          this.priceLabel = data.labels.find((l: any) => l.label === 'priceLabel')?.text || '';
+          this.marketCapLabel = data.labels.find((l: any) => l.label === 'marketCapLabel')?.text || '';
+          this.sectorLabel = data.labels.find((l: any) => l.label === 'sectorLabel')?.text || '';
+          this.industryLabel = data.labels.find((l: any) => l.label === 'industryLabel')?.text || '';
+          this.epsTtmLabel = data.labels.find((l: any) => l.label === 'epsTtmLabel')?.text || '';
+          this.peTtmLabel = data.labels.find((l: any) => l.label === 'peTtmLabel')?.text || '';
+          this.dividendsYieldLabel = data.labels.find((l: any) => l.label === 'dividendsYieldLabel')?.text || '';
+
+          //valuation card
+          this.valuationResultsLabel = this.valuationResultsLabelRu;
+          this.valuationOverviewLabel = this.valuationOverviewLabelRu;
+          this.fairPriceLabel = this.fairPriceLabelRu;
+          this.resultLabel = this.resultLabelRu;
+          this.formulaLabel = this.formulaLabelRu;
+          this.formulaExplanationLabel = this.formulaExplanationLabelRu;
+          this.maxGrowthRateNote = this.maxGrowthRateNoteRu;
+
+          //historicalProfit
+          this.netProfitGrowthLabel = this.netProfitGrowthLabelRu;
+          this.averageIncomeGrowthLabel = this.averageIncomeGrowthLabelRu;
+          this.averageIncomeGrowthTtm = this.averageIncomeGrowthTtmRu;
+          this.averageThreeYearsGrowth = this.averageThreeYearsGrowthRu;
+          this.averageFiveYearsGrowth = this.averageFiveYearsGrowthRu;
+
+          //lynch explanation
+          this.aboutLynchFormulaLabel = this.aboutLynchFormulaLabelRu;
+          this.aboutLynchFormulaText = this.aboutLynchFormulaTextRu;//missing
+
+          this.undervaluedLabel = this.undervaluedLabelRu;
+          this.overvaluedLabel = this.overvaluedLabelRu;
+
+          this.downsidePotentialLabel = this.downsidePotentialLabelRu;
+          this.upsidePotentialLabel = this.upsidePotentialLabelRu;
+
+          this.growthRateCalcExplanation = this.growthRateCalcExplanationRu;//missing
+
+          this.growthLabel = this.growthLabelRu;
+          this.netProfitLabel = this.netProfitLabelRu;
+          this.metricLabel = this.metricLabelRu;
+
+          this.mainStockData = this.mainStockDataRu;
+          this.finanacialOverviewLabel = this.finanacialOverviewLabelRu;
+
+          this.noValuation = this.noValuationRu;
+          this.noValuationData = this.noValuationDataRu;
+
+          this.pegLabel = this.pegLabelRu;
+          this.pegExplanation = this.pegExplanationRu;//missing
+
+          this.fcfLabel = this.fcfLabelRu;
+          this.deLabel = this.deLabelRu;
+          
+          this.reliableDataSources = this.reliableDataSourcesRu;
+          if (this.exchange === 'MOEX'){
+            this.datapoints = this.datapointsMoexRu;//missing
+          }
+          else{
+            this.datapoints = this.datapointsRu;//missing
+          }
+
+          //peg over and under
+          this.pegFairLabel = this.pegFairLabelRu;
+          this.pegOverLabel = this.pegOverLabelRu;
+          this.pegUnderLabel = this.pegUnderLabelRu;
+
+          //cagr additional explanation in about the formula
+          this.aboutFullNegativeCagr = this.aboutFullNegativeCagrRu; //missing
+          this.naText = this.naTextRu;
+
+          this.noValuationLabel = this.noValuationLabelRu;
+          this.noValuationExplanation = this.noValuationExplanationRu; //missing
+
+          this.noPegExplanation = this.noPegExplanationRu; //missing
+          this.noFairPriceExplanation = this.noFairPriceExplanationRu; //missing
+          this.notEnoughDataNote = this.notEnoughDataNoteRu;
+        }
+      );
       if (language == 'ru') {
         this.loadingLabel = this.loadingLabelRu;
         this.exchangeLabel = this.exchangeLabelRu;
@@ -412,6 +497,97 @@ export class ValuateComponent implements OnInit {
         this.noFairPriceExplanation = this.noFairPriceExplanationRu;
         this.notEnoughDataNote = this.notEnoughDataNoteRu;
 
+      }
+      else if (language == 'es') {
+        this.loadingLabel = "Cargando datos de valoración...";
+        this.exchangeLabel = "Intercambio: ";
+        this.countryLabel = "País: ";
+        this.stockInformationLabel = "Resumen";
+        this.priceLabel = "Precio:";
+        this.marketCapLabel = "Capitalización de mercado";
+        this.sectorLabel = "Sector";
+        this.industryLabel = "Industria";
+        this.epsTtmLabel = "EPS (TTM)";
+        this.peTtmLabel = "P/E (TTM)";
+        this.dividendsYieldLabel = "Rendimiento de dividendos";
+
+        //valuation card
+        this.valuationResultsLabel = "Resultado de la valoración";
+        this.valuationOverviewLabel = "Valoración";
+        this.fairPriceLabel = "Precio Justo";
+        this.resultLabel = "Resultado";
+        this.formulaLabel = "Fórmula";
+        this.formulaExplanationLabel = "EPS x Tasa de crecimiento promedio de ingreso neto de 5 años";
+        this.maxGrowthRateNote = "Si la tasa de crecimiento del ingreso neto en 5 años fue mayor al 25 %, usamos 25, ya que Peter Lynch consideraba insostenible un crecimiento superior al 25 % anual.";
+
+        //historicalProfit
+        this.netProfitGrowthLabel = "Ingreso Neto";
+        this.averageIncomeGrowthLabel = "Crecimiento Promedio:";
+        this.averageIncomeGrowthTtm = "TTM: ";
+        this.averageThreeYearsGrowth = "3 Años: ";
+        this.averageFiveYearsGrowth = "5 Años: ";
+
+        //lynch explanation
+        this.aboutLynchFormulaLabel = "Acerca de la Fórmula de Lynch";
+        this.aboutLynchFormulaText = "<p>Calculamos el valor justo de una acción usando la siguiente versión de la fórmula de Peter Lynch. Valor justo de una acción según Peter Lynch = Tasa de crecimiento del ingreso neto * Ganancias por acción de los últimos 12 meses (EPS TTM). La tasa de crecimiento del ingreso neto se calcula como la tasa de crecimiento anual compuesta (CAGR) durante los últimos 5 años.</p><p>La fórmula de CAGR se modifica para tener en cuenta casos en los que el valor inicial (B) es negativo, restando el valor inicial (B) y añadiendo el valor absoluto de B al valor final (E) en el numerador, y dividiéndolo por el valor absoluto del valor inicial (|B|).</p>";
+
+        this.undervaluedLabel = "Subvaluado";
+        this.overvaluedLabel = "Sobrevalorado";
+
+        this.downsidePotentialLabel = "Potencial de caída";
+        this.upsidePotentialLabel = "Potencial de subida";
+
+        this.growthRateCalcExplanation = "<p>La tasa de crecimiento del ingreso neto (Net Income) para 1, 3 y 5 años se calcula como la tasa de crecimiento promedio anual compuesta (CAGR). La fórmula se modifica para considerar valores negativos iniciales y finales.</p>";
+
+        this.growthLabel = "Crecimiento Año contra Año (%)";
+        this.netProfitLabel = "Ingreso Neto";
+        this.metricLabel = "Métrica";
+
+        this.mainStockData = "Acerca de la empresa";
+        this.finanacialOverviewLabel = "Aspectos financieros";
+
+        this.noValuation = "La valoración no es posible debido a valores de crecimiento negativos.";
+        this.noValuationData = "La valoración no es posible debido a la falta de datos sobre ";
+
+        this.pegLabel = "PEG";
+        this.pegExplanation = "Precio / Ganancias por Acción / Tasa de Crecimiento del Ingreso Neto (PEG) se calcula como el precio dividido por las ganancias por acción dividido por la tasa de crecimiento del ingreso neto histórico de la empresa. Si la tasa de crecimiento del ingreso neto es mayor al 25 %, usamos 25 % para calcular el PEG.";
+
+        this.fcfLabel = "Flujo de caja libre (FCF)";
+        this.deLabel = "Deuda a Capital (D/E)";
+        
+        this.reliableDataSources = "Fuentes de datos confiables";
+        if (this.exchange === 'MOEX'){
+          this.datapoints = [
+            "<b>Precio</b> - precio de cierre de un activo de MOEX API (se actualiza cuando abres la página)",
+            "<b>EPS TTM</b> - valor del último informe trimestral (se actualiza cada trimestre cuando se publica el informe)",
+            "<b>Tasa de crecimiento del ingreso neto</b> - valor del último informe anual (se actualiza cuando se presenta el informe anual, generalmente en febrero-marzo)",
+          ];
+        }
+        else{
+          this.datapoints = [
+            "<b>Precio</b> - precio de cierre de un activo de TradingView (se actualiza cuando abres la página)",
+            "<b>EPS TTM</b> - valor de TradingView (se actualiza al abrir la página)",
+            "<b>Tasa de crecimiento del ingreso neto</b> - valor de los informes de la SEC (se actualiza cuando se presentan los informes anuales de la SEC, generalmente en febrero-marzo)",
+          ];
+        }
+
+        //peg over and under
+        this.pegFairLabel = "Justamente valorado";
+        this.pegOverLabel = "Sobrevalorado";
+        this.pegUnderLabel = "Subvaluado";
+
+        //cagr additional explanation in about the formula
+        this.aboutFullNegativeCagr = "<p>Si los valores final (E) e inicial (B) son negativos o el resultado de la división es negativo, tomamos el valor absoluto de la división de E por B (|E/B|) y multiplicamos el resultado por -1.</p>";
+        this.naText = "N/A";
+
+        this.noValuationLabel = "Valoración no posible";
+        this.noValuationExplanation = "La fórmula de valor justo de Peter Lynch está diseñada para empresas en crecimiento con ganancias por acción de los últimos 12 meses positivas (EPS TTM > 0) y una tasa de crecimiento positiva del ingreso neto (Net Income Growth Rate > 0). COMPANY_NAME (TICKER_ON_PAGE) tiene EPS TTM negativo o ausente y/o una tasa de crecimiento del ingreso neto negativa o ausente. En estas condiciones, la fórmula de Peter Lynch da como resultado un valor justo negativo y pierde significado económico o no puede calcularse.";
+
+        this.noPegExplanation = "El PEG de la acción COMPANY_NAME (TICKER_ON_PAGE) no puede calcularse según la fórmula de Peter Lynch debido a EPS TTM negativo o ausente y/o tasa de crecimiento del ingreso neto de 5 años negativa o ausente.";
+
+        this.noFairPriceExplanation = "El precio justo de la acción COMPANY_NAME (TICKER_ON_PAGE) no puede calcularse según la fórmula de Peter Lynch debido a EPS TTM negativo o ausente y/o tasa de crecimiento del ingreso neto de 5 años negativa o ausente.";
+
+        this.notEnoughDataNote = "Si las Ganancias por Acción de los últimos 12 meses (EPS TTM) y/o la tasa de crecimiento del ingreso neto en 5 años son menores que 0 o faltan, la estimación del valor justo usando la fórmula no es posible.";
       }
       else {
         this.loadingLabel = this.loadingLabelEn;
@@ -497,7 +673,9 @@ export class ValuateComponent implements OnInit {
         this.legalTextNeeded = true;
         if(language === "ru"){
           this.legalText = this.legalTextRu;
-        }else{
+        } else if (language === "es") {
+          this.legalText = "*es reconocida como extremista, prohibida en el territorio de la Federación Rusa.";
+        } else {
           this.legalText = this.legalTextEn;
         }
       }
@@ -551,6 +729,21 @@ export class ValuateComponent implements OnInit {
             name: 'description',
             content: 'Calculate ' + this.truncateStockName(this.stockInfo.name) + ' (' + this.ticker + ') fair value using the Peter Lynch formula. Find out if the stock is undervalued or overvalued, its upside or downside potential before you buy or sell.'
           });
+        } else if (language == "es") {
+          if (!this.stockInfo.epsTtm && this.valuation.avgGrowth){
+            this.noValuationData += "EPS.";
+          }
+          if (this.stockInfo.epsTtm && !this.valuation.avgGrowth){
+            this.noValuationData += "tasa de crecimiento del ingreso neto.";
+          }
+          if (!this.stockInfo.epsTtm && !this.valuation.avgGrowth){
+            this.noValuationData += "EPS y tasa de crecimiento del ingreso neto.";
+          }
+          this.titleService.setTitle(`Valoración de ${this.truncateStockName(this.stockInfo.name)} (${this.ticker}) según Peter Lynch | Valestor.com`);
+          this.metaService.updateTag({
+            name: 'description',
+            content: 'Calcula el valor justo de ' + this.truncateStockName(this.stockInfo.name) + ' (' + this.ticker + ') usando la fórmula de Peter Lynch. Descubre si la acción está subvaluada o sobrevalorada, su potencial de subida o caída antes de comprar o vender.'
+          });
         }
         if (this.valuation.resultLabel === "Undervalued" && language == 'ru') {
           this.undervaluedExplanation = `Акция является недооцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал роста на ${percentPotential}% с учетом текущей рыночной цены ${currentPrice} и справедливой стоимости по формуле Питера Линча ${shownFairPrice}.`;
@@ -558,11 +751,17 @@ export class ValuateComponent implements OnInit {
         else if (this.valuation.resultLabel === "Undervalued" && language == 'en') {
           this.undervaluedExplanation = `According to Peter Lynch model this stock is undervalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have growth potential of ${percentPotential}% with current price of ${currentPrice} and fair price calculated with Peter Lynch formula of ${shownFairPrice}.`;
         }
+        else if (this.valuation.resultLabel === "Undervalued" && language == 'es') {
+          this.undervaluedExplanation = `Según el modelo de Peter Lynch, esta acción está subvaluada. Las inversiones en ${this.stockInfo.name} (${this.ticker}) pueden tener un potencial de crecimiento de ${percentPotential}% con el precio actual de ${currentPrice} y el precio justo calculado con la fórmula de Peter Lynch de ${shownFairPrice}.`;
+        }
         else if (this.valuation.resultLabel === "Overvalued" && language == 'ru') {
           this.overvaluedExplanation = `Акция является переоцененной по модели Питера Линча. Инвестиция в акцию ${this.stockInfo.name} (${this.ticker}) может иметь потенциал снижения на ${percentPotential}% с учетом текущей рыночной цены ${currentPrice} и справедливой стоимости по формуле Питера Линча ${shownFairPrice}.`;
         }
         else if (this.valuation.resultLabel === "Overvalued" && language == 'en') {
           this.overvaluedExplanation = `According to Peter Lynch model this stock is overvalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have downside potential of ${percentPotential}% with current price of ${currentPrice} and fair price calculated with Peter Lynch formula of ${shownFairPrice}.`;
+        }
+        else if (this.valuation.resultLabel === "Overvalued" && language == 'es') {
+          this.overvaluedExplanation = `Según el modelo de Peter Lynch, esta acción está sobrevalorada. Las inversiones en ${this.stockInfo.name} (${this.ticker}) pueden tener un potencial de caída de ${percentPotential}% con el precio actual de ${currentPrice} y el precio justo calculado con la fórmula de Peter Lynch de ${shownFairPrice}.`;
         }
         if (language == 'ru') {
           this.fairPriceExplanation = `Справедливая стоимость акции ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} посчитана по формуле Питера Линча.`;
@@ -573,6 +772,11 @@ export class ValuateComponent implements OnInit {
           this.fairPriceExplanation = `Fair price of stock ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} is calculated based on Peter Lynch formula.`;
           this.howFairPriceWasCalulated = `How Fair Price Was Calculated`;
           this.epsTtmExplanation = `Current trailing twelve months Earnings per Share (EPS TTM) is ${epsTtmRounded}.`
+        }
+        else if (language == 'es') {
+          this.fairPriceExplanation = `El precio justo de la acción ${this.stockInfo.name} (${this.ticker}) ${shownFairPrice} se calcula según la fórmula de Peter Lynch.`;
+          this.howFairPriceWasCalulated = `Cómo se calculó el precio justo`;
+          this.epsTtmExplanation = `Las ganancias por acción de los últimos doce meses (EPS TTM) actuales son ${epsTtmRounded}.`;
         }
         this.noValuationExplanation = this.noValuationExplanation.replace('COMPANY_NAME', this.stockInfo.name).replace('TICKER_ON_PAGE', this.ticker);
         this.noPegExplanation = this.noPegExplanation.replace('COMPANY_NAME', this.stockInfo.name).replace('TICKER_ON_PAGE', this.ticker);
