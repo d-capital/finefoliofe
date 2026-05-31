@@ -1,8 +1,8 @@
-<ng-container *ngIf="loading">
+<ng-container *ngIf="loading && !error">
   <ng-template [ngTemplateOutlet]="loadingSkeleton"></ng-template>
 </ng-container>
 
-<ng-container *ngIf="error">
+<ng-container *ngIf="error && !loading">
   <ng-template [ngTemplateOutlet]="errorTemplate"></ng-template>
 </ng-container>
 
