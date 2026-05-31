@@ -20886,7 +20886,7 @@ export class SearchComponent implements OnInit {
 
   //localization
   placeholder: string = "Enter stock ticker";
-  placeholderEn: string = "Enter stock ticker";
+  placeholderEs: string = "Introduzca el símbolo bursátil";
   placeholderRu: string = "Введите тикер акции";
   exchanges = [
     { code: 'ALL', label: 'All', icon: 'exchanges/all.svg' },
@@ -20917,8 +20917,8 @@ export class SearchComponent implements OnInit {
       this.placeholder = this.placeholderRu;
       this.assets = this.assetsru;
     }
-    else {
-      this.placeholder = this.placeholderEn;
+    else if (language == 'es') {
+      this.placeholder = this.placeholderEs;
       this.assets = this.assetsen;
     }
     var currentPairsHistory = this.browserStorageService.getItem('pairsHistory')

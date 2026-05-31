@@ -21,14 +21,14 @@ export class ValuationService {
 
     if (isPlatformServer(this.platformId)) {
       //prod
-      //this.getValuationUrl = 'http://finefoliobe:3000/valuation/'; 
+      this.getValuationUrl = 'http://finefoliobe:3000/valuation/'; 
       //local
-      this.getValuationUrl = 'http://127.0.0.1:8000/valuation/';
+      //this.getValuationUrl = 'http://127.0.0.1:8000/valuation/';
     } else {
       //prod
-      //this.getValuationUrl = 'https://valestor.com/api/valuation/';
+      this.getValuationUrl = 'https://valestor.com/api/valuation/';
       //local
-      this.getValuationUrl = 'http://127.0.0.1:8000/valuation/';
+      //this.getValuationUrl = 'http://127.0.0.1:8000/valuation/';
     }
   }
 

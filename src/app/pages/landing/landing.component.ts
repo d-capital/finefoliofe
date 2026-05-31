@@ -9,7 +9,8 @@ import { ExamplesComponent } from '../../components/examples/examples.component'
 import { ReliableDataComponent } from '../../components/reliable-data/reliable-data.component';
 import { BrowserStorageService } from '../../services/browser-storage.service';
 import { QuoteSectionComponent } from '../../components/quote-section/quote-section.component';
-
+import { LanguageService } from '../../services/language.service';
+import { Labels } from '../../dto/labels/labels.model';
 
 @Component({
   selector: 'app-landing',
@@ -18,11 +19,11 @@ import { QuoteSectionComponent } from '../../components/quote-section/quote-sect
     HowItWorksComponent,
     FairValueComponent,
     FaqComponent,
-    ScreenerAfterScreeningComponent, 
+    ScreenerAfterScreeningComponent,
     ExamplesComponent,
     ReliableDataComponent,
     QuoteSectionComponent
-  ],
+],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
 })
@@ -30,10 +31,13 @@ export class LandingComponent implements OnInit {
   constructor(
     private titleService: Title, 
     private metaService: Meta,
-    private browserStorageService: BrowserStorageService
+    private browserStorageService: BrowserStorageService,
+    //private languageService: LanguageService
   ) {}
 
+  pageLanguage!: string;
 
+  languageLabels!: Labels;
 
   erSearchTextEn:string = "Side-by-Side Currency Comparison:";
   erSearchTextRu:string = "Сравнение валют"; 
@@ -72,5 +76,11 @@ export class LandingComponent implements OnInit {
         content: 'Calculate fair value instantly using our automated Peter Lynch formula tool. Find out if a stock is undervalued or overvalued before you invest. Make smart decisions with our stock valuation calculator.'
       });
     }
+    this.pageLanguage = language ? language : 'en';
+    /*this.languageService.getLabels(this.pageLanguage, ['valuate']).pipe().subscribe(
+      data => {
+        this.languageLabels = data;
+      }
+    );*/
   }
 }

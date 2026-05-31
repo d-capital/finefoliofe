@@ -36,7 +36,28 @@ export class HowItWorksComponent implements OnInit{
         author: "Питер Линч",
         authorSubtitle: "Управляющий инвестиционным фондом Fidelity Magellan в 1977-1990"
       };
-    } else {
+    } 
+    else if(lang === 'es'){
+      this.title = "Cómo funciona el servicio";
+      this.steps = [
+        { 
+          number: 1, 
+          title: "Introduzca el símbolo bursátil", 
+          description: "Simplemente rellene el campo del símbolo bursátil. No se requiere ninguna otra información." 
+        },
+        { 
+          number: 2, 
+          title: "Cálculo automático", 
+          description: "El valor razonable de una acción, todos los coeficientes necesarios, el resultado de la evaluación de si una acción está sobrevalorada o infravalorada, y su potencial de crecimiento o declive se calcularán automáticamente en función de datos fiables." 
+        }
+      ];
+      this.quote = {
+        text: "Invertir sin investigar es como jugar al póker sin mirar las cartas.",
+        author: "Peter Lynch",
+        authorSubtitle: "Gestor de fondos de inversión en Fidelity Magellan desde 1977 hasta 1990"
+      };
+    }
+    else {
       this.title = "How It Works";
       this.steps = [
         { number: 1, title: "Enter stock ticker", description: "Simply fill in the stock ticker field. No other information is required." },
