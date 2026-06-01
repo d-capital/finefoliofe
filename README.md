@@ -64,3 +64,6 @@ For more information on using the Angular CLI, including detailed command refere
 docker build -t finefolio-fe .
 
 docker run -p 80:80 finefolio-fe
+
+
+just to have new commit
