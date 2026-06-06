@@ -42,17 +42,17 @@ export class ExamplesComponent implements OnInit {
 
     if (lang === "ru") {
       this.examples = [
-        { company: "Walt Disney Company", ticker: "DIS", upside: 52, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-dis/peter-lynch-fair-value-calculator" },
-        { company: "Vital Farms, Inc.", ticker: "VITL", upside: 164, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator" },
-        { company: "Novo Nordisk", ticker: "NVO", upside: 45, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
-        { company: "Baker Hughes", ticker: "BKR", upside: 19, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nasdaq-bkr/peter-lynch-fair-value-calculator" }
+        { company: "Walt Disney Company", ticker: "DIS", upside: 57, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-dis/peter-lynch-fair-value-calculator" },
+        { company: "Vital Farms, Inc.", ticker: "VITL", upside: 166, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 52, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
+        { company: "Baker Hughes", ticker: "BKR", upside: 25, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nasdaq-bkr/peter-lynch-fair-value-calculator" }
       ];
     } else {
       this.examples = [
-        { company: "Walt Disney Company", ticker: "DIS", upside: 52, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-dis/peter-lynch-fair-value-calculator" },
-        { company: "Vital Farms, Inc.", ticker: "VITL", upside: 164, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator" },
-        { company: "Novo Nordisk", ticker: "NVO", upside: 45, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
-        { company: "Baker Hughes", ticker: "BKR", upside: 19, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nasdaq-bkr/peter-lynch-fair-value-calculator" }
+        { company: "Walt Disney Company", ticker: "DIS", upside: 57, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-dis/peter-lynch-fair-value-calculator" },
+        { company: "Vital Farms, Inc.", ticker: "VITL", upside: 166, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 52, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
+        { company: "Baker Hughes", ticker: "BKR", upside: 25, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nasdaq-bkr/peter-lynch-fair-value-calculator" }
       ];
     }
   }
