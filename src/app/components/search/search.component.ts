@@ -20886,7 +20886,7 @@ export class SearchComponent implements OnInit {
 
   //localization
   placeholder: string = "Enter stock ticker";
-  placeholderEn: string = "Enter stock ticker";
+  placeholderEs: string = "Introduzca el símbolo bursátil";
   placeholderRu: string = "Введите тикер акции";
   exchanges = [
     { code: 'ALL', label: 'All', icon: 'exchanges/all.svg' },
@@ -20908,7 +20908,7 @@ export class SearchComponent implements OnInit {
   ) {
     const storedLang = this.browserStorageService.getItem('language');
     this.pageLanguage = storedLang || 'en';
-    this.lang = this.pageLanguage === 'ru' ? 'ru' : 'en';
+    this.lang = this.pageLanguage ? this.pageLanguage : 'en';
   }
 
   ngOnInit(): void {
@@ -20917,8 +20917,8 @@ export class SearchComponent implements OnInit {
       this.placeholder = this.placeholderRu;
       this.assets = this.assetsru;
     }
-    else {
-      this.placeholder = this.placeholderEn;
+    else if (language == 'es') {
+      this.placeholder = this.placeholderEs;
       this.assets = this.assetsen;
     }
     var currentPairsHistory = this.browserStorageService.getItem('pairsHistory')
@@ -20978,7 +20978,11 @@ export class SearchComponent implements OnInit {
     let path = '';
     if (this.lang === 'ru') {
       path = `/ru/stocks/${exchange}-${ticker}/peter-lynch-fair-value-calculator`;
-    } else {
+    } 
+    else if (this.lang === 'es') {
+      path = `/es/stocks/${exchange}-${ticker}/peter-lynch-fair-value-calculator`;
+    }
+    else {
       path = `/stocks/${exchange}-${ticker}/peter-lynch-fair-value-calculator`;
     }
     this.router.navigate([path])

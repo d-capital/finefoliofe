@@ -31,7 +31,7 @@ interface Content {
   styleUrl: './cookie-policy.component.css'
 })
 export class CookiePolicyComponent implements OnInit {
-  currentLanguage: 'en' | 'ru' = 'en';
+  currentLanguage: 'en' | 'ru' | 'es' = 'en';
   content!: Content;
 
   private ruContent: Content = {
@@ -222,6 +222,200 @@ export class CookiePolicyComponent implements OnInit {
           {
             title: '',
             content: ['8.3. Актуальная версия Политики в свободном доступе расположена на Сайте в сети Интернет по адресу https://valestor.com/ru/cookie-policy/.']
+          }
+        ]
+      }
+    ]
+  };
+
+  private esContent: Content = {
+    title: 'Política de cookies',
+    subtitle:'Revisión 1 de 22.04.2026',
+    sections: [
+      {
+        title: '1. Disposiciones generales',
+        subsections: [
+          {
+            title: '',
+            content: ['1.1. Esta Política de cookies (en adelante - "Política") determina qué tipos de cookies utiliza el servicio Valestor (en adelante - "Sitio", "Operador"), con qué finalidad, durante cuánto tiempo, a quién se transmiten los datos y qué derechos tiene el usuario respecto a la gestión de cookies.']
+          },
+          {
+            title: '',
+            content: ['1.2. Las cookies son pequeños archivos de texto almacenados en el dispositivo del usuario (ordenador, smartphone, tableta) al visitar el Sitio. Permiten al Sitio reconocer el dispositivo del usuario, recordar configuraciones y acciones, recopilar estadísticas y proporcionar funcionalidades adicionales.']
+          },
+          {
+            title: '',
+            content: ['1.3. Al usar el Sitio, el usuario acepta el uso de cookies de acuerdo con esta Política, salvo que lo configure de otra manera en su navegador.']
+          }
+        ]
+      },
+      {
+        title: '2. Tipos de cookies y su finalidad',
+        subsections: [
+          {
+            title: '2.1. Cookies necesarias (técnicas)',
+            content: ['Estas cookies son estrictamente necesarias para que el Sitio funcione. Proporcionan la navegación, la carga de páginas, el acceso a secciones protegidas y recuerdan el idioma o la región seleccionados. Sin ellas, el Sitio no puede funcionar correctamente. El consentimiento para las cookies necesarias no es legalmente exigido, pero el Operador informa al usuario de su existencia.'],
+            table: {
+              headers: ['Nombre de cookie', 'Duración de almacenamiento', 'Descripción'],
+              rows: [
+                ['session_id', 'Hasta cerrar el navegador', 'Identificación de la sesión del usuario'],
+                ['csrf_token', 'Hasta cerrar el navegador', 'Protección contra ataques entre sitios'],
+                ['language', '2 años', 'Recordar el idioma de la interfaz seleccionado'],
+                ['cookie_consent', '2 años', 'Almacenar el consentimiento del usuario para cookies opcionales']
+              ]
+            }
+          },
+          {
+            title: '2.2. Cookies estadísticas (analíticas)',
+            content: ['Estas cookies permiten al Sitio recopilar información sobre cómo los visitantes utilizan el Sitio: qué páginas abren, cuánto tiempo permanecen, de dónde vienen y si encuentran errores. Los datos se usan para mejorar el Sitio y la experiencia del usuario. Todos los datos se recogen de forma anonimizada y no identifican directamente a las personas, pero pueden considerarse datos personales en combinación con otros datos.'],
+            table: {
+              headers: ['Nombre de cookie', 'Duración de almacenamiento', 'Proveedor', 'Descripción'],
+              rows: [
+                ['_ga', '2 años', 'Google Analytics', 'Distinción de usuarios únicos'],
+                ['_gid', '2 años', 'Google Analytics', 'Distinción de usuarios únicos'],
+                ['_gat', '2 años', 'Google Analytics', 'Limitación de la frecuencia de solicitudes'],
+                ['_ym_uid', '2 años', 'Yandex.Metrica', 'Identificador único de visitante'],
+                ['_ym_d', '2 años', 'Yandex.Metrica', 'Fecha de la primera visita'],
+                ['_ym_isad', '2 años', 'Yandex.Metrica', 'Verificación de bloqueo de publicidad'],
+                ['_ym_visorc', '2 años', 'Yandex.Metrica', 'Para el análisis web (grabación de acciones)']
+              ]
+            }
+          },
+          {
+            title: '2.3. Cookies de marketing (publicitarias)',
+            content: ['Estas cookies se utilizan para mostrar publicidad relevante, incluso en otros sitios, limitar el número de veces que se muestra un anuncio y evaluar la efectividad de las campañas publicitarias. Son establecidas por los socios publicitarios del Sitio.'],
+            table: {
+              headers: ['Nombre de cookie', 'Duración de almacenamiento', 'Proveedor', 'Descripción'],
+              rows: [
+                ['_gcl_au', '2 años', 'Google Ads', 'Seguimiento de conversiones y retargeting'],
+                ['_ym_uid', '2 años', 'Yandex.Metrica', 'Seguimiento de conversiones y retargeting']
+              ]
+            }
+          }
+        ]
+      },
+      {
+        title: '3. Objetivos del tratamiento de datos',
+        subsections: [
+          {
+            title: 'El Sitio utiliza los datos obtenidos mediante cookies para los siguientes fines:',
+            content: [''],
+            table: {
+              headers: ['Tipo de cookie', 'Finalidades del tratamiento'],
+              rows: [
+                ['Necesarias (técnicas)', 'Garantizar el correcto funcionamiento del Sitio, la seguridad y recordar la configuración del usuario.'],
+                ['Estadísticas (analíticas)', 'Recopilar estadísticas de visitas, analizar el comportamiento de los usuarios (embudos, mapas de calor), identificar errores y mejorar la interfaz y funcionalidad del Sitio.'],
+                ['Marketing (publicitarias)', 'Mostrar publicidad personalizada, limitar la frecuencia de anuncios, medir la efectividad de las campañas publicitarias y hacer retargeting.']
+              ]
+            }
+          }
+        ]
+      },
+      {
+        title: '4. Lista de destinatarios (terceros)',
+        subsections: [
+          {
+            title: 'Los datos recopilados a través de cookies pueden transmitirse a los siguientes terceros:',
+            content: [''],
+            table: {
+              headers: ['Destinatario', 'País', 'Tipo de datos transmitidos', 'Finalidad'],
+              rows: [
+                ['LLC "Yandex" (Yandex.Metrica)', 'Rusia', 'Cookies estadísticas, dirección IP anonimizada, datos sobre acciones en el sitio', 'Analítica, análisis web'],
+                ['Google LLC (Google Analytics, Google Ads)', 'EE. UU.', 'Cookies estadísticas y de marketing, dirección IP', 'Analítica, publicidad']
+              ]
+            }
+          }
+        ]
+      },
+      {
+        title: '5. Transferencia transfronteriza de datos',
+        subsections: [
+          {
+            title: '',
+            content: ['5.1. El uso de los servicios de Google LLC (Google Analytics, Google Ads) implica la transmisión de datos de cookies a servidores ubicados en los Estados Unidos de América.']
+          },
+          {
+            title: '',
+            content: ['5.2. La legislación de la Federación de Rusia no reconoce a los Estados Unidos como un país que proporciona un nivel adecuado de protección de los derechos de los titulares de datos personales.']
+          },
+          {
+            title: '',
+            content: ['5.3. Antes de la transferencia transfronteriza de datos, el Sitio solicita el consentimiento explícito del usuario mediante un banner de cookies. Los usuarios pueden rechazar la transferencia de datos a los EE. UU. configurando manualmente las cookies en los ajustes del navegador y deshabilitando el uso de cookies.']
+          },
+          {
+            title: '',
+            content: ['5.4. El usuario es notificado de que la transferencia de datos a los EE. UU. puede implicar el acceso de las autoridades gubernamentales de los EE. UU. de conformidad con la legislación local. El Operador no se responsabiliza por las acciones de las autoridades extranjeras, pero toma medidas para minimizar los datos transmitidos.']
+          }
+        ]
+      },
+      {
+        title: '6. Duración del almacenamiento de cookies',
+        subsections: [
+          {
+            title: '',
+            content: ['6.1. Las duraciones de almacenamiento de cookies se especifican en la Sección 2 de esta Política.']
+          },
+          {
+            title: '6.2. Principios generales:',
+            content: [
+              ' - las cookies de sesión se eliminan al cerrar el navegador;',
+              ' - las cookies persistentes se almacenan en el dispositivo hasta que expire el periodo indicado o hasta que el usuario las elimine.'
+            ]
+          },
+          {
+            title: '',
+            content: ['6.3. Tras expirar el periodo de almacenamiento, las cookies se eliminan automáticamente por el navegador.']
+          }
+        ]
+      },
+      {
+        title: '7. Gestión de cookies y derechos del usuario',
+        subsections: [
+          {
+            title: '',
+            content: ['7.1. Al visitar el Sitio por primera vez, los usuarios ven un banner de cookies. Al hacer clic en "Entendido", el usuario acepta el uso de cookies.']
+          },
+          {
+            title: '',
+            content: ['7.2. Los usuarios pueden deshabilitar o eliminar completamente las cookies desde la configuración de su navegador.']
+          },
+          {
+            title: '',
+            content: ['7.3. Deshabilitar todas las cookies, incluidas las necesarias, puede hacer que el Sitio sea inaccesible o limitar significativamente su funcionalidad.']
+          },
+          {
+            title: '7.4 Derechos de los titulares de datos personales:',
+            content: ['Dado que los datos de cookies en algunos casos constituyen datos personales, los usuarios tienen derecho a:']
+          },
+          {
+            title: '',
+            content: [
+              ' - retirar el consentimiento para el tratamiento;',
+              ' - solicitar información sobre qué cookies y a quién se han transmitido;',
+              ' - exigir la eliminación de los datos recopilados, excepto los necesarios para el funcionamiento del Sitio;',
+              ' - presentar una reclamación ante Roskomnadzor.'
+            ]
+          },
+          {
+            title: '',
+            content: ['7.5. Para ejercer derechos no relacionados con la configuración del navegador, el dispositivo o el banner, el usuario debe contactar con el Operador del Sitio.']
+          }
+        ]
+      },
+      {
+        title: '8. Disposiciones finales',
+        subsections: [
+          {
+            title: '',
+            content: ['8.1. Los usuarios pueden contactar al Operador por cualquier pregunta relacionada con el uso de cookies en hello@valestor.com.']
+          },
+          {
+            title: '',
+            content: ['8.2. El Operador puede actualizar periódicamente esta Política según sea necesario. La nueva versión entra en vigor al publicarse en el Sitio.']
+          },
+          {
+            title: '',
+            content: ['8.3. La versión actual de la Política está disponible en el Sitio en https://valestor.com/es/cookie-policy/.']
           }
         ]
       }
@@ -430,8 +624,8 @@ export class CookiePolicyComponent implements OnInit {
 
   ngOnInit(): void {
     const lang = this.browserStorageService.getItem('language');
-    this.currentLanguage = lang === 'ru' ? 'ru' : 'en';
-    this.content = this.currentLanguage === 'ru' ? this.ruContent : this.enContent;
+    this.currentLanguage = lang === 'ru' ? 'ru' : (lang === 'es' ? 'es' : 'en');
+    this.content = this.currentLanguage === 'ru' ? this.ruContent : (this.currentLanguage === 'es' ? this.esContent : this.enContent);
     console.log('[CookiePolicyComponent] Language:', this.currentLanguage);
     if (this.currentLanguage === 'ru'){
       this.titleService.setTitle(`Валестор - Политика использования файлов cookie`);
@@ -439,7 +633,13 @@ export class CookiePolicyComponent implements OnInit {
         name: 'description',
         content: 'Политика использования файлов cookie'
       });
-    }else{
+    } else if (this.currentLanguage === 'es') {
+      this.titleService.setTitle(`Valestor - Política de cookies`);
+      this.metaService.updateTag({
+        name: 'description',
+        content: 'Política de cookies'
+      });
+    } else {
       this.titleService.setTitle(`Valestor - Cookie Policy`);
       this.metaService.updateTag({
         name: 'description',

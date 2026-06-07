@@ -21,9 +21,9 @@ interface ReliableDataSource {
   styleUrls: ['./reliable-data.component.css']
 })
 export class ReliableDataComponent {
-  title = 'Надежные источники данных';
+  title = 'Trusted Data Sources';
   titleRu = 'Надежные источники данных';
-  titleEn = 'Trusted Data Sources';
+  titleEs = 'Fuentes de Datos Confiables';
   constructor(private browserStorageService: BrowserStorageService) {}
   sources: ReliableDataSource[] = [
     {
@@ -53,8 +53,8 @@ export class ReliableDataComponent {
     const lang = this.browserStorageService.getItem('language');
     if (lang === 'ru') {
       this.title = this.titleRu;
-    } else {
-      this.title = this.titleEn;
+    } else if (lang === 'es') {
+      this.title = this.titleEs;
     }
   }
 }

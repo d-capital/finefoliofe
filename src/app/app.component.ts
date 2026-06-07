@@ -39,6 +39,9 @@ export class AppComponent implements OnInit {
       if (pathSegment === 'ru') {
         this.browserStorageService.setItem('language', 'ru');
         this.browserStorageService.setItem('isUserLangSet', 'yes');
+      } else if (pathSegment === 'es') {
+        this.browserStorageService.setItem('language', 'es');
+        this.browserStorageService.setItem('isUserLangSet', 'yes');
       } else {
         this.browserStorageService.setItem('language', 'en');
         this.browserStorageService.setItem('isUserLangSet', 'yes');
@@ -57,6 +60,9 @@ export class AppComponent implements OnInit {
     this.updateFavicon(lang);
     if (lang === 'ru' && this.windowService.pathname === '/') {
       this.windowService.replace('/ru');
+    }
+    if (lang === 'es' && this.windowService.pathname === '/') {
+      this.windowService.replace('/es');
     }
   }
 

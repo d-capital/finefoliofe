@@ -26,24 +26,31 @@ export class FooterComponent implements OnInit {
   
   disclaimerRu: string = "Отказ от ответственности: Расчеты, представленные на этом сайте, носят информативный характер. Торговля на финансовых рынках связана с риском, который принимает на себя каждый участник самостоятельно. Пользуясь этим сайтом, вы подтверждаете, что были проинформированы.";
   disclaimerEn: string = "Disclaimer: Calculations provided by this site are informative.Trading on financial markets is connected with risk, which is taken by every participant on his own. Using this site you agree that you were informed.";
+  disclaimerEs: string = "Descargo de responsabilidad: los cálculos proporcionados por este sitio son solo informativos. El comercio en los mercados financieros conlleva riesgos que cada participante asume por su cuenta. Al usar este sitio, aceptas que has sido informado.";
 
   navLinkHomeLabelRu: string = "Главная";
   navLinkHomeLabelEn: string = "Home";
+  navLinkHomeLabelEs: string = "Inicio";
 
   navLinkValuateStockLabelRu: string = "Оценить Акцию";
   navLinkValuateStockLabelEn: string = "Valuate Stock";
+  navLinkValuateStockLabelEs: string = "Valorar Acción";
 
   navLinkBlogLabelRu: string = "Блог";
   navLinkBlogLabelEn: string = "Blog";
+  navLinkBlogLabelEs: string = "Blog";
 
   navLinkAboutLabelRu: string = "О нас";
   navLinkAboutLabelEn: string = "About Us";
+  navLinkAboutLabelEs: string = "Sobre Nosotros";
 
   quickLinksLabelRu: string = "Страницы";
   quickLinksLabelEn: string = "Quick Links";
+  quickLinksLabelEs: string = "Enlaces Rápidos";
 
   navLinkScreenerLabelRu: string = "Скриннер";
   navLinkScreenerLabelEn: string = "Screener";
+  navLinkScreenerLabelEs: string = "Escáner";
 
   logo: string = "";
   logoRu: string = "logoru.png";
@@ -57,6 +64,7 @@ export class FooterComponent implements OnInit {
   ){
      this.langMap.set("en", "English");
      this.langMap.set("ru", "Русский");
+     this.langMap.set("es", "Español");
   }
   ngOnInit(): void {
     this.selectedValue  = this.browserStorageService.getItem("language") || "en";
@@ -73,6 +81,16 @@ export class FooterComponent implements OnInit {
       this.quickLinksLabel = this.quickLinksLabelRu;
       this.navLinkScreenerLabel = this.navLinkScreenerLabelRu;
       this.logo = this.logoRu;
+    }
+    else if (language == 'es') {
+      this.disclaimer = this.disclaimerEs;
+      this.navLinkHomeLabel = this.navLinkHomeLabelEs;
+      this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEn;
+      this.navLinkBlogLabel = this.navLinkBlogLabelEs;
+      this.navLinkAboutLabel = this.navLinkAboutLabelEs;
+      this.quickLinksLabel = this.quickLinksLabelEs;
+      this.navLinkScreenerLabel = this.navLinkScreenerLabelEs;
+      this.logo = this.logoEn;
     }
     else{
       this.disclaimer = this.disclaimerEn;

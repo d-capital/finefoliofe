@@ -76,7 +76,49 @@ export class FairValueComponent implements OnInit {
           isFinalResult:false
         }
       ];
-    } else {
+    } 
+    else if(lang === "es"){
+      this.title = "Cómo calculamos el valor justo";
+      this.example = { company: "Novo Nordisk", ticker: "NVO", upside: 132, status: "Potencial alcista", link: "/stocks/nyse-nvo/peter-lynch-fair-value-calculator" };
+      this.cards = [
+        {
+          image: "formula.png",
+          title: "Fórmula de Valor Razonable de Lynch",
+          subtitle: "—",
+          description: "Calculamos el valor razonable utilizando la siguiente versión de la fórmula de Peter Lynch. Valor razonable por acción de Peter Lynch = Tasa de crecimiento de los ingresos netos * Ganancias por acción de los últimos doce meses (EPS TTM).",
+          isFinalResult:false
+        },
+        {
+          image: "eps.png",
+          title: "Ganancias por Acción (EPS)",
+          subtitle: "—",
+          description: "En la fórmula de Peter Lynch utilizamos el ratio de Ganancias por Acción de los últimos doce meses (EPS TTM).",
+          isFinalResult:false
+        },
+        {
+          image: "growth.png",
+          title: "Tasa de Crecimiento de las Ganancias",
+          subtitle: "—",
+          description: "La fórmula de la Tasa de Crecimiento de las Ganancias es la Tasa de Crecimiento Anual Compuesta (CAGR) de los Ingresos Netos durante los últimos 5 años.",
+          isFinalResult:false
+        },/*
+        {
+          image: "blog-preview/peg.png",
+          title: "Tasa de Crecimiento Precio/Beneficios/Ingresos Netos (PEG)",
+          subtitle: "—",
+          description: "Peter Lynch popularizó el ratio Precio/Beneficio por Acción/Tasa de Crecimiento de los Ingresos Netos (PEG). Este indicador determina si una acción está actualmente infravalorada o sobrevalorada en función de la Tasa de Crecimiento histórica de los Ingresos Netos de la empresa.",
+          isFinalResult:false
+        },*/
+        {
+          image: "finales.png",
+          title: "Resultado Final del Cálculo del Valor Razonable",
+          subtitle: "—",
+          description: "Calculamos automáticamente el valor razonable de una acción, su potencial de crecimiento o declive, y evaluamos si la acción está infravalorada o sobrevalorada.",
+          isFinalResult:false
+        }
+      ];
+    }
+    else {
       this.title = "How We Calculate Fair Value";
       this.example = { company: "Novo Nordisk", ticker: "NVO", upside: 132, status: "Upside potential", link: "/stocks/nyse-nvo/peter-lynch-fair-value-calculator" };
       this.cards = [

@@ -16,11 +16,13 @@ export class LanguageSelectorComponent {
     private browserStorageService: BrowserStorageService
   ) {}
   @Output() close = new EventEmitter<void>();
+  @Output() languageChange = new EventEmitter<string>();
   @Input() selectedValue!: string | undefined; 
   isDropdownOpen = false;
   hoveredLang: string | null = null;
   languages = [
     { code: 'ru', label: 'Русский' },
+    { code: 'es', label: 'Español' },
     { code: 'en', label: 'English' }
   ];
 
@@ -28,24 +30,23 @@ export class LanguageSelectorComponent {
     this.selectedValue = newValue;
     this.browserStorageService.setItem('language', this.selectedValue);
     this.browserStorageService.setItem('isUserLangSet', 'yes');
-    let currentUrl = this.router.url;
+    // notify parent components about change
+    this.languageChange.emit(this.selectedValue);
+
+    const currentUrl = this.router.url;
+    const normalizedUrl = currentUrl.replace(/^\/ru|^\/es/, '') || '/';
+    let targetUrl = '/';
+
     if (this.selectedValue === 'ru') {
-      // If not already in /ru, add /ru
-      if (!currentUrl.startsWith('/ru')) {
-        if (currentUrl === '/' || currentUrl === '') {
-          this.router.navigate(['/ru']);
-        } else {
-          this.router.navigate(['/ru' + currentUrl]);
-        }
-      }
+      targetUrl = normalizedUrl === '/' ? '/ru' : '/ru' + normalizedUrl;
+    } else if (this.selectedValue === 'es') {
+      targetUrl = normalizedUrl === '/' ? '/es' : '/es' + normalizedUrl;
     } else {
-      // Remove /ru if present
-      if (currentUrl.startsWith('/ru')) {
-        const newUrl = currentUrl.replace(/^\/ru/, '') || '/';
-        this.router.navigate([newUrl]);
-      } else {
-        this.router.navigate(['/']);
-      }
+      targetUrl = normalizedUrl;
+    }
+
+    if (this.router.url !== targetUrl) {
+      this.router.navigateByUrl(targetUrl);
     }
   }
 

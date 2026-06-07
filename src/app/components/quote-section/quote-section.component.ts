@@ -9,9 +9,9 @@ import { BrowserStorageService } from '../../services/browser-storage.service';
 })
 export class QuoteSectionComponent implements OnInit {
   screenshot = 'lynch-photo.png';
-  quoteText = '';
-  quoteAuthor = '';
-  quoteAuthorSubtitle = '';
+  quoteText = 'Investing without research is like playing stud poker and never looking at the cards.';
+  quoteAuthor = 'Peter Lynch';
+  quoteAuthorSubtitle = 'Fidelity Magellan Fund Manager 1977-1990';
 
   constructor(private browserStorageService: BrowserStorageService) {}
 
@@ -21,10 +21,10 @@ export class QuoteSectionComponent implements OnInit {
       this.quoteText = 'Инвестирование без исследований подобно игре в стад-покер, не глядя в карты.';
       this.quoteAuthor = 'Питер Линч';
       this.quoteAuthorSubtitle = 'Управляющий инвестиционным фондом Fidelity Magellan в 1977-1990';
-    } else {
-      this.quoteText = 'Investing without research is like playing stud poker and never looking at the cards.';
+    } else if(lang === 'es') {
+      this.quoteText = 'Invertir sin investigar es como jugar al póker y no mirar nunca las cartas.';
       this.quoteAuthor = 'Peter Lynch';
-      this.quoteAuthorSubtitle = 'Fidelity Magellan Fund Manager 1977-1990';
+      this.quoteAuthorSubtitle = 'Gestor de fondos de Fidelity Magellan (1977-1990)';
     }
   }
 }
