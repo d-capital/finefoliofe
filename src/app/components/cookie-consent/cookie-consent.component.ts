@@ -20,14 +20,17 @@ export class CookieConsentComponent implements OnInit, OnDestroy {
     agreeButtonLabel: string = "I Agree";
     agreeButtonLabelRu: string = "Понятно";
     agreeButtonLabelEn: string = "I Agree";
+    agreeButtonLabelEs: string = "Aceptar";
 
     moreInfoButtonLabel: string = "More Info";
     moreInfoButtonLabelRu: string = "Подробнее";
     moreInfoButtonLabelEn: string = "More Info";
+    moreInfoButtonLabelEs: string = "Más información";
     
     consentText: string = "By using this website, you agree to the processing of data in cookies for the correct operation of the website and traffic analysis.";
     consentTextRu: string = "Используя сайт, вы соглашаетесь на обработку данных в Cookies для корректной работы сайта и анализа трафика.";
     consentTextEn: string = "By using this website, you agree to the processing of data in cookies for the correct operation of the website and traffic analysis.";
+    consentTextEs: string = "Al utilizar este sitio web, usted acepta el procesamiento de datos en cookies para el correcto funcionamiento del sitio web y el análisis de tráfico.";
 
     private destroy$ = new Subject<void>();
 
@@ -44,7 +47,11 @@ export class CookieConsentComponent implements OnInit, OnDestroy {
             this.agreeButtonLabel = this.agreeButtonLabelRu;
             this.moreInfoButtonLabel = this.moreInfoButtonLabelRu;
             this.consentText = this.consentTextRu;
-        }else{
+        } else if (lang === "es") {
+            this.agreeButtonLabel = this.agreeButtonLabelEs;
+            this.moreInfoButtonLabel = this.moreInfoButtonLabelEs;
+            this.consentText = this.consentTextEs;
+        } else {
             this.agreeButtonLabel = this.agreeButtonLabelEn;
             this.moreInfoButtonLabel = this.moreInfoButtonLabelEn;
             this.consentText = this.consentTextEn;
@@ -82,6 +89,8 @@ export class CookieConsentComponent implements OnInit, OnDestroy {
         const lang = this.browserStorageService.getItem("language");
         if (lang === "ru") {
             this.router.navigate(['/ru/cookie-policy']);
+        } else if (lang === "es") {
+            this.router.navigate(['/es/cookie-policy']);
         } else {
             this.router.navigate(['/cookie-policy']);
         }

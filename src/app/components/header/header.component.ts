@@ -73,12 +73,29 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedValue  = this.browserStorageService.getItem("language") || "en";
-    this.pageLanguage = this.selectedValue ? this.selectedValue.toString() : "en";
-    var langCode = this.selectedValue ? this.selectedValue.toString() : "en";
+    this.selectedValue = this.browserStorageService.getItem('language') || 'en';
+    this.pageLanguage = this.selectedValue ? this.selectedValue.toString() : 'en';
+    const langCode = this.selectedValue ? this.selectedValue.toString() : 'en';
     this.selectedLanguage = this.langMap.get(langCode) || langCode;
-    var language = this.browserStorageService.getItem('language');
-    if(language == 'ru'){
+    this.applyLanguageLabels(this.pageLanguage);
+  }
+  
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+  onSelectionChange(newValue: string) {
+    this.selectedValue = newValue;
+    console.log('Selected value:', this.selectedValue);
+    this.browserStorageService.setItem('language', this.selectedValue);
+    this.browserStorageService.setItem('isUserLangSet', 'yes');
+    this.pageLanguage = this.selectedValue || 'en';
+    this.selectedLanguage = this.langMap.get(this.pageLanguage) || this.pageLanguage;
+    this.applyLanguageLabels(this.pageLanguage);
+  }
+
+  applyLanguageLabels(language: string) {
+    if (language === 'ru') {
       this.navLinkValuateStockLabel = this.navLinkValuateStockLabelRu;
       this.navLinkBlogLabel = this.navLinkBlogLabelRu;
       this.navLinkAboutLabel = this.navLinkAboutLabelRu;
@@ -86,7 +103,7 @@ export class HeaderComponent implements OnInit {
       this.servicesLabel = this.servicesLabelRu;
       this.searchLabel = this.searchLabelRu;
       this.logo = this.logoRu;
-    } else if (language == 'es') {
+    } else if (language === 'es') {
       this.navLinkValuateStockLabel = this.navLinkValuateStockLabelEs;
       this.navLinkBlogLabel = this.navLinkBlogLabelEs;
       this.navLinkAboutLabel = this.navLinkAboutLabelEs;
@@ -103,18 +120,6 @@ export class HeaderComponent implements OnInit {
       this.searchLabel = this.searchLabelEn;
       this.logo = this.logoEn;
     }
-  }
-  
-
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
-  }
-  onSelectionChange(newValue: string) {
-    this.selectedValue = newValue;
-    console.log('Selected value:', this.selectedValue);
-    this.browserStorageService.setItem("language", this.selectedValue);
-    this.browserStorageService.setItem("isUserLangSet", "yes");
-    this.windowService.reload();
   }
 
   toggleDropdown(event: Event) {

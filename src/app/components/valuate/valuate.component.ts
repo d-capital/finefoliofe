@@ -14,8 +14,8 @@ import { ChangeDetectorRef } from '@angular/core';
 import { Inject, PLATFORM_ID, Injector } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { GeoService } from '../../services/geo.service';
-import remUrlsData from './remurls.json'; 
-import { LanguageService } from '../../services/language.service';
+import remUrlsData from './remurls.json';
+import languageLabels from './languages.json'; 
 
 @Component({
   selector: 'app-valuate',
@@ -31,10 +31,10 @@ export class ValuateComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private titleService: Title, 
     private metaService: Meta,
-    private geoService: GeoService,
-    private languageService: LanguageService
+    private geoService: GeoService
   ) { }
   private urlsToRemove: string[] = remUrlsData.urlsToRemove;
+  private languageLabels: any[] = languageLabels;
   stockInfo!: StockInfo;
   valuation!: ValuationResult;
   loading: boolean = true;
@@ -245,186 +245,7 @@ export class ValuateComponent implements OnInit {
       this.exchange = exchangeCode ? exchangeCode.toLocaleUpperCase() : 'NYSE';
       var language = localStorage.getItem('language');
       this.pageLanguage = language ? language : 'en';
-      if (language == 'ru') {
-        this.loadingLabel = this.loadingLabelRu;
-        this.exchangeLabel = this.exchangeLabelRu;
-        this.countryLabel = this.countryLabelRu;
-        this.stockInformationLabel = this.stockInformationLabelRu;
-        this.priceLabel = this.priceLabelRu;
-        this.epsTtmLabel = this.epsTtmLabelRu;
-        this.peTtmLabel = this.peTtmLabelRu;
-
-        //valuation card
-        this.valuationResultsLabel = this.valuationResultsLabelRu;
-        this.valuationOverviewLabel = this.valuationOverviewLabelRu;
-        this.fairPriceLabel = this.fairPriceLabelRu;
-        this.resultLabel = this.resultLabelRu;
-        this.formulaLabel = this.formulaLabelRu;
-        this.formulaExplanationLabel = this.formulaExplanationLabelRu;
-
-        this.undervaluedLabel = this.undervaluedLabelRu;
-        this.overvaluedLabel = this.overvaluedLabelRu;
-
-        this.downsidePotentialLabel = this.downsidePotentialLabelRu;
-        this.upsidePotentialLabel = this.upsidePotentialLabelRu;
-
-        this.mainStockData = this.mainStockDataRu;
-        this.finanacialOverviewLabel = this.finanacialOverviewLabelRu;
-
-        this.noValuation = this.noValuationRu;
-        this.noValuationData = this.noValuationDataRu;
-
-        //peg over and under
-        this.pegFairLabel = this.pegFairLabelRu;
-        this.pegOverLabel = this.pegOverLabelRu;
-        this.pegUnderLabel = this.pegUnderLabelRu;
-
-        this.naText = this.naTextRu;
-
-        this.noValuationLabel = this.noValuationLabelRu;
-        this.noValuationExplanation = this.noValuationExplanationRu;
-
-        this.noPegExplanation = this.noPegExplanationRu;
-        this.noFairPriceExplanation = this.noFairPriceExplanationRu;
-        this.notEnoughDataNote = this.notEnoughDataNoteRu;
-
-      }
-      else if (language == 'es') {
-        this.loadingLabel = this.loadingLabelEs;
-        this.exchangeLabel = this.exchangeLabelEs;
-        this.countryLabel = this.countryLabelEs;
-        this.stockInformationLabel = this.stockInformationLabelEs;
-        this.priceLabel = this.priceLabelEs;
-        this.epsTtmLabel = this.epsTtmLabelEs;
-        this.peTtmLabel = this.peTtmLabelEs;
-
-        //valuation card
-        this.valuationResultsLabel = this.valuationResultsLabelEs;
-        this.valuationOverviewLabel = this.valuationOverviewLabelEs;
-        this.fairPriceLabel = this.fairPriceLabelEs;
-        this.resultLabel = this.resultLabelEs;
-        this.formulaLabel = this.formulaLabelEs;
-        this.formulaExplanationLabel = this.formulaExplanationLabelEs;
-
-        this.undervaluedLabel = this.undervaluedLabelEs;
-        this.overvaluedLabel = this.overvaluedLabelEs;
-
-        this.downsidePotentialLabel = this.downsidePotentialLabelEs;
-        this.upsidePotentialLabel = this.upsidePotentialLabelEs;
-
-        this.mainStockData = this.mainStockDataEs;
-        this.finanacialOverviewLabel = this.finanacialOverviewLabelEs;
-
-        this.noValuation = this.noValuationEs;
-        this.noValuationData = this.noValuationDataEs;
-
-        //peg over and under
-        this.pegFairLabel = this.pegFairLabelEs;
-        this.pegOverLabel = this.pegOverLabelEs;
-        this.pegUnderLabel = this.pegUnderLabelEs;
-
-        this.naText = this.naTextEs;
-
-        this.noValuationLabel = this.noValuationLabelEs;
-        this.noValuationExplanation = this.noValuationExplanationEs;
-
-        this.noPegExplanation = this.noPegExplanationEs;
-
-        this.noFairPriceExplanation = this.noFairPriceExplanationEs;
-
-        this.notEnoughDataNote = this.notEnoughDataNoteEs;
-      }
-      this.languageService.getLabels(this.pageLanguage, ['valuate']).pipe().subscribe(
-        data => {
-          this.loadingLabel = data.labels.find((l: any) => l.label === 'loadingLabel')?.text || '';
-          this.exchangeLabel = data.labels.find((l: any) => l.label === 'exchangeLabel')?.text || '';
-          this.countryLabel = data.labels.find((l: any) => l.label === 'countryLabel')?.text || '';
-          this.stockInformationLabel = data.labels.find((l: any) => l.label === 'stockInformationLabel')?.text || '';
-          this.priceLabel = data.labels.find((l: any) => l.label === 'priceLabel')?.text || '';
-          this.marketCapLabel = data.labels.find((l: any) => l.label === 'marketCapLabel')?.text || '';
-          this.sectorLabel = data.labels.find((l: any) => l.label === 'sectorLabel')?.text || '';
-          this.industryLabel = data.labels.find((l: any) => l.label === 'industryLabel')?.text || '';
-          this.epsTtmLabel = data.labels.find((l: any) => l.label === 'epsTtmLabel')?.text || '';
-          this.peTtmLabel = data.labels.find((l: any) => l.label === 'peTtmLabel')?.text || '';
-          this.dividendsYieldLabel = data.labels.find((l: any) => l.label === 'dividendsYieldLabel')?.text || '';
-
-          //valuation card
-          this.valuationResultsLabel = data.labels.find((l: any) => l.label === 'valuationResultsLabel')?.text || '';
-          this.valuationOverviewLabel = data.labels.find((l: any) => l.label === 'valuationOverviewLabel')?.text || '';
-          this.fairPriceLabel = data.labels.find((l: any) => l.label === 'fairPriceLabel')?.text || '';
-          this.resultLabel = data.labels.find((l: any) => l.label === 'resultLabel')?.text || '';
-          this.formulaLabel = data.labels.find((l: any) => l.label === 'formulaLabel')?.text || '';
-          this.formulaExplanationLabel = data.labels.find((l: any) => l.label === 'formulaExplanationLabel')?.text || '';
-          this.maxGrowthRateNote = data.labels.find((l: any) => l.label === 'maxGrowthRateNote')?.text || '';
-
-          //historicalProfit
-          this.netProfitGrowthLabel = data.labels.find((l: any) => l.label === 'netProfitGrowthLabel')?.text || '';
-          this.averageIncomeGrowthLabel = data.labels.find((l: any) => l.label === 'averageIncomeGrowthLabel')?.text || '';
-          this.averageIncomeGrowthTtm = data.labels.find((l: any) => l.label === 'averageIncomeGrowthTtm')?.text || '';
-          this.averageThreeYearsGrowth = data.labels.find((l: any) => l.label === 'averageThreeYearsGrowth')?.text || '';
-          this.averageFiveYearsGrowth = data.labels.find((l: any) => l.label === 'averageFiveYearsGrowth')?.text || '';
-
-          //lynch explanation
-          this.aboutLynchFormulaLabel = data.labels.find((l: any) => l.label === 'aboutLynchFormulaLabel')?.text || '';
-          this.aboutLynchFormulaText = data.labels.find((l: any) => l.label === 'aboutLynchFormulaText')?.text || '';
-
-          this.undervaluedLabel = data.labels.find((l: any) => l.label === 'undervaluedLabel')?.text || '';
-          this.overvaluedLabel = data.labels.find((l: any) => l.label === 'overvaluedLabel')?.text || '';
-
-          this.downsidePotentialLabel = data.labels.find((l: any) => l.label === 'downsidePotentialLabel')?.text || '';
-          this.upsidePotentialLabel = data.labels.find((l: any) => l.label === 'upsidePotentialLabel')?.text || '';
-
-          this.growthRateCalcExplanation = data.labels.find((l: any) => l.label === 'growthRateCalcExplanation')?.text || '';
-
-          this.growthLabel = data.labels.find((l: any) => l.label === 'growthLabel')?.text || '';
-          this.netProfitLabel = data.labels.find((l: any) => l.label === 'netProfitLabel')?.text || '';
-          this.metricLabel = data.labels.find((l: any) => l.label === 'metricLabel')?.text || '';
-
-          this.mainStockData = data.labels.find((l: any) => l.label === 'mainStockData')?.text || '';
-          this.finanacialOverviewLabel = data.labels.find((l: any) => l.label === 'finanacialOverviewLabel')?.text || '';
-
-          this.noValuation = data.labels.find((l: any) => l.label === 'noValuation')?.text || '';
-          this.noValuationData = data.labels.find((l: any) => l.label === 'noValuationData')?.text || '';
-
-          this.pegLabel = data.labels.find((l: any) => l.label === 'pegLabel')?.text || '';
-          this.pegExplanation = data.labels.find((l: any) => l.label === 'pegExplanation')?.text || '';
-
-          this.fcfLabel = data.labels.find((l: any) => l.label === 'fcfLabel')?.text || '';
-          this.deLabel = data.labels.find((l: any) => l.label === 'deLabel')?.text || '';
-          
-          this.reliableDataSources = data.labels.find((l: any) => l.label === 'reliableDataSources')?.text || '';
-          if (this.exchange === 'MOEX'){
-            this.datapoints = [
-              data.labels.find((l: any) => l.label === 'datapointsMoex1')?.text || '',
-              data.labels.find((l: any) => l.label === 'datapointsMoex2')?.text || '',
-              data.labels.find((l: any) => l.label === 'datapointsMoex3')?.text || ''
-            ];
-          }
-          else{
-            this.datapoints = [
-              data.labels.find((l: any) => l.label === 'datapoints1')?.text || '',
-              data.labels.find((l: any) => l.label === 'datapoints2')?.text || '',
-              data.labels.find((l: any) => l.label === 'datapoints3')?.text || ''
-            ];
-          }
-
-          //peg over and under
-          this.pegFairLabel = data.labels.find((l: any) => l.label === 'pegFairLabel')?.text || '';
-          this.pegOverLabel = data.labels.find((l: any) => l.label === 'pegOverLabel')?.text || '';
-          this.pegUnderLabel = data.labels.find((l: any) => l.label === 'pegUnderLabel')?.text || '';
-
-          //cagr additional explanation in about the formula
-          this.aboutFullNegativeCagr = data.labels.find((l: any) => l.label === 'aboutFullNegativeCagr')?.text || '';
-          this.naText = data.labels.find((l: any) => l.label === 'naText')?.text || '';
-
-          this.noValuationLabel = data.labels.find((l: any) => l.label === 'noValuationLabel')?.text || '';
-          this.noValuationExplanation = data.labels.find((l: any) => l.label === 'noValuationExplanation')?.text || '';
-
-          this.noPegExplanation = data.labels.find((l: any) => l.label === 'noPegExplanation')?.text || '';
-          this.noFairPriceExplanation = data.labels.find((l: any) => l.label === 'noFairPriceExplanation')?.text || '';
-          this.notEnoughDataNote = data.labels.find((l: any) => l.label === 'notEnoughDataNote')?.text || '';
-        }
-      );
+      this.applyLanguageLabels();
       if(this.ticker === "META"){
         this.legalTextNeeded = true;
         if(language === "ru"){
@@ -612,6 +433,103 @@ export class ValuateComponent implements OnInit {
 
   async getRussianUser(){
     return await this.geoService.isRussianUser()
+  }
+
+  private getFallbackText(label: string): string {
+    const baseText = (this as any)[label] ?? '';
+    if (this.pageLanguage === 'ru') {
+      return (this as any)[`${label}Ru`] ?? baseText;
+    }
+    if (this.pageLanguage === 'es') {
+      return (this as any)[`${label}Es`] ?? baseText;
+    }
+    return baseText;
+  }
+
+  private getLabel(label: string, fallback?: string): string {
+    const found = this.languageLabels.find((item: any) =>
+      item.language === this.pageLanguage &&
+      item.component === 'valuate' &&
+      item.label === label
+    );
+
+    return found?.text ?? (fallback ?? this.getFallbackText(label));
+  }
+
+  private applyLanguageLabels(): void {
+    this.loadingLabel = this.getLabel('loadingLabel', this.loadingLabel);
+    this.exchangeLabel = this.getLabel('exchangeLabel', this.exchangeLabel);
+    this.countryLabel = this.getLabel('countryLabel', this.countryLabel);
+    this.stockInformationLabel = this.getLabel('stockInformationLabel', this.stockInformationLabel);
+    this.priceLabel = this.getLabel('priceLabel', this.priceLabel);
+    this.marketCapLabel = this.getLabel('marketCapLabel', this.marketCapLabel);
+    this.sectorLabel = this.getLabel('sectorLabel', this.sectorLabel);
+    this.industryLabel = this.getLabel('industryLabel', this.industryLabel);
+    this.epsTtmLabel = this.getLabel('epsTtmLabel', this.epsTtmLabel);
+    this.peTtmLabel = this.getLabel('peTtmLabel', this.peTtmLabel);
+    this.dividendsYieldLabel = this.getLabel('dividendsYieldLabel', this.dividendsYieldLabel);
+
+    this.valuationResultsLabel = this.getLabel('valuationResultsLabel', this.valuationResultsLabel);
+    this.valuationOverviewLabel = this.getLabel('valuationOverviewLabel', this.valuationOverviewLabel);
+    this.fairPriceLabel = this.getLabel('fairPriceLabel', this.fairPriceLabel);
+    this.resultLabel = this.getLabel('resultLabel', this.resultLabel);
+    this.formulaLabel = this.getLabel('formulaLabel', this.formulaLabel);
+    this.formulaExplanationLabel = this.getLabel('formulaExplanationLabel', this.formulaExplanationLabel);
+    this.maxGrowthRateNote = this.getLabel('maxGrowthRateNote', this.maxGrowthRateNote);
+
+    this.netProfitGrowthLabel = this.getLabel('netProfitGrowthLabel', this.netProfitGrowthLabel);
+    this.averageIncomeGrowthLabel = this.getLabel('averageIncomeGrowthLabel', this.averageIncomeGrowthLabel);
+    this.averageIncomeGrowthTtm = this.getLabel('averageIncomeGrowthTtm', this.averageIncomeGrowthTtm);
+    this.averageThreeYearsGrowth = this.getLabel('averageThreeYearsGrowth', this.averageThreeYearsGrowth);
+    this.averageFiveYearsGrowth = this.getLabel('averageFiveYearsGrowth', this.averageFiveYearsGrowth);
+
+    this.aboutLynchFormulaLabel = this.getLabel('aboutLynchFormulaLabel', this.aboutLynchFormulaLabel);
+    this.aboutLynchFormulaText = this.getLabel('aboutLynchFormulaText', this.aboutLynchFormulaText);
+
+    this.undervaluedLabel = this.getLabel('undervaluedLabel', this.undervaluedLabel);
+    this.overvaluedLabel = this.getLabel('overvaluedLabel', this.overvaluedLabel);
+    this.downsidePotentialLabel = this.getLabel('downsidePotentialLabel', this.downsidePotentialLabel);
+    this.upsidePotentialLabel = this.getLabel('upsidePotentialLabel', this.upsidePotentialLabel);
+    this.growthRateCalcExplanation = this.getLabel('growthRateCalcExplanation', this.growthRateCalcExplanation);
+
+    this.growthLabel = this.getLabel('growthLabel', this.growthLabel);
+    this.netProfitLabel = this.getLabel('netProfitLabel', this.netProfitLabel);
+    this.metricLabel = this.getLabel('metricLabel', this.metricLabel);
+
+    this.mainStockData = this.getLabel('mainStockData', this.mainStockData);
+    this.finanacialOverviewLabel = this.getLabel('finanacialOverviewLabel', this.finanacialOverviewLabel);
+    this.noValuation = this.getLabel('noValuation', this.noValuation);
+    this.noValuationData = this.getLabel('noValuationData', this.noValuationData);
+
+    this.pegLabel = this.getLabel('pegLabel', this.pegLabel);
+    this.pegExplanation = this.getLabel('pegExplanation', this.pegExplanation);
+    this.fcfLabel = this.getLabel('fcfLabel', this.fcfLabel);
+    this.deLabel = this.getLabel('deLabel', this.deLabel);
+    this.reliableDataSources = this.getLabel('reliableDataSources', this.reliableDataSources);
+    this.pegFairLabel = this.getLabel('pegFairLabel', this.pegFairLabel);
+    this.pegOverLabel = this.getLabel('pegOverLabel', this.pegOverLabel);
+    this.pegUnderLabel = this.getLabel('pegUnderLabel', this.pegUnderLabel);
+    this.aboutFullNegativeCagr = this.getLabel('aboutFullNegativeCagr', this.aboutFullNegativeCagr);
+    this.naText = this.getLabel('naText', this.naText);
+    this.noValuationLabel = this.getLabel('noValuationLabel', this.noValuationLabel);
+    this.noValuationExplanation = this.getLabel('noValuationExplanation', this.noValuationExplanation);
+    this.noPegExplanation = this.getLabel('noPegExplanation', this.noPegExplanation);
+    this.noFairPriceExplanation = this.getLabel('noFairPriceExplanation', this.noFairPriceExplanation);
+    this.notEnoughDataNote = this.getLabel('notEnoughDataNote', this.notEnoughDataNote);
+
+    if (this.exchange === 'MOEX') {
+      this.datapoints = [
+        this.getLabel('datapointsMoex1', ''),
+        this.getLabel('datapointsMoex2', ''),
+        this.getLabel('datapointsMoex3', '')
+      ];
+    } else {
+      this.datapoints = [
+        this.getLabel('datapoints1', ''),
+        this.getLabel('datapoints2', ''),
+        this.getLabel('datapoints3', '')
+      ];
+    }
   }
 
   round(value: number, exchange: string): string {

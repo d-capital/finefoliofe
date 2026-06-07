@@ -32,40 +32,21 @@ export class LanguageSelectorComponent {
     this.browserStorageService.setItem('isUserLangSet', 'yes');
     // notify parent components about change
     this.languageChange.emit(this.selectedValue);
-    let currentUrl = this.router.url;
+
+    const currentUrl = this.router.url;
+    const normalizedUrl = currentUrl.replace(/^\/ru|^\/es/, '') || '/';
+    let targetUrl = '/';
+
     if (this.selectedValue === 'ru') {
-      // If not already in /ru, add /ru
-      if (!currentUrl.startsWith('/ru')) {
-        if (currentUrl === '/' || currentUrl === '') {
-          this.router.navigate(['/ru']);
-        } else {
-          this.router.navigate(['/ru' + currentUrl]);
-        }
-      }
-    } 
-    else if (this.selectedValue === 'es') {
-      // If not already in /es, add /es
-      if (!currentUrl.startsWith('/es')) {
-        if (currentUrl === '/' || currentUrl === '') {
-          this.router.navigate(['/es']);
-        } else {
-          this.router.navigate(['/es' + currentUrl]);
-        }
-      }
-    }    
-    else {
-      // Remove /ru if present
-      if (currentUrl.startsWith('/ru')) {
-        const newUrl = currentUrl.replace(/^\/ru/, '') || '/';
-        this.router.navigate([newUrl]);
-      } 
-      else if (currentUrl.startsWith('/es')) {
-        const newUrl = currentUrl.replace(/^\/es/, '') || '/';
-        this.router.navigate([newUrl]);
-      }
-      else {
-        this.router.navigate(['/']);
-      }
+      targetUrl = normalizedUrl === '/' ? '/ru' : '/ru' + normalizedUrl;
+    } else if (this.selectedValue === 'es') {
+      targetUrl = normalizedUrl === '/' ? '/es' : '/es' + normalizedUrl;
+    } else {
+      targetUrl = normalizedUrl;
+    }
+
+    if (this.router.url !== targetUrl) {
+      this.router.navigateByUrl(targetUrl);
     }
   }
 
