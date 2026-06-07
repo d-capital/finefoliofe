@@ -9,7 +9,6 @@ import { ExamplesComponent } from '../../components/examples/examples.component'
 import { ReliableDataComponent } from '../../components/reliable-data/reliable-data.component';
 import { BrowserStorageService } from '../../services/browser-storage.service';
 import { QuoteSectionComponent } from '../../components/quote-section/quote-section.component';
-import { LanguageService } from '../../services/language.service';
 import { Labels } from '../../dto/labels/labels.model';
 
 @Component({
@@ -31,8 +30,7 @@ export class LandingComponent implements OnInit {
   constructor(
     private titleService: Title, 
     private metaService: Meta,
-    private browserStorageService: BrowserStorageService,
-    //private languageService: LanguageService
+    private browserStorageService: BrowserStorageService
   ) {}
 
   pageLanguage!: string;
@@ -77,10 +75,5 @@ export class LandingComponent implements OnInit {
       });
     }
     this.pageLanguage = language ? language : 'en';
-    /*this.languageService.getLabels(this.pageLanguage, ['valuate']).pipe().subscribe(
-      data => {
-        this.languageLabels = data;
-      }
-    );*/
   }
 }
