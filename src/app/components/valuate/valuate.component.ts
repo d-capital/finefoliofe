@@ -228,7 +228,7 @@ export class ValuateComponent implements OnInit {
   noAverageGrowthData:boolean = false;
 
   legalTextNeeded:boolean = false;
-  legalText:string = '*is regonzide as extrimist, forbidden on the territory of Russian Federation.';
+  legalText:string = '*is recognized as extremist, forbidden on the territory of Russian Federation.';
   legalTextRu: string = '*признана экстремистской, запрещена на территории РФ.';
   legalTextEs: string = '*es reconocida como extremista, prohibida en el territorio de la Federación Rusa.'
 
