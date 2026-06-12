@@ -62,4 +62,10 @@
   .hero-bg {
     margin-bottom: 10px;
   }
+  .hero-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: #000000;
+  }
 }

@@ -58,4 +58,10 @@ hr {
   .faq-section {
     margin-top: 0px;
   }
+  .faq-answer {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #000000;
+    line-height: 1.6;
+  }
 }
