@@ -60,6 +60,7 @@
 
 @media (max-width:768px){
   .hero-bg {
+    margin-top: 0px;
     margin-bottom: 10px;
   }
   .hero-subtitle {
@@ -67,5 +68,8 @@
     font-weight: 400;
     margin-bottom: 2rem;
     color: #000000;
+  }
+  .hero-content {
+    padding: 0rem;
   }
 }

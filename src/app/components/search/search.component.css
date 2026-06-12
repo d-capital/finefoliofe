@@ -21,6 +21,18 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.search-input::placeholder,
+.search-input::-webkit-input-placeholder {
+  color: #383838;
+  opacity: 1;
+}
+
+.search-input:-ms-input-placeholder,
+.search-input::-ms-input-placeholder {
+  color: #383838;
+  opacity: 1;
+}
+
 .dropdown {
   position: absolute;
   top: 100%;
@@ -127,7 +139,10 @@
   }
 
   .exchange-selector .icon {
-    width: 18px;
-    height: 18px;
+    width: 25px;
+    height: 25px;
+  }
+  .search-input {
+    font-size: 18px;
   }
 }
