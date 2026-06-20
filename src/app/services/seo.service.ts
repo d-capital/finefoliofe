@@ -8,10 +8,10 @@ export class SeoService {
   constructor(@Inject(DOCUMENT) private dom: Document) {}
 
   updateSeoTags(urlPath: string) {
-    // 1. Get the "Clean Path" (remove /ru and query params)
+    // 1. Get the "Clean Path" (remove /ru, /es and query params)
     // Example: /ru/contacts?id=1 -> /contacts
     let pathWithoutQuery = urlPath.split('?')[0];
-    let cleanPath = pathWithoutQuery.replace(/^\/ru(\/|$)/, '/').replace(/\/$/, '');
+    let cleanPath = pathWithoutQuery.replace(/^\/(ru|es)(\/|$)/, '/').replace(/\/$/, '');
     
     // Ensure it starts with a slash but isn't just double slashes
     if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
