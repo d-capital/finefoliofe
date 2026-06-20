@@ -20,6 +20,7 @@ export class SeoService {
     // 2. Define the URLs
     const enUrl = `${this.baseUrl}${cleanPath}`;
     const ruUrl = `${this.baseUrl}/ru${cleanPath}`;
+    const esUrl = `${this.baseUrl}/es${cleanPath}`;
 
     // 3. Update Canonical (Self-referencing)
     // If we are on /ru/something, canonical is /ru/something. 
@@ -29,6 +30,7 @@ export class SeoService {
     // 4. Update Hreflang Alternates (Must be on every page)
     this.setLinkTag('alternate', enUrl, 'en');
     this.setLinkTag('alternate', ruUrl, 'ru');
+    this.setLinkTag('alternate', esUrl, 'es');
     this.setLinkTag('alternate', enUrl, 'x-default'); // Usually points to default/root
   }
 
