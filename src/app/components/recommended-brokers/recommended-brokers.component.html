@@ -1,0 +1,17 @@
+<section class="recommended-brokers-section">
+  <div class="recommended-brokers-header">
+    <h2>{{ title }}</h2>
+  </div>
+
+  <div #track class="recommended-brokers-track" role="list">
+    <a *ngFor="let broker of brokers" [href]="broker.url" target="_blank" rel="noreferrer noopener" class="broker-card" role="listitem">
+      <div class="broker-logo">
+        <img [src]="broker.logo" [alt]="broker.name + ' logo'" loading="lazy" />
+      </div>
+      <div class="broker-content">
+        <div class="broker-name">{{ broker.name }}</div>
+        <div class="broker-description">{{ broker.description }}</div>
+      </div>
+    </a>
+  </div>
+</section>

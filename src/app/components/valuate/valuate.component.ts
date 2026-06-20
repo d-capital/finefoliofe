@@ -10,6 +10,7 @@ import { AbbreviateNumberPipe } from '../../custom-pipe/abbreviate-number.pipe';
 import { TabsComponent } from '../tabs/tabs.component';
 import { TabComponent } from '../tab/tab.component';
 import { StockCardComponent } from '../stock-card/stock-card.component';
+import { RecommendedBrokersComponent } from '../recommended-brokers/recommended-brokers.component';
 import { ChangeDetectorRef } from '@angular/core';
 import { Inject, PLATFORM_ID, Injector } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
@@ -19,7 +20,7 @@ import languageLabels from './languages.json';
 
 @Component({
   selector: 'app-valuate',
-  imports: [NgFor, CommonModule, ErrorStateComponent, AbbreviateNumberPipe, TabsComponent, TabComponent, StockCardComponent],
+  imports: [NgFor, CommonModule, ErrorStateComponent, AbbreviateNumberPipe, TabsComponent, TabComponent, StockCardComponent, RecommendedBrokersComponent],
   templateUrl: './valuate.component.html',
   styleUrl: './valuate.component.css'
 })

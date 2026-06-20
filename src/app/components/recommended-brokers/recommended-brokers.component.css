@@ -1,0 +1,114 @@
+.recommended-brokers-section {
+  width: 100%;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+.recommended-brokers-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.recommended-brokers-header h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.recommended-brokers-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.recommended-brokers-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.recommended-brokers-track::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 999px;
+}
+
+.broker-card {
+  min-width: 220px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1rem;
+  background: #0d1f2d;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.broker-card:hover {
+  background: #12253a;
+}
+
+.broker-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background: transparent;
+}
+
+.broker-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.broker-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.broker-name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.broker-description {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+
+.brand-yellow { background: #fbbf24; }
+/* removed unused brand color classes; logos are used instead */
+
+@media (max-width: 768px) {
+  .recommended-brokers-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .slider-controls {
+    order: 2;
+  }
+
+  .broker-card {
+    min-width: 200px;
+    grid-template-columns: 48px 1fr;
+  }
+
+  .broker-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+  }
+}
