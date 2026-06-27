@@ -1,18 +1,26 @@
-# Use Node 20 for Angular 19 compatibility
+# Stage 1: Build the Angular SSR application
 FROM node:20-alpine AS builder
 WORKDIR /app
+
+# Bypass npm production locks explicitly
+ENV NODE_ENV=development
+
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build
 
+# GUARANTEED FIX: Force npx to resolve, pull, and run the Angular build toolchain
+RUN npx -p @angular/cli ng build
+
+# Stage 2: Production runtime for Angular SSR
 FROM node:20-alpine
 WORKDIR /app
+ENV NODE_ENV=production
+
+# Copy built application to production container
 COPY --from=builder /app/dist/finefolio-fe ./dist/finefolio-fe
 
-# Express server defaults to 4000
 ENV PORT=4000
 EXPOSE 4000
 
-# This is the file that actually 'stays alive'
 CMD ["node", "dist/finefolio-fe/server/server.mjs"]
