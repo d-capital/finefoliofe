@@ -20,28 +20,28 @@
       </p>
       <div ngSkipHydration>
         <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'en'" style="line-height: 1.2px;">
-          <p>Data powered by <b><a href="https://www.tradingview.com/symbols/{{ stockInfo.exchange }}-{{ ticker }}/" target="_blank">TradingView</a></b></p>
-          <p style="color: gray;">updated today at {{ displayTime }}</p>
+          <p>View the chart on <b><a href="https://www.tradingview.com/symbols/{{ stockInfo.exchange }}-{{ ticker }}/" target="_blank">TradingView</a></b></p>
+          <p style="color: gray;">Updated today at {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'en'" style="line-height: 1.2px;">
-          <p>Data powered by <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">MOEX API</a></b></p>
-          <p style="color: gray;">updated today at {{ displayTime }}</p>
+          <p>View the chart on <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">Moscow Exchange site</a></b></p>
+          <p style="color: gray;">Updated today at {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'ru'" style="line-height: 1.2px;">
-          <p>Данные от <b><a href="https://www.tradingview.com/symbols/{{ stockInfo.exchange }}-{{ ticker }}/" target="_blank">TradingView</a></b></p>
-          <p style="color: gray;">oбновлены сегодня в {{ displayTime }}</p>
+          <p>Смотри график на <b><a href="https://www.tradingview.com/symbols/{{ stockInfo.exchange }}-{{ ticker }}/" target="_blank">TradingView</a></b></p>
+          <p style="color: gray;">Данные oбновлены сегодня в {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'ru'" style="line-height: 1.2px;">
-          <p>Данные от <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">MOEX API</a></b></p>
-          <p style="color: gray;">oбновлены сегодня в {{ displayTime }}</p>
+          <p>Смотри график на <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">сайте Московской биржи</a></b></p>
+          <p style="color: gray;">Данные обновлены сегодня в {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'es'" style="line-height: 1.2px;">
-          <p>Datos proporcionados por <b><a href="https://www.tradingview.com/symbols/{{ stockInfo.exchange }}-{{ ticker }}/" target="_blank">TradingView</a></b></p>
-          <p style="color: gray;">actualizado hoy a {{ displayTime }}</p>
+          <p>Consulte el gráfico en el sitio web <b><a href="https://www.tradingview.com/symbols/{{ stockInfo.exchange }}-{{ ticker }}/" target="_blank">TradingView</a></b></p>
+          <p style="color: gray;">Actualizado hoy a {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'es'" style="line-height: 1.2px;">
-          <p>Datos proporcionados por <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">MOEX API</a></b></p>
-          <p style="color: gray;">actualizado hoy a {{ displayTime }}</p>
+          <p>Consulte el gráfico en el sitio web <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">de la Bolsa de Moscú</a></b></p>
+          <p style="color: gray;">Actualizado hoy a {{ displayTime }}</p>
         </div>
       </div>
     </section>

@@ -38,6 +38,7 @@ export class ValuateComponent implements OnInit {
   private languageLabels: any[] = languageLabels;
   stockInfo!: StockInfo;
   valuation!: ValuationResult;
+  isPreviousDayData!:boolean;
   loading: boolean = true;
   error: boolean = false;
   serverErrors = [];
@@ -267,6 +268,23 @@ export class ValuateComponent implements OnInit {
       this.ValuationServiceApi.getValuation(this.ticker, this.exchange).pipe().subscribe(data => {
         this.stockInfo = data['stockInfo'];
         this.valuation = data['valuation'];
+        this.isPreviousDayData = data['isPreviousDayData'];
+        if (this.isPreviousDayData){
+          const now = new Date();
+          const updateTimeUTC = Date.UTC(
+              now.getFullYear(), 
+              now.getMonth(), 
+              now.getDate(), 
+              2, 0, 0
+          );
+          const updateDate = new Date(updateTimeUTC);
+          const userTime = new Intl.DateTimeFormat(navigator.language, {
+              hour: 'numeric',
+              minute: 'numeric',
+              timeZoneName: 'short'
+          }).format(updateDate);
+          this.displayTime = userTime;
+        }
         var shownFairPrice = this.round(this.valuation.fairPrice, this.exchange);
         var currentPrice = this.round(this.stockInfo.price, this.exchange);
         var percentPotential = this.round(this.valuation.resultPercent, "noexchange");
