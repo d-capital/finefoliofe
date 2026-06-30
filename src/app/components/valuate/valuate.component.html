@@ -32,7 +32,7 @@
           <p style="color: gray;">oбновлены сегодня в {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'ru'" style="line-height: 1.2px;">
-          <p>Данные c <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">сайта Московской биржи</a></b></p>
+          <p>Данные от <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">Московской биржи</a></b></p>
           <p style="color: gray;">обновлены сегодня в {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'es'" style="line-height: 1.2px;">
@@ -40,7 +40,7 @@
           <p style="color: gray;">actualizado hoy a {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'es'" style="line-height: 1.2px;">
-          <p>Datos <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">del sitio web de la Bolsa de Moscú</a></b></p>
+          <p>Datos <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank"> de la Bolsa de Moscú</a></b></p>
           <p style="color: gray;">actualizado hoy a {{ displayTime }}</p>
         </div>
       </div>
