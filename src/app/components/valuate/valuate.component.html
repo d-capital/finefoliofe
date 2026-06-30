@@ -24,7 +24,7 @@
           <p style="color: gray;">updated today at {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange === 'MOEX' && pageLanguage === 'en'" style="line-height: 1.2px;">
-          <p>Data powered by <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">Moscow Exchange site</a></b></p>
+          <p>Data powered by <b><a href="https://www.moex.com/ru/issue.aspx?board=TQBR&code={{ticker}}" target="_blank">Moscow Exchange</a></b></p>
           <p style="color: gray;">updated today at {{ displayTime }}</p>
         </div>
         <div *ngIf="stockInfo.exchange !== 'MOEX' && pageLanguage === 'ru'" style="line-height: 1.2px;">
