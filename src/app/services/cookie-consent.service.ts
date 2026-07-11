@@ -45,7 +45,7 @@ export class CookieConsentService {
       //netlocal
       //this.saveConsentUrl = 'http://localhost:5000/cookie-consent/';
       //netprod
-      this.saveConsentUrl = 'https://valestor.com/api/cookie-consent/';
+      this.saveConsentUrl = 'https://valestor.com/netapi/cookie-consent/';
     }
   }
 

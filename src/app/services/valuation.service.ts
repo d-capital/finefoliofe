@@ -36,7 +36,7 @@ export class ValuationService {
       //netlocal
       //this.getValuationUrl = 'http://localhost:5000/valuation/en/';
       //netprod
-      this.getValuationUrl = 'https://valestor.com/api/valuation/en/';
+      this.getValuationUrl = 'https://valestor.com/netapi/valuation/en/';
     }
   }
 
