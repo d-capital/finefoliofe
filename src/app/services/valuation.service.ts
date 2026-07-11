@@ -21,14 +21,22 @@ export class ValuationService {
 
     if (isPlatformServer(this.platformId)) {
       //prod
-      this.getValuationUrl = 'http://finefoliobe:3000/valuation/'; 
+      //this.getValuationUrl = 'http://finefoliobe:3000/valuation/'; 
       //local
       //this.getValuationUrl = 'http://127.0.0.1:8000/valuation/';
+      //netlocal
+      //this.getValuationUrl = 'http://localhost:5000/valuation/en/';
+      //netprod
+      this.getValuationUrl = 'http://finefolionet:8080/valuation/en/'; 
     } else {
       //prod
-      this.getValuationUrl = 'https://valestor.com/api/valuation/';
+      //this.getValuationUrl = 'https://valestor.com/api/valuation/';
       //local
       //this.getValuationUrl = 'http://127.0.0.1:8000/valuation/';
+      //netlocal
+      //this.getValuationUrl = 'http://localhost:5000/valuation/en/';
+      //netprod
+      this.getValuationUrl = 'https://valestor.com/api/valuation/en/';
     }
   }
 

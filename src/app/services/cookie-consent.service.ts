@@ -30,14 +30,22 @@ export class CookieConsentService {
     this.initializeUserId();
     if (isPlatformServer(this.platformId)) {
       //prod
-      this.saveConsentUrl = 'http://finefoliobe:3000/saveconsent/'; 
+      //this.saveConsentUrl = 'http://finefoliobe:3000/saveconsent/'; 
       //local
       //this.saveConsentUrl = 'http://127.0.0.1:8000/saveconsent/';
+      //netlocal
+      //this.saveConsentUrl = 'http://localhost:5000/cookie-consent/';
+      //netprod
+      this.saveConsentUrl = 'http://finefolionet:8080/cookie-consent/'; 
     } else {
       //prod
-      this.saveConsentUrl = 'https://valestor.com/api/saveconsent/';
+      //this.saveConsentUrl = 'https://valestor.com/api/saveconsent/';
       //local
       //this.saveConsentUrl = 'http://127.0.0.1:8000/saveconsent/';
+      //netlocal
+      //this.saveConsentUrl = 'http://localhost:5000/cookie-consent/';
+      //netprod
+      this.saveConsentUrl = 'https://valestor.com/api/cookie-consent/';
     }
   }
 
