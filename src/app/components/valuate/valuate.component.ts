@@ -265,7 +265,7 @@ export class ValuateComponent implements OnInit {
       const gmtStr = `GMT${offsetHours >= 0 ? '+' : ''}${offsetHours}`;
 
       this.displayTime = `${timeStr} ${gmtStr}`;
-      this.ValuationServiceApi.getValuation(this.ticker, this.exchange).pipe().subscribe(data => {
+      this.ValuationServiceApi.getValuation(this.ticker, this.exchange,this.pageLanguage).pipe().subscribe(data => {
         this.stockInfo = data['stockInfo'];
         this.valuation = data['valuation'];
         this.isPreviousDayData = data['isPreviousDayData'];
