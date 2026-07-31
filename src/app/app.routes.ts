@@ -38,6 +38,9 @@ export const routes: Routes = [
         component: ValuateComponent,
         canActivate: [tickerGuard]
       },
+      {
+        path: 'about', component: AboutComponent
+      }
       // ... your other child routes
     ]
   },
@@ -54,6 +57,9 @@ export const routes: Routes = [
         component: ValuateComponent,
         canActivate: [tickerGuard]
       },
+      {
+        path: 'about', component: AboutComponent
+      }
       // ... your other child routes
     ]
   },
@@ -70,6 +76,9 @@ export const routes: Routes = [
         component: ValuateComponent,
         canActivate: [tickerGuard]
       },
+      {
+        path: 'about', component: AboutComponent
+      }
       // ... your other child routes
     ]
   },

@@ -1,20 +1,39 @@
-<!-- Hero -->
-<section class="hero-bg">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1 class="hero-title">{{ heroTitle }}</h1>
-    <p class="hero-subtitle">{{ heroSubtitle }}</p>
+<div class="wrapper">
+  <div class="content">
+    <h1>{{ content.title }}</h1>
+    <p>{{ content.subtitle }}</p>
+
+    <div *ngFor="let section of content.sections" class="section">
+      <h2>{{ section.title }}</h2>
+
+      <div *ngFor="let subsection of section.subsections" class="subsection">
+        <p *ngIf="subsection.title">
+          <b>{{ subsection.title }}</b>
+        </p>
+
+        <p *ngIf="typeof subsection.content === 'string' && subsection.content" class="subsection-text">
+          {{ subsection.content }}
+        </p>
+
+        <div *ngIf="typeof subsection.content === 'object'" class="subsection-list">
+          <p *ngFor="let item of subsection.content">{{ item }}</p>
+        </div>
+
+        <div *ngIf="subsection.table" class="table-wrapper">
+          <table class="policy-table">
+            <thead>
+              <tr>
+                <th *ngFor="let header of subsection.table.headers">{{ header }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of subsection.table.rows">
+                <td *ngFor="let cell of row">{{ cell }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
-
-<!-- Vision -->
-<section class="section">
-  <h2>{{ visionTitle }}</h2>
-  <p class="about-text">{{ visionText }}</p>
-</section>
-
-<!-- Mission -->
-<section class="section">
-  <h2>{{ missionTitle }}</h2>
-  <p class="about-text">{{ missionText }}</p>
-</section>
+</div>
