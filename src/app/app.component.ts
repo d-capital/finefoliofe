@@ -6,6 +6,7 @@ import { DOCUMENT } from '@angular/common';
 import { SeoService } from './services/seo.service';
 import { BrowserStorageService } from './services/browser-storage.service';
 import { WindowService } from './services/window.service';
+import { AnalyticsService } from './services/analytics.service';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ export class AppComponent implements OnInit {
     private seoService: SeoService,
     private router: Router,
     private browserStorageService: BrowserStorageService,
-    private windowService: WindowService
+    private windowService: WindowService,
+    @Inject(AnalyticsService) private analyticsService: AnalyticsService
   ) {
     this.syncLanguageWithUrl();
     // Listen for navigation events to keep language in sync
@@ -49,6 +51,7 @@ export class AppComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.analyticsService.loadIfConsented();
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {

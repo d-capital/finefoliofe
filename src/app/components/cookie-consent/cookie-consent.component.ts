@@ -5,6 +5,7 @@ import { CookieConsentService } from '../../services/cookie-consent.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { BrowserStorageService } from '../../services/browser-storage.service';
+import { AnalyticsService } from '../../services/analytics.service';
 
 @Component({
     selector: 'app-cookie-consent',
@@ -38,6 +39,7 @@ export class CookieConsentComponent implements OnInit, OnDestroy {
         private cookieConsentService: CookieConsentService,
         private router: Router,
         private browserStorageService: BrowserStorageService,
+        @Inject(AnalyticsService) private analyticsService: AnalyticsService,
         @Inject(PLATFORM_ID) private platformId: Object,
     ) { }
 
@@ -69,7 +71,9 @@ export class CookieConsentComponent implements OnInit, OnDestroy {
 
     onAgree(): void {
         console.log('[CookieConsentComponent] User clicked Agree button');
-        this.cookieConsentService.acceptCookies()
+        const consentRequest = this.cookieConsentService.acceptCookies();
+        this.analyticsService.loadIfConsented();
+        consentRequest
             .pipe(takeUntil(this.destroy$))
             .subscribe({
                 next: (response) => {
