@@ -47,26 +47,26 @@ export class ExamplesComponent implements OnInit {
 
     if (lang === "ru") {
       this.examples = [
-        { company: "Walt Disney Company", ticker: "DIS", upside: 13, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-dis/peter-lynch-fair-value-calculator" },
-        { company: "Allstate Corporation", ticker: "ALL", upside: 142, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-all/peter-lynch-fair-value-calculator" },
-        { company: "Novo Nordisk", ticker: "NVO", upside: 36, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
-        { company: "Baker Hughes", ticker: "BKR", upside: 20, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nasdaq-bkr/peter-lynch-fair-value-calculator" }
+        { company: "Walt Disney Company", ticker: "DIS", upside: 14, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-dis/peter-lynch-fair-value-calculator" },
+        { company: "Allstate Corporation", ticker: "ALL", upside: 150, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-all/peter-lynch-fair-value-calculator" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 45, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
+        { company: "Baker Hughes", ticker: "BKR", upside: 32, status: "Потенциал роста", cardStatus: "Недооценена", link: "/ru/stocks/nasdaq-bkr/peter-lynch-fair-value-calculator" }
       ];
     } 
     else if (lang === 'es'){
       this.examples = [
-        { company: "Walt Disney Company", ticker: "DIS", upside: 13, status: "Potencial de crecimiento", cardStatus: "Infravalorada", link: "/es/stocks/nyse-dis/peter-lynch-fair-value-calculator" },
-        { company: "Allstate Corporation", ticker: "ALL", upside: 142, status: "Potencial de crecimiento", cardStatus: "Infravalorada", link: "/es/stocks/nyse-all/peter-lynch-fair-value-calculator" },
-        { company: "Novo Nordisk", ticker: "NVO", upside: 36, status: "Potencial de crecimiento", cardStatus: "Infravalorada", link: "/es/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
-        { company: "Baker Hughes", ticker: "BKR", upside: 20, status: "Potencial de crecimiento", cardStatus: "Infravalorada", link: "/es/stocks/nasdaq-bkr/peter-lynch-fair-value-calculator" }
+        { company: "Walt Disney Company", ticker: "DIS", upside: 14, status: "Potencial de crecimiento", cardStatus: "Infravalorada", link: "/es/stocks/nyse-dis/peter-lynch-fair-value-calculator" },
+        { company: "Allstate Corporation", ticker: "ALL", upside: 150, status: "Potencial de crecimiento", cardStatus: "Infravalorada", link: "/es/stocks/nyse-all/peter-lynch-fair-value-calculator" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 45, status: "Potencial de crecimiento", cardStatus: "Infravalorada", link: "/es/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
+        { company: "Baker Hughes", ticker: "BKR", upside: 32, status: "Potencial de crecimiento", cardStatus: "Infravalorada", link: "/es/stocks/nasdaq-bkr/peter-lynch-fair-value-calculator" }
       ];
     }
     else {
       this.examples = [
-        { company: "Walt Disney Company", ticker: "DIS", upside: 13, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-dis/peter-lynch-fair-value-calculator" },
-        { company: "Allstate Corporation", ticker: "ALL", upside: 142, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-all/peter-lynch-fair-value-calculator" },
-        { company: "Novo Nordisk", ticker: "NVO", upside: 36, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
-        { company: "Baker Hughes", ticker: "BKR", upside: 20, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nasdaq-bkr/peter-lynch-fair-value-calculator" }
+        { company: "Walt Disney Company", ticker: "DIS", upside: 14, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-dis/peter-lynch-fair-value-calculator" },
+        { company: "Allstate Corporation", ticker: "ALL", upside: 150, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-all/peter-lynch-fair-value-calculator" },
+        { company: "Novo Nordisk", ticker: "NVO", upside: 45, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nyse-nvo/peter-lynch-fair-value-calculator" },
+        { company: "Baker Hughes", ticker: "BKR", upside: 32, status: "Upside potential", cardStatus: "Undervalued", link: "/stocks/nasdaq-bkr/peter-lynch-fair-value-calculator" }
       ];
     }
   }

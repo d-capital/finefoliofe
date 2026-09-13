@@ -20974,7 +20974,9 @@ export class SearchComponent implements OnInit {
     var ticker = splitted[1].toLocaleLowerCase();
     var exchange = splitted[0].toLocaleLowerCase();
     var name = splitted[2];
-    ym(106716051,'reachGoal','selected_ticker');
+    if (this.browserStorageService.getItem('cookieConsent') === 'true') {
+      ym(106716051,'reachGoal','selected_ticker');
+    }
     let path = '';
     if (this.lang === 'ru') {
       path = `/ru/stocks/${exchange}-${ticker}/peter-lynch-fair-value-calculator`;
