@@ -1119,19 +1119,19 @@
     "language": "en",
     "component": "valuate",
     "label": "waccLabel",
-    "text": "WACC"
+    "text": "Weighted Average Cost of Capital (WACC)"
   },
   {
     "language": "ru",
     "component": "valuate",
     "label": "waccLabel",
-    "text": "WACC"
+    "text": "Средневзвешенная стоимость капитала (WACC)"
   },
   {
     "language": "es",
     "component": "valuate",
     "label": "waccLabel",
-    "text": "WACC"
+    "text": "Costo promedio ponderado del capital (WACC)"
   },
   {
     "language": "en",
@@ -1443,19 +1443,19 @@
     "language": "en",
     "component": "valuate",
     "label": "betaMethodologyExplanation",
-    "text": "Beta is estimated via linear regression of the company’s daily log returns against the market index over the last three years (S&amp;P 500 for the US market, IMOEX for Russia)."
+    "text": "Beta is estimated via linear regression of the company’s daily log returns against the market index over the last three years (S&P 500 for the US market, IMOEX for Russia)."
   },
   {
     "language": "ru",
     "component": "valuate",
     "label": "betaMethodologyExplanation",
-    "text": "Коэффициент β оценивается с помощью линейной регрессии дневных логарифмических доходностей акции относительно рыночного индекса за последние три года (S&amp;P 500 для США, IMOEX для российского рынка)."
+    "text": "Коэффициент β оценивается с помощью линейной регрессии дневных логарифмических доходностей акции относительно рыночного индекса за последние три года (S&P 500 для США, IMOEX для российского рынка)."
   },
   {
     "language": "es",
     "component": "valuate",
     "label": "betaMethodologyExplanation",
-    "text": "La beta se estima mediante una regresión lineal de los rendimientos logarítmicos diarios de la empresa frente al índice de mercado durante los últimos tres años (S&amp;P 500 para EE. UU., IMOEX para Rusia)."
+    "text": "La beta se estima mediante una regresión lineal de los rendimientos logarítmicos diarios de la empresa frente al índice de mercado durante los últimos tres años (S&P 500 para EE. UU., IMOEX para Rusia)."
   },
   {
     "language": "en",
@@ -1569,19 +1569,19 @@
     "language": "en",
     "component": "valuate",
     "label": "waccFormula",
-    "text": "WACC = E / (E + D) × Re + D / (E + D) × Rd × (1 − Tax)"
+    "text": "WACC = Equity / (Equity + Debt) × Cost Of Equity + Debt / (Equity + Debt) × Interest Rate On Debt × (1 − Tax)"
   },
   {
     "language": "ru",
     "component": "valuate",
     "label": "waccFormula",
-    "text": "WACC = E / (E + D) × Re + D / (E + D) × Rd × (1 − Tax)"
+    "text": "WACC = Собственный капитал / (Собственный капитал + Долг) × Стоимость собственного капитала + Долг / (Собственный капитал + Долг) × Процентные расходы × (1 − Ставка налога)"
   },
   {
     "language": "es",
     "component": "valuate",
     "label": "waccFormula",
-    "text": "WACC = E / (E + D) × Re + D / (E + D) × Rd × (1 − Impuesto)"
+    "text": "WACC = Patrimonio neto / (Patrimonio neto + Deuda) × Coste del patrimonio neto + Deuda / (Patrimonio neto + Deuda) × Tipo de interés de la deuda × (1 − Impuestos)"
   },
   {
     "language": "en",
@@ -1780,5 +1780,185 @@
     "component": "valuate",
     "label": "numberOfYearsLabel",
     "text": "Número de años"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "dcfPresentValueExplanation",
+    "text": "Present Value of Projected Free Cash Flow = Free Cash Flow / (1 + WACC)^t, where t is the sequential period number (1, 2, 3)."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "dcfPresentValueExplanation",
+    "text": "Приведённая стоимость прогнозируемого свободного денежного потока = свободный денежный поток / (1 + WACC)^t, где t — последовательный номер периода (1, 2, 3)."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "dcfPresentValueExplanation",
+    "text": "Valor presente del flujo de caja libre proyectado = flujo de caja libre / (1 + WACC)^t, donde t es el número secuencial del período (1, 2, 3)."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "dcfTerminalValueExplanation",
+    "text": "Terminal Value = Projected Free Cash Flow of the Last Project Period * (1 + Terminal Growth) / (WACC - Terminal Growth), where Terminal Growth is the country's year-over-year GDP growth rate."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "dcfTerminalValueExplanation",
+    "text": "Терминальная стоимость = прогнозируемый свободный денежный поток последнего периода проекта * (1 + терминальный темп роста) / (WACC - терминальный темп роста), где терминальный темп роста — годовой темп роста ВВП страны."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "dcfTerminalValueExplanation",
+    "text": "Valor terminal = flujo de caja libre proyectado del último período del proyecto * (1 + crecimiento terminal) / (WACC - crecimiento terminal), donde el crecimiento terminal es la tasa de crecimiento interanual del PIB del país."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "dcfPresentValueTerminalExplanation",
+    "text": "Present Value of Terminal Value = Terminal Value / (1 + WACC)^3, where 3 is the number of project periods."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "dcfPresentValueTerminalExplanation",
+    "text": "Приведённая стоимость терминальной стоимости = терминальная стоимость / (1 + WACC)^3, где 3 — количество периодов проекта."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "dcfPresentValueTerminalExplanation",
+    "text": "Valor presente del valor terminal = valor terminal / (1 + WACC)^3, donde 3 es el número de períodos del proyecto."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "dcfEnterpriseValueExplanation",
+    "text": "Enterprise Value = SUM of Present Value of Projected Free Cash Flow + Present Value of Terminal Value."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "dcfEnterpriseValueExplanation",
+    "text": "Стоимость компании = сумма приведённой стоимости прогнозируемых свободных денежных потоков + приведённая стоимость терминальной стоимости."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "dcfEnterpriseValueExplanation",
+    "text": "Valor empresarial = suma del valor presente de los flujos de caja libres proyectados + valor presente del valor terminal."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "projectedFcfLabel",
+    "text": "Projected FCF"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "projectedFcfLabel",
+    "text": "Прогнозируемый FCF"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "projectedFcfLabel",
+    "text": "FCF proyectado"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "yearLabel",
+    "text": "Year"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "yearLabel",
+    "text": "Год"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "yearLabel",
+    "text": "Año"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "projectedValueLabel",
+    "text": "Projected Value"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "projectedValueLabel",
+    "text": "Прогнозируемое значение"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "projectedValueLabel",
+    "text": "Valor proyectado"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "presentValueLabel",
+    "text": "Present Value"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "presentValueLabel",
+    "text": "Приведённая стоимость"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "presentValueLabel",
+    "text": "Valor presente"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "terminalValueLabel",
+    "text": "Terminal Value"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "terminalValueLabel",
+    "text": "Терминальная стоимость"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "terminalValueLabel",
+    "text": "Valor terminal"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "fairPriceFormula",
+    "text": "Fair Price = (Enterprise Value + Net Debt) / Shares Outstanding"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "fairPriceFormula",
+    "text": "Справедливая цена = (стоимость компании + чистый долг) / акции в обращении"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "fairPriceFormula",
+    "text": "Precio justo = (valor empresarial + deuda neta) / acciones en circulación"
   }
 ]

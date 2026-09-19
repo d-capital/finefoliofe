@@ -203,6 +203,7 @@ export class ValuateComponent implements OnInit {
   dcfValuationResult!: string;
   dcfValuationPercentage!: number;
   dcfValuationLoaded: boolean = false;
+  dcfValuationUnavailable: boolean = false;
 
   dcfError:boolean = false;
 
@@ -287,6 +288,16 @@ export class ValuateComponent implements OnInit {
   marketValueOfDebtFormulaApplied:string = "";
   interestExpenseLabel:string = "";
   numberOfYearsLabel:string = "";
+  dcfPresentValueExplanation: string = "";
+  dcfTerminalValueExplanation: string = "";
+  dcfPresentValueTerminalExplanation: string = "";
+  dcfEnterpriseValueExplanation: string = "";
+  projectedFcfLabel: string = "";
+  yearLabel: string = "";
+  projectedValueLabel: string = "";
+  presentValueLabel: string = "";
+  terminalValueLabel: string = "";
+  fairPriceFormula: string = "";
 
   noNetProfitHistory:{ year: string; value: string }[] = []
 
@@ -631,6 +642,16 @@ export class ValuateComponent implements OnInit {
     this.marketValueOfDebtFormula = this.getLabel('marketValueOfDebtFormula',this.marketValueOfDebtFormula);
     this.interestExpenseLabel = this.getLabel('interestExpenseLabel',this.interestExpenseLabel);
     this.numberOfYearsLabel = this.getLabel('numberOfYearsLabel',this.numberOfYearsLabel);
+    this.dcfPresentValueExplanation = this.getLabel('dcfPresentValueExplanation', this.dcfPresentValueExplanation);
+    this.dcfTerminalValueExplanation = this.getLabel('dcfTerminalValueExplanation', this.dcfTerminalValueExplanation);
+    this.dcfPresentValueTerminalExplanation = this.getLabel('dcfPresentValueTerminalExplanation', this.dcfPresentValueTerminalExplanation);
+    this.dcfEnterpriseValueExplanation = this.getLabel('dcfEnterpriseValueExplanation', this.dcfEnterpriseValueExplanation);
+    this.projectedFcfLabel = this.getLabel('projectedFcfLabel', this.projectedFcfLabel);
+    this.yearLabel = this.getLabel('yearLabel', this.yearLabel);
+    this.projectedValueLabel = this.getLabel('projectedValueLabel', this.projectedValueLabel);
+    this.presentValueLabel = this.getLabel('presentValueLabel', this.presentValueLabel);
+    this.terminalValueLabel = this.getLabel('terminalValueLabel', this.terminalValueLabel);
+    this.fairPriceFormula = this.getLabel('fairPriceFormula', this.fairPriceFormula);
 
     if (this.exchange === 'MOEX') {
       this.datapoints = [
@@ -674,12 +695,34 @@ export class ValuateComponent implements OnInit {
     }
   }
 
-  dcfValue(value: number | null | undefined): string {
-    return value === null || value === undefined ? this.naText : value.toFixed(2);
+  dcfValue(value: number | string | null | undefined): string {
+    const numericValue = typeof value === 'string' ? Number(value) : value;
+    return numericValue === null || numericValue === undefined || !Number.isFinite(numericValue) || numericValue === 0
+      ? this.naText
+      : numericValue.toFixed(2);
   }
 
-  dcfPercent(value: number | null | undefined): string {
-    return value === null || value === undefined ? this.naText : `${value.toFixed(2)}%`;
+  dcfPercent(value: number | string | null | undefined): string {
+    const numericValue = typeof value === 'string' ? Number(value) : value;
+    return numericValue === null || numericValue === undefined || !Number.isFinite(numericValue) || numericValue === 0
+      ? this.naText
+      : `${numericValue.toFixed(2)}%`;
+  }
+
+  private hasUnavailableDcfValue(value: unknown): boolean {
+    if (value === null || value === undefined) {
+      return true;
+    }
+    if (typeof value === 'number') {
+      return value === 0;
+    }
+    if (Array.isArray(value)) {
+      return value.some(item => this.hasUnavailableDcfValue(item));
+    }
+    if (typeof value === 'object') {
+      return Object.values(value).some(item => this.hasUnavailableDcfValue(item));
+    }
+    return false;
   }
 
   mathRounding(value: number): string {
@@ -694,8 +737,11 @@ export class ValuateComponent implements OnInit {
   getDcfValuation() {
     this.ValuationServiceApi.getDcfValuation(this.ticker, this.exchange, this.pageLanguage).pipe().subscribe(data => {
       this.dcfResult = data;
-      this.dcfValuation = this.dcfResult.fairValue;
-      if (this.dcfValuation !== null && this.dcfValuation > this.stockInfo.price) {
+      this.dcfValuationUnavailable = this.hasUnavailableDcfValue(this.dcfResult);
+      this.dcfValuation = this.dcfResult.fairValue === null || this.dcfResult.fairValue === undefined
+        ? this.dcfResult.fairValue
+        : Math.max(0, this.dcfResult.fairValue);
+      if (!this.dcfValuationUnavailable && this.dcfValuation !== null && this.dcfValuation > this.stockInfo.price) {
         this.dcfValuationLoaded = true;
         this.dcfValuationResult = "Undervalued";
         this.dcfValuationPercentage = parseFloat(this.round(((this.dcfValuation - this.stockInfo.price) / this.stockInfo.price) * 100, "noexchange"));
@@ -706,7 +752,7 @@ export class ValuateComponent implements OnInit {
         }else{
           this.undervaluedExplanationDcf = `According to Discounted Cash Flow (DCF) model this stock is undervalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have growth potential of ${this.dcfValuationPercentage}% with current price of ${this.stockInfo.price} and fair price calculated with DCF model of ${this.dcfValuation}.`;
         }
-      } else if (this.dcfValuation !== null && this.dcfValuation < this.stockInfo.price) {
+      } else if (!this.dcfValuationUnavailable && this.dcfValuation !== null && this.dcfValuation < this.stockInfo.price) {
         this.dcfValuationResult = "Overvalued";
         this.dcfValuationPercentage = parseFloat(this.round(((this.dcfValuation - this.stockInfo.price) / this.stockInfo.price) * 100, "noexchange"));
         if(this.pageLanguage === 'ru'){
@@ -717,9 +763,13 @@ export class ValuateComponent implements OnInit {
           this.overvaluedExplanationDcf = `According to Discounted Cash Flow (DCF) model this stock is overvalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have downside potential of ${this.dcfValuationPercentage}% with current price of ${this.stockInfo.price} and fair price calculated with DCF model of ${this.dcfValuation}.`;
         }
       }
+      if (this.dcfValuationPercentage === 0) {
+        this.dcfValuationUnavailable = true;
+        this.dcfValuationResult = '';
+      }
       if (this.dcfValuation !== null){
-        this.costOfEquityFormulaApplied = `${this.dcfResult.capm} = ${this.dcfResult.riskFreeRate} + ${this.dcfResult.beta} * (${this.dcfResult.marketRate} - ${this.dcfResult.riskFreeRate})`;
-        this.marketValueOfDebtFormulaApplied =`${this.dcfResult.marketValueOfDebt} = ${this.stockInfo.interestExpense} *((1-(1+${this.dcfResult.interestRateOnDebt}^-3))/${this.dcfResult.interestRateOnDebt})+ (${this.dcfResult.debt}/(1 + ${this.dcfResult.interestRateOnDebt})^3)`;
+        this.costOfEquityFormulaApplied = `${this.dcfValue(this.dcfResult.capm)} = ${this.dcfValue(this.dcfResult.riskFreeRate)} + ${this.dcfValue(this.dcfResult.beta)} * (${this.dcfValue(this.dcfResult.marketRate)} - ${this.dcfValue(this.dcfResult.riskFreeRate)})`;
+        this.marketValueOfDebtFormulaApplied =`${this.dcfValue(this.dcfResult.marketValueOfDebt)} = ${this.dcfValue(this.stockInfo.interestExpense)} *((1-(1+${this.dcfValue(this.dcfResult.interestRateOnDebt)})^-3)/${this.dcfValue(this.dcfResult.interestRateOnDebt)})+ (${this.dcfValue(this.dcfResult.debt)}/(1 + ${this.dcfValue(this.dcfResult.interestRateOnDebt)})^3)`;
       }
       this.dcfValuationLoaded = true;
     },

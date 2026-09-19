@@ -344,45 +344,53 @@
               <strong>{{ resultLabel }}</strong>
             </h2>
             <div>
-              <div *ngIf="dcfValuationResult === 'Undervalued'">
+              <div *ngIf="!dcfValuationUnavailable && dcfValuationResult === 'Undervalued'">
                 <app-stock-card [value]="dcfValuationPercentage" label="{{upsidePotentialLabel}}" color="green">
                 </app-stock-card>
               </div>
-              <div *ngIf="dcfValuationResult === 'Overvalued'">
+              <div *ngIf="!dcfValuationUnavailable && dcfValuationResult === 'Overvalued'">
                 <app-stock-card [value]="dcfValuationPercentage" label="{{downsidePotentialLabel}}" color="red">
+                </app-stock-card>
+              </div>
+              <div *ngIf="dcfValuationUnavailable">
+                <app-stock-card [value]="0" color="green">
                 </app-stock-card>
               </div>
             </div>
             <h3>
-              <span *ngIf="dcfValuationResult === 'Undervalued'" class="undervalued">
+              <span *ngIf="!dcfValuationUnavailable && dcfValuationResult === 'Undervalued'" class="undervalued">
                 {{ undervaluedLabel }}
               </span>
-              <span *ngIf="dcfValuationResult === 'Overvalued'" class="overvalued">
+              <span *ngIf="!dcfValuationUnavailable && dcfValuationResult === 'Overvalued'" class="overvalued">
                 {{ overvaluedLabel }}
+              </span>
+              <span *ngIf="dcfValuationUnavailable" style="color: gray;">
+                {{ noValuationLabel }}
               </span>
             </h3>
             <p>
-              <span *ngIf="dcfValuation && dcfValuationResult === 'Undervalued'">
+              <span *ngIf="!dcfValuationUnavailable && dcfValuationResult === 'Undervalued'">
                 {{ undervaluedExplanationDcf }}
               </span>
-              <span *ngIf="dcfValuation && dcfValuationResult === 'Overvalued'">
+              <span *ngIf="!dcfValuationUnavailable && dcfValuationResult === 'Overvalued'">
                 {{ overvaluedExplanationDcf }}
               </span>
-              <span *ngIf="dcfValuation === null || dcfValuation === undefined">
+              <span *ngIf="dcfValuationUnavailable">
                 {{ noValuationExplanationDcf }}
               </span>
             </p>
             <h2>{{ fairPriceLabel }}</h2>
-            <div *ngIf="dcfValuation">
+            <div *ngIf="!dcfValuationUnavailable && dcfValuation !== null && dcfValuation !== undefined">
               <p class="h1-style" *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(dcfValuation) }}</p>
               <p class="h1-style" *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(dcfValuation) }}</p>
             </div>
+            <p class="h1-style" *ngIf="dcfValuationUnavailable">{{ naText }}</p>
           </section>
         </div>
         <div *ngIf="dcfValuationLoaded && !dcfError && dcfResult">
           <section class="card valuate-section">
             <h2>{{ capmLabel }}</h2>
-            <!--h3>{{ capmExplationtionLabel }}</h3-->
+            <h1>{{ dcfPercent(dcfResult.capm * 100) }}</h1>
             <p>{{ capmExplanation }}</p>
             <p>{{ costOfEquityFormula }}</p>
             <p>{{ costOfEquityFormulaApplied }}</p>
@@ -399,6 +407,7 @@
 
           <section class="card valuate-section">
             <h2>{{ marketValueOfDebtLabel }}</h2>
+            <h1>{{ dcfValue(dcfResult.marketValueOfDebt) }}</h1>
             <p>{{ marketValueOfDebtFormula }}<p>
             <p>{{ marketValueOfDebtFormulaApplied }}<p>
             <h3>{{ debtLabel }}</h3>
@@ -414,7 +423,7 @@
           <section class="card valuate-section">
             <h2>{{ waccLabel }}</h2>
             <h1>{{ dcfValue(dcfResult.wacc*100) }}%</h1>
-            <p>WACC = (Equity / (Equity + Debt)) * Cost Of Equity + (Debt / (Equity + Debt)) * Interest Rate on Debt * (1 - Tax Rate)</p>
+            <p>{{ waccFormula }}</p>
             <h3>{{ equityLabel }}</h3>
             <p>{{ dcfValue(dcfResult.equity) }}</p>
             <h3>{{ debtLabel }}</h3>
@@ -451,18 +460,18 @@
 
           <section class="card valuate-section">
             <h2>{{ dcfLabel }}</h2>
-            <p>Present Value Of Projected Free Cash Flow = Free Cash Flow / (1 + WACC)^t, where t is sequential period number (1,2,3)</p>
-            <p>Terminal Value = Projected Free Cash Flow of Last Project Period * (1 + Terminal Growth) / (WACC - Terminal Growth), where Terminal Growth is GDP Growth Rate y/y of a given country.</p>
-            <p>Present Value Of Terminal Value = Terminal Value / (1 + WACC)^3, where 3 is number of project periods</p>
-            <p>Enterprise Value = SUM(Present Value Of Projected Free Cash Flow) + Present Value Of Terminal Value</p>
-            <h3>Projected FCF</h3>
+            <p>{{ dcfPresentValueExplanation }}</p>
+            <p>{{ dcfTerminalValueExplanation }}</p>
+            <p>{{ dcfPresentValueTerminalExplanation }}</p>
+            <p>{{ dcfEnterpriseValueExplanation }}</p>
+            <h3>{{ projectedFcfLabel }}</h3>
             <div class="table-wrapper" *ngIf="dcfResult.projections.length">
               <table class="financial-table">
                 <thead>
                   <tr>
-                    <th>Year</th>
-                    <th>Projected Value</th>
-                    <th>Present Value</th>
+                    <th>{{ yearLabel }}</th>
+                    <th>{{ projectedValueLabel }}</th>
+                    <th>{{ presentValueLabel }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -472,7 +481,7 @@
                     <td>{{ dcfValue(projection.presentValue) }}</td>
                   </tr>
                   <tr>
-                    <td>Terminal Value</td>
+                    <td>{{ terminalValueLabel }}</td>
                     <td>{{ dcfValue(dcfResult.terminalValue) }}</td>
                     <td>{{ dcfValue(dcfResult.presentValueOfTerminalValue) }}</td>
                   </tr>
@@ -483,13 +492,13 @@
                 </tbody>
               </table>
             </div>
-            <p>Fair Price = (Enterprise Value + Net Debt) / Shares Outsanding <p>
+            <p>{{ fairPriceFormula }}<p>
             <h3>{{ netDebtLabel }}</h3>
             <p>{{ dcfValue(dcfResult.netDebt) }}</p>
             <h3>{{ sharesOutstandingLabel }}</h3>
             <p>{{ dcfValue(dcfResult.sharesOutstanding) }}</p>
             <h3>{{ fairValueLabel }}</h3>
-            <p>{{ dcfValue(dcfResult.fairValue) }}</p>
+            <p>{{ dcfValuationUnavailable ? naText : uiRounding(dcfValuation) }}</p>
           </section>
         </div>
         <div>
