@@ -21,14 +21,14 @@ export class ValuationService {
 
     if (isPlatformServer(this.platformId)) {
       //prod
-      this.getValuationUrl = 'http://finefolionet:8080/valuation/'; 
+      //this.getValuationUrl = 'http://finefolionet:8080/valuation/'; 
       //local
-      //this.getValuationUrl = 'http://localhost:5000/valuation/';
+      this.getValuationUrl = 'http://localhost:64663/valuation/';
     } else {
       //prod
-      this.getValuationUrl = 'https://valestor.com/api/valuation/';
+      //this.getValuationUrl = 'https://valestor.com/api/valuation/';
       //local
-      //this.getValuationUrl = 'http://localhost:5000/valuation/en/';
+      this.getValuationUrl = 'http://localhost:64663/valuation/';
     }
   }
 
@@ -39,11 +39,11 @@ export class ValuationService {
     return this.http.get(this.getValuationUrl+language+"/"+exchange+"/"+ticker,
       {headers: headers}).pipe(catchError(this.erroHandler));
   }
-  public getDcfValuation(ticker:string, exchange: string): Observable<any>{
+  public getDcfValuation(ticker:string, exchange: string, language:string): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    return this.http.get(this.getValuationUrl+"dcf/"+exchange+"/"+ticker,
+    return this.http.get(this.getValuationUrl+"dcf/"+language+"/"+exchange+"/"+ticker,
       {headers: headers}).pipe(catchError(this.erroHandler));
   }
   erroHandler(error: HttpErrorResponse) {

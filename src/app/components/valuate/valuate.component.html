@@ -335,6 +335,184 @@
         </div>
       </app-tab>
 
+      <app-tab title="{{discountedCashFlowTabLabel}}" name="dcf_valuation">
+        <div *ngIf="!dcfValuationLoaded" class="loader"></div>
+        <div *ngIf="dcfError">{{noValuationData}}</div>
+        <div *ngIf="dcfValuationLoaded && !dcfError">
+          <section class="top-card valuate-section">
+            <h2>
+              <strong>{{ resultLabel }}</strong>
+            </h2>
+            <div>
+              <div *ngIf="dcfValuationResult === 'Undervalued'">
+                <app-stock-card [value]="dcfValuationPercentage" label="{{upsidePotentialLabel}}" color="green">
+                </app-stock-card>
+              </div>
+              <div *ngIf="dcfValuationResult === 'Overvalued'">
+                <app-stock-card [value]="dcfValuationPercentage" label="{{downsidePotentialLabel}}" color="red">
+                </app-stock-card>
+              </div>
+            </div>
+            <h3>
+              <span *ngIf="dcfValuationResult === 'Undervalued'" class="undervalued">
+                {{ undervaluedLabel }}
+              </span>
+              <span *ngIf="dcfValuationResult === 'Overvalued'" class="overvalued">
+                {{ overvaluedLabel }}
+              </span>
+            </h3>
+            <p>
+              <span *ngIf="dcfValuation && dcfValuationResult === 'Undervalued'">
+                {{ undervaluedExplanationDcf }}
+              </span>
+              <span *ngIf="dcfValuation && dcfValuationResult === 'Overvalued'">
+                {{ overvaluedExplanationDcf }}
+              </span>
+              <span *ngIf="dcfValuation === null || dcfValuation === undefined">
+                {{ noValuationExplanationDcf }}
+              </span>
+            </p>
+            <h2>{{ fairPriceLabel }}</h2>
+            <div *ngIf="dcfValuation">
+              <p class="h1-style" *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(dcfValuation) }}</p>
+              <p class="h1-style" *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(dcfValuation) }}</p>
+            </div>
+          </section>
+        </div>
+        <div *ngIf="dcfValuationLoaded && !dcfError && dcfResult">
+          <section class="card valuate-section">
+            <h2>{{ capmLabel }}</h2>
+            <!--h3>{{ capmExplationtionLabel }}</h3-->
+            <p>{{ capmExplanation }}</p>
+            <p>{{ costOfEquityFormula }}</p>
+            <p>{{ costOfEquityFormulaApplied }}</p>
+            <h3>{{ betaLabel }}</h3>
+            <p>{{ dcfValue(dcfResult.beta) }}</p>
+            <p>{{ betaExplanation }}</p>
+            <h3>{{ riskFreeRateLabel }}</h3>
+            <p>{{ dcfPercent(dcfResult.riskFreeRate) }}</p>
+            <p>{{ riskFreeRateExplanationLabel }}</p>
+            <h3>{{ marketRateLabel }}</h3>
+            <p>{{ dcfPercent(dcfResult.marketRate) }}</p>
+            <p>{{ marketRateExplanation }}</p>
+          </section>
+
+          <section class="card valuate-section">
+            <h2>{{ marketValueOfDebtLabel }}</h2>
+            <p>{{ marketValueOfDebtFormula }}<p>
+            <p>{{ marketValueOfDebtFormulaApplied }}<p>
+            <h3>{{ debtLabel }}</h3>
+            <p>{{ dcfValue(dcfResult.debt) }}</p>
+            <h3>{{ interestExpenseLabel }}</h3>
+            <p>{{ dcfValue(stockInfo.interestExpense) }}</p>
+            <h3>{{ interestRateOnDebtLabel }}</h3>
+            <p>{{  dcfValue(dcfResult.interestRateOnDebt) }}</p>
+            <h3>{{ numberOfYearsLabel }}</h3>
+            <p>3</p>
+          </section>
+
+          <section class="card valuate-section">
+            <h2>{{ waccLabel }}</h2>
+            <h1>{{ dcfValue(dcfResult.wacc*100) }}%</h1>
+            <p>WACC = (Equity / (Equity + Debt)) * Cost Of Equity + (Debt / (Equity + Debt)) * Interest Rate on Debt * (1 - Tax Rate)</p>
+            <h3>{{ equityLabel }}</h3>
+            <p>{{ dcfValue(dcfResult.equity) }}</p>
+            <h3>{{ debtLabel }}</h3>
+            <p>{{ dcfValue(dcfResult.debt) }}</p>
+            <h3>{{ interestRateOnDebtLabel }}</h3>
+            <p>{{  dcfValue(dcfResult.interestRateOnDebt) }}</p>
+            <h3>{{ capmLabel }}</h3>
+            <p>{{ dcfValue(dcfResult.capm) }}</p> 
+          </section>
+
+          <!--section class="card valuate-section">
+            <h2>{{ taxRateLabel }}</h2>
+            <h3>{{ taxRateLabel }}</h3>
+            <p>{{ dcfPercent(dcfResult.taxRate) }}</p>
+          </section>
+
+          <section class="card valuate-section">
+            <h2>{{ interestRateOnDebtLabel }}</h2>
+            <h3>{{ interestRateOnDebtLabel }}</h3>
+            <p>{{ dcfPercent(dcfResult.interestRateOnDebt) }}</p>
+          </section>
+
+          <section class="card valuate-section">
+            <h2>{{ averageGrowthRateLabel }}</h2>
+            <h3>{{ averageGrowthRateLabel }}</h3>
+            <p>{{ dcfPercent(dcfResult.averageGrowthRate) }}</p>
+          </section>
+
+          <section class="card valuate-section">
+            <h2>{{ terminalGrowthRateLabel }}</h2>
+            <h3>{{ terminalGrowthRateLabel }}</h3>
+            <p>{{ dcfPercent(dcfResult.terminalGrowthRate) }}</p>
+          </section-->
+
+          <section class="card valuate-section">
+            <h2>{{ dcfLabel }}</h2>
+            <p>Present Value Of Projected Free Cash Flow = Free Cash Flow / (1 + WACC)^t, where t is sequential period number (1,2,3)</p>
+            <p>Terminal Value = Projected Free Cash Flow of Last Project Period * (1 + Terminal Growth) / (WACC - Terminal Growth), where Terminal Growth is GDP Growth Rate y/y of a given country.</p>
+            <p>Present Value Of Terminal Value = Terminal Value / (1 + WACC)^3, where 3 is number of project periods</p>
+            <p>Enterprise Value = SUM(Present Value Of Projected Free Cash Flow) + Present Value Of Terminal Value</p>
+            <h3>Projected FCF</h3>
+            <div class="table-wrapper" *ngIf="dcfResult.projections.length">
+              <table class="financial-table">
+                <thead>
+                  <tr>
+                    <th>Year</th>
+                    <th>Projected Value</th>
+                    <th>Present Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let projection of dcfResult.projections">
+                    <td>{{ projection.year }}</td>
+                    <td>{{ dcfValue(projection.projectedFcf) }}</td>
+                    <td>{{ dcfValue(projection.presentValue) }}</td>
+                  </tr>
+                  <tr>
+                    <td>Terminal Value</td>
+                    <td>{{ dcfValue(dcfResult.terminalValue) }}</td>
+                    <td>{{ dcfValue(dcfResult.presentValueOfTerminalValue) }}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">{{ enterpriseValueLabel }}</td>
+                    <td>{{dcfValue(dcfResult.enterpriseValue)}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Fair Price = (Enterprise Value + Net Debt) / Shares Outsanding <p>
+            <h3>{{ netDebtLabel }}</h3>
+            <p>{{ dcfValue(dcfResult.netDebt) }}</p>
+            <h3>{{ sharesOutstandingLabel }}</h3>
+            <p>{{ dcfValue(dcfResult.sharesOutstanding) }}</p>
+            <h3>{{ fairValueLabel }}</h3>
+            <p>{{ dcfValue(dcfResult.fairValue) }}</p>
+          </section>
+        </div>
+        <div>
+          <h2>{{ dcfValuationMethodologyLabel }}</h2>
+          <p>{{ dcfMethodologyExplanation }}</p>
+          <h3>{{ costOfCapitalLabel }}</h3>
+          <p>{{ costOfEquityExplanation }}</p>
+          <p style="text-align:center;">
+            <strong>{{ costOfEquityFormula }}</strong>
+          </p>
+          <p>{{ betaMethodologyExplanation }}</p>
+          <p>{{ debtMarketValueExplanation }}</p>
+          <p>{{ waccExplanation }}</p>
+          <p style="text-align:center;">
+            <strong>{{ waccFormula }}</strong>
+          </p>
+          <h3>{{ cashFlowProjectionValuationLabel }}</h3>
+          <p>{{ fcfProjectionExplanation }}</p>
+          <p>{{ terminalValueExplanation }}</p>
+          <p>{{ enterpriseValueExplanation }}</p>
+        </div>
+      </app-tab>
+
       <app-tab title="{{stockInformationLabel}}" name="overview">
         <!-- Public stock data -->
         <section class="top-card valuate-section">
@@ -387,130 +565,7 @@
           </div>
         </section>
       </app-tab>
-      <!--app-tab title="DCF" name="dcf_valuation">
-        <div *ngIf="!dcfValuationLoaded" class="loader"></div>
-        <div *ngIf="dcfError">{{noValuationData}}</div>
-        <div *ngIf="dcfValuationLoaded && !dcfError">
-          <h2>
-            <strong>{{ resultLabel }}</strong>
-          </h2>
-          <p style="h1-style">
-            <div *ngIf="dcfValuationResult === 'Undervalued'">
-              <app-stock-card [value]="dcfValuationPercentage" label="{{upsidePotentialLabel}}" color="green">
-              </app-stock-card>
-            </div>
-            <div *ngIf="dcfValuationResult === 'Overvalued'">
-              <app-stock-card [value]="dcfValuationPercentage" label="{{downsidePotentialLabel}}" color="red">
-              </app-stock-card>
-            </div>
-          </p>
-          <h3>
-            <span *ngIf="dcfValuationResult === 'Undervalued'" class="undervalued">
-              {{ undervaluedLabel }}
-            </span>
-            <span *ngIf="dcfValuationResult === 'Overvalued'" class="overvalued">
-              {{ overvaluedLabel }}
-            </span>
-          </h3>
-          <h2>{{ fairPriceLabel }}</h2>
-          <div *ngIf="dcfValuation">
-            <p *ngIf="stockInfo.exchange !== 'MOEX'">${{ uiRounding(dcfValuation) }}</p>
-            <p *ngIf="stockInfo.exchange === 'MOEX'">₽{{ uiRounding(dcfValuation) }}</p>
-          </div>
-        </div>
-        <div *ngIf="pageLanguage == 'en'">
-          <h2>DCF Valuation Methodology</h2>
-          <p>
-            I value companies using a Discounted Cash Flow (DCF) model based on projected Free Cash Flow (FCF)
-            discounted by the Weighted Average Cost of Capital (WACC).
-          </p>
-          <h3>Cost of Capital</h3>
-          <p>
-            The cost of equity is calculated using the Capital Asset Pricing Model (CAPM):
-          </p>
-          <p style="text-align:center;">
-            <strong>Cost of Equity = Risk-Free Rate + β × (Market Return − Risk-Free Rate)</strong>
-          </p>
-          <p>
-            Beta is estimated via linear regression of the company’s daily log returns against the market index
-            over the last three years (S&amp;P 500 for the US market, IMOEX for Russia).
-          </p>
-          <p>
-            The market value of debt is estimated by treating debt as a bond and discounting interest payments
-            and principal at the market cost of debt.
-          </p>
-          <p>
-            WACC is calculated using market values of equity and debt, with tax shield applied to debt:
-          </p>
-          <p style="text-align:center;">
-            <strong>
-              WACC = E / (E + D) × Re + D / (E + D) × Rd × (1 − Tax)
-            </strong>
-          </p>
-          <h3>Cash Flow Projection and Valuation</h3>
-          <p>
-            FCF is projected from the latest reported value using a constant growth rate over the forecast period.
-            Each projected cash flow is discounted using WACC.
-          </p>
-          <p>
-            Terminal value is calculated using the Gordon Growth Model with a conservative long-term growth rate
-            aligned with expected GDP growth.
-          </p>
-          <p>
-            Enterprise value equals the sum of discounted projected FCFs and discounted terminal value.
-            Equity value is derived by adjusting for net debt and divided by shares outstanding
-            to obtain the fair value per share.
-          </p>
-        </div>
-        <div *ngIf="pageLanguage == 'ru'">
-          <h2>Методология оценки DCF</h2>
-          <p>
-            Оценка компании проводится с использованием метода дисконтированных денежных потоков (DCF),
-            основанного на прогнозе свободного денежного потока (FCF) и его дисконтировании
-            по средневзвешенной стоимости капитала (WACC).
-          </p>
-          <h3>Стоимость капитала</h3>
-          <p>
-            Стоимость собственного капитала рассчитывается по модели CAPM:
-          </p>
-          <p style="text-align:center;">
-            <strong>Стоимость капитала = Безрисковая ставка + β × (Рыночная доходность − Безрисковая ставка)</strong>
-          </p>
-          <p>
-            Коэффициент β оценивается с помощью линейной регрессии дневных логарифмических доходностей акции
-            относительно рыночного индекса за последние три года
-            (S&amp;P 500 для США, IMOEX для российского рынка).
-          </p>
-          <p>
-            Рыночная стоимость долга оценивается как приведённая стоимость процентных платежей
-            и номинала долга, дисконтированных по рыночной стоимости долга.
-          </p>
-          <p>
-            WACC рассчитывается на основе рыночных значений собственного капитала и долга
-            с учётом налогового щита:
-          </p>
-          <p style="text-align:center;">
-            <strong>
-              WACC = E / (E + D) × Re + D / (E + D) × Rd × (1 − Tax)
-            </strong>
-          </p>
-          <h3>Прогноз денежных потоков и оценка</h3>
-          <p>
-            Свободный денежный поток прогнозируется от последнего фактического значения
-            с использованием постоянного темпа роста.
-            Все прогнозные денежные потоки дисконтируются по ставке WACC.
-          </p>
-          <p>
-            Терминальная стоимость рассчитывается по модели постоянного роста
-            с консервативным долгосрочным темпом, соответствующим росту экономики.
-          </p>
-          <p>
-            Стоимость компании (Enterprise Value) определяется как сумма дисконтированных FCF
-            и терминальной стоимости. Стоимость собственного капитала корректируется на чистый долг
-            и делится на количество акций в обращении для получения справедливой цены акции.
-          </p>
-        </div>
-      </app-tab-->
+      
     </app-tabs>
   </div>
 </ng-container>

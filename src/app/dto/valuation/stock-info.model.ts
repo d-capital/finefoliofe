@@ -14,4 +14,5 @@ export interface StockInfo {
   dividendYield: number;
   freeCashFlow: number;
   debtToEquity: number;
+  interestExpense: number;
 }

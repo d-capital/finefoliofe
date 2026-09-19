@@ -219,19 +219,37 @@
     "language": "en",
     "component": "valuate",
     "label": "valuationOverviewLabel",
-    "text": "Valuation"
+    "text": "Peter Lynch Valuation"
   },
   {
     "language": "ru",
     "component": "valuate",
     "label": "valuationOverviewLabel",
-    "text": "Оценка"
+    "text": "Оценка Питера Линча"
   },
   {
     "language": "es",
     "component": "valuate",
     "label": "valuationOverviewLabel",
-    "text": "Valoración"
+    "text": "Valoración de Peter Lynch"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "discountedCashFlowTabLabel",
+    "text": "Discounted Cash Flow Model"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "discountedCashFlowTabLabel",
+    "text": "Модель Дисконтированных Денежных Потоков"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "discountedCashFlowTabLabel",
+    "text": "Modelo de Flujo de Efectivo Descontado"
   },
   {
     "language": "en",
@@ -1060,5 +1078,707 @@
     "component": "valuate",
     "label": "noFairPriceExplanation",
     "text": "El precio justo de las acciones de COMPANY_NAME (TICKER_ON_PAGE) no se puede calcular según la fórmula de Peter Lynch debido a que las ganancias por acción de los últimos doce meses (EPS TTM) son negativas o faltan, y/o la tasa de crecimiento de los ingresos netos es menor durante 5 años."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "capmLabel",
+    "text": "Cost Of Equity - Capital Asset Pricing Model (CAPM)"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "capmLabel",
+    "text": "Стоимость собственного капитала - Модель Оценки Финансовых Активов (СAPM)"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "capmLabel",
+    "text": "Coste del capital propio - Modelo de Valoración de Activos Financieros (CAPM)"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "betaLabel",
+    "text": "Beta Coefficient (β)"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "betaLabel",
+    "text": "Коэффициент Бета (β)"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "betaLabel",
+    "text": "Coeficiente Beta (β)"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "waccLabel",
+    "text": "WACC"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "waccLabel",
+    "text": "WACC"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "waccLabel",
+    "text": "WACC"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "equityLabel",
+    "text": "Equity"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "equityLabel",
+    "text": "Собственный капитал"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "equityLabel",
+    "text": "Patrimonio"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "debtLabel",
+    "text": "Debt"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "debtLabel",
+    "text": "Долг"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "debtLabel",
+    "text": "Deuda"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "taxRateLabel",
+    "text": "Tax Rate"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "taxRateLabel",
+    "text": "Налоговая ставка"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "taxRateLabel",
+    "text": "Tasa impositiva"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "interestRateOnDebtLabel",
+    "text": "Interest Rate On Debt"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "interestRateOnDebtLabel",
+    "text": "Процентная ставка по долгу"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "interestRateOnDebtLabel",
+    "text": "Tasa de interés de la deuda"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "averageGrowthRateLabel",
+    "text": "Average Growth Rate"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "averageGrowthRateLabel",
+    "text": "Средний темп роста"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "averageGrowthRateLabel",
+    "text": "Tasa de crecimiento promedio"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "terminalGrowthRateLabel",
+    "text": "Terminal Growth Rate"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "terminalGrowthRateLabel",
+    "text": "Терминальный темп роста"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "terminalGrowthRateLabel",
+    "text": "Tasa de crecimiento terminal"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "dcfLabel",
+    "text": "Discounted Cash Flow Calculation"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "dcfLabel",
+    "text": "DCF"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "dcfLabel",
+    "text": "DCF"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "enterpriseValueLabel",
+    "text": "Enterprise Value"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "enterpriseValueLabel",
+    "text": "Стоимость компании"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "enterpriseValueLabel",
+    "text": "Valor empresarial"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "netDebtLabel",
+    "text": "Net Debt"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "netDebtLabel",
+    "text": "Чистый долг"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "netDebtLabel",
+    "text": "Deuda neta"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "sharesOutstandingLabel",
+    "text": "Shares Outstanding"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "sharesOutstandingLabel",
+    "text": "Акции в обращении"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "sharesOutstandingLabel",
+    "text": "Acciones en circulación"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "equityValueLabel",
+    "text": "Equity Value"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "equityValueLabel",
+    "text": "Стоимость собственного капитала"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "equityValueLabel",
+    "text": "Valor del patrimonio"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "fairValueLabel",
+    "text": "Fair Value"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "fairValueLabel",
+    "text": "Справедливая стоимость"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "fairValueLabel",
+    "text": "Valor razonable"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "dcfValuationMethodologyLabel",
+    "text": "DCF Valuation Methodology"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "dcfValuationMethodologyLabel",
+    "text": "Методология оценки DCF"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "dcfValuationMethodologyLabel",
+    "text": "Metodología de valoración DCF"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "costOfCapitalLabel",
+    "text": "Cost of Capital"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "costOfCapitalLabel",
+    "text": "Стоимость капитала"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "costOfCapitalLabel",
+    "text": "Costo de capital"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "cashFlowProjectionValuationLabel",
+    "text": "Cash Flow Projection and Valuation"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "cashFlowProjectionValuationLabel",
+    "text": "Прогноз денежных потоков и оценка"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "cashFlowProjectionValuationLabel",
+    "text": "Proyección de flujo de caja y valoración"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "dcfMethodologyExplanation",
+    "text": "I value companies using a Discounted Cash Flow (DCF) model based on projected Free Cash Flow (FCF) discounted by the Weighted Average Cost of Capital (WACC)."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "dcfMethodologyExplanation",
+    "text": "Оценка компании проводится с использованием метода дисконтированных денежных потоков (DCF), основанного на прогнозе свободного денежного потока (FCF) и его дисконтировании по средневзвешенной стоимости капитала (WACC)."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "dcfMethodologyExplanation",
+    "text": "Valoro las empresas mediante un modelo de flujo de caja descontado (DCF) basado en el flujo de caja libre (FCF) proyectado y descontado por el costo promedio ponderado del capital (WACC)."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "costOfEquityExplanation",
+    "text": "The cost of equity is calculated using the Capital Asset Pricing Model (CAPM):"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "costOfEquityExplanation",
+    "text": "Стоимость собственного капитала рассчитывается по модели CAPM:"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "costOfEquityExplanation",
+    "text": "El costo del patrimonio se calcula utilizando el modelo de valoración de activos financieros (CAPM):"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "betaMethodologyExplanation",
+    "text": "Beta is estimated via linear regression of the company’s daily log returns against the market index over the last three years (S&amp;P 500 for the US market, IMOEX for Russia)."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "betaMethodologyExplanation",
+    "text": "Коэффициент β оценивается с помощью линейной регрессии дневных логарифмических доходностей акции относительно рыночного индекса за последние три года (S&amp;P 500 для США, IMOEX для российского рынка)."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "betaMethodologyExplanation",
+    "text": "La beta se estima mediante una regresión lineal de los rendimientos logarítmicos diarios de la empresa frente al índice de mercado durante los últimos tres años (S&amp;P 500 para EE. UU., IMOEX para Rusia)."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "debtMarketValueExplanation",
+    "text": "The market value of debt is estimated by treating debt as a bond and discounting interest payments and principal at the market cost of debt."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "debtMarketValueExplanation",
+    "text": "Рыночная стоимость долга оценивается как приведённая стоимость процентных платежей и номинала долга, дисконтированных по рыночной стоимости долга."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "debtMarketValueExplanation",
+    "text": "El valor de mercado de la deuda se estima tratándola como un bono y descontando los pagos de intereses y el principal al costo de mercado de la deuda."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "waccExplanation",
+    "text": "WACC is calculated using market values of equity and debt, with tax shield applied to debt:"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "waccExplanation",
+    "text": "WACC рассчитывается на основе рыночных значений собственного капитала и долга с учётом налогового щита:"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "waccExplanation",
+    "text": "El WACC se calcula utilizando los valores de mercado del patrimonio y la deuda, aplicando el escudo fiscal a la deuda:"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "fcfProjectionExplanation",
+    "text": "FCF is projected from the latest reported value using a constant growth rate over the forecast period. Each projected cash flow is discounted using WACC."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "fcfProjectionExplanation",
+    "text": "Свободный денежный поток прогнозируется от последнего фактического значения с использованием постоянного темпа роста. Все прогнозные денежные потоки дисконтируются по ставке WACC."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "fcfProjectionExplanation",
+    "text": "El FCF se proyecta a partir del último valor reportado utilizando una tasa de crecimiento constante durante el período de pronóstico. Cada flujo de caja proyectado se descuenta utilizando el WACC."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "terminalValueExplanation",
+    "text": "Terminal value is calculated using the Gordon Growth Model with a conservative long-term growth rate aligned with expected GDP growth."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "terminalValueExplanation",
+    "text": "Терминальная стоимость рассчитывается по модели постоянного роста с консервативным долгосрочным темпом, соответствующим росту экономики."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "terminalValueExplanation",
+    "text": "El valor terminal se calcula utilizando el modelo de crecimiento de Gordon con una tasa de crecimiento a largo plazo conservadora, alineada con el crecimiento esperado del PIB."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "enterpriseValueExplanation",
+    "text": "Enterprise value equals the sum of discounted projected FCFs and discounted terminal value. Equity value is derived by adjusting for net debt and divided by shares outstanding to obtain the fair value per share."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "enterpriseValueExplanation",
+    "text": "Стоимость компании (Enterprise Value) определяется как сумма дисконтированных FCF и терминальной стоимости. Стоимость собственного капитала корректируется на чистый долг и делится на количество акций в обращении для получения справедливой цены акции."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "enterpriseValueExplanation",
+    "text": "El valor empresarial es igual a la suma de los FCF proyectados descontados y el valor terminal descontado. El valor del patrimonio se obtiene ajustando por la deuda neta y dividiéndolo por las acciones en circulación para obtener el valor razonable por acción."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "costOfEquityFormula",
+    "text": "Cost of Equity = Risk-Free Rate + β × (Market Return − Risk-Free Rate)"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "costOfEquityFormula",
+    "text": "Стоимость капитала = Безрисковая ставка + β × (Рыночная доходность − Безрисковая ставка)"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "costOfEquityFormula",
+    "text": "Costo del patrimonio = Tasa libre de riesgo + β × (Rentabilidad del mercado − Tasa libre de riesgo)"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "waccFormula",
+    "text": "WACC = E / (E + D) × Re + D / (E + D) × Rd × (1 − Tax)"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "waccFormula",
+    "text": "WACC = E / (E + D) × Re + D / (E + D) × Rd × (1 − Tax)"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "waccFormula",
+    "text": "WACC = E / (E + D) × Re + D / (E + D) × Rd × (1 − Impuesto)"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "riskFreeRateLabel",
+    "text": "Risk-Free Rate"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "riskFreeRateLabel",
+    "text": "Безрисковая ставка"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "riskFreeRateLabel",
+    "text": "Tasa libre de riesgo"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "marketRateLabel",
+    "text": "Market Rate"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "marketRateLabel",
+    "text": "Рыночная ставка"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "marketRateLabel",
+    "text": "Tasa de mercado"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "capmExplationtionLabel",
+    "text": "CAPM Explanation"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "capmExplationtionLabel",
+    "text": "Объяснение CAPM"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "capmExplationtionLabel",
+    "text": "Explicación del CAPM"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "betaExplanation",
+    "text": "Beta measures the sensitivity of a stock's returns to changes in the market."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "betaExplanation",
+    "text": "Бета измеряет чувствительность доходности акции к изменениям рынка."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "betaExplanation",
+    "text": "La beta mide la sensibilidad de la rentabilidad de una acción a los cambios del mercado."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "riskFreeRateExplanationLabel",
+    "text": "The expected return on an investment with no risk of financial loss."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "riskFreeRateExplanationLabel",
+    "text": "Ожидаемая доходность инвестиции без риска финансовых потерь."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "riskFreeRateExplanationLabel",
+    "text": "La rentabilidad esperada de una inversión sin riesgo de pérdida financiera."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "marketRateExplanation",
+    "text": "The expected return of the broad market used in the DCF model."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "marketRateExplanation",
+    "text": "Ожидаемая доходность широкого рынка, используемая в модели DCF."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "marketRateExplanation",
+    "text": "La rentabilidad esperada del mercado amplio utilizada en el modelo DCF."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "capmExplanation",
+    "text": "CAPM estimates the required return on equity from the risk-free rate, beta, and market risk premium."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "capmExplanation",
+    "text": "CAPM оценивает требуемую доходность собственного капитала на основе безрисковой ставки, беты и рыночной премии за риск."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "capmExplanation",
+    "text": "El CAPM estima la rentabilidad requerida del patrimonio a partir de la tasa libre de riesgo, la beta y la prima de riesgo del mercado."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "marketValueOfDebtLabel",
+    "text": "Market Value of Debt"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "marketValueOfDebtLabel",
+    "text": "Рыночная стоимость долга"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "marketValueOfDebtLabel",
+    "text": "Valor de mercado de la deuda"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "marketValueOfDebtFormula",
+    "text": "Market Value of Debt = Interest Expense * ((1 - (1 + Interest Rate on Debt)^-Number of Years)/Interest Rate on Debt) + Debt / (1 + Interest Rate on Debt)^Number Of Years"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "marketValueOfDebtFormula",
+    "text": "Рыночаная стоимость долга = Процентные расходы * ((1 - (1 + Процентная ставка долга)^-Кол-во лет)/Процентная ставка долга) + Долг / (1 + Процентная ставка долга)^Кол-во лет"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "marketValueOfDebtFormula",
+    "text": "Valor de mercado de la deuda = Gastos por intereses * ((1 - (1 + Tasa de interés de la deuda)^-Número de años) / Tasa de interés de la deuda) + Deuda / (1 + Tasa de interés de la deuda)^Número de años"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "interestExpenseLabel",
+    "text": "Interest Expense"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "interestExpenseLabel",
+    "text": "Расходы на обслуживание долга"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "interestExpenseLabel",
+    "text": "Gastos por intereses"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "numberOfYearsLabel",
+    "text": "Number of Years"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "numberOfYearsLabel",
+    "text": "Кол-во лет"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "numberOfYearsLabel",
+    "text": "Número de años"
   }
 ]

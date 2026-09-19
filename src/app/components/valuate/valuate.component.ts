@@ -3,6 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StockInfo } from '../../dto/valuation/stock-info.model';
+import { DcfResult } from '../../dto/valuation/dcf.model';
 import { ValuationResult } from '../../dto/valuation/valuation.model';
 import { ValuationService } from '../../services/valuation.service';
 import { ErrorStateComponent } from '../error-state/error-state.component';
@@ -38,6 +39,7 @@ export class ValuateComponent implements OnInit {
   private languageLabels: any[] = languageLabels;
   stockInfo!: StockInfo;
   valuation!: ValuationResult;
+  dcfResult!: DcfResult;
   isPreviousDayData!:boolean;
   loading: boolean = true;
   error: boolean = false;
@@ -89,9 +91,13 @@ export class ValuateComponent implements OnInit {
   valuationResultsLabelRu: string = "Резултат Оценки";
   valuationResultsLabelEs: string = "Resultado de la valoración";
 
-  valuationOverviewLabel: string = "Valuation";
-  valuationOverviewLabelRu: string = "Оценка";
-  valuationOverviewLabelEs: string = "Valoración";
+  valuationOverviewLabel: string = "Peter Lynch Valuation";
+  valuationOverviewLabelRu: string = "Оценка Питера Линча";
+  valuationOverviewLabelEs: string = "Valoración de Peter Lynch";
+
+  discountedCashFlowTabLabel: string = "Discounted Cash Flow Model";
+  discountedCashFlowTabLabelRu: string = "Модель Дисконтированных Денежных Потоков";
+  discountedCashFlowTabLabelEs: string = "Modelo de Flujo de Efectivo Descontado";
 
   downsidePotentialLabel: string = "Downside potential";
   downsidePotentialLabelRu: string = "Потенциал снижения";
@@ -233,6 +239,54 @@ export class ValuateComponent implements OnInit {
   legalText:string = '*is recognized as extremist, forbidden on the territory of Russian Federation.';
   legalTextRu: string = '*признана экстремистской, запрещена на территории РФ.';
   legalTextEs: string = '*es reconocida como extremista, prohibida en el territorio de la Federación Rusa.'
+
+  ///DCF
+  overvaluedExplanationDcf: string = "";
+  undervaluedExplanationDcf: string = "";
+  noValuationExplanationDcf: string = "";
+
+  capmLabel:string = "";
+  betaLabel:string = "";
+  betaExplanation:string = "";
+  riskFreeRateLabel:string = "";
+  riskFreeRateExplanationLabel:string = "";
+  marketRateLabel:string = "";
+  marketRateExplanation:string = "";
+  capmExplationtionLabel:string = "";
+  capmExplanation:string = "";
+
+  waccLabel: string = "";
+  equityLabel: string = "";
+  debtLabel: string = "";
+  taxRateLabel: string = "";
+  interestRateOnDebtLabel: string = "";
+  averageGrowthRateLabel: string = "";
+  terminalGrowthRateLabel: string = "";
+  dcfLabel: string = "";
+  enterpriseValueLabel: string = "";
+  netDebtLabel: string = "";
+  sharesOutstandingLabel: string = "";
+  equityValueLabel: string = "";
+  fairValueLabel: string = "";
+  dcfValuationMethodologyLabel: string = "";
+  costOfCapitalLabel: string = "";
+  cashFlowProjectionValuationLabel: string = "";
+  dcfMethodologyExplanation: string = "";
+  costOfEquityExplanation: string = "";
+  betaMethodologyExplanation: string = "";
+  debtMarketValueExplanation: string = "";
+  waccExplanation: string = "";
+  fcfProjectionExplanation: string = "";
+  terminalValueExplanation: string = "";
+  enterpriseValueExplanation: string = "";
+  costOfEquityFormula: string = "";
+  waccFormula: string = "";
+  costOfEquityFormulaApplied: string = "";
+  marketValueOfDebtLabel:string = "";
+  marketValueOfDebtFormula:string = "";
+  marketValueOfDebtFormulaApplied:string = "";
+  interestExpenseLabel:string = "";
+  numberOfYearsLabel:string = "";
 
   noNetProfitHistory:{ year: string; value: string }[] = []
 
@@ -491,6 +545,7 @@ export class ValuateComponent implements OnInit {
 
     this.valuationResultsLabel = this.getLabel('valuationResultsLabel', this.valuationResultsLabel);
     this.valuationOverviewLabel = this.getLabel('valuationOverviewLabel', this.valuationOverviewLabel);
+    this.discountedCashFlowTabLabel = this.getLabel('discountedCashFlowTabLabel', this.discountedCashFlowTabLabel);
     this.fairPriceLabel = this.getLabel('fairPriceLabel', this.fairPriceLabel);
     this.resultLabel = this.getLabel('resultLabel', this.resultLabel);
     this.formulaLabel = this.getLabel('formulaLabel', this.formulaLabel);
@@ -537,6 +592,46 @@ export class ValuateComponent implements OnInit {
     this.noFairPriceExplanation = this.getLabel('noFairPriceExplanation', this.noFairPriceExplanation);
     this.notEnoughDataNote = this.getLabel('notEnoughDataNote', this.notEnoughDataNote);
 
+    this.capmLabel = this.getLabel('capmLabel', this.capmLabel);
+    this.betaLabel = this.getLabel('betaLabel', this.betaLabel);
+    this.betaExplanation = this.getLabel('betaExplanation', this.betaExplanation);
+    this.riskFreeRateLabel = this.getLabel('riskFreeRateLabel', this.riskFreeRateLabel);
+    this.riskFreeRateExplanationLabel = this.getLabel('riskFreeRateExplanationLabel', this.riskFreeRateExplanationLabel);
+    this.marketRateLabel = this.getLabel('marketRateLabel', this.marketRateLabel);
+    this.marketRateExplanation = this.getLabel('marketRateExplanation', this.marketRateExplanation);
+    this.capmExplationtionLabel = this.getLabel('capmExplationtionLabel', this.capmExplationtionLabel);
+    this.capmExplanation = this.getLabel('capmExplanation', this.capmExplanation);
+    this.waccLabel = this.getLabel('waccLabel', this.waccLabel);
+    this.equityLabel = this.getLabel('equityLabel', this.equityLabel);
+    this.debtLabel = this.getLabel('debtLabel', this.debtLabel);
+    this.taxRateLabel = this.getLabel('taxRateLabel', this.taxRateLabel);
+    this.interestRateOnDebtLabel = this.getLabel('interestRateOnDebtLabel', this.interestRateOnDebtLabel);
+    this.averageGrowthRateLabel = this.getLabel('averageGrowthRateLabel', this.averageGrowthRateLabel);
+    this.terminalGrowthRateLabel = this.getLabel('terminalGrowthRateLabel', this.terminalGrowthRateLabel);
+    this.dcfLabel = this.getLabel('dcfLabel', this.dcfLabel);
+    this.enterpriseValueLabel = this.getLabel('enterpriseValueLabel', this.enterpriseValueLabel);
+    this.netDebtLabel = this.getLabel('netDebtLabel', this.netDebtLabel);
+    this.sharesOutstandingLabel = this.getLabel('sharesOutstandingLabel', this.sharesOutstandingLabel);
+    this.equityValueLabel = this.getLabel('equityValueLabel', this.equityValueLabel);
+    this.fairValueLabel = this.getLabel('fairValueLabel', this.fairValueLabel);
+    this.dcfValuationMethodologyLabel = this.getLabel('dcfValuationMethodologyLabel', this.dcfValuationMethodologyLabel);
+    this.costOfCapitalLabel = this.getLabel('costOfCapitalLabel', this.costOfCapitalLabel);
+    this.cashFlowProjectionValuationLabel = this.getLabel('cashFlowProjectionValuationLabel', this.cashFlowProjectionValuationLabel);
+    this.dcfMethodologyExplanation = this.getLabel('dcfMethodologyExplanation', this.dcfMethodologyExplanation);
+    this.costOfEquityExplanation = this.getLabel('costOfEquityExplanation', this.costOfEquityExplanation);
+    this.betaMethodologyExplanation = this.getLabel('betaMethodologyExplanation', this.betaMethodologyExplanation);
+    this.debtMarketValueExplanation = this.getLabel('debtMarketValueExplanation', this.debtMarketValueExplanation);
+    this.waccExplanation = this.getLabel('waccExplanation', this.waccExplanation);
+    this.fcfProjectionExplanation = this.getLabel('fcfProjectionExplanation', this.fcfProjectionExplanation);
+    this.terminalValueExplanation = this.getLabel('terminalValueExplanation', this.terminalValueExplanation);
+    this.enterpriseValueExplanation = this.getLabel('enterpriseValueExplanation', this.enterpriseValueExplanation);
+    this.costOfEquityFormula = this.getLabel('costOfEquityFormula', this.costOfEquityFormula);
+    this.waccFormula = this.getLabel('waccFormula', this.waccFormula);
+    this.marketValueOfDebtLabel = this.getLabel('marketValueOfDebtLabel', this.marketValueOfDebtLabel);
+    this.marketValueOfDebtFormula = this.getLabel('marketValueOfDebtFormula',this.marketValueOfDebtFormula);
+    this.interestExpenseLabel = this.getLabel('interestExpenseLabel',this.interestExpenseLabel);
+    this.numberOfYearsLabel = this.getLabel('numberOfYearsLabel',this.numberOfYearsLabel);
+
     if (this.exchange === 'MOEX') {
       this.datapoints = [
         this.getLabel('datapointsMoex1', ''),
@@ -579,6 +674,14 @@ export class ValuateComponent implements OnInit {
     }
   }
 
+  dcfValue(value: number | null | undefined): string {
+    return value === null || value === undefined ? this.naText : value.toFixed(2);
+  }
+
+  dcfPercent(value: number | null | undefined): string {
+    return value === null || value === undefined ? this.naText : `${value.toFixed(2)}%`;
+  }
+
   mathRounding(value: number): string {
     if (value !== null) {
       return (value).toFixed(0);
@@ -589,17 +692,36 @@ export class ValuateComponent implements OnInit {
   }
 
   getDcfValuation() {
-    this.ValuationServiceApi.getDcfValuation(this.ticker, this.exchange).pipe().subscribe(data => {
-      this.dcfValuation = data;
+    this.ValuationServiceApi.getDcfValuation(this.ticker, this.exchange, this.pageLanguage).pipe().subscribe(data => {
+      this.dcfResult = data;
+      this.dcfValuation = this.dcfResult.fairValue;
       if (this.dcfValuation !== null && this.dcfValuation > this.stockInfo.price) {
         this.dcfValuationLoaded = true;
         this.dcfValuationResult = "Undervalued";
         this.dcfValuationPercentage = parseFloat(this.round(((this.dcfValuation - this.stockInfo.price) / this.stockInfo.price) * 100, "noexchange"));
+        if(this.pageLanguage === 'ru'){
+          this.undervaluedExplanationDcf = `Согласно модели Discounted Cash Flow (DCF) эта акция недооценена. Инвестиции в ${this.stockInfo.name} (${this.ticker}) могут иметь потенциал роста на ${this.dcfValuationPercentage}% с учетом текущей рыночной цены ${this.stockInfo.price} и справедливой стоимости по модели DCF ${this.dcfValuation}.`;
+        } else if (this.pageLanguage === 'es') {
+          this.undervaluedExplanationDcf = `Según el modelo de Flujo de Caja Descontado (DCF), esta acción está subvaluada. Las inversiones en ${this.stockInfo.name} (${this.ticker}) pueden tener un potencial de crecimiento de ${this.dcfValuationPercentage}% con el precio actual de ${this.stockInfo.price} y el precio justo calculado con el modelo DCF de ${this.dcfValuation}.`;
+        }else{
+          this.undervaluedExplanationDcf = `According to Discounted Cash Flow (DCF) model this stock is undervalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have growth potential of ${this.dcfValuationPercentage}% with current price of ${this.stockInfo.price} and fair price calculated with DCF model of ${this.dcfValuation}.`;
+        }
       } else if (this.dcfValuation !== null && this.dcfValuation < this.stockInfo.price) {
         this.dcfValuationResult = "Overvalued";
         this.dcfValuationPercentage = parseFloat(this.round(((this.dcfValuation - this.stockInfo.price) / this.stockInfo.price) * 100, "noexchange"));
-        this.dcfValuationLoaded = true;
+        if(this.pageLanguage === 'ru'){
+          this.overvaluedExplanationDcf = `Согласно модели Discounted Cash Flow (DCF) эта акция переоценена. Инвестиции в ${this.stockInfo.name} (${this.ticker}) могут иметь потенциал снижения на ${this.dcfValuationPercentage}% с учетом текущей рыночной цены ${this.stockInfo.price} и справедливой стоимости по модели DCF ${this.dcfValuation}.`;
+        } else if (this.pageLanguage === 'es') {
+          this.overvaluedExplanationDcf = `Según el modelo de Flujo de Caja Descontado (DCF), esta acción está sobrevaluada. Las inversiones en ${this.stockInfo.name} (${this.ticker}) pueden tener un potencial de reducción de ${this.dcfValuationPercentage}% con el precio actual de ${this.stockInfo.price} y el precio justo calculado con el modelo DCF de ${this.dcfValuation}.`;
+        }else{
+          this.overvaluedExplanationDcf = `According to Discounted Cash Flow (DCF) model this stock is overvalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have downside potential of ${this.dcfValuationPercentage}% with current price of ${this.stockInfo.price} and fair price calculated with DCF model of ${this.dcfValuation}.`;
+        }
       }
+      if (this.dcfValuation !== null){
+        this.costOfEquityFormulaApplied = `${this.dcfResult.capm} = ${this.dcfResult.riskFreeRate} + ${this.dcfResult.beta} * (${this.dcfResult.marketRate} - ${this.dcfResult.riskFreeRate})`;
+        this.marketValueOfDebtFormulaApplied =`${this.dcfResult.marketValueOfDebt} = ${this.stockInfo.interestExpense} *((1-(1+${this.dcfResult.interestRateOnDebt}^-3))/${this.dcfResult.interestRateOnDebt})+ (${this.dcfResult.debt}/(1 + ${this.dcfResult.interestRateOnDebt})^3)`;
+      }
+      this.dcfValuationLoaded = true;
     },
       (err: HttpErrorResponse) => {
         if (err instanceof HttpErrorResponse && err.status === 404) {
