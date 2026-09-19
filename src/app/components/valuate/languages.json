@@ -1659,37 +1659,37 @@
     "language": "en",
     "component": "valuate",
     "label": "riskFreeRateExplanationLabel",
-    "text": "The expected return on an investment with no risk of financial loss."
+    "text": "The expected return on an investment with no risk of financial loss. Government bonds yield."
   },
   {
     "language": "ru",
     "component": "valuate",
     "label": "riskFreeRateExplanationLabel",
-    "text": "Ожидаемая доходность инвестиции без риска финансовых потерь."
+    "text": "Ожидаемая доходность инвестиции без риска финансовых потерь. Доходность государственных облигаций."
   },
   {
     "language": "es",
     "component": "valuate",
     "label": "riskFreeRateExplanationLabel",
-    "text": "La rentabilidad esperada de una inversión sin riesgo de pérdida financiera."
+    "text": "La rentabilidad esperada de una inversión sin riesgo de pérdida financiera. Rendimiento de los bonos gubernamentales."
   },
   {
     "language": "en",
     "component": "valuate",
     "label": "marketRateExplanation",
-    "text": "The expected return of the broad market used in the DCF model."
+    "text": "The expected return of the broad market used in the DCF model. Average yearlyreturn of the index (i.e. S&P 500 for the US market, IMOEX for MOEX)."
   },
   {
     "language": "ru",
     "component": "valuate",
     "label": "marketRateExplanation",
-    "text": "Ожидаемая доходность широкого рынка, используемая в модели DCF."
+    "text": "Ожидаемая доходность широкого рынка, используемая в модели DCF. Среднегодовая доходность индекса (например, S&P 500 для американского рынка, IMOEX для MOEX)."
   },
   {
     "language": "es",
     "component": "valuate",
     "label": "marketRateExplanation",
-    "text": "La rentabilidad esperada del mercado amplio utilizada en el modelo DCF."
+    "text": "La rentabilidad esperada del mercado amplio utilizada en el modelo DCF. Rentabilidad media anual del índice (por ejemplo, S&P 500 para el mercado estadounidense, IMOEX para MOEX)."
   },
   {
     "language": "en",

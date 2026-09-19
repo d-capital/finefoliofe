@@ -755,12 +755,13 @@ export class ValuateComponent implements OnInit {
       } else if (!this.dcfValuationUnavailable && this.dcfValuation !== null && this.dcfValuation < this.stockInfo.price) {
         this.dcfValuationResult = "Overvalued";
         this.dcfValuationPercentage = parseFloat(this.round(((this.dcfValuation - this.stockInfo.price) / this.stockInfo.price) * 100, "noexchange"));
+        var shownDcfFairPrice = this.round(this.dcfValuation, this.exchange);
         if(this.pageLanguage === 'ru'){
-          this.overvaluedExplanationDcf = `Согласно модели Discounted Cash Flow (DCF) эта акция переоценена. Инвестиции в ${this.stockInfo.name} (${this.ticker}) могут иметь потенциал снижения на ${this.dcfValuationPercentage}% с учетом текущей рыночной цены ${this.stockInfo.price} и справедливой стоимости по модели DCF ${this.dcfValuation}.`;
+          this.overvaluedExplanationDcf = `Согласно модели Discounted Cash Flow (DCF) эта акция переоценена. Инвестиции в ${this.stockInfo.name} (${this.ticker}) могут иметь потенциал снижения на ${this.dcfValuationPercentage}% с учетом текущей рыночной цены ${this.stockInfo.price} и справедливой стоимости по модели DCF ${shownDcfFairPrice}.`;
         } else if (this.pageLanguage === 'es') {
-          this.overvaluedExplanationDcf = `Según el modelo de Flujo de Caja Descontado (DCF), esta acción está sobrevaluada. Las inversiones en ${this.stockInfo.name} (${this.ticker}) pueden tener un potencial de reducción de ${this.dcfValuationPercentage}% con el precio actual de ${this.stockInfo.price} y el precio justo calculado con el modelo DCF de ${this.dcfValuation}.`;
+          this.overvaluedExplanationDcf = `Según el modelo de Flujo de Caja Descontado (DCF), esta acción está sobrevaluada. Las inversiones en ${this.stockInfo.name} (${this.ticker}) pueden tener un potencial de reducción de ${this.dcfValuationPercentage}% con el precio actual de ${this.stockInfo.price} y el precio justo calculado con el modelo DCF de ${shownDcfFairPrice}.`;
         }else{
-          this.overvaluedExplanationDcf = `According to Discounted Cash Flow (DCF) model this stock is overvalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have downside potential of ${this.dcfValuationPercentage}% with current price of ${this.stockInfo.price} and fair price calculated with DCF model of ${this.dcfValuation}.`;
+          this.overvaluedExplanationDcf = `According to Discounted Cash Flow (DCF) model this stock is overvalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have downside potential of ${this.dcfValuationPercentage}% with current price of ${this.stockInfo.price} and fair price calculated with DCF model of ${shownDcfFairPrice}.`;
         }
       }
       if (this.dcfValuationPercentage === 0) {
