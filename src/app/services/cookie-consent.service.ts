@@ -32,12 +32,12 @@ export class CookieConsentService {
       //prod
       this.saveConsentUrl = 'http://finefolionet:8080/cookie-consent/'; 
       //local
-      //this.saveConsentUrl = 'http://localhost:5000/cookie-consent/';
+      //this.saveConsentUrl = 'http://localhost:64663/cookie-consent/';
     } else {
       //prod
       this.saveConsentUrl = 'https://valestor.com/api/cookie-consent/';
       //local
-      //this.saveConsentUrl = 'http://localhost:5000/cookie-consent/';;
+      //this.saveConsentUrl = 'http://localhost:64663/cookie-consent/';;
     }
   }
 
