@@ -500,25 +500,25 @@
             <h3>{{ fairValueLabel }}</h3>
             <p>{{ dcfValuationUnavailable ? naText : uiRounding(dcfValuation) }}</p>
           </section>
-        </div>
-        <div>
-          <h2>{{ dcfValuationMethodologyLabel }}</h2>
-          <p>{{ dcfMethodologyExplanation }}</p>
-          <h3>{{ costOfCapitalLabel }}</h3>
-          <p>{{ costOfEquityExplanation }}</p>
-          <p style="text-align:center;">
-            <strong>{{ costOfEquityFormula }}</strong>
-          </p>
-          <p>{{ betaMethodologyExplanation }}</p>
-          <p>{{ debtMarketValueExplanation }}</p>
-          <p>{{ waccExplanation }}</p>
-          <p style="text-align:center;">
-            <strong>{{ waccFormula }}</strong>
-          </p>
-          <h3>{{ cashFlowProjectionValuationLabel }}</h3>
-          <p>{{ fcfProjectionExplanation }}</p>
-          <p>{{ terminalValueExplanation }}</p>
-          <p>{{ enterpriseValueExplanation }}</p>
+          <section class="card valuate-section">
+            <h2>{{ dcfValuationMethodologyLabel }}</h2>
+            <p>{{ dcfMethodologyExplanation }}</p>
+            <h3>{{ costOfCapitalLabel }}</h3>
+            <p>{{ costOfEquityExplanation }}</p>
+            <p style="text-align:center;">
+              <strong>{{ costOfEquityFormula }}</strong>
+            </p>
+            <p>{{ betaMethodologyExplanation }}</p>
+            <p>{{ debtMarketValueExplanation }}</p>
+            <p>{{ waccExplanation }}</p>
+            <p style="text-align:center;">
+              <strong>{{ waccFormula }}</strong>
+            </p>
+            <h3>{{ cashFlowProjectionValuationLabel }}</h3>
+            <p>{{ fcfProjectionExplanation }}</p>
+            <p>{{ terminalValueExplanation }}</p>
+            <p>{{ enterpriseValueExplanation }}</p>
+          </section>
         </div>
       </app-tab>
 

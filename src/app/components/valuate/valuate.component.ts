@@ -95,9 +95,9 @@ export class ValuateComponent implements OnInit {
   valuationOverviewLabelRu: string = "Оценка Питера Линча";
   valuationOverviewLabelEs: string = "Valoración de Peter Lynch";
 
-  discountedCashFlowTabLabel: string = "Discounted Cash Flow Model";
-  discountedCashFlowTabLabelRu: string = "Модель Дисконтированных Денежных Потоков";
-  discountedCashFlowTabLabelEs: string = "Modelo de Flujo de Efectivo Descontado";
+  discountedCashFlowTabLabel: string = "DCF Model";
+  discountedCashFlowTabLabelRu: string = "Модель DCF";
+  discountedCashFlowTabLabelEs: string = "Modelo DCF";
 
   downsidePotentialLabel: string = "Downside potential";
   downsidePotentialLabelRu: string = "Потенциал снижения";

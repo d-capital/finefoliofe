@@ -237,19 +237,19 @@
     "language": "en",
     "component": "valuate",
     "label": "discountedCashFlowTabLabel",
-    "text": "Discounted Cash Flow Model"
+    "text": "DCF Model"
   },
   {
     "language": "ru",
     "component": "valuate",
     "label": "discountedCashFlowTabLabel",
-    "text": "Модель Дисконтированных Денежных Потоков"
+    "text": "Модель DCF"
   },
   {
     "language": "es",
     "component": "valuate",
     "label": "discountedCashFlowTabLabel",
-    "text": "Modelo de Flujo de Efectivo Descontado"
+    "text": "Modelo DCF"
   },
   {
     "language": "en",
