@@ -7,12 +7,12 @@
 
         <div class="filters-grid">
             <div class="filter-item">
-            <label for="maxPe">{{fitlerPeLabel}}</label>
-            <input id="maxPe" type="number" [(ngModel)]="filters.maxPe" placeholder="{{filterPeDefaultValue}}" />
-            </div>
-            <div class="filter-item">
             <label for="minDiv">{{filterMinDivLabel}}</label>
             <input id="minDiv" type="number" [(ngModel)]="filters.minDividend" placeholder="{{filterMinDivDefaultValue}}" />
+            </div>
+            <div class="filter-item">
+            <label for="exchange">{{exchangeLabel}}</label>
+            <input id="exchange" type="text" [(ngModel)]="filters.exchange" placeholder="{{exchangeDefaultValue}}" />
             </div>
         </div>
 
@@ -39,30 +39,10 @@
             </thead>
             <tbody>
                 <tr *ngFor="let r of results">
-                    <!--td>{{r.id}}</td-->
-                    <td><a href="/{{lang}}/stocks/{{r.exchange.toLocaleLowerCase()}}-{{r.ticker.toLocaleLowerCase()}}/peter-lynch-fair-value-calculator">{{r.company}}</a></td>
-                    <td>{{r.ticker}}</td>
-                    <td *ngIf="r.fairPrice && r.price && r.result=='Overvalued'"style="width: 100px;">📉 ({{ roundAndConvertToPercent(r.fairPrice/r.price) }}%)</td>
-                    <td *ngIf="r.fairPrice && r.price && r.result=='Undervalued'"style="width: 100px;">📈 ({{ roundAndConvertToPercent(r.fairPrice/r.price) }}%)</td>
-                    <td *ngIf="!r.result || !r.price || !r.fairPrice"style="width: 100px;"> - </td>
-                    <td>{{r.fairPrice}}</td>
-                    <td>{{r.pegTtm}}</td>
-                    <!--td>{{r.netIncomeGrowthTtm}}%</td>
-                    <td>{{r.netIncomeGrowth3y}}%</td>
-                    <td>{{r.netIncomeGrowth5y}}%</td>
-                    <td>{{r.netIncomeGrowthNext1y}}%</td>
-                    <td>{{r.netIncomeGrowthNext3y}}%</td-->
-                    <td>{{r.freeCashFlow | abbreviateNumber}}</td>
-                    <td>{{r.deFy}}</td>
-                    <td>{{round(r.dividendYield)}}%</td>
-                    <td>{{r.peTtm}}</td>
-                    <!--td>{{r.forwardPe}}</td-->
+                    <td><a href="/{{lang}}/stocks/{{r.exchange.toLocaleLowerCase()}}-{{r.ticker.toLocaleLowerCase()}}/peter-lynch-fair-value-calculator">{{r.ticker}}</a></td>
+                    <td>{{r.exchange}}</td>
                     <td>{{r.price}}</td>
-                    <td>{{r.type}}</td>
-                    <td>{{r.marketCap | abbreviateNumber}}</td>
-                    <td>{{r.sector}}</td>
-                    <!--td>{{r.industry}}</td-->
-                    <!--td>{{r.country}}</td-->
+                    <td>{{r.eps}}</td>
                 </tr>
             </tbody>
         </table>

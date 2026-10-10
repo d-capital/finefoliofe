@@ -39,6 +39,9 @@ export const routes: Routes = [
         canActivate: [tickerGuard]
       },
       {
+        path: 'screener', component: ScreenerComponent
+      },
+      {
         path: 'about', component: AboutComponent
       }
       // ... your other child routes
@@ -58,6 +61,9 @@ export const routes: Routes = [
         canActivate: [tickerGuard]
       },
       {
+        path: 'screener', component: ScreenerComponent
+      },
+      {
         path: 'about', component: AboutComponent
       }
       // ... your other child routes
@@ -75,6 +81,9 @@ export const routes: Routes = [
         path: 'stocks/:exchange-ticker/peter-lynch-fair-value-calculator',
         component: ValuateComponent,
         canActivate: [tickerGuard]
+      },
+      {
+        path: 'screener', component: ScreenerComponent
       },
       {
         path: 'about', component: AboutComponent
