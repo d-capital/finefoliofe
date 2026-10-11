@@ -10,6 +10,7 @@ import { ReliableDataComponent } from '../../components/reliable-data/reliable-d
 import { BrowserStorageService } from '../../services/browser-storage.service';
 import { QuoteSectionComponent } from '../../components/quote-section/quote-section.component';
 import { Labels } from '../../dto/labels/labels.model';
+import { ScreenerResultsComponent } from '../../components/screener-results/screener-results.component';
 
 @Component({
   selector: 'app-landing',
@@ -21,7 +22,8 @@ import { Labels } from '../../dto/labels/labels.model';
     ScreenerAfterScreeningComponent,
     ExamplesComponent,
     ReliableDataComponent,
-    QuoteSectionComponent
+    QuoteSectionComponent,
+    ScreenerResultsComponent
 ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
