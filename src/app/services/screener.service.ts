@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { ScreenerResult } from '../dto/screener/screener-result.model';
 import { catchError } from 'rxjs/operators';
 import { Inject, PLATFORM_ID } from '@angular/core';
@@ -22,27 +22,28 @@ export class ScreenerService {
 
     if (isPlatformServer(this.platformId)) {
       //prod
-      this.getScreenerUrl = 'http://finefoliobe:3000/screener/'; 
+      this.getScreenerUrl = 'http://finefoliobe:3000/valuation/screener'; 
       //local
-      //this.getScreenerUrl = 'http://127.0.0.1:8000/screener/';
+      //this.getScreenerUrl = 'http://localhost:64663/valuation/screener';
     } else {
       //prod
-      this.getScreenerUrl = 'https://valestor.com/api/screener/';
+      this.getScreenerUrl = 'https://valestor.com/api/valuation/screener';
       //local
-      //this.getScreenerUrl = 'http://127.0.0.1:8000/screener/';
+      //this.getScreenerUrl = 'http://localhost:64663/valuation/screener';
     }
   }
 
-  public getScreenerResults(params: { maxPe: number; minDividend: number }): Observable<ScreenerResult[]>{
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-    const body = { maxPe: params.maxPe, minDividend: params.minDividend};
-    return this.http.post<ScreenerResult[]>(this.getScreenerUrl,
-      JSON.stringify(body),
-      {headers: headers}).pipe(catchError(this.erroHandler));
+  public getScreenerResults(params: { minDividend: number; minEps: number; exchange: string }): Observable<ScreenerResult[]> {
+    const httpParams = new HttpParams()
+      .set('minDividend', params.minDividend)
+      .set('exchange', params.exchange)
+      .set('minEps', params.minEps);
+
+    return this.http.get<ScreenerResult[]>(this.getScreenerUrl, { params: httpParams })
+      .pipe(catchError(this.erroHandler));
   }
-  erroHandler(error: HttpErrorResponse) {
-    return throwError(error.message || 'server Error');
+
+  private erroHandler(error: HttpErrorResponse) {
+    return throwError(() => error);
   }
 }

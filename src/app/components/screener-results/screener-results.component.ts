@@ -4,7 +4,6 @@ import { NgFor, NgIf, DOCUMENT } from '@angular/common';
 import { ScreenerService } from '../../services/screener.service';
 import { FormsModule } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AbbreviateNumberPipe } from '../../custom-pipe/abbreviate-number.pipe';
 import { BrowserStorageService } from '../../services/browser-storage.service';
 
 interface Column {
@@ -15,7 +14,7 @@ interface Column {
 
 @Component({
   selector: 'app-screener-results',
-  imports: [NgFor, FormsModule, NgIf,AbbreviateNumberPipe],
+  imports: [NgFor, FormsModule, NgIf],
   templateUrl: './screener-results.component.html',
   styleUrl: './screener-results.component.css'
 })
@@ -24,12 +23,16 @@ export class ScreenerResultsComponent implements OnInit{
 
   title = '';
   downloadLabel = '';
+  openLabel = '';
   filterLabel = '';
   applyLabel = '';
-  fitlerPeLabel = '';
-  filterPeDefaultValue = ''
   filterMinDivLabel = '';
-  filterMinDivDefaultValue = '';
+  filterMinDivDefaultValue = '0';
+  filterMinEpsLabel = '';
+  filterMinEpsDefaultValue = '15';
+  exchangeLabel = '';
+  exchangeDefaultValue = '';
+  screenerDescription = '';
   columns: Column[] = [];
   results: ScreenerResult[] = [];
   serverErrors = [];
@@ -37,8 +40,9 @@ export class ScreenerResultsComponent implements OnInit{
   lang:string | null = "en";
 
    filters = {
-    maxPe: null as number | null,
-    minDividend: null as number | null,
+     minDividend: 0,
+     minEps: 15,
+     exchange: '',
   };
 
   constructor(
@@ -51,115 +55,80 @@ export class ScreenerResultsComponent implements OnInit{
     const lang = this.browserStorageService.getItem('language');
     this.lang = lang;
     if (lang === 'ru') {
-      this.title = "Результаты скрининга";
+      this.title = "Скриннер акций с ростом чистой прибыли";
       this.downloadLabel = "Скачать в CSV";
+      this.openLabel = "Открыть страницу акции в новой вкладке";
       this.filterLabel = "Фильтры";
       this.applyLabel = "Применить";
       this.filterMinDivLabel = "Минимальный % доход от дивидендов";
       this.filterMinDivDefaultValue = "0 по умлочанию";
-      this.fitlerPeLabel = "Максимальное P/E";
-      this.filterPeDefaultValue = "25 по умолчанию";
+      this.filterMinEpsLabel = "Минимальная прибыль на акцию (EPS)";
+      this.filterMinEpsDefaultValue = "15 по умолчанию";
+      this.exchangeLabel = "Биржа";
+      this.exchangeDefaultValue = "Выберите биржу";
+      this.screenerDescription = "Изучите акции компаний, чистая прибыль которых росла последние 5 лет. Вы можете менять параметры дивидендного дохода, минимальной прибыли на акцию, выбирать биржу.";
       this.columns = [
-        /*{ short: "#", full: "№ (Порядковый номер)" },*/
-        { short: "Компания", full: "Название компании" },
         { short: "Тикер", full: "Тикер акции" },
-        { short: "Оценка", full: "Результат — недооценена или переоценена" },
-        { short: "Справедл. цена", full: "Справедливая цена акции по модели Питера Линча" },
-        { short: "PEG", full: "Коэффициент PEG (Trailing Twelve Months)" },
-        /*{ short: "Рост ЧП TTM", full: "Рост чистой прибыли (Trailing Twelve Months)" },
-        { short: "Рост ЧП 3Г", full: "Рост чистой прибыли за 3 года" },
-        { short: "Рост ЧП 5Л", full: "Рост чистой прибыли за 5 лет" },
-        { short: "Прог. ЧП 1Г", full: "Прогноз роста чистой прибыли на 1 следующий год" },
-        { short: "Прог. ЧП 3Г", full: "Прогноз роста чистой прибыли на 3 следующих года" },*/
-        { short: "FCF", full: "Свободный денежный поток (Free Cash Flow)" },
-        { short: "D/E", full: "Коэффициент Debt-to-Equity (за полный год)" },
-        { short: "Див. доходн.", full: "Дивидендная доходность (%)" },
-        { short: "P/E", full: "Коэффициент P/E (Trailing Twelve Months)" },
-        /*{ short: "Fwd P/E", full: "Forward P/E (прогнозируемый)" },*/
+        { short: "", full: "" },
+        { short: "Биржа", full: "Биржа, на которой торгуется акция" },
         { short: "Цена", full: "Текущая цена акции" },
-        { short: "Тип", full: "Тип по классификации Линча" },
-        { short: "Капитал.", full: "Рыночная капитализация" },
-        { short: "Сектор", full: "Сектор компании" },
-        /*{ short: "Индустрия", full: "Индустрия компании" },*/
-        /*{ short: "Страна", full: "Страна эмитента" }*/
+        { short: "EPS", full: "Прибыль на акцию (Earnings Per Share)" },
+      ];
+    } else if (lang === 'es') {
+      this.title = "Buscador de acciones con crecimiento de ingresos netos";
+      this.downloadLabel = "Descargar CSV";
+      this.openLabel = "Abrir la página de la acción en una pestaña nueva";
+      this.filterLabel = "Filtros";
+      this.applyLabel = "Aplicar";
+      this.filterMinDivLabel = "Rendimiento mínimo de dividendos (%)";
+      this.filterMinDivDefaultValue = "0 por defecto";
+      this.filterMinEpsLabel = "Ganancias mínimas por acción (EPS)";
+      this.filterMinEpsDefaultValue = "15 por defecto";
+      this.exchangeLabel = "Bolsa";
+      this.exchangeDefaultValue = "Selecciona una bolsa";
+      this.screenerDescription = "Explora acciones de empresas con crecimiento de ingresos netos en los últimos 5 años. Puedes filtrar por rendimiento de dividendos y ganancias por acción, además de elegir la bolsa.";
+      this.columns = [
+        { short: "Ticker", full: "Ticker de la acción" },
+        { short: "", full: "" },
+        { short: "Bolsa", full: "Bolsa en la que se negocia la acción" },
+        { short: "Precio", full: "Precio actual de la acción" },
+        { short: "EPS", full: "Ganancias por acción (Earnings Per Share)" },
       ];
     } else {
-      this.title = "Screener Results";
+      this.title = "Stock with Net Income Growth Screener";
       this.downloadLabel = "Download CSV";
+      this.openLabel = "Open stock page in a new tab";
       this.filterLabel = "Filters";
       this.applyLabel = "Apply";
       this.filterMinDivLabel = "Minimal Dividend Yield (%)";
       this.filterMinDivDefaultValue = "0 by default";
-      this.fitlerPeLabel = "P/E max";
-      this.filterPeDefaultValue = "25 by default";
+      this.filterMinEpsLabel = "Minimum Earnings Per Share (EPS)";
+      this.filterMinEpsDefaultValue = "15 by default";
+      this.exchangeLabel = "Exchange";
+      this.exchangeDefaultValue = "Select an exchange";
+      this.screenerDescription = "Explore stocks of companies with net income growth in past 5 years. You can filter them by Dividends Yield and Earinings per Share, as well as select the exchange.";
       this.columns = [
-        /*{ short: "#", full: "Number" },*/
-        { short: "Company", full: "Company Name" },
         { short: "Ticker", full: "Stock Ticker" },
-        { short: "Valuation", full: "Result - Undervalued or overvalued" },
-        { short: "Fair Price", full: "Fair Price by Lynch Model" },
-        { short: "PEG", full: "Price/Earnings to Growth (Trailing Twelve Months)" },
-        /*{ short: "NI Gr. TTM", full: "Net Income Growth TTM" },
-        { short: "NI Gr. 3Y", full: "Net Income Growth over 3 Years" },
-        { short: "NI Gr. 5Y", full: "Net Income Growth over 5 Years" },
-        { short: "NI Gr. N1Y", full: "Forecast Net Income Growth Next 1 Year" },
-        { short: "NI Gr. N3Y", full: "Forecast Net Income Growth Next 3 Years" },*/
-        { short: "FCF", full: "Free Cash Flow" },
-        { short: "D/E", full: "Debt-to-Equity (Full Year)" },
-        { short: "Div Yld", full: "Dividend Yield (%)" },
-        { short: "P/E", full: "Price/Earnings Trailing Twelve Months" },
-        /*{ short: "Fwd P/E", full: "Forward Price/Earnings" },*/
-        { short: "Price", full: "Current Share Price" },
-        { short: "Type", full: "Lynch Stock Type Classification" },
-        { short: "Mkt Cap", full: "Market Capitalization" },
-        { short: "Sector", full: "Sector" },
-        /*{ short: "Industry", full: "Industry" },*/
-        /*{ short: "Country", full: "Country" }*/
+        { short: "", full: "" },
+        { short: "Exchange", full: "Exchange where the stock is listed" },
+        { short: "Price", full: "Current share price" },
+        { short: "EPS", full: "Earnings Per Share" },
       ];
     }
 
-    // Demo data (replace with API later)
     const defaultParams = {
-      maxPe: 25,
-      minDividend: 0
+      minDividend: 0,
+      minEps: 15,
+      exchange: '',
     };
     this.loadResults(defaultParams);
-    this.results = [
-      {
-        id: 1,
-        company: "Apple Inc.",
-        ticker: "AAPL",
-        result: "Undervalued (15%)",
-        fairPrice: 200,
-        pegTtm: 1.5,
-        netIncomeGrowthTtm: 12,
-        netIncomeGrowth3y: 14,
-        netIncomeGrowth5y: 10,
-        netIncomeGrowthNext1y: 11,
-        netIncomeGrowthNext3y: 13,
-        freeCashFlow: 80000,
-        deFy: 0.4,
-        dividendYield: 1,
-        peTtm: 28,
-        forwardPe: 25,
-        price: 175,
-        type: "Fast Grower",
-        marketCap: "2.8T",
-        sector: "Technology",
-        industry: "Consumer Electronics",
-        country: "USA",
-        exchange: "NASDAQ"
-      }
-    ];
   }
-  loadResults(params: any = {}): void {
-    if(!params.minDividend){
-      params.minDividend = 0;
-    }
-    if (!params.maxPe){
-      params.maxPe = 25;
-    }
-    this.screenerService.getScreenerResults(params).pipe()
+  loadResults(params: { minDividend: number | null; minEps: number | null; exchange: string }): void {
+    this.screenerService.getScreenerResults({
+      minDividend: params.minDividend ?? 0,
+      minEps: params.minEps ?? 0,
+      exchange: params.exchange.trim(),
+    })
       .subscribe(data =>{
           this.results = data;
           this.loading = false;
@@ -181,6 +150,12 @@ export class ScreenerResultsComponent implements OnInit{
     this.loadResults(this.filters);
   }
 
+  getStockUrl(result: ScreenerResult): string {
+    const localePrefix = this.lang && this.lang !== 'en' ? `/${this.lang}` : '';
+    const exchangeTicker = `${result.exchange.toLowerCase()}-${result.ticker.toLowerCase()}`;
+    return `${localePrefix}/stocks/${exchangeTicker}/peter-lynch-fair-value-calculator`;
+  }
+
   exportTableToCSV(): void {
     const table = document.getElementById('resultsTable') as HTMLTableElement | null;
     if (!table) return;
@@ -190,7 +165,8 @@ export class ScreenerResultsComponent implements OnInit{
 
     for (const row of rows) {
       // Берём все <th> и <td> в строке
-      const cols = Array.from(row.querySelectorAll('th, td'));
+      const cols = Array.from(row.querySelectorAll('th, td'))
+        .filter(col => !col.hasAttribute('data-export-ignore'));
       const rowData = cols.map(col =>
         `"${(col as HTMLElement).innerText.replace(/"/g, '""')}"`
       );
@@ -211,11 +187,4 @@ export class ScreenerResultsComponent implements OnInit{
     document.body.removeChild(link);
   }
 
-  roundAndConvertToPercent(value: number): string {
-    return (value*100).toFixed(2);
-  }
-
-  round(value: number): string {
-    return (value).toFixed(2);
-  }
 }

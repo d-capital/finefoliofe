@@ -393,7 +393,7 @@
             <h1>{{ dcfPercent(dcfResult.capm * 100) }}</h1>
             <p>{{ capmExplanation }}</p>
             <p>{{ costOfEquityFormula }}</p>
-            <p>{{ costOfEquityFormulaApplied }}</p>
+            <!--p>{{ costOfEquityFormulaApplied }}</p-->
             <h3>{{ betaLabel }}</h3>
             <p>{{ dcfValue(dcfResult.beta) }}</p>
             <p>{{ betaExplanation }}</p>
@@ -407,13 +407,13 @@
 
           <section class="card valuate-section">
             <h2>{{ marketValueOfDebtLabel }}</h2>
-            <h1>{{ dcfValue(dcfResult.marketValueOfDebt) }}</h1>
+            <h1>{{ dcfValue(dcfResult.marketValueOfDebt) | abbreviateNumber}}</h1>
             <p>{{ marketValueOfDebtFormula }}<p>
-            <p>{{ marketValueOfDebtFormulaApplied }}<p>
+            <!--p>{{ marketValueOfDebtFormulaApplied }}<p-->
             <h3>{{ debtLabel }}</h3>
-            <p>{{ dcfValue(dcfResult.debt) }}</p>
+            <p>{{ dcfValue(dcfResult.debt) | abbreviateNumber}}</p>
             <h3>{{ interestExpenseLabel }}</h3>
-            <p>{{ dcfValue(stockInfo.interestExpense) }}</p>
+            <p>{{ dcfValue(stockInfo.interestExpense) | abbreviateNumber}}</p>
             <h3>{{ interestRateOnDebtLabel }}</h3>
             <p>{{  dcfValue(dcfResult.interestRateOnDebt) }}</p>
             <h3>{{ numberOfYearsLabel }}</h3>
@@ -425,9 +425,9 @@
             <h1>{{ dcfValue(dcfResult.wacc*100) }}%</h1>
             <p>{{ waccFormula }}</p>
             <h3>{{ equityLabel }}</h3>
-            <p>{{ dcfValue(dcfResult.equity) }}</p>
+            <p>{{ dcfValue(dcfResult.equity) | abbreviateNumber}}</p>
             <h3>{{ debtLabel }}</h3>
-            <p>{{ dcfValue(dcfResult.debt) }}</p>
+            <p>{{ dcfValue(dcfResult.debt) | abbreviateNumber }}</p>
             <h3>{{ interestRateOnDebtLabel }}</h3>
             <p>{{  dcfValue(dcfResult.interestRateOnDebt) }}</p>
             <h3>{{ capmLabel }}</h3>
@@ -477,26 +477,26 @@
                 <tbody>
                   <tr *ngFor="let projection of dcfResult.projections">
                     <td>{{ projection.year }}</td>
-                    <td>{{ dcfValue(projection.projectedFcf) }}</td>
-                    <td>{{ dcfValue(projection.presentValue) }}</td>
+                    <td>{{ dcfValue(projection.projectedFcf) | abbreviateNumber}}</td>
+                    <td>{{ dcfValue(projection.presentValue) | abbreviateNumber}}</td>
                   </tr>
                   <tr>
                     <td>{{ terminalValueLabel }}</td>
-                    <td>{{ dcfValue(dcfResult.terminalValue) }}</td>
-                    <td>{{ dcfValue(dcfResult.presentValueOfTerminalValue) }}</td>
+                    <td>{{ dcfValue(dcfResult.terminalValue) | abbreviateNumber}}</td>
+                    <td>{{ dcfValue(dcfResult.presentValueOfTerminalValue) | abbreviateNumber}}</td>
                   </tr>
                   <tr>
                     <td colspan="2">{{ enterpriseValueLabel }}</td>
-                    <td>{{dcfValue(dcfResult.enterpriseValue)}}</td>
+                    <td>{{dcfValue(dcfResult.enterpriseValue)| abbreviateNumber}}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p>{{ fairPriceFormula }}<p>
             <h3>{{ netDebtLabel }}</h3>
-            <p>{{ dcfValue(dcfResult.netDebt) }}</p>
+            <p>{{ dcfValue(dcfResult.netDebt) | abbreviateNumber}}</p>
             <h3>{{ sharesOutstandingLabel }}</h3>
-            <p>{{ dcfValue(dcfResult.sharesOutstanding) }}</p>
+            <p>{{ dcfValue(dcfResult.sharesOutstanding) | abbreviateNumber}}</p>
             <h3>{{ fairValueLabel }}</h3>
             <p>{{ dcfValuationUnavailable ? naText : uiRounding(dcfValuation) }}</p>
           </section>

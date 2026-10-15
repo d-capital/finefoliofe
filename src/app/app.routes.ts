@@ -6,7 +6,6 @@ import { MacrodataComponent } from './pages/macrodata/macrodata.component';
 import { ValuationComponent } from './pages/valuation/valuation.component';
 import { ValuateComponent } from './components/valuate/valuate.component';
 import { AboutComponent } from './pages/about/about.component';
-import { ScreenerComponent } from './pages/screener/screener.component';
 import { ArticlelistComponent } from './components/articlelist/articlelist.component';
 import { Injectable } from '@angular/core';
 import { LanguageRedirectComponent } from './components/laguage-redirect/laguage-redirect.component';
