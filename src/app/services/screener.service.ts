@@ -22,21 +22,22 @@ export class ScreenerService {
 
     if (isPlatformServer(this.platformId)) {
       //prod
-      //this.getScreenerUrl = 'http://finefoliobe:3000/screener/'; 
+      this.getScreenerUrl = 'http://finefoliobe:3000/valuation/screener'; 
       //local
-      this.getScreenerUrl = 'http://localhost:64663/valuation/screener';
+      //this.getScreenerUrl = 'http://localhost:64663/valuation/screener';
     } else {
       //prod
-      //this.getScreenerUrl = 'https://valestor.com/api/screener/';
+      this.getScreenerUrl = 'https://valestor.com/api/valuation/screener';
       //local
-      this.getScreenerUrl = 'http://localhost:64663/valuation/screener';
+      //this.getScreenerUrl = 'http://localhost:64663/valuation/screener';
     }
   }
 
-  public getScreenerResults(params: { minDividend: number; exchange: string }): Observable<ScreenerResult[]> {
+  public getScreenerResults(params: { minDividend: number; minEps: number; exchange: string }): Observable<ScreenerResult[]> {
     const httpParams = new HttpParams()
       .set('minDividend', params.minDividend)
-      .set('exchange', params.exchange);
+      .set('exchange', params.exchange)
+      .set('minEps', params.minEps);
 
     return this.http.get<ScreenerResult[]>(this.getScreenerUrl, { params: httpParams })
       .pipe(catchError(this.erroHandler));
