@@ -115,12 +115,17 @@ export class ScreenerResultsComponent implements OnInit{
         { short: "EPS", full: "Earnings Per Share" },
       ];
     }
-
     const defaultParams = {
-      minDividend: 0,
-      minEps: 15,
-      exchange: '',
-    };
+        minDividend: 0,
+        minEps: 15,
+        exchange: '',
+      };
+    if(lang === "ru"){
+      defaultParams.exchange = 'MOEX';
+    }else{
+      defaultParams.exchange = 'NYSE';
+    }
+    
     this.loadResults(defaultParams);
   }
   loadResults(params: { minDividend: number | null; minEps: number | null; exchange: string }): void {
