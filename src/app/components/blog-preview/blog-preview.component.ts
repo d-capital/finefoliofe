@@ -5,7 +5,6 @@ import { BrowserStorageService } from '../../services/browser-storage.service';
 
 interface BlogPost {
   title: string;
-  image: string;
   excerpt: string;
   link: string;
 }
@@ -30,44 +29,50 @@ export class BlogPreviewComponent implements OnInit{
       this.seeAll = "Смотреть все статьи";
       this.posts = [
         {
-          title: "Что такое стоимостное инвестирование?", 
-          excerpt: "Погружаемся в основы стоимостного инвестирования.", 
-          image:"blog-preview/whatisvalueinvesting.png",
-          link: "article/1" },
-        {
-          title: "Что такое GARP инвестирование по Питеру Линчу?", 
-          excerpt: "Простые шаги для начинающего инвестора.", 
-          image:"blog-preview/garp.png",
-          link: "article/2" 
+          title: "Разбор акции MOEX", 
+          excerpt: "Оцениваем акцию Мосбиржи по методу Питера Линча.", 
+          link: "article/moex-review" 
         },
         {
-          title: "Что такое PEG?", 
-          excerpt: "Понимая метрики роста компании.", 
-          image:"blog-preview/peg.png",
-          link: "article/3" 
+          title: "Методология расчета DCF", 
+          excerpt: "Учитываем свободные денежные потоки.", 
+          link: "article/metod-dcf" 
         }
 
       ];
-    } else {
+    } 
+    else if(lang === "es"){
+      this.title = "Blog";
+      this.seeAll = "Ver todos los artículos";
+      this.posts = [
+        /*{
+          title: "Moex Stock Review", 
+          excerpt: "Evaluating the MOEX stock using Peter Lynch's method.", 
+          link: "article/moex-review" 
+        },*/
+        {
+          title: "Implementación del DCF", 
+          excerpt: "Contabilización del flujo de caja libre.", 
+          link: "article/dcf-metodo" 
+        }
+
+      ];
+    }
+    else {
       this.title = "Blog";
       this.seeAll = "See all articles";
       this.posts = [
+        /*{
+          title: "Moex Stock Review", 
+          excerpt: "Evaluating the MOEX stock using Peter Lynch's method.", 
+          link: "article/moex-review" 
+        },*/
         {
-          title: "What is value investing?", 
-          excerpt: "Deep dive into value investing", 
-          image:"blog-preview/whatisvalueinvesting.png",
-          link: "article/1" },
-        {
-          title: "What is GARP investing according to Peter Lynch?", 
-          excerpt: "Simple steps for beginner investors.", 
-          image:"blog-preview/garp.png",
-          link: "article/2" },
-        {
-          title: "What is PEG?", 
-          excerpt: "Understanding growth measures.", 
-          image:"blog-preview/peg.png",
-          link: "article/3" 
+          title: "DCF Implementation", 
+          excerpt: "Accounting for free cash flow.", 
+          link: "article/dcf-implementation" 
         }
+
       ];
     }
   }

@@ -39,6 +39,10 @@ export const routes: Routes = [
       },
       {
         path: 'about', component: AboutComponent
+      },
+      {
+        path:'article/:id',
+        component: ArticleComponent
       }
       // ... your other child routes
     ]
@@ -58,6 +62,10 @@ export const routes: Routes = [
       },
       {
         path: 'about', component: AboutComponent
+      },
+      {
+        path:'article/:id',
+        component: ArticleComponent
       }
       // ... your other child routes
     ]
@@ -77,6 +85,10 @@ export const routes: Routes = [
       },
       {
         path: 'about', component: AboutComponent
+      },
+      {
+        path:'article/:id',
+        component: ArticleComponent
       }
       // ... your other child routes
     ]

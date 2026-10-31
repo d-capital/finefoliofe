@@ -11,6 +11,7 @@ import { BrowserStorageService } from '../../services/browser-storage.service';
 import { QuoteSectionComponent } from '../../components/quote-section/quote-section.component';
 import { Labels } from '../../dto/labels/labels.model';
 import { ScreenerResultsComponent } from '../../components/screener-results/screener-results.component';
+import { BlogPreviewComponent } from '../../components/blog-preview/blog-preview.component';
 
 @Component({
   selector: 'app-landing',
@@ -23,7 +24,8 @@ import { ScreenerResultsComponent } from '../../components/screener-results/scre
     ExamplesComponent,
     ReliableDataComponent,
     QuoteSectionComponent,
-    ScreenerResultsComponent
+    ScreenerResultsComponent,
+    BlogPreviewComponent
 ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'

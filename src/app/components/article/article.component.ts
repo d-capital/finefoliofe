@@ -13,6 +13,7 @@ export class ArticleComponent {
     id = '1'; 
     title = "";
     content = "";
+    publishedAt = "";
     article:any;
     articles:any;
     constructor(private http: HttpClient, private route: ActivatedRoute) {
@@ -25,6 +26,7 @@ export class ArticleComponent {
     this.article = this.articles.find((a: any) => a.id === id);
     this.title = this.article["title"];
     this.content = this.article["content"];
+    this.publishedAt = this.article["publishedAt"] ?? "";
   }
 
 }
