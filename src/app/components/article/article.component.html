@@ -2,7 +2,7 @@
     <div>
         <h2>{{ title }}</h2>
         @if (publishedAt) {
-            <time class="publication-date" [attr.datetime]="publishedAt">Опубликовано: {{ publishedAt }}</time>
+            <time class="publication-date" [attr.datetime]="publishedAt">{{ publishedAt }}</time>
         }
         <div [innerHTML]="content"></div>
     </div>

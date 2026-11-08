@@ -37,6 +37,11 @@ export class BlogPreviewComponent implements OnInit{
           title: "Методология расчета DCF", 
           excerpt: "Учитываем свободные денежные потоки.", 
           link: "article/metod-dcf" 
+        },
+        {
+          title: "Разбор акции NVDA", 
+          excerpt: "Оцениваем акцию NVIDIA по методу Питера Линча.", 
+          link: "article/nvda-obzor" 
         }
 
       ];
@@ -45,11 +50,11 @@ export class BlogPreviewComponent implements OnInit{
       this.title = "Blog";
       this.seeAll = "Ver todos los artículos";
       this.posts = [
-        /*{
-          title: "Moex Stock Review", 
-          excerpt: "Evaluating the MOEX stock using Peter Lynch's method.", 
-          link: "article/moex-review" 
-        },*/
+        {
+          title: "Análisis de las acciones de NVDA", 
+          excerpt: "Valoración de las acciones de NVIDIA mediante el método de Peter Lynch.", 
+          link: "article/analisis-de-nvda" 
+        },
         {
           title: "Implementación del DCF", 
           excerpt: "Contabilización del flujo de caja libre.", 
@@ -62,11 +67,11 @@ export class BlogPreviewComponent implements OnInit{
       this.title = "Blog";
       this.seeAll = "See all articles";
       this.posts = [
-        /*{
-          title: "Moex Stock Review", 
-          excerpt: "Evaluating the MOEX stock using Peter Lynch's method.", 
-          link: "article/moex-review" 
-        },*/
+        {
+          title: "NVIDIA Stock Review", 
+          excerpt: "Evaluating the NVIDIA stock using Peter Lynch's method.", 
+          link: "article/nvda-review" 
+        },
         {
           title: "DCF Implementation", 
           excerpt: "Accounting for free cash flow.", 
