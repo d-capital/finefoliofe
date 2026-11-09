@@ -902,6 +902,60 @@
   {
     "language": "en",
     "component": "valuate",
+    "label": "averagePegLabel",
+    "text": "Average PEG"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "averagePegLabel",
+    "text": "Средний PEG"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "averagePegLabel",
+    "text": "PEG promedio"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "averagePegUsExplanation",
+    "text": "For NYSE and NASDAQ stocks, this is the S&P 500 average PEG."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "averagePegUsExplanation",
+    "text": "Для акций NYSE и NASDAQ это среднее значение PEG для индекса S&P 500."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "averagePegUsExplanation",
+    "text": "Para las acciones de NYSE y NASDAQ, este es el PEG promedio del S&P 500."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "averagePegMoexExplanation",
+    "text": "For MOEX stocks, this is the IMOEX average PEG."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "averagePegMoexExplanation",
+    "text": "Для акций MOEX это среднее значение PEG для индекса IMOEX."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "averagePegMoexExplanation",
+    "text": "Para las acciones de MOEX, este es el PEG promedio del IMOEX."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
     "label": "datapoints1",
     "text": "<b>Price</b> - close price of an asset from TradingView (updates when you open the page)"
   },

@@ -125,6 +125,11 @@
                 <p *ngIf="valuation.peg<1">{{pegUnderLabel}}</p>
               </div>
               <p *ngIf="!noValuationAvailable">{{ pegExplanation }}</p>
+              <p *ngIf="!noValuationAvailable && valuation.averagePeg != null">
+                {{ averagePegLabel }}: {{ uiRounding(valuation.averagePeg) }}.
+                <ng-container *ngIf="stockInfo.exchange === 'NYSE' || stockInfo.exchange === 'NASDAQ'">{{ averagePegUsExplanation }}</ng-container>
+                <ng-container *ngIf="stockInfo.exchange === 'MOEX'">{{ averagePegMoexExplanation }}</ng-container>
+              </p>
               <p *ngIf="noValuationAvailable">{{ noPegExplanation }}</p>
             </section>
 

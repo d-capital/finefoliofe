@@ -11,4 +11,5 @@ export interface ValuationResult {
     fiveYears: number;
   };
   peg: number;
+  averagePeg: number;
 }

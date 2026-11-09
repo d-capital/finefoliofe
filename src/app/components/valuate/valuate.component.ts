@@ -161,6 +161,9 @@ export class ValuateComponent implements OnInit {
   epsTtmExplanation: string = "";
   pegLabel: string = "";
   pegExplanation: string = "";
+  averagePegLabel: string = "";
+  averagePegUsExplanation: string = "";
+  averagePegMoexExplanation: string = "";
 
   pegFairLabel:string = "Stock is fairly valued according to Peter Lynch value investing model.";
   pegOverLabel:string = "Stock is overvalued according to Peter Lynch value investing model.";
@@ -589,6 +592,9 @@ export class ValuateComponent implements OnInit {
 
     this.pegLabel = this.getLabel('pegLabel', this.pegLabel);
     this.pegExplanation = this.getLabel('pegExplanation', this.pegExplanation);
+    this.averagePegLabel = this.getLabel('averagePegLabel', this.averagePegLabel);
+    this.averagePegUsExplanation = this.getLabel('averagePegUsExplanation', this.averagePegUsExplanation);
+    this.averagePegMoexExplanation = this.getLabel('averagePegMoexExplanation', this.averagePegMoexExplanation);
     this.fcfLabel = this.getLabel('fcfLabel', this.fcfLabel);
     this.deLabel = this.getLabel('deLabel', this.deLabel);
     this.reliableDataSources = this.getLabel('reliableDataSources', this.reliableDataSources);
