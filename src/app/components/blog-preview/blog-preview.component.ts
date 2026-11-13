@@ -29,6 +29,16 @@ export class BlogPreviewComponent implements OnInit{
       this.seeAll = "Смотреть все статьи";
       this.posts = [
         {
+          title:"Макроэкномический обзор: ноябрь 2026",
+          excerpt:"Мировая экономика и финансовые рынки в ноябре 2026",
+          link:"article/macro-obzor-nojabr-26"
+        },
+        {
+          title: "Разбор акции NVDA", 
+          excerpt: "Оцениваем акцию NVIDIA по методу Питера Линча.", 
+          link: "article/nvda-obzor" 
+        },
+        {
           title: "Разбор акции MOEX", 
           excerpt: "Оцениваем акцию Мосбиржи по методу Питера Линча.", 
           link: "article/moex-review" 
@@ -37,11 +47,6 @@ export class BlogPreviewComponent implements OnInit{
           title: "Методология расчета DCF", 
           excerpt: "Учитываем свободные денежные потоки.", 
           link: "article/metod-dcf" 
-        },
-        {
-          title: "Разбор акции NVDA", 
-          excerpt: "Оцениваем акцию NVIDIA по методу Питера Линча.", 
-          link: "article/nvda-obzor" 
         }
 
       ];
@@ -50,6 +55,11 @@ export class BlogPreviewComponent implements OnInit{
       this.title = "Blog";
       this.seeAll = "Ver todos los artículos";
       this.posts = [
+        {
+          title:"Análisis macroeconómico: noviembre de 2026",
+          excerpt:"Economía global y mercados financieros",
+          link:"article/revision-macroeconomica-noviembre-26"
+        },
         {
           title: "Análisis de las acciones de NVDA", 
           excerpt: "Valoración de las acciones de NVIDIA mediante el método de Peter Lynch.", 
@@ -67,6 +77,11 @@ export class BlogPreviewComponent implements OnInit{
       this.title = "Blog";
       this.seeAll = "See all articles";
       this.posts = [
+        {
+          title:"Macroeconomic Overview: November 2026",
+          excerpt:"Global Economy and Financial Markets in November 2026",
+          link:"article/macro-review-november-26"
+        },
         {
           title: "NVIDIA Stock Review", 
           excerpt: "Evaluating the NVIDIA stock using Peter Lynch's method.", 
