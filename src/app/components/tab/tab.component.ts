@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+export type ValuationTabName = 'peter_lynch_valuation' | 'dcf_valuation' | 'overview';
+
 @Component({
   selector: 'app-tab',
   imports: [],
@@ -9,6 +11,6 @@ import { Component, Input } from '@angular/core';
 export class TabComponent{
   @Input() title!: string;
   @Input() active = false;
-  @Input() name: string = 'default';
+  @Input() name: ValuationTabName = 'peter_lynch_valuation';
 
 }

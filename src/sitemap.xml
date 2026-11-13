@@ -3,397 +3,620 @@
   <url>
     <loc>https://valestor.com/</loc>
     <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru</loc>
     <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://valestor.com/es</loc>
     <lastmod>2026-06-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
   </url>
   <!-- 1. NYSE DIS (The Walt Disney Company) -->
   <url>
     <loc>https://valestor.com/stocks/nyse-dis/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/nyse-dis/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/nyse-dis/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nyse-dis/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nyse-dis/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nyse-dis/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nyse-dis/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nyse-dis/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nyse-dis/overview</loc>
   </url>
   <!-- 2. NASDAQ VITL (Vital Farms, Inc.) -->
   <url>
     <loc>https://valestor.com/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/nasdaq-vitl/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-vitl/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-vitl/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-vitl/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-vitl/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-vitl/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-vitl/overview</loc>
   </url>
 
   <!-- 3. NYSE NVO (Novo Nordisk A/S) -->
   <url>
     <loc>https://valestor.com/stocks/nyse-nvo/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/nyse-nvo/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/nyse-nvo/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nyse-nvo/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nyse-nvo/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nyse-nvo/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nyse-nvo/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nyse-nvo/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nyse-nvo/overview</loc>
   </url>
 
   <!-- 4. NYSE RDY (Dr. Reddy's Laboratories Ltd.) -->
   <url>
     <loc>https://valestor.com/stocks/nyse-rdy/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/nyse-rdy/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/nyse-rdy/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nyse-rdy/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nyse-rdy/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nyse-rdy/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nyse-rdy/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nyse-rdy/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nyse-rdy/overview</loc>
   </url>
   <!-- 5. NASDAQ NVDA (NVIDIA Corporation) -->
   <url>
     <loc>https://valestor.com/stocks/nasdaq-nvda/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/nasdaq-nvda/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/nasdaq-nvda/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-nvda/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-nvda/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-nvda/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-nvda/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-nvda/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-nvda/overview</loc>
   </url>
 
   <!-- 6. NYSE XYZ (Block, Inc. - Formerly Square) -->
   <url>
     <loc>https://valestor.com/stocks/nyse-xyz/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/nyse-xyz/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/nyse-xyz/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://valestor.com/stocks/nyse-xyz/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nyse-xyz/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nyse-xyz/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nyse-xyz/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nyse-xyz/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nyse-xyz/overview</loc>
+  </url>
   <!-- 7. NASDAQ MSFT (Microsoft Corporation) -->
   <url>
     <loc>https://valestor.com/stocks/nasdaq-msft/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/nasdaq-msft/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/nasdaq-msft/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-msft/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-msft/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-msft/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-msft/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-msft/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-msft/overview</loc>
   </url>
 
   <!-- 8. NASDAQ COST (Costco Wholesale Corporation) -->
   <url>
     <loc>https://valestor.com/stocks/nasdaq-cost/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/nasdaq-cost/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/nasdaq-cost/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-cost/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-cost/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-cost/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-cost/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-cost/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-cost/overview</loc>
   </url>
 
   <!-- 9. NASDAQ AAPL (Apple Inc.) -->
   <url>
     <loc>https://valestor.com/stocks/nasdaq-aapl/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/nasdaq-aapl/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/nasdaq-aapl/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-aapl/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-aapl/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-aapl/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-aapl/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-aapl/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-aapl/overview</loc>
   </url>
 
   <!-- 10. NASDAQ COKE (Coca-Cola Consolidated, Inc.) -->
   <url>
     <loc>https://valestor.com/stocks/nasdaq-coke/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/nasdaq-coke/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/nasdaq-coke/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-coke/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-coke/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-coke/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/nasdaq-coke/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/nasdaq-coke/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/nasdaq-coke/overview</loc>
   </url>
 
   <!-- 11. MOEX SBER (Sberbank) -->
   <url>
     <loc>https://valestor.com/stocks/moex-sber/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/moex-sber/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/moex-sber/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-sber/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-sber/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-sber/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-sber/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-sber/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-sber/overview</loc>
   </url>
 
   <!-- 12. MOEX LKOH (Lukoil) -->
   <url>
     <loc>https://valestor.com/stocks/moex-lkoh/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/moex-lkoh/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/moex-lkoh/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-lkoh/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-lkoh/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-lkoh/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-lkoh/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-lkoh/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-lkoh/overview</loc>
   </url>
 
   <!-- 13. MOEX VTBR (VTB Bank) -->
   <url>
     <loc>https://valestor.com/stocks/moex-vtbr/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/moex-vtbr/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/moex-vtbr/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-vtbr/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-vtbr/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-vtbr/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-vtbr/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-vtbr/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-vtbr/overview</loc>
   </url>
 
   <!-- 15. MOEX X5 (X5 Corporate Center - Formerly Retail Group FIVE) -->
   <url>
     <loc>https://valestor.com/stocks/moex-x5/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/moex-x5/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/moex-x5/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-x5/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-x5/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-x5/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-x5/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-x5/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-x5/overview</loc>
   </url>
 
   <!-- 16. MOEX YDEX (Yandex) -->
   <url>
     <loc>https://valestor.com/stocks/moex-ydex/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/moex-ydex/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/moex-ydex/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-ydex/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-ydex/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-ydex/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-ydex/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-ydex/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-ydex/overview</loc>
   </url>
 
   <!-- 17. MOEX NVTK (Novatek) -->
   <url>
     <loc>https://valestor.com/stocks/moex-nvtk/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/moex-nvtk/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/moex-nvtk/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-nvtk/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-nvtk/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-nvtk/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-nvtk/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-nvtk/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-nvtk/overview</loc>
   </url>
 
   <!-- 18. MOEX T (T-Technologies - Formerly TCS Holding/Tinkoff) -->
   <url>
     <loc>https://valestor.com/stocks/moex-t/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/moex-t/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/moex-t/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-t/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-t/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-t/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-t/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-t/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-t/overview</loc>
   </url>
 
   <!-- 19. MOEX GAZP (Gazprom) -->
   <url>
     <loc>https://valestor.com/stocks/moex-gazp/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/ru/stocks/moex-gazp/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://valestor.com/es/stocks/moex-gazp/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-gazp/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-gazp/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-gazp/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-gazp/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-gazp/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-gazp/overview</loc>
   </url>
 
   <!-- 20. MOEX OZPH (Ozon Pharmaceuticals) -->
   <url>
-    <loc>https://valestor.com/stocks/moex-ooph/peter-lynch-fair-value-calculator</loc>
+    <loc>https://valestor.com/stocks/moex-ozph/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://valestor.com/ru/stocks/moex-ooph/peter-lynch-fair-value-calculator</loc>
+    <loc>https://valestor.com/ru/stocks/moex-ozph/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://valestor.com/es/stocks/moex-ooph/peter-lynch-fair-value-calculator</loc>
+    <loc>https://valestor.com/es/stocks/moex-ozph/peter-lynch-fair-value-calculator</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-ozph/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-ozph/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-ozph/dcf-calculator</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/stocks/moex-ozph/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/ru/stocks/moex-ozph/overview</loc>
+  </url>
+  <url>
+    <loc>https://valestor.com/es/stocks/moex-ozph/overview</loc>
   </url>
   <!-- Articles -->
   <!-- Articles EN -->
@@ -419,7 +642,7 @@
     <lastmod>2026-08-11</lastmod>
   </url>
   <url>
-    <loc>https://valestor.com/article/revision-macroeconomica-noviembre-26</loc>
+    <loc>https://valestor.com/es/article/revision-macroeconomica-noviembre-26</loc>
     <lastmod>2026-11-15</lastmod>
   </url>
   <!-- Articles RU -->

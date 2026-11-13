@@ -38,6 +38,18 @@ export const routes: Routes = [
         canActivate: [tickerGuard]
       },
       {
+        path: 'stocks/:exchange-ticker/dcf-calculator',
+        component: ValuateComponent,
+        canActivate: [tickerGuard],
+        data: { valuationTab: 'dcf_valuation' }
+      },
+      {
+        path: 'stocks/:exchange-ticker/overview',
+        component: ValuateComponent,
+        canActivate: [tickerGuard],
+        data: { valuationTab: 'overview' }
+      },
+      {
         path: 'about', component: AboutComponent
       },
       {
@@ -61,6 +73,18 @@ export const routes: Routes = [
         canActivate: [tickerGuard]
       },
       {
+        path: 'stocks/:exchange-ticker/dcf-calculator',
+        component: ValuateComponent,
+        canActivate: [tickerGuard],
+        data: { valuationTab: 'dcf_valuation' }
+      },
+      {
+        path: 'stocks/:exchange-ticker/overview',
+        component: ValuateComponent,
+        canActivate: [tickerGuard],
+        data: { valuationTab: 'overview' }
+      },
+      {
         path: 'about', component: AboutComponent
       },
       {
@@ -82,6 +106,18 @@ export const routes: Routes = [
         path: 'stocks/:exchange-ticker/peter-lynch-fair-value-calculator',
         component: ValuateComponent,
         canActivate: [tickerGuard]
+      },
+      {
+        path: 'stocks/:exchange-ticker/dcf-calculator',
+        component: ValuateComponent,
+        canActivate: [tickerGuard],
+        data: { valuationTab: 'dcf_valuation' }
+      },
+      {
+        path: 'stocks/:exchange-ticker/overview',
+        component: ValuateComponent,
+        canActivate: [tickerGuard],
+        data: { valuationTab: 'overview' }
       },
       {
         path: 'about', component: AboutComponent

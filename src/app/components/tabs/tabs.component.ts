@@ -22,15 +22,6 @@ export class TabsComponent implements AfterContentInit {
   }
 
   selectTab(selectedTab: TabComponent) {
-    // Снимаем активность со всех вкладок
-    this.tabs.forEach(tab => {
-      tab.active = false;
-    });
-    
-    // Активируем выбранную вкладку
-    selectedTab.active = true;
-    if(selectedTab.name === "dcf_valuation"){
-       this.parent.getDcfValuation();
-    }
+    this.parent?.navigateToTab(selectedTab.name);
   }
 }
