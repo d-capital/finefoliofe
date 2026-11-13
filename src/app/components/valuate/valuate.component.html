@@ -47,7 +47,7 @@
     </section>
 
     <app-tabs>
-      <app-tab title="{{valuationOverviewLabel}}" name="peter_lynch_valuation">
+      <app-tab title="{{valuationOverviewLabel}}" name="peter_lynch_valuation" [active]="selectedTab === 'peter_lynch_valuation'">
         <!--div *ngIf="valuation.avgGrowth === null || stockInfo.epsTtm === null">
           <h2 style="color: grey;">{{ noValuationData }}</h2>
         </div-->
@@ -340,7 +340,7 @@
         </div>
       </app-tab>
 
-      <app-tab title="{{discountedCashFlowTabLabel}}" name="dcf_valuation">
+      <app-tab title="{{discountedCashFlowTabLabel}}" name="dcf_valuation" [active]="selectedTab === 'dcf_valuation'">
         <div *ngIf="!dcfValuationLoaded" class="loader"></div>
         <div *ngIf="dcfError">{{noValuationData}}</div>
         <div *ngIf="dcfValuationLoaded && !dcfError">
@@ -527,7 +527,7 @@
         </div>
       </app-tab>
 
-      <app-tab title="{{stockInformationLabel}}" name="overview">
+      <app-tab title="{{stockInformationLabel}}" name="overview" [active]="selectedTab === 'overview'">
         <!-- Public stock data -->
         <section class="top-card valuate-section">
           <h2>{{ finanacialOverviewLabel }}</h2>

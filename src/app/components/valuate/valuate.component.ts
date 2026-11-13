@@ -1,7 +1,7 @@
 import { CommonModule, formatDate, isPlatformBrowser, NgFor } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StockInfo } from '../../dto/valuation/stock-info.model';
 import { DcfResult } from '../../dto/valuation/dcf.model';
 import { ValuationResult } from '../../dto/valuation/valuation.model';
@@ -10,6 +10,7 @@ import { ErrorStateComponent } from '../error-state/error-state.component';
 import { AbbreviateNumberPipe } from '../../custom-pipe/abbreviate-number.pipe';
 import { TabsComponent } from '../tabs/tabs.component';
 import { TabComponent } from '../tab/tab.component';
+import type { ValuationTabName } from '../tab/tab.component';
 import { StockCardComponent } from '../stock-card/stock-card.component';
 import { RecommendedBrokersComponent } from '../recommended-brokers/recommended-brokers.component';
 import { ChangeDetectorRef } from '@angular/core';
@@ -29,6 +30,7 @@ export class ValuateComponent implements OnInit {
   constructor(
     private ValuationServiceApi: ValuationService,
     private route: ActivatedRoute,
+    private router: Router,
     private cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: Object,
     private titleService: Title, 
@@ -201,6 +203,7 @@ export class ValuateComponent implements OnInit {
   deLabel: string = "";
 
   pageLanguage!: string;
+  selectedTab: ValuationTabName = 'peter_lynch_valuation';
 
   dcfValuation!: number;
   dcfValuationResult!: string;
@@ -305,6 +308,11 @@ export class ValuateComponent implements OnInit {
   noNetProfitHistory:{ year: string; value: string }[] = []
 
   async ngOnInit(): Promise<void> {
+    const routeTab = this.route.snapshot.data['valuationTab'];
+    if (routeTab === 'dcf_valuation' || routeTab === 'overview') {
+      this.selectedTab = routeTab;
+    }
+
     if (isPlatformBrowser(this.platformId)) {
       const params = this.route.snapshot.paramMap.get('exchange-ticker')?.split('-');
       const exchangeAndTicker = this.route.snapshot.paramMap.get('exchange-ticker') ?? "AAPL";
@@ -371,10 +379,10 @@ export class ValuateComponent implements OnInit {
           if (!this.stockInfo.epsTtm && !this.valuation.avgGrowth){
             this.noValuationData += "EPS и темпе роста чистой прибыли.";
           }
-          this.titleService.setTitle(`Оценка акции ${this.truncateStockName(this.stockInfo.name)} (${this.ticker}) по методу Питера Линча | Валестор`);
+          this.titleService.setTitle(this.getSeoTitle(this.stockInfo.name, 'ru'));
           this.metaService.updateTag({
             name: 'description',
-            content: 'Рассчитай справедливую стоимость акции ' + this.truncateStockName(this.stockInfo.name) + ' (' + this.ticker + ') по методу Питера Линча. Узнай, переоценена или недооценена акция, ее потенциал роста или снижения перед покупкой или продажей.'
+            content: this.getSeoDescription(this.stockInfo.name, 'ru')
           });
         }
         if(language == "en"){
@@ -387,10 +395,10 @@ export class ValuateComponent implements OnInit {
           if (!this.stockInfo.epsTtm && !this.valuation.avgGrowth){
             this.noValuationData += "EPS and Net Income Growth Rate.";
           }
-          this.titleService.setTitle(`${this.truncateStockName(this.stockInfo.name)} (${this.ticker}) Peter Lynch Fair Value | Valestor.сom`);
+          this.titleService.setTitle(this.getSeoTitle(this.stockInfo.name, 'en'));
           this.metaService.updateTag({
             name: 'description',
-            content: 'Calculate ' + this.truncateStockName(this.stockInfo.name) + ' (' + this.ticker + ') fair value using the Peter Lynch formula. Find out if the stock is undervalued or overvalued, its upside or downside potential before you buy or sell.'
+            content: this.getSeoDescription(this.stockInfo.name, 'en')
           });
         } else if (language == "es") {
           if (!this.stockInfo.epsTtm && this.valuation.avgGrowth){
@@ -402,10 +410,10 @@ export class ValuateComponent implements OnInit {
           if (!this.stockInfo.epsTtm && !this.valuation.avgGrowth){
             this.noValuationData += "EPS y tasa de crecimiento del ingreso neto.";
           }
-          this.titleService.setTitle(`Valoración de ${this.truncateStockName(this.stockInfo.name)} (${this.ticker}) según Peter Lynch | Valestor.com`);
+          this.titleService.setTitle(this.getSeoTitle(this.stockInfo.name, 'es'));
           this.metaService.updateTag({
             name: 'description',
-            content: 'Calcula el valor justo de ' + this.truncateStockName(this.stockInfo.name) + ' (' + this.ticker + ') usando la fórmula de Peter Lynch. Descubre si la acción está subvaluada o sobrevalorada, su potencial de subida o caída antes de comprar o vender.'
+            content: this.getSeoDescription(this.stockInfo.name, 'es')
           });
         }
         if (this.valuation.resultLabel === "Undervalued" && language == 'ru') {
@@ -501,6 +509,9 @@ export class ValuateComponent implements OnInit {
         }
 
         this.loading = false;
+        if (this.selectedTab === 'dcf_valuation') {
+          this.getDcfValuation();
+        }
       },
         (err: HttpErrorResponse) => {
           if (err instanceof HttpErrorResponse && err.status === 404) {
@@ -758,6 +769,7 @@ export class ValuateComponent implements OnInit {
         }else{
           this.undervaluedExplanationDcf = `According to Discounted Cash Flow (DCF) model this stock is undervalued. Investments into ${this.stockInfo.name} (${this.ticker}) can have growth potential of ${this.dcfValuationPercentage}% with current price of ${this.stockInfo.price} and fair price calculated with DCF model of ${this.dcfValuation}.`;
         }
+
       } else if (!this.dcfValuationUnavailable && this.dcfValuation !== null && this.dcfValuation < this.stockInfo.price) {
         this.dcfValuationResult = "Overvalued";
         this.dcfValuationPercentage = parseFloat(this.round(((this.dcfValuation - this.stockInfo.price) / this.stockInfo.price) * 100, "noexchange"));
@@ -795,6 +807,57 @@ export class ValuateComponent implements OnInit {
       }
   
   )
+  }
+
+  navigateToTab(tab: ValuationTabName): void {
+    const ticker = this.route.snapshot.paramMap.get('exchange-ticker');
+    if (!ticker) {
+      return;
+    }
+
+    const paths: Record<ValuationTabName, string> = {
+      peter_lynch_valuation: 'peter-lynch-fair-value-calculator',
+      dcf_valuation: 'dcf-calculator',
+      overview: 'overview'
+    };
+
+    this.router.navigate(['stocks', ticker, paths[tab]], {
+      relativeTo: this.route.parent
+    });
+  }
+
+  private getSeoTitle(stockName: string, language: string): string {
+    const name = this.truncateStockName(stockName);
+    if (language === 'ru') {
+      if (this.selectedTab === 'dcf_valuation') return `Оценка акции ${name} (${this.ticker}) по методу DCF | Валестор`;
+      if (this.selectedTab === 'overview') return `${name} (${this.ticker}): обзор акций | Валестор`;
+      return `Оценка акции ${name} (${this.ticker}) по методу Питера Линча | Валестор`;
+    }
+    if (language === 'es') {
+      if (this.selectedTab === 'dcf_valuation') return `Valoración de ${name} (${this.ticker}) mediante DCF | Valestor.com`;
+      if (this.selectedTab === 'overview') return `${name} (${this.ticker}): información de la acción | Valestor.com`;
+      return `Valoración de ${name} (${this.ticker}) según Peter Lynch | Valestor.com`;
+    }
+    if (this.selectedTab === 'dcf_valuation') return `${name} (${this.ticker}) DCF Valuation | Valestor.com`;
+    if (this.selectedTab === 'overview') return `${name} (${this.ticker}) Stock Overview | Valestor.com`;
+    return `${name} (${this.ticker}) Peter Lynch Fair Value | Valestor.com`;
+  }
+
+  private getSeoDescription(stockName: string, language: string): string {
+    const name = this.truncateStockName(stockName);
+    if (language === 'ru') {
+      if (this.selectedTab === 'dcf_valuation') return `Рассчитайте справедливую стоимость акции ${name} (${this.ticker}) с помощью модели дисконтированных денежных потоков (DCF).`;
+      if (this.selectedTab === 'overview') return `Основные финансовые показатели и информация об акции ${name} (${this.ticker}).`;
+      return `Рассчитайте справедливую стоимость акции ${name} (${this.ticker}) по методу Питера Линча. Узнайте потенциал роста или снижения акции.`;
+    }
+    if (language === 'es') {
+      if (this.selectedTab === 'dcf_valuation') return `Calcula el valor justo de ${name} (${this.ticker}) mediante el modelo de flujo de caja descontado (DCF).`;
+      if (this.selectedTab === 'overview') return `Indicadores financieros e información sobre las acciones de ${name} (${this.ticker}).`;
+      return `Calcula el valor justo de ${name} (${this.ticker}) según el método de Peter Lynch y descubre su potencial de subida o caída.`;
+    }
+    if (this.selectedTab === 'dcf_valuation') return `Calculate ${name} (${this.ticker}) fair value using the discounted cash flow (DCF) model.`;
+    if (this.selectedTab === 'overview') return `Key financial metrics and stock information for ${name} (${this.ticker}).`;
+    return `Calculate ${name} (${this.ticker}) fair value using the Peter Lynch formula and learn its upside or downside potential.`;
   }
 
   getYearToYearGrowhtRate(prev:number, current: number):number{
