@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ScreenerResult } from '../../dto/screener/screener-result.model';
-import { NgFor, NgIf, DOCUMENT } from '@angular/common';
+import { NgFor, NgIf, PercentPipe, DOCUMENT } from '@angular/common';
 import { ScreenerService } from '../../services/screener.service';
 import { FormsModule } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -14,7 +14,7 @@ interface Column {
 
 @Component({
   selector: 'app-screener-results',
-  imports: [NgFor, FormsModule, NgIf],
+  imports: [NgFor, FormsModule, NgIf, PercentPipe],
   templateUrl: './screener-results.component.html',
   styleUrl: './screener-results.component.css'
 })
@@ -71,8 +71,10 @@ export class ScreenerResultsComponent implements OnInit{
         { short: "Тикер", full: "Тикер акции" },
         { short: "", full: "" },
         { short: "Биржа", full: "Биржа, на которой торгуется акция" },
+        { short: "Название", full: "Название компании" },
         { short: "Цена", full: "Текущая цена акции" },
         { short: "EPS", full: "Прибыль на акцию (Earnings Per Share)" },
+        { short: "CAGR чистой прибыли, 5 лет", full: "Среднегодовой темп роста чистой прибыли за 5 лет" },
       ];
     } else if (lang === 'es') {
       this.title = "Buscador de acciones con crecimiento de ingresos netos";
@@ -91,8 +93,10 @@ export class ScreenerResultsComponent implements OnInit{
         { short: "Ticker", full: "Ticker de la acción" },
         { short: "", full: "" },
         { short: "Bolsa", full: "Bolsa en la que se negocia la acción" },
+        { short: "Nombre", full: "Nombre de la empresa" },
         { short: "Precio", full: "Precio actual de la acción" },
         { short: "EPS", full: "Ganancias por acción (Earnings Per Share)" },
+        { short: "CAGR ingresos netos (5 años)", full: "Tasa de crecimiento anual compuesta de los ingresos netos en 5 años" },
       ];
     } else {
       this.title = "Stock with Net Income Growth Screener";
@@ -111,8 +115,10 @@ export class ScreenerResultsComponent implements OnInit{
         { short: "Ticker", full: "Stock Ticker" },
         { short: "", full: "" },
         { short: "Exchange", full: "Exchange where the stock is listed" },
+        { short: "Name", full: "Company name" },
         { short: "Price", full: "Current share price" },
         { short: "EPS", full: "Earnings Per Share" },
+        { short: "5Y Net Income CAGR", full: "5-year net income compound annual growth rate" },
       ];
     }
     const defaultParams = {
