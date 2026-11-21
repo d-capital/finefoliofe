@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as articlesList from '../articlelist/articles.json'
+import { Meta, Title } from '@angular/platform-browser';
+import { EMPTY } from 'rxjs';
+import { catchError, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
+import { Article, ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-article',
@@ -9,24 +11,42 @@ import * as articlesList from '../articlelist/articles.json'
   templateUrl: './article.component.html',
   styleUrl: './article.component.css'
 })
-export class ArticleComponent {
-    id = '1'; 
-    title = "";
-    content = "";
-    publishedAt = "";
-    article:any;
-    articles:any;
-    constructor(private http: HttpClient, private route: ActivatedRoute) {
-      const artid = this.route.snapshot.paramMap.get('id');
-      this.id = artid ? artid: '1';
-      this.articles = articlesList['articles'];
-      this.fetchArticle(this.id);
-    }
-  fetchArticle(id:string) {
-    this.article = this.articles.find((a: any) => a.id === id);
-    this.title = this.article["title"];
-    this.content = this.article["content"];
-    this.publishedAt = this.article["publishedAt"] ?? "";
-  }
+export class ArticleComponent implements OnInit {
+  title = '';
+  content = '';
+  publishedAt = '';
+  article: Article | null = null;
 
+  constructor(
+    private articleService: ArticleService,
+    private route: ActivatedRoute,
+    private titleService: Title,
+    private metaService: Meta
+  ) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.pipe(
+      map(params => params.get('id')),
+      filter((urlName): urlName is string => urlName !== null),
+      distinctUntilChanged(),
+      switchMap(urlName => this.articleService.getArticle(urlName).pipe(
+        catchError(error => {
+          console.error('Failed to load article:', error);
+          return EMPTY;
+        })
+      ))
+    ).subscribe(article => {
+      this.article = article;
+      this.title = article.title;
+      this.content = article.content;
+      this.publishedAt = article.publishedAt ?? '';
+
+      const metaTitle = article.metaTitle || article.title;
+      const metaDescription = article.metaDescription || article.excerpt;
+      this.titleService.setTitle(metaTitle);
+      this.metaService.updateTag({ name: 'description', content: metaDescription });
+      this.metaService.updateTag({ property: 'og:title', content: metaTitle });
+      this.metaService.updateTag({ property: 'og:description', content: metaDescription });
+    });
+  }
 }
