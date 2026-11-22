@@ -12,4 +12,5 @@ export interface ValuationResult {
   };
   peg: number;
   averagePeg: number;
+  averageSectorPeg: number;
 }

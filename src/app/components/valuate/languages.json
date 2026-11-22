@@ -956,6 +956,42 @@
   {
     "language": "en",
     "component": "valuate",
+    "label": "averageSectorPegLabel",
+    "text": "Average sector PEG"
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "averageSectorPegLabel",
+    "text": "Средний PEG сектора"
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "averageSectorPegLabel",
+    "text": "PEG promedio del sector"
+  },
+  {
+    "language": "en",
+    "component": "valuate",
+    "label": "averageSectorPegExplanation",
+    "text": "This is the average PEG of companies in the same sector."
+  },
+  {
+    "language": "ru",
+    "component": "valuate",
+    "label": "averageSectorPegExplanation",
+    "text": "Это средний PEG компаний в том же секторе."
+  },
+  {
+    "language": "es",
+    "component": "valuate",
+    "label": "averageSectorPegExplanation",
+    "text": "Este es el PEG promedio de las empresas del mismo sector."
+  },
+  {
+    "language": "en",
+    "component": "valuate",
     "label": "datapoints1",
     "text": "<b>Price</b> - close price of an asset from TradingView (updates when you open the page)"
   },
