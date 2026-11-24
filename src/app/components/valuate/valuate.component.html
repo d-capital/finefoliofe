@@ -130,6 +130,10 @@
                 <ng-container *ngIf="stockInfo.exchange === 'NYSE' || stockInfo.exchange === 'NASDAQ'">{{ averagePegUsExplanation }}</ng-container>
                 <ng-container *ngIf="stockInfo.exchange === 'MOEX'">{{ averagePegMoexExplanation }}</ng-container>
               </p>
+              <p *ngIf="!noValuationAvailable && valuation.averageSectorPeg != null">
+                {{ averageSectorPegLabel }}: {{ uiRounding(valuation.averageSectorPeg) }}.
+                {{ averageSectorPegExplanation }}
+              </p>
               <p *ngIf="noValuationAvailable">{{ noPegExplanation }}</p>
             </section>
 
