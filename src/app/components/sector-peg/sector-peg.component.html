@@ -1,0 +1,38 @@
+<section class="sector-peg-section">
+  <div class="sector-peg-header">
+    <div>
+      <h2>{{ language === 'ru' ? 'PEG по секторам' : 'Sector PEG' }}</h2>
+      <p>{{ language === 'ru' ? 'Средний коэффициент PEG по секторам рынка' : 'Average PEG ratio by market sector' }}</p>
+    </div>
+    <label class="market-selector">
+      <span>{{ language === 'ru' ? 'Рынок' : 'Market' }}</span>
+      <select [value]="market" (change)="onMarketChange($event)" aria-label="Market">
+        <option value="US">US</option>
+        <option value="MOEX">MOEX</option>
+      </select>
+    </label>
+  </div>
+
+  <p *ngIf="loading" class="chart-message">
+    {{ language === 'ru' ? 'Загрузка данных…' : 'Loading data…' }}
+  </p>
+  <p *ngIf="error" class="chart-message chart-error" role="alert">
+    {{ language === 'ru' ? 'Не удалось загрузить данные. Попробуйте позже.' : 'Unable to load sector data. Please try again later.' }}
+  </p>
+  <p *ngIf="!loading && !error && sectors.length === 0" class="chart-message">
+    {{ language === 'ru' ? 'Нет данных для выбранного рынка.' : 'No data available for this market.' }}
+  </p>
+
+  <div *ngIf="!loading && !error && sectors.length > 0" class="sector-chart" role="list">
+    <div *ngFor="let sector of sectors" class="sector-row" role="listitem">
+      <span class="sector-name">{{ sector.sector }}</span>
+      <div class="bar-track" [attr.aria-label]="sector.sector + ': ' + sector.averagePeg">
+        <span class="bar" [style.width.%]="getBarWidth(sector.averagePeg)"></span>
+      </div>
+      <span class="sector-value">{{ sector.averagePeg | number:'1.0-2' }}</span>
+    </div>
+  </div>
+  <div class="chart-axis" *ngIf="!loading && !error && sectors.length > 0">
+    <span>{{ language === 'ru' ? 'Средний PEG' : 'Average PEG' }}</span>
+  </div>
+</section>

@@ -12,6 +12,7 @@ import { QuoteSectionComponent } from '../../components/quote-section/quote-sect
 import { Labels } from '../../dto/labels/labels.model';
 import { ScreenerResultsComponent } from '../../components/screener-results/screener-results.component';
 import { BlogPreviewComponent } from '../../components/blog-preview/blog-preview.component';
+import { SectorPegComponent } from '../../components/sector-peg/sector-peg.component';
 
 @Component({
   selector: 'app-landing',
@@ -25,7 +26,8 @@ import { BlogPreviewComponent } from '../../components/blog-preview/blog-preview
     ReliableDataComponent,
     QuoteSectionComponent,
     ScreenerResultsComponent,
-    BlogPreviewComponent
+    BlogPreviewComponent,
+    SectorPegComponent
 ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
