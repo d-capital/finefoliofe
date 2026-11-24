@@ -13,7 +13,8 @@ describe('SectorPegComponent', () => {
   const rows: SectorPeg[] = [
     { market: 'US', language: 'en', sector: 'Technology Services', averagePeg: 1.5 },
     { market: 'MOEX', language: 'en', sector: 'Energy', averagePeg: 2 },
-    { market: 'MOEX', language: 'ru', sector: 'Энергетика', averagePeg: 3 }
+    { market: 'MOEX', language: 'ru', sector: 'Энергетика', averagePeg: 3 },
+    { market: 'US', language: 'es', sector: 'Servicios tecnológicos', averagePeg: 1.8 }
   ];
 
   beforeEach(async () => {
@@ -45,5 +46,24 @@ describe('SectorPegComponent', () => {
 
     expect(getSectorPeg).toHaveBeenCalledWith('MOEX');
     expect(component.sectors.map(sector => sector.sector)).toEqual(['Энергетика']);
+  });
+
+  it('displays English sectors when Russian users select the US market', () => {
+    language = 'ru';
+    fixture.detectChanges();
+    component.onMarketChange({
+      target: { value: 'US' }
+    } as unknown as Event);
+
+    expect(getSectorPeg).toHaveBeenCalledWith('US');
+    expect(component.sectors.map(sector => sector.sector)).toEqual(['Technology Services']);
+  });
+
+  it('defaults to US and displays English sectors for Spanish language', () => {
+    language = 'es';
+    fixture.detectChanges();
+
+    expect(getSectorPeg).toHaveBeenCalledWith('US');
+    expect(component.sectors.map(sector => sector.sector)).toEqual(['Technology Services']);
   });
 });

@@ -27,6 +27,10 @@ export class SectorPegComponent implements OnInit {
     this.loadSectors();
   }
 
+  getDataLanguage(): 'en' | 'ru' {
+    return this.market === 'MOEX' ? 'ru' : 'en';
+  }
+
   onMarketChange(event: Event): void {
     this.market = (event.target as HTMLSelectElement).value;
     this.loadSectors();
@@ -45,7 +49,7 @@ export class SectorPegComponent implements OnInit {
     this.sectorPegService.getSectorPeg(this.market).subscribe({
       next: sectors => {
         this.sectors = sectors
-          .filter(sector => sector.language === (this.language === 'ru' ? 'ru' : 'en'))
+          .filter(sector => sector.language === this.getDataLanguage())
           .sort((a, b) => b.averagePeg - a.averagePeg);
         this.loading = false;
       },

@@ -1,11 +1,11 @@
 <section class="sector-peg-section">
   <div class="sector-peg-header">
     <div>
-      <h2>{{ language === 'ru' ? 'PEG по секторам' : 'Sector PEG' }}</h2>
-      <p>{{ language === 'ru' ? 'Средний коэффициент PEG по секторам рынка' : 'Average PEG ratio by market sector' }}</p>
+      <h2>{{ language === 'ru' ? 'PEG по секторам' : (language === 'es' ? 'PEG por sectores' : 'Sector PEG') }}</h2>
+      <p>{{ language === 'ru' ? 'Средний коэффициент PEG по секторам рынка' : (language === 'es' ? 'Ratio PEG promedio por sector de mercado' : 'Average PEG ratio by market sector') }}</p>
     </div>
     <label class="market-selector">
-      <span>{{ language === 'ru' ? 'Рынок' : 'Market' }}</span>
+      <span>{{ language === 'ru' ? 'Рынок' : (language === 'es' ? 'Mercado' : 'Market') }}</span>
       <select [value]="market" (change)="onMarketChange($event)" aria-label="Market">
         <option value="US">US</option>
         <option value="MOEX">MOEX</option>
@@ -14,13 +14,13 @@
   </div>
 
   <p *ngIf="loading" class="chart-message">
-    {{ language === 'ru' ? 'Загрузка данных…' : 'Loading data…' }}
+    {{ language === 'ru' ? 'Загрузка данных…' : (language === 'es' ? 'Cargando datos…' : 'Loading data…') }}
   </p>
   <p *ngIf="error" class="chart-message chart-error" role="alert">
-    {{ language === 'ru' ? 'Не удалось загрузить данные. Попробуйте позже.' : 'Unable to load sector data. Please try again later.' }}
+    {{ language === 'ru' ? 'Не удалось загрузить данные. Попробуйте позже.' : (language === 'es' ? 'No se pudieron cargar los datos del sector. Inténtalo más tarde.' : 'Unable to load sector data. Please try again later.') }}
   </p>
   <p *ngIf="!loading && !error && sectors.length === 0" class="chart-message">
-    {{ language === 'ru' ? 'Нет данных для выбранного рынка.' : 'No data available for this market.' }}
+    {{ language === 'ru' ? 'Нет данных для выбранного рынка.' : (language === 'es' ? 'No hay datos disponibles para este mercado.' : 'No data available for this market.') }}
   </p>
 
   <div *ngIf="!loading && !error && sectors.length > 0" class="sector-chart" role="list">
@@ -33,6 +33,6 @@
     </div>
   </div>
   <div class="chart-axis" *ngIf="!loading && !error && sectors.length > 0">
-    <span>{{ language === 'ru' ? 'Средний PEG' : 'Average PEG' }}</span>
+    <span>{{ language === 'ru' ? 'Средний PEG' : (language === 'es' ? 'PEG promedio' : 'Average PEG') }}</span>
   </div>
 </section>
